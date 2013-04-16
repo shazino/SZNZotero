@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSData+TBXML_Compression.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSData(TBXML_Compression)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSData(TBXML_Compression)/dataWithUncompressedContentsOfFile:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>			
+			
+			<Declaration>+ (NSData *)dataWithUncompressedContentsOfFile:(NSString *)aFile</Declaration>
+			
+			
+			<Anchor>//api/name/dataWithUncompressedContentsOfFile:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSData(TBXML_Compression)/dataWithBase64EncodedString:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>			
+			
+			<Declaration>+ (NSData *)dataWithBase64EncodedString:(NSString *)string</Declaration>
+			
+			
+			<Anchor>//api/name/dataWithBase64EncodedString:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSData(TBXML_Compression)/initWithBase64EncodedString:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithBase64EncodedString:(NSString *)string</Declaration>
+			
+			
+			<Anchor>//api/name/initWithBase64EncodedString:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSData(TBXML_Compression)/base64Encoding</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)base64Encoding</Declaration>
+			
+			
+			<Anchor>//api/name/base64Encoding</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSData(TBXML_Compression)/base64EncodingWithLineLength:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)base64EncodingWithLineLength:(unsigned int)lineLength</Declaration>
+			
+			
+			<Anchor>//api/name/base64EncodingWithLineLength:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSData(TBXML_Compression)/gzipDeflate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>			
+			
+			<Declaration>- (NSData *)gzipDeflate</Declaration>
+			
+			
+			<Anchor>//api/name/gzipDeflate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSData(TBXML_Compression)/gzipInflate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+Compression.h</DeclaredIn>			
+			
+			<Declaration>- (NSData *)gzipInflate</Declaration>
+			
+			
+			<Anchor>//api/name/gzipInflate</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

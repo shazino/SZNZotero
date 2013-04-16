@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>TBXML 1.5</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node type="folder">
+					<Name>Categories</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1">
+			<Name>TBXML</Name>
+			<Path>Classes/TBXML.html</Path>
+		</Node>
+		
+		<Node id="2">
+			<Name>NSData(TBXML_Compression)</Name>
+			<Path>Categories/NSData+TBXML_Compression.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>NSMutableURLRequest(TBXML_HTTP)</Name>
+			<Path>Categories/NSMutableURLRequest+TBXML_HTTP.html</Path>
+		</Node>
+		<Node id="4">
+			<Name>NSURLConnection(TBXML_HTTP)</Name>
+			<Path>Categories/NSURLConnection+TBXML_HTTP.html</Path>
+		</Node>
+		
+		
+	</Library>
+</DocSetNodes>

@@ -1,0 +1,1150 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>TBXML Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">TBXML 1.5 </a></h1>
+				<a id="developerHome" href="../index.html">Tom Bradley</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">TBXML Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/rootXMLElement">&nbsp;&nbsp;&nbsp;&nbsp;rootXMLElement</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/attributeName:">&nbsp;&nbsp;&nbsp;&nbsp;+ attributeName:</option>
+	
+	<option value="//api/name/attributeName:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ attributeName:error:</option>
+	
+	<option value="//api/name/attributeValue:">&nbsp;&nbsp;&nbsp;&nbsp;+ attributeValue:</option>
+	
+	<option value="//api/name/attributeValue:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ attributeValue:error:</option>
+	
+	<option value="//api/name/childElementNamed:parentElement:">&nbsp;&nbsp;&nbsp;&nbsp;+ childElementNamed:parentElement:</option>
+	
+	<option value="//api/name/childElementNamed:parentElement:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ childElementNamed:parentElement:error:</option>
+	
+	<option value="//api/name/elementName:">&nbsp;&nbsp;&nbsp;&nbsp;+ elementName:</option>
+	
+	<option value="//api/name/elementName:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ elementName:error:</option>
+	
+	<option value="//api/name/iterateAttributesOfElement:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ iterateAttributesOfElement:withBlock:</option>
+	
+	<option value="//api/name/iterateElementsForQuery:fromElement:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ iterateElementsForQuery:fromElement:withBlock:</option>
+	
+	<option value="//api/name/nextSiblingNamed:searchFromElement:">&nbsp;&nbsp;&nbsp;&nbsp;+ nextSiblingNamed:searchFromElement:</option>
+	
+	<option value="//api/name/nextSiblingNamed:searchFromElement:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ nextSiblingNamed:searchFromElement:error:</option>
+	
+	<option value="//api/name/tbxmlWithURL:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithURL:success:failure:</option>
+	
+	<option value="//api/name/tbxmlWithXMLData:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLData:</option>
+	
+	<option value="//api/name/tbxmlWithXMLData:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLData:error:</option>
+	
+	<option value="//api/name/tbxmlWithXMLFile:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLFile:</option>
+	
+	<option value="//api/name/tbxmlWithXMLFile:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLFile:error:</option>
+	
+	<option value="//api/name/tbxmlWithXMLFile:fileExtension:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLFile:fileExtension:</option>
+	
+	<option value="//api/name/tbxmlWithXMLFile:fileExtension:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLFile:fileExtension:error:</option>
+	
+	<option value="//api/name/tbxmlWithXMLString:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLString:</option>
+	
+	<option value="//api/name/tbxmlWithXMLString:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ tbxmlWithXMLString:error:</option>
+	
+	<option value="//api/name/textForElement:">&nbsp;&nbsp;&nbsp;&nbsp;+ textForElement:</option>
+	
+	<option value="//api/name/textForElement:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ textForElement:error:</option>
+	
+	<option value="//api/name/valueOfAttributeNamed:forElement:">&nbsp;&nbsp;&nbsp;&nbsp;+ valueOfAttributeNamed:forElement:</option>
+	
+	<option value="//api/name/valueOfAttributeNamed:forElement:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ valueOfAttributeNamed:forElement:error:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/decodeData:">&nbsp;&nbsp;&nbsp;&nbsp;- decodeData:</option>
+	
+	<option value="//api/name/decodeData:withError:">&nbsp;&nbsp;&nbsp;&nbsp;- decodeData:withError:</option>
+	
+	<option value="//api/name/initWithURL:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithURL:success:failure:</option>
+	
+	<option value="//api/name/initWithXMLData:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLData:</option>
+	
+	<option value="//api/name/initWithXMLData:error:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLData:error:</option>
+	
+	<option value="//api/name/initWithXMLFile:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLFile:</option>
+	
+	<option value="//api/name/initWithXMLFile:error:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLFile:error:</option>
+	
+	<option value="//api/name/initWithXMLFile:fileExtension:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLFile:fileExtension:</option>
+	
+	<option value="//api/name/initWithXMLFile:fileExtension:error:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLFile:fileExtension:error:</option>
+	
+	<option value="//api/name/initWithXMLString:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLString:</option>
+	
+	<option value="//api/name/initWithXMLString:error:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXMLString:error:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_TBXML_HTTP Methods">TBXML_HTTP Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_StaticFunctions Methods">StaticFunctions Methods</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rootXMLElement">rootXMLElement</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/attributeName:">attributeName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/attributeName:error:">attributeName:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/attributeValue:">attributeValue:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/attributeValue:error:">attributeValue:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/childElementNamed:parentElement:">childElementNamed:parentElement:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/childElementNamed:parentElement:error:">childElementNamed:parentElement:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/elementName:">elementName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/elementName:error:">elementName:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/iterateAttributesOfElement:withBlock:">iterateAttributesOfElement:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/iterateElementsForQuery:fromElement:withBlock:">iterateElementsForQuery:fromElement:withBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nextSiblingNamed:searchFromElement:">nextSiblingNamed:searchFromElement:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nextSiblingNamed:searchFromElement:error:">nextSiblingNamed:searchFromElement:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithURL:success:failure:">tbxmlWithURL:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLData:">tbxmlWithXMLData:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLData:error:">tbxmlWithXMLData:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLFile:">tbxmlWithXMLFile:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLFile:error:">tbxmlWithXMLFile:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLFile:fileExtension:">tbxmlWithXMLFile:fileExtension:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLFile:fileExtension:error:">tbxmlWithXMLFile:fileExtension:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLString:">tbxmlWithXMLString:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tbxmlWithXMLString:error:">tbxmlWithXMLString:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/textForElement:">textForElement:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/textForElement:error:">textForElement:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/valueOfAttributeNamed:forElement:">valueOfAttributeNamed:forElement:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/valueOfAttributeNamed:forElement:error:">valueOfAttributeNamed:forElement:error:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/decodeData:">decodeData:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/decodeData:withError:">decodeData:withError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithURL:success:failure:">initWithURL:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLData:">initWithXMLData:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLData:error:">initWithXMLData:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLFile:">initWithXMLFile:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLFile:error:">initWithXMLFile:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLFile:fileExtension:">initWithXMLFile:fileExtension:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLFile:fileExtension:error:">initWithXMLFile:fileExtension:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLString:">initWithXMLString:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXMLString:error:">initWithXMLString:error:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="TBXML Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">TBXML Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">TBXML.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The TBXMLAttributeBuffer is a structure that holds a buffer of TBXMLAttributes. When the buffer of attributes is used, an additional buffer is created and linked to the previous one. This allows for efficient memeory allocation/deallocation of attributes.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rootXMLElement">&nbsp;&nbsp;rootXMLElement</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLString:error:">+&nbsp;tbxmlWithXMLString:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLData:error:">+&nbsp;tbxmlWithXMLData:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLFile:error:">+&nbsp;tbxmlWithXMLFile:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLFile:fileExtension:error:">+&nbsp;tbxmlWithXMLFile:fileExtension:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLString:">+&nbsp;tbxmlWithXMLString:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLData:">+&nbsp;tbxmlWithXMLData:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLFile:">+&nbsp;tbxmlWithXMLFile:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithXMLFile:fileExtension:">+&nbsp;tbxmlWithXMLFile:fileExtension:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLString:error:">&ndash;&nbsp;initWithXMLString:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLData:error:">&ndash;&nbsp;initWithXMLData:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLFile:error:">&ndash;&nbsp;initWithXMLFile:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLFile:fileExtension:error:">&ndash;&nbsp;initWithXMLFile:fileExtension:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLString:">&ndash;&nbsp;initWithXMLString:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLData:">&ndash;&nbsp;initWithXMLData:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLFile:">&ndash;&nbsp;initWithXMLFile:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXMLFile:fileExtension:">&ndash;&nbsp;initWithXMLFile:fileExtension:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/decodeData:">&ndash;&nbsp;decodeData:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/decodeData:withError:">&ndash;&nbsp;decodeData:withError:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="TBXML_HTTP Methods" name="task_TBXML_HTTP Methods"></a>
+						<h3 class="subsubtitle task-title">TBXML_HTTP Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tbxmlWithURL:success:failure:">+&nbsp;tbxmlWithURL:success:failure:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithURL:success:failure:">&ndash;&nbsp;initWithURL:success:failure:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="StaticFunctions Methods" name="task_StaticFunctions Methods"></a>
+						<h3 class="subsubtitle task-title">StaticFunctions Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/elementName:">+&nbsp;elementName:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/elementName:error:">+&nbsp;elementName:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/textForElement:">+&nbsp;textForElement:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/textForElement:error:">+&nbsp;textForElement:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/valueOfAttributeNamed:forElement:">+&nbsp;valueOfAttributeNamed:forElement:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/valueOfAttributeNamed:forElement:error:">+&nbsp;valueOfAttributeNamed:forElement:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/attributeName:">+&nbsp;attributeName:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/attributeName:error:">+&nbsp;attributeName:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/attributeValue:">+&nbsp;attributeValue:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/attributeValue:error:">+&nbsp;attributeValue:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nextSiblingNamed:searchFromElement:">+&nbsp;nextSiblingNamed:searchFromElement:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/childElementNamed:parentElement:">+&nbsp;childElementNamed:parentElement:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nextSiblingNamed:searchFromElement:error:">+&nbsp;nextSiblingNamed:searchFromElement:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/childElementNamed:parentElement:error:">+&nbsp;childElementNamed:parentElement:error:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/iterateElementsForQuery:fromElement:withBlock:">+&nbsp;iterateElementsForQuery:fromElement:withBlock:</a></code>
+		<span class="tooltip"><p>Iterate through all elements found using query.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/iterateAttributesOfElement:withBlock:">+&nbsp;iterateAttributesOfElement:withBlock:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/rootXMLElement" title="rootXMLElement"></a>
+	<h3 class="subsubtitle method-title">rootXMLElement</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) TBXMLElement *rootXMLElement</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/attributeName:" title="attributeName:"></a>
+	<h3 class="subsubtitle method-title">attributeName:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)attributeName:(TBXMLAttribute *)<em>aXMLAttribute</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/attributeName:error:" title="attributeName:error:"></a>
+	<h3 class="subsubtitle method-title">attributeName:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)attributeName:(TBXMLAttribute *)<em>aXMLAttribute</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/attributeValue:" title="attributeValue:"></a>
+	<h3 class="subsubtitle method-title">attributeValue:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)attributeValue:(TBXMLAttribute *)<em>aXMLAttribute</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/attributeValue:error:" title="attributeValue:error:"></a>
+	<h3 class="subsubtitle method-title">attributeValue:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)attributeValue:(TBXMLAttribute *)<em>aXMLAttribute</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/childElementNamed:parentElement:" title="childElementNamed:parentElement:"></a>
+	<h3 class="subsubtitle method-title">childElementNamed:parentElement:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (TBXMLElement *)childElementNamed:(NSString *)<em>aName</em> parentElement:(TBXMLElement *)<em>aParentXMLElement</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/childElementNamed:parentElement:error:" title="childElementNamed:parentElement:error:"></a>
+	<h3 class="subsubtitle method-title">childElementNamed:parentElement:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (TBXMLElement *)childElementNamed:(NSString *)<em>aName</em> parentElement:(TBXMLElement *)<em>aParentXMLElement</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/elementName:" title="elementName:"></a>
+	<h3 class="subsubtitle method-title">elementName:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)elementName:(TBXMLElement *)<em>aXMLElement</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/elementName:error:" title="elementName:error:"></a>
+	<h3 class="subsubtitle method-title">elementName:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)elementName:(TBXMLElement *)<em>aXMLElement</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/iterateAttributesOfElement:withBlock:" title="iterateAttributesOfElement:withBlock:"></a>
+	<h3 class="subsubtitle method-title">iterateAttributesOfElement:withBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (void)iterateAttributesOfElement:(TBXMLElement *)<em>anElement</em> withBlock:(TBXMLIterateAttributeBlock)<em>iterateBlock</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/iterateElementsForQuery:fromElement:withBlock:" title="iterateElementsForQuery:fromElement:withBlock:"></a>
+	<h3 class="subsubtitle method-title">iterateElementsForQuery:fromElement:withBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Iterate through all elements found using query.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)iterateElementsForQuery:(NSString *)<em>query</em> fromElement:(TBXMLElement *)<em>anElement</em> withBlock:(TBXMLIterateBlock)<em>iterateBlock</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Iterate through all elements found using query.</p>
+
+<p>Inspiration taken from John Blanco&rsquo;s RaptureXML <a href="https://github.com/ZaBlanc/RaptureXML">https://github.com/ZaBlanc/RaptureXML</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TBXML.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/nextSiblingNamed:searchFromElement:" title="nextSiblingNamed:searchFromElement:"></a>
+	<h3 class="subsubtitle method-title">nextSiblingNamed:searchFromElement:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (TBXMLElement *)nextSiblingNamed:(NSString *)<em>aName</em> searchFromElement:(TBXMLElement *)<em>aXMLElement</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/nextSiblingNamed:searchFromElement:error:" title="nextSiblingNamed:searchFromElement:error:"></a>
+	<h3 class="subsubtitle method-title">nextSiblingNamed:searchFromElement:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (TBXMLElement *)nextSiblingNamed:(NSString *)<em>aName</em> searchFromElement:(TBXMLElement *)<em>aXMLElement</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithURL:success:failure:" title="tbxmlWithURL:success:failure:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithURL:success:failure:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithURL:(NSURL *)<em>aURL</em> success:(TBXMLSuccessBlock)<em>successBlock</em> failure:(TBXMLFailureBlock)<em>failureBlock</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLData:" title="tbxmlWithXMLData:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLData:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLData:(NSData *)<em>aData</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLData:error:" title="tbxmlWithXMLData:error:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLData:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLData:(NSData *)<em>aData</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLFile:" title="tbxmlWithXMLFile:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLFile:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLFile:(NSString *)<em>aXMLFile</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLFile:error:" title="tbxmlWithXMLFile:error:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLFile:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLFile:(NSString *)<em>aXMLFile</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLFile:fileExtension:" title="tbxmlWithXMLFile:fileExtension:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLFile:fileExtension:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLFile:(NSString *)<em>aXMLFile</em> fileExtension:(NSString *)<em>aFileExtension</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLFile:fileExtension:error:" title="tbxmlWithXMLFile:fileExtension:error:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLFile:fileExtension:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLFile:(NSString *)<em>aXMLFile</em> fileExtension:(NSString *)<em>aFileExtension</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLString:" title="tbxmlWithXMLString:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLString:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLString:(NSString *)<em>aXMLString</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tbxmlWithXMLString:error:" title="tbxmlWithXMLString:error:"></a>
+	<h3 class="subsubtitle method-title">tbxmlWithXMLString:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)tbxmlWithXMLString:(NSString *)<em>aXMLString</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/textForElement:" title="textForElement:"></a>
+	<h3 class="subsubtitle method-title">textForElement:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)textForElement:(TBXMLElement *)<em>aXMLElement</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/textForElement:error:" title="textForElement:error:"></a>
+	<h3 class="subsubtitle method-title">textForElement:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)textForElement:(TBXMLElement *)<em>aXMLElement</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/valueOfAttributeNamed:forElement:" title="valueOfAttributeNamed:forElement:"></a>
+	<h3 class="subsubtitle method-title">valueOfAttributeNamed:forElement:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)valueOfAttributeNamed:(NSString *)<em>aName</em> forElement:(TBXMLElement *)<em>aXMLElement</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/valueOfAttributeNamed:forElement:error:" title="valueOfAttributeNamed:forElement:error:"></a>
+	<h3 class="subsubtitle method-title">valueOfAttributeNamed:forElement:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)valueOfAttributeNamed:(NSString *)<em>aName</em> forElement:(TBXMLElement *)<em>aXMLElement</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/decodeData:" title="decodeData:"></a>
+	<h3 class="subsubtitle method-title">decodeData:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)decodeData:(NSData *)<em>data</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/decodeData:withError:" title="decodeData:withError:"></a>
+	<h3 class="subsubtitle method-title">decodeData:withError:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)decodeData:(NSData *)<em>data</em> withError:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithURL:success:failure:" title="initWithURL:success:failure:"></a>
+	<h3 class="subsubtitle method-title">initWithURL:success:failure:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithURL:(NSURL *)<em>aURL</em> success:(TBXMLSuccessBlock)<em>successBlock</em> failure:(TBXMLFailureBlock)<em>failureBlock</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLData:" title="initWithXMLData:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLData:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLData:(NSData *)<em>aData</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLData:error:" title="initWithXMLData:error:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLData:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLData:(NSData *)<em>aData</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLFile:" title="initWithXMLFile:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLFile:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLFile:(NSString *)<em>aXMLFile</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLFile:error:" title="initWithXMLFile:error:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLFile:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLFile:(NSString *)<em>aXMLFile</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLFile:fileExtension:" title="initWithXMLFile:fileExtension:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLFile:fileExtension:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLFile:(NSString *)<em>aXMLFile</em> fileExtension:(NSString *)<em>aFileExtension</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLFile:fileExtension:error:" title="initWithXMLFile:fileExtension:error:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLFile:fileExtension:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLFile:(NSString *)<em>aXMLFile</em> fileExtension:(NSString *)<em>aFileExtension</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLString:" title="initWithXMLString:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLString:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLString:(NSString *)<em>aXMLString</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXMLString:error:" title="initWithXMLString:error:"></a>
+	<h3 class="subsubtitle method-title">initWithXMLString:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXMLString:(NSString *)<em>aXMLString</em> error:(NSError **)<em>error</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Tom Bradley. All rights reserved. (Last updated: 2013-04-16)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

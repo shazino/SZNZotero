@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/vincenttourraine/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.afoauth1client.AFOAuth1Client-0.1.1.docset
+Time: 2013-04-16 15:52:50 +0000

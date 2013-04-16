@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/vincenttourraine/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.sznzotero.SZNZotero-1.0.docset
+Time: 2013-04-16 16:06:48 +0000

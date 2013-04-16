@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TBXML.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TBXML</TokenIdentifier>
+			<Abstract type="html">The TBXMLAttributeBuffer is a structure that holds a buffer of TBXMLAttributes. When the buffer of attributes is used, an additional buffer is created and linked to the previous one. This allows for efficient memeory allocation/deallocation of attributes.</Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/setRootXMLElement:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) TBXMLElement *rootXMLElement</Declaration>
+			
+			
+			<Anchor>//api/name/rootXMLElement</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TBXML/rootXMLElement</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) TBXMLElement *rootXMLElement</Declaration>
+			
+			
+			<Anchor>//api/name/rootXMLElement</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLString:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLString:(NSString *)aXMLString error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLString:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLData:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLData:(NSData *)aData error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLData:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLFile:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLFile:(NSString *)aXMLFile error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLFile:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLFile:fileExtension:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLFile:(NSString *)aXMLFile fileExtension:(NSString *)aFileExtension error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLFile:fileExtension:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLString:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLString:(NSString *)aXMLString</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLString:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLData:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLData:(NSData *)aData</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLData:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLFile:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLFile:(NSString *)aXMLFile</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLFile:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithXMLFile:fileExtension:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithXMLFile:(NSString *)aXMLFile fileExtension:(NSString *)aFileExtension</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithXMLFile:fileExtension:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLString:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLString:(NSString *)aXMLString error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLString:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLData:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLData:(NSData *)aData error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLData:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLFile:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLFile:(NSString *)aXMLFile error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLFile:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLFile:fileExtension:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLFile:(NSString *)aXMLFile fileExtension:(NSString *)aFileExtension error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLFile:fileExtension:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLString:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLString:(NSString *)aXMLString</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLString:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLData:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLData:(NSData *)aData</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLData:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLFile:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLFile:(NSString *)aXMLFile</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLFile:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithXMLFile:fileExtension:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithXMLFile:(NSString *)aXMLFile fileExtension:(NSString *)aFileExtension</Declaration>
+			
+			
+			<Anchor>//api/name/initWithXMLFile:fileExtension:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/decodeData:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (void)decodeData:(NSData *)data</Declaration>
+			
+			
+			<Anchor>//api/name/decodeData:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/decodeData:withError:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>- (void)decodeData:(NSData *)data withError:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/decodeData:withError:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/tbxmlWithURL:success:failure:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+HTTP.h</DeclaredIn>			
+			
+			<Declaration>+ (id)tbxmlWithURL:(NSURL *)aURL success:(TBXMLSuccessBlock)successBlock failure:(TBXMLFailureBlock)failureBlock</Declaration>
+			
+			
+			<Anchor>//api/name/tbxmlWithURL:success:failure:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TBXML/initWithURL:success:failure:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML+HTTP.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithURL:(NSURL *)aURL success:(TBXMLSuccessBlock)successBlock failure:(TBXMLFailureBlock)failureBlock</Declaration>
+			
+			
+			<Anchor>//api/name/initWithURL:success:failure:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/elementName:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)elementName:(TBXMLElement *)aXMLElement</Declaration>
+			
+			
+			<Anchor>//api/name/elementName:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/elementName:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)elementName:(TBXMLElement *)aXMLElement error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/elementName:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/textForElement:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)textForElement:(TBXMLElement *)aXMLElement</Declaration>
+			
+			
+			<Anchor>//api/name/textForElement:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/textForElement:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)textForElement:(TBXMLElement *)aXMLElement error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/textForElement:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/valueOfAttributeNamed:forElement:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)valueOfAttributeNamed:(NSString *)aName forElement:(TBXMLElement *)aXMLElement</Declaration>
+			
+			
+			<Anchor>//api/name/valueOfAttributeNamed:forElement:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/valueOfAttributeNamed:forElement:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)valueOfAttributeNamed:(NSString *)aName forElement:(TBXMLElement *)aXMLElement error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/valueOfAttributeNamed:forElement:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/attributeName:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)attributeName:(TBXMLAttribute *)aXMLAttribute</Declaration>
+			
+			
+			<Anchor>//api/name/attributeName:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/attributeName:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)attributeName:(TBXMLAttribute *)aXMLAttribute error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/attributeName:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/attributeValue:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)attributeValue:(TBXMLAttribute *)aXMLAttribute</Declaration>
+			
+			
+			<Anchor>//api/name/attributeValue:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/attributeValue:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)attributeValue:(TBXMLAttribute *)aXMLAttribute error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/attributeValue:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/nextSiblingNamed:searchFromElement:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (TBXMLElement *)nextSiblingNamed:(NSString *)aName searchFromElement:(TBXMLElement *)aXMLElement</Declaration>
+			
+			
+			<Anchor>//api/name/nextSiblingNamed:searchFromElement:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/childElementNamed:parentElement:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (TBXMLElement *)childElementNamed:(NSString *)aName parentElement:(TBXMLElement *)aParentXMLElement</Declaration>
+			
+			
+			<Anchor>//api/name/childElementNamed:parentElement:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/nextSiblingNamed:searchFromElement:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (TBXMLElement *)nextSiblingNamed:(NSString *)aName searchFromElement:(TBXMLElement *)aXMLElement error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/nextSiblingNamed:searchFromElement:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/childElementNamed:parentElement:error:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (TBXMLElement *)childElementNamed:(NSString *)aName parentElement:(TBXMLElement *)aParentXMLElement error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/childElementNamed:parentElement:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/iterateElementsForQuery:fromElement:withBlock:</TokenIdentifier>
+			<Abstract type="html">Iterate through all elements found using query.</Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (void)iterateElementsForQuery:(NSString *)query fromElement:(TBXMLElement *)anElement withBlock:(TBXMLIterateBlock)iterateBlock</Declaration>
+			
+			
+			<Anchor>//api/name/iterateElementsForQuery:fromElement:withBlock:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TBXML/iterateAttributesOfElement:withBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TBXML.h</DeclaredIn>			
+			
+			<Declaration>+ (void)iterateAttributesOfElement:(TBXMLElement *)anElement withBlock:(TBXMLIterateAttributeBlock)iterateBlock</Declaration>
+			
+			
+			<Anchor>//api/name/iterateAttributesOfElement:withBlock:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

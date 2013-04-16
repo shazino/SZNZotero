@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SZNItem.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SZNItem</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>SZNItem.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SZNItem/setIdentifier:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>SZNItem.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *identifier</Declaration>
+			
+			
+			<Anchor>//api/name/identifier</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SZNItem/identifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>SZNItem.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *identifier</Declaration>
+			
+			
+			<Anchor>//api/name/identifier</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SZNItem/setTitle:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>SZNItem.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *title</Declaration>
+			
+			
+			<Anchor>//api/name/title</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SZNItem/title</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>SZNItem.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *title</Declaration>
+			
+			
+			<Anchor>//api/name/title</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SZNItem/fetchItemsInLibraryWithUserIdentifier:client:success:failure:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>SZNItem.h</DeclaredIn>			
+			
+			<Declaration>+ (void)fetchItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier client:(SZNZoteroAPIClient *)client success:(void ( ^ ) ( NSArray *))success failure:(void ( ^ ) ( NSError *))failure</Declaration>
+			
+			
+			<Anchor>//api/name/fetchItemsInLibraryWithUserIdentifier:client:success:failure:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
