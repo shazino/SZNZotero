@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *key;
 
++ (NSArray *)collectionsFromXML:(TBXML *)XML;
 + (void)fetchCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 - (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 

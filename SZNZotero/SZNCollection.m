@@ -28,22 +28,30 @@
 
 @implementation SZNCollection
 
+#pragma mark - Parse
+
++ (NSArray *)collectionsFromXML:(TBXML *)XML
+{
+    NSMutableArray *collections = [NSMutableArray array];
+    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *entry) {
+        SZNCollection *collection = [SZNCollection new];
+        collection.identifier   = [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
+        collection.title        = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
+        collection.key          = [TBXML textForChildElementNamed:@"zapi:key" parentElement:entry escaped:NO];
+        [collections addObject:collection];
+    }];
+    return collections;
+}
+
+#pragma mark - Fetch
+
 + (void)fetchCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [client getPath:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"collections"]
          parameters:nil
-            success:^(TBXML *xml) {
-                NSMutableArray *collections = [NSMutableArray array];
-                [TBXML iterateElementsForQuery:@"entry" fromElement:xml.rootXMLElement withBlock:^(TBXMLElement *entry) {
-                    SZNCollection *collection = [SZNCollection new];
-                    collection.title = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
-                    collection.identifier = [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
-                    collection.key = [TBXML textForChildElementNamed:@"zapi:key" parentElement:entry escaped:NO];
-                    [collections addObject:collection];
-                }];
-                
+            success:^(TBXML *XML) {
                 if (success)
-                    success(collections);
+                    success([self collectionsFromXML:XML]);
             } failure:failure];
 }
 
@@ -51,17 +59,9 @@
 {
     [client getPath:[NSString stringWithFormat:@"users/%@/collections/%@/items/", userIdentifier, self.key]
          parameters:nil
-            success:^(TBXML *xml) {
-                NSMutableArray *items = [NSMutableArray array];
-                [TBXML iterateElementsForQuery:@"entry" fromElement:xml.rootXMLElement withBlock:^(TBXMLElement *entry) {
-                    SZNItem *item = [SZNItem new];
-                    item.title = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
-                    item.identifier = [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
-                    [items addObject:item];
-                }];
-                
+            success:^(TBXML *XML) {
                 if (success)
-                    success(items);
+                    success([SZNItem itemsFromXML:XML]);
             } failure:failure];
 }
 

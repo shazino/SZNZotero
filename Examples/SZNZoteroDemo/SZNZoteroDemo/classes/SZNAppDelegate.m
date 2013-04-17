@@ -41,7 +41,7 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
 {
     if ([[url scheme] isEqualToString:SZNURLScheme])
     {
-        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:kAFApplicationLaunchOptionsURLKey]];
+        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:@{kAFApplicationLaunchOptionsURLKey: url}];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
     

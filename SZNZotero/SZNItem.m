@@ -27,24 +27,31 @@
 #import <TBXML.h>
 #import "SZNZoteroAPIClient.h"
 
-
 @implementation SZNItem
+
+#pragma mark - Parse
+
++ (NSArray *)itemsFromXML:(TBXML *)XML
+{
+    NSMutableArray *items = [NSMutableArray array];
+    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *entry) {
+        SZNItem *item = [SZNItem new];
+        item.identifier = [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
+        item.title      = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
+        [items addObject:item];
+    }];
+    return items;
+}
+
+#pragma mark - Fetch
 
 + (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 {
     [client getPath:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"items"]
          parameters:nil
-            success:^(TBXML *xml) {
-                NSMutableArray *items = [NSMutableArray array];
-                [TBXML iterateElementsForQuery:@"entry" fromElement:xml.rootXMLElement withBlock:^(TBXMLElement *entry) {
-                    SZNItem *item = [SZNItem new];
-                    item.title = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
-                    item.identifier = [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
-                    [items addObject:item];
-                }];
-                
+            success:^(TBXML *XML) {
                 if (success)
-                    success(items);
+                    success([self itemsFromXML:XML]);
             } failure:failure];
 }
 
