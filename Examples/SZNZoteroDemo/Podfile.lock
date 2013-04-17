@@ -4,6 +4,9 @@ PODS:
     - AFNetworking (>= 0.9)
   - SZNZotero (1.0):
     - AFOAuth1Client (= 0.1.0)
+    - SZNZotero/google-toolbox-mac
+  - SZNZotero/google-toolbox-mac (1.0):
+    - AFOAuth1Client (= 0.1.0)
   - TBXML (1.5)
 
 DEPENDENCIES:
@@ -18,7 +21,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 3cbae45f61a9f995cdbd56bd571223910d7f4e44
   AFOAuth1Client: 037044e341e897e0742920404f0c54ffd51dc776
-  SZNZotero: 102a1412fd4f25157deeb111caea924789f3b532
+  SZNZotero: 1a01a201e769d441a3babb9708744466a732f250
   TBXML: 0511ac325d83e59d3aefa4bc8cd6cbeff07a8d9e
 
 COCOAPODS: 0.18.0

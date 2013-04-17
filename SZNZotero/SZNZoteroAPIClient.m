@@ -23,6 +23,7 @@
 
 #import "SZNZoteroAPIClient.h"
 #import <AFNetworking.h>
+#import <TBXML.h>
 
 @interface AFOAuth1Client ()
 - (NSDictionary *)OAuthParameters;
@@ -61,6 +62,44 @@
     }];
 }
 
+- (BOOL)isLoggedIn
+{
+    return (self.accessToken);
+}
+
+#pragma mark - Methods
+
+- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    requestParameters[@"format"] = @"atom";
+    requestParameters[@"key"] = self.accessToken.secret;
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:requestParameters];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError *error;
+        TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
+        
+        if (!xml)
+        {
+            if (failure)
+                failure(error);
+        }
+        else
+        {
+            if (success)
+                success(xml);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure)
+            failure(error);
+    }];
+    
+    [operation start];
+}
+
 #pragma mark - Authentication specific steps
 
 - (void)acquireOAuthAccessTokenWithPath:(NSString *)path
@@ -95,14 +134,17 @@
 }
 
 
-static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
+static NSDictionary * AFParametersFromQueryString(NSString *queryString)
+{
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (queryString) {
+    if (queryString)
+    {
         NSScanner *parameterScanner = [[NSScanner alloc] initWithString:queryString];
         NSString *name = nil;
         NSString *value = nil;
         
-        while (![parameterScanner isAtEnd]) {
+        while (![parameterScanner isAtEnd])
+        {
             name = nil;
             [parameterScanner scanUpToString:@"=" intoString:&name];
             [parameterScanner scanString:@"=" intoString:NULL];
@@ -111,7 +153,8 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
             [parameterScanner scanUpToString:@"&" intoString:&value];
             [parameterScanner scanString:@"&" intoString:NULL];
             
-            if (name && value) {
+            if (name && value)
+            {
                 [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             }
         }

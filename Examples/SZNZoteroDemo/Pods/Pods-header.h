@@ -4,4 +4,5 @@
 #define __POD_AFNetworking
 #define __POD_AFOAuth1Client
 #define __POD_SZNZotero
+#define __POD_SZNZotero_google_toolbox_mac
 #define __POD_TBXML

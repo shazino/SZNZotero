@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author       = { 'shazino' => 'contact@shazino.com' }
 #  s.source       = { :git => "https://github.com/shazino/SZNZotero.git", :tag => '1.0' }
 
-  s.source_files = 'SZNZotero'
+  s.source_files = 'SZNZotero/SZN*'
   s.requires_arc = true
 
   s.ios.deployment_target = '5.0'
@@ -16,4 +16,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.7'
 
   s.dependency 'AFOAuth1Client', '0.1.0'
+
+  s.subspec 'google-toolbox-mac' do |gtm|
+    gtm.source_files = 'SZNZotero/GTMDefines.h', 'SZNZotero/GTMNSString+HTML.{h,m}'
+    gtm.requires_arc = false
+  end
 end

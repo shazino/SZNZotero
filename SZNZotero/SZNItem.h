@@ -30,6 +30,7 @@
 @property (copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *title;
 
-+ (void)fetchItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier client:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end
+

@@ -25,36 +25,44 @@
 
 #import <AFNetworking.h>
 #import <TBXML.h>
+#import "GTMNSString+HTML.h"
 #import "SZNZoteroAPIClient.h"
+
+@interface TBXML (TextForChild)
+
++ (NSString *)textForChildElementNamed:(NSString *)childElementName parentElement:(TBXMLElement *)parentElement escaped:(BOOL)escaped;
+
+@end
+
+@implementation TBXML (TextForChild)
+
++ (NSString *)textForChildElementNamed:(NSString *)childElementName parentElement:(TBXMLElement *)parentElement escaped:(BOOL)escaped
+{
+    NSString *text = [TBXML textForElement:[TBXML childElementNamed:childElementName parentElement:parentElement]];
+    return (escaped) ? [text gtm_stringByUnescapingFromHTML] : text;
+}
+
+@end
+
 
 @implementation SZNItem
 
-+ (void)fetchItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier client:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 {
-    NSURLRequest *request = [client requestWithMethod:@"GET" path:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"items"] parameters:@{@"format": @"atom", @"key": client.accessToken.secret}];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSError *error;
-        NSMutableArray *items = [NSMutableArray array];
-        
-        TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
-        [TBXML iterateElementsForQuery:@"entry" fromElement:xml.rootXMLElement withBlock:^(TBXMLElement *entry) {
-            SZNItem *item = [SZNItem new];
-            item.title = [TBXML textForElement:[TBXML childElementNamed:@"title" parentElement:entry]];
-            item.identifier= [TBXML textForElement:[TBXML childElementNamed:@"id" parentElement:entry]];
-            [items addObject:item];
-        }];
-        
-        if (success)
-            success(items);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
-            failure(error);
-    }];
-    
-    [operation start];
+    [client getPath:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"items"]
+         parameters:nil
+            success:^(TBXML *xml) {
+                NSMutableArray *items = [NSMutableArray array];
+                [TBXML iterateElementsForQuery:@"entry" fromElement:xml.rootXMLElement withBlock:^(TBXMLElement *entry) {
+                    SZNItem *item = [SZNItem new];
+                    item.title = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
+                    item.identifier= [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
+                    [items addObject:item];
+                }];
+                
+                if (success)
+                    success(items);
+            } failure:failure];
 }
 
 @end

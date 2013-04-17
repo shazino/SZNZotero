@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) NSArray *items;
 
+- (void)fetchItemsInUserLibrary;
+
 @end
 
 
@@ -22,20 +24,18 @@
 {
     [super viewDidLoad];
     
-    [self.client authenticateWithSuccess:^(AFOAuth1Token *token) {
-        NSLog(@"%s Token Key: %@", __PRETTY_FUNCTION__, token.key);
-
-        [SZNItem fetchItemsInLibraryWithUserIdentifier:self.client.userIdentifier client:self.client success:^(NSArray *items) {
-            NSLog(@"%@", items);
-            self.items = items;
-            [self.tableView reloadData];
+    if (self.client.isLoggedIn)
+    {
+        [self fetchItemsInUserLibrary];
+    }
+    else
+    {
+        [self.client authenticateWithSuccess:^(AFOAuth1Token *token) {
+            [self fetchItemsInUserLibrary];
         } failure:^(NSError *error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
         }];
-        
-    } failure:^(NSError *error) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-    }];
+    }
 }
 
 #pragma mark - Table view data source
@@ -66,6 +66,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+}
+
+#pragma mark - Fetch
+
+- (void)fetchItemsInUserLibrary
+{
+    [SZNItem fetchItemsInLibraryWithClient:self.client userIdentifier:self.client.userIdentifier success:^(NSArray *items) {
+        self.items = items;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+    }];
 }
 
 @end

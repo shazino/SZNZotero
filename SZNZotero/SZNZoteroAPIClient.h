@@ -23,12 +23,16 @@
 
 #import "AFOAuth1Client.h"
 
+@class TBXML;
 @interface SZNZoteroAPIClient : AFOAuth1Client
 
 @property (copy, nonatomic) NSString *userIdentifier;
 @property (copy, nonatomic) NSString *username;
+@property (readonly, getter = isLoggedIn) BOOL loggedIn;
 
 - (id)initWithKey:(NSString *)key secret:(NSString *)secret URLScheme:(NSString *)URLScheme;
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+
+- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure;
 
 @end
