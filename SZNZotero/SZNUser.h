@@ -27,6 +27,4 @@
 
 @interface SZNUser : NSObject
 
-+ (void)fetchUserWithClient:(SZNZoteroAPIClient *)client identifier:(NSString *)userIdentifier success:(void (^)(SZNUser *))success failure:(void (^)(NSError *))failure;
-
 @end

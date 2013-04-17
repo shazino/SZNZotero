@@ -1,5 +1,5 @@
 //
-// SZNItem.m
+// SZNCollection.m
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,18 +21,35 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import "SZNCollection.h"
 #import "SZNItem.h"
-
-#import <AFNetworking.h>
-#import <TBXML.h>
 #import "SZNZoteroAPIClient.h"
+#import <TBXML.h>
 
+@implementation SZNCollection
 
-@implementation SZNItem
-
-+ (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"items"]
+    [client getPath:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"collections"]
+         parameters:nil
+            success:^(TBXML *xml) {
+                NSMutableArray *collections = [NSMutableArray array];
+                [TBXML iterateElementsForQuery:@"entry" fromElement:xml.rootXMLElement withBlock:^(TBXMLElement *entry) {
+                    SZNCollection *collection = [SZNCollection new];
+                    collection.title = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
+                    collection.identifier = [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
+                    collection.key = [TBXML textForChildElementNamed:@"zapi:key" parentElement:entry escaped:NO];
+                    [collections addObject:collection];
+                }];
+                
+                if (success)
+                    success(collections);
+            } failure:failure];
+}
+
+- (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [client getPath:[NSString stringWithFormat:@"users/%@/collections/%@/items/", userIdentifier, self.key]
          parameters:nil
             success:^(TBXML *xml) {
                 NSMutableArray *items = [NSMutableArray array];

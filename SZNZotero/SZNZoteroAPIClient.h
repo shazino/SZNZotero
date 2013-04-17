@@ -22,8 +22,8 @@
 // THE SOFTWARE.
 
 #import "AFOAuth1Client.h"
+#import <TBXML.h>
 
-@class TBXML;
 @interface SZNZoteroAPIClient : AFOAuth1Client
 
 @property (copy, nonatomic) NSString *userIdentifier;
@@ -34,5 +34,12 @@
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
 
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure;
+
+@end
+
+
+@interface TBXML (TextForChild)
+
++ (NSString *)textForChildElementNamed:(NSString *)childElementName parentElement:(TBXMLElement *)parentElement escaped:(BOOL)escaped;
 
 @end

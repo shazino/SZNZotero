@@ -24,6 +24,7 @@
 #import "SZNZoteroAPIClient.h"
 #import <AFNetworking.h>
 #import <TBXML.h>
+#import "GTMNSString+HTML.h"
 
 @interface AFOAuth1Client ()
 - (NSDictionary *)OAuthParameters;
@@ -163,5 +164,15 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString)
     return parameters;
 }
 
+@end
+
+
+@implementation TBXML (TextForChild)
+
++ (NSString *)textForChildElementNamed:(NSString *)childElementName parentElement:(TBXMLElement *)parentElement escaped:(BOOL)escaped
+{
+    NSString *text = [TBXML textForElement:[TBXML childElementNamed:childElementName parentElement:parentElement]];
+    return (escaped) ? [text gtm_stringByUnescapingFromHTML] : text;
+}
 
 @end

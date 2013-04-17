@@ -1,5 +1,5 @@
 //
-// SZNZotero.h
+// SZNCollection.h
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,12 +21,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef SZNZoteroDemo_SZNZotero_h
-    #define SZNZoteroDemo_SZNZotero_h
+#import <Foundation/Foundation.h>
 
-    #import "SZNZoteroAPIClient.h"
+@class SZNZoteroAPIClient;
 
-    #import "SZNUser.h"
-    #import "SZNItem.h"
-    #import "SZNCollection.h"
-#endif
+@interface SZNCollection : NSObject
+
+@property (copy, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *key;
+
++ (void)fetchCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+- (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+@end
