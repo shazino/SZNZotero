@@ -52,6 +52,11 @@
 @property (strong, nonatomic) NSDictionary *content;
 
 /**
+ The item tags.
+ */
+@property (strong, nonatomic) NSSet *tags;
+
+/**
  Parses an item from an API XML element.
  
  @param XMLElement A `TBXMLElement` representation of the API response.

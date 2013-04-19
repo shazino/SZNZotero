@@ -1,5 +1,5 @@
 //
-// SZNZotero.h
+// SZNTag.m
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,13 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef SZNZoteroDemo_SZNZotero_h
-    #define SZNZoteroDemo_SZNZotero_h
+#import "SZNTag.h"
 
-    #import "SZNZoteroAPIClient.h"
+@implementation SZNTag
 
-    #import "SZNUser.h"
-    #import "SZNItem.h"
-    #import "SZNCollection.h"
-    #import "SZNTag.h"
-#endif
+@end

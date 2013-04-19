@@ -34,15 +34,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
         return 3;
-    else
+    else if (section == 1)
         return [[self.displayableItemContent allKeys] count];
+    else
+        return [self.item.tags count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,11 +71,17 @@
                 break;
         }
     }
-    else
+    else if (indexPath.section == 1)
     {
         NSString *key = [self.displayableItemContent allKeys][indexPath.row];
         cell.textLabel.text = key;
         cell.detailTextLabel.text = self.displayableItemContent[key];
+    }
+    else
+    {
+        SZNTag *tag = [self.item.tags sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]][indexPath.row];
+        cell.textLabel.text = nil;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
     }
     
     return cell;

@@ -26,6 +26,7 @@
 #import <AFNetworking.h>
 #import <TBXML.h>
 #import "SZNZoteroAPIClient.h"
+#import "SZNTag.h"
 
 @interface SZNItem ()
 
@@ -47,6 +48,16 @@
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
     item.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
+    
+    NSMutableSet *tags = [NSMutableSet set];
+    for (NSDictionary *tagDictionary in item.content[@"tags"])
+    {
+        SZNTag *tag = [SZNTag new];
+        tag.name = tagDictionary[@"tag"];
+        tag.type = [tagDictionary[@"type"] unsignedIntegerValue];
+        [tags addObject:tag];
+    }
+    item.tags = tags;
     
     return item;
 }

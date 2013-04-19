@@ -1,5 +1,5 @@
 //
-// SZNZotero.h
+// SZNTag.h
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,13 +21,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef SZNZoteroDemo_SZNZotero_h
-    #define SZNZoteroDemo_SZNZotero_h
+#import <Foundation/Foundation.h>
 
-    #import "SZNZoteroAPIClient.h"
+/**
+ `SZNTag` is a Zotero tag.
+ */
+@interface SZNTag : NSObject
 
-    #import "SZNUser.h"
-    #import "SZNItem.h"
-    #import "SZNCollection.h"
-    #import "SZNTag.h"
-#endif
+/**
+ The tag name.
+ */
+@property (copy, nonatomic) NSString *name;
+
+/**
+ The tag type.
+ */
+@property (assign, nonatomic) NSInteger type;
+
+@end
