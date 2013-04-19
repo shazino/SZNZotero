@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Items View Controller - Library-->
+        <!--Items View Controller - Zotero Library-->
         <scene sceneID="Mko-kD-d3U">
             <objects>
                 <tableViewController id="xlx-rw-urG" customClass="SZNItemsViewController" sceneMemberID="viewController">
@@ -40,7 +40,11 @@
                             <outlet property="delegate" destination="xlx-rw-urG" id="Kn9-6R-rfS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Library" id="0qg-yP-mgs"/>
+                    <navigationItem key="navigationItem" title="Zotero Library" id="0qg-yP-mgs"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="si3-O1-L77">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Jf-h7-UWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,6 +58,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uvl-EX-oPh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -65,6 +70,17 @@
             <point key="canvasLocation" x="939" y="117"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="SZNItemsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refresh:"/>
+            </relationships>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

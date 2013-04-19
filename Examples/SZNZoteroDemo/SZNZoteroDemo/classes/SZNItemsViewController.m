@@ -11,6 +11,7 @@
 
 @interface SZNItemsViewController ()
 
+@property (strong, nonatomic) NSArray *collections;
 @property (strong, nonatomic) NSArray *items;
 
 - (void)fetchItemsInUserLibrary;
@@ -23,6 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     if (self.client.isLoggedIn)
     {
@@ -42,12 +45,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.items count];
+    if (section == 0)
+        return [self.collections count];
+    else
+        return [self.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -55,9 +61,18 @@
     static NSString *CellIdentifier = @"SZNItemCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    SZNItem *item = self.items[indexPath.row];
-    cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = item.identifier;
+    if (indexPath.section == 0)
+    {
+        SZNCollection *collection = self.collections[indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"📂 %@", collection.title];
+        cell.detailTextLabel.text = collection.identifier;
+    }
+    else
+    {
+        SZNItem *item = self.items[indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"📄 %@", item.title];
+        cell.detailTextLabel.text = item.identifier;
+    }
     
     return cell;
 }
@@ -68,14 +83,39 @@
 {
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return @"Collections";
+    else
+        return @"Items";
+}
+
+#pragma mark - Actions
+
+- (IBAction)refresh:(id)sender
+{
+    [self fetchItemsInUserLibrary];
+}
+
 #pragma mark - Fetch
 
 - (void)fetchItemsInUserLibrary
 {
-    [SZNItem fetchItemsInLibraryWithClient:self.client success:^(NSArray *items) {
+    [SZNItem fetchTopItemsInLibraryWithClient:self.client success:^(NSArray *items) {
         self.items = items;
         [self.tableView reloadData];
+        
+        [SZNCollection fetchTopCollectionsInLibraryWithClient:self.client success:^(NSArray *collections) {
+            self.collections = collections;
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        } failure:^(NSError *error) {
+            [self.refreshControl endRefreshing];
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+        }];
     } failure:^(NSError *error) {
+        [self.refreshControl endRefreshing];
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     }];
 }

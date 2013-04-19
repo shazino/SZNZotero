@@ -15,4 +15,6 @@
 
 @property (strong, nonatomic) SZNZoteroAPIClient *client;
 
+- (IBAction)refresh:(id)sender;
+
 @end

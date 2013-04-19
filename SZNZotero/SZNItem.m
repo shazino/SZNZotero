@@ -30,6 +30,7 @@
 @interface SZNItem ()
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
++ (NSString *)pathToTopItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 
 @end
 
@@ -57,11 +58,22 @@
             success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); } failure:failure];
 }
 
++ (void)fetchTopItemsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [client getPath:[self pathToTopItemsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
+            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); } failure:failure];
+}
+
 #pragma mark - Path
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier
 {
-    return [[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"items"];
+    return [NSString stringWithFormat:@"users/%@/items", userIdentifier];
+}
+
++ (NSString *)pathToTopItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [[self pathToItemsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"top"];
 }
 
 @end

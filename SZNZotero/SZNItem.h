@@ -50,13 +50,22 @@
 + (NSArray *)itemsFromXML:(TBXML *)XML;
 
 /**
- Fetches items in the current user library.
+ Fetches all items in the current user library.
  
  @param client The API client to be used to send the fetch request.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNItem` objects created from the response data of request.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 + (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Fetches all top-level items in the current user library.
+ 
+ @param client The API client to be used to send the fetch request.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNItem` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
++ (void)fetchTopItemsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end
 

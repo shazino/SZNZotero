@@ -29,6 +29,7 @@
 @interface SZNCollection ()
 
 + (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
++ (NSString *)pathToTopCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier;
 
 @end
@@ -59,6 +60,12 @@
             success:^(TBXML *XML) { if (success) success([self collectionsFromXML:XML]); } failure:failure];
 }
 
++ (void)fetchTopCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [client getPath:[self pathToTopCollectionsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
+            success:^(TBXML *XML) { if (success) success([self collectionsFromXML:XML]); } failure:failure];
+}
+
 - (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [client getPath:[self pathToItemsWithUserIdentifier:client.userIdentifier] parameters:nil
@@ -69,12 +76,17 @@
 
 + (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier
 {
-    return [[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"collections"];
+    return [NSString stringWithFormat:@"users/%@/collections", userIdentifier];
+}
+
++ (NSString *)pathToTopCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [NSString stringWithFormat:@"users/%@/collections/top", userIdentifier];
 }
 
 - (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier
 {
-    return [NSString stringWithFormat:@"users/%@/collections/%@/items/", userIdentifier, self.key];
+    return [NSString stringWithFormat:@"users/%@/collections/%@/items", userIdentifier, self.key];
 }
 
 @end
