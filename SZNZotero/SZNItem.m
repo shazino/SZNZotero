@@ -27,6 +27,12 @@
 #import <TBXML.h>
 #import "SZNZoteroAPIClient.h"
 
+@interface SZNItem ()
+
++ (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
+
+@end
+
 @implementation SZNItem
 
 #pragma mark - Parse
@@ -45,14 +51,17 @@
 
 #pragma mark - Fetch
 
-+ (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 {
-    [client getPath:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"items"]
-         parameters:nil
-            success:^(TBXML *XML) {
-                if (success)
-                    success([self itemsFromXML:XML]);
-            } failure:failure];
+    [client getPath:[self pathToItemsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
+            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); } failure:failure];
+}
+
+#pragma mark - Path
+
++ (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"items"];
 }
 
 @end

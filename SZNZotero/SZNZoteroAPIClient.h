@@ -30,17 +30,65 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
     SZNZoteroAccessReadWrite
 };
 
+/**
+ `SZNZoteroAPIClient` is an HTTP client preconfigured for accessing Zotero API.
+ */
 @interface SZNZoteroAPIClient : AFOAuth1Client
 
+/**
+ The Altmetric identifier for the current user.
+ */
 @property (copy, nonatomic) NSString *userIdentifier;
+
+/**
+ The Altmetric username for the current user.
+ */
 @property (copy, nonatomic) NSString *username;
+
+/**
+ Whether the client is currently logged in.
+ */
 @property (readonly, getter = isLoggedIn) BOOL loggedIn;
 
+/**
+ Initializes an `SZNZoteroAPIClient` object with the specified API key, secret, and URL scheme.
+ 
+ @param key The API key.
+ @param secret The API secret.
+ @param URLScheme The URL scheme.
+ 
+ @return The newly-initialized client
+ */
 - (id)initWithKey:(NSString *)key secret:(NSString *)secret URLScheme:(NSString *)URLScheme;
+
+/**
+ Authenticates the client with default access level parameters.
+ 
+ @param success A block object to be executed when the authentication operations finish successfully. This block has no return value and takes one argument: the newly-acquired OAuth token.
+ @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Authenticates the client with the specified access level parameters.
+ 
+ @param libraryAccess Whether the API should allow read access to personal library items.
+ @param notesAccess Whether the API should allow read access to personal library notes.
+ @param writeAccess Whether the API should allow write access to personal library.
+ @param groupAccessLevel The level of access the API should allow to all current and future groups.
+ @param success A block object to be executed when the authentication operations finish successfully. This block has no return value and takes one argument: the newly-acquired OAuth token.
+ @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
 - (void)authenticateWithLibraryAccess:(BOOL)libraryAccess notesAccess:(BOOL)notesAccess writeAccess:(BOOL)writeAccess groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
 
-
+/**
+ Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.
+ 
+ @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
+ @param parameters The parameters to be encoded and appended as the query string for the request URL.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the object `TBXML` created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure;
 
 @end

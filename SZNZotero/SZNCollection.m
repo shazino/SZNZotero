@@ -26,6 +26,14 @@
 #import "SZNZoteroAPIClient.h"
 #import <TBXML.h>
 
+@interface SZNCollection ()
+
++ (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
+- (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier;
+
+@end
+
+
 @implementation SZNCollection
 
 #pragma mark - Parse
@@ -45,24 +53,28 @@
 
 #pragma mark - Fetch
 
-+ (void)fetchCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"collections"]
-         parameters:nil
-            success:^(TBXML *XML) {
-                if (success)
-                    success([self collectionsFromXML:XML]);
-            } failure:failure];
+    [client getPath:[self pathToCollectionsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
+            success:^(TBXML *XML) { if (success) success([self collectionsFromXML:XML]); } failure:failure];
 }
 
-- (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client userIdentifier:(NSString *)userIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[NSString stringWithFormat:@"users/%@/collections/%@/items/", userIdentifier, self.key]
-         parameters:nil
-            success:^(TBXML *XML) {
-                if (success)
-                    success([SZNItem itemsFromXML:XML]);
-            } failure:failure];
+    [client getPath:[self pathToItemsWithUserIdentifier:client.userIdentifier] parameters:nil
+            success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); } failure:failure];
+}
+
+#pragma mark - Path
+
++ (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [[@"users" stringByAppendingPathComponent:userIdentifier] stringByAppendingPathComponent:@"collections"];
+}
+
+- (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [NSString stringWithFormat:@"users/%@/collections/%@/items/", userIdentifier, self.key];
 }
 
 @end

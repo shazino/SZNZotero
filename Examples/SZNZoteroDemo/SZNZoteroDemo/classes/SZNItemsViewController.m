@@ -72,7 +72,7 @@
 
 - (void)fetchItemsInUserLibrary
 {
-    [SZNItem fetchItemsInLibraryWithClient:self.client userIdentifier:self.client.userIdentifier success:^(NSArray *items) {
+    [SZNItem fetchItemsInLibraryWithClient:self.client success:^(NSArray *items) {
         self.items = items;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
