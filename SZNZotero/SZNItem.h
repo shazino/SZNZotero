@@ -23,7 +23,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class SZNZoteroAPIClient;
+@class SZNZoteroAPIClient, TBXML;
 
 @interface SZNItem : NSObject
 

@@ -30,7 +30,7 @@
     }
     else
     {
-        [self.client authenticateWithSuccess:^(AFOAuth1Token *token) {
+        [self.client authenticateWithLibraryAccess:YES notesAccess:YES writeAccess:YES groupAccessLevel:SZNZoteroAccessReadWrite success:^(AFOAuth1Token *token) {
             [self fetchItemsInUserLibrary];
         } failure:^(NSError *error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error);

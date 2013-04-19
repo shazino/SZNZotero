@@ -49,8 +49,15 @@
 
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
 {
+    [self authenticateWithLibraryAccess:YES notesAccess:NO writeAccess:NO groupAccessLevel:SZNZoteroAccessNone success:success failure:failure];
+}
+
+- (void)authenticateWithLibraryAccess:(BOOL)libraryAccess notesAccess:(BOOL)notesAccess writeAccess:(BOOL)writeAccess groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
+{
     [self authorizeUsingOAuthWithRequestTokenPath:@"//www.zotero.org/oauth/request"
-                            userAuthorizationPath:@"//www.zotero.org/oauth/authorize"
+                            userAuthorizationPath:[NSString stringWithFormat:@"//www.zotero.org/oauth/authorize?library_access=%d&notes_access=%d&write_access=%d&all_groups=%@",
+                                                   libraryAccess, notesAccess, writeAccess,
+                                                   (groupAccessLevel == SZNZoteroAccessReadWrite) ? @"write" : (groupAccessLevel == SZNZoteroAccessRead) ? @"read" : @"none" ]
                                       callbackURL:[NSURL URLWithString:[self.URLScheme stringByAppendingString:@"://"]]
                                   accessTokenPath:@"//www.zotero.org/oauth/access" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
         if (success)

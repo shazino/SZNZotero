@@ -24,6 +24,12 @@
 #import "AFOAuth1Client.h"
 #import <TBXML.h>
 
+typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
+    SZNZoteroAccessNone,
+    SZNZoteroAccessRead,
+    SZNZoteroAccessReadWrite
+};
+
 @interface SZNZoteroAPIClient : AFOAuth1Client
 
 @property (copy, nonatomic) NSString *userIdentifier;
@@ -32,6 +38,8 @@
 
 - (id)initWithKey:(NSString *)key secret:(NSString *)secret URLScheme:(NSString *)URLScheme;
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+- (void)authenticateWithLibraryAccess:(BOOL)libraryAccess notesAccess:(BOOL)notesAccess writeAccess:(BOOL)writeAccess groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+
 
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure;
 
