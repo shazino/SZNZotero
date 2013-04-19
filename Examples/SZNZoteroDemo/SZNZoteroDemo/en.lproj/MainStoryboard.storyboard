@@ -7,7 +7,7 @@
         <!--Items View Controller - Zotero Library-->
         <scene sceneID="Mko-kD-d3U">
             <objects>
-                <tableViewController id="xlx-rw-urG" customClass="SZNItemsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SZNItemsViewController" id="xlx-rw-urG" customClass="SZNItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IyG-Eq-gdy">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,15 +40,67 @@
                             <outlet property="delegate" destination="xlx-rw-urG" id="Kn9-6R-rfS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Zotero Library" id="0qg-yP-mgs"/>
+                    <navigationItem key="navigationItem" title="Zotero Library" id="0qg-yP-mgs">
+                        <barButtonItem key="backBarButtonItem" title="Library" id="ofe-q8-eZ8"/>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="si3-O1-L77">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
+                    <connections>
+                        <segue destination="WtG-73-6x0" kind="push" identifier="SZNPushItemSegue" id="C6G-4e-8jA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Jf-h7-UWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1405" y="117"/>
+        </scene>
+        <!--Item View Controller - Item-->
+        <scene sceneID="UJP-Gn-aUA">
+            <objects>
+                <tableViewController id="WtG-73-6x0" customClass="SZNItemViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VJx-Lo-GUH">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SZNDetailCell" textLabel="G8C-HC-ZeI" detailTextLabel="alw-DW-ago" style="IBUITableViewCellStyleValue2" id="hWH-xD-kUp">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G8C-HC-ZeI">
+                                            <rect key="frame" x="10" y="15" width="67" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="alw-DW-ago">
+                                            <rect key="frame" x="83" y="12" width="41" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="WtG-73-6x0" id="kSZ-3g-mOK"/>
+                            <outlet property="delegate" destination="WtG-73-6x0" id="mUN-OX-O2K"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Item" id="hnn-wx-FMy"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhD-TD-kqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1897" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oxm-yx-Q2h">
@@ -70,17 +122,6 @@
             <point key="canvasLocation" x="939" y="117"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="SZNItemsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refresh:"/>
-            </relationships>
-        </class>
-        <class className="UIRefreshControl" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

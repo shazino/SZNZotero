@@ -22,8 +22,9 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <TBXML.h>
 
-@class SZNZoteroAPIClient, TBXML;
+@class SZNZoteroAPIClient;
 
 /**
  `SZNItem` is a Zotero item.
@@ -39,6 +40,25 @@
  The item title.
  */
 @property (copy, nonatomic) NSString *title;
+
+/**
+ The item type.
+ */
+@property (copy, nonatomic) NSString *type;
+
+/**
+ The item content.
+ */
+@property (strong, nonatomic) NSDictionary *content;
+
+/**
+ Parses an item from an API XML element.
+ 
+ @param XMLElement A `TBXMLElement` representation of the API response.
+ 
+ @return A `SZNItem` object.
+ */
++ (SZNItem *)itemFromXMLElement:(TBXMLElement *)XMLElement;
 
 /**
  Parses items from an API XML response.

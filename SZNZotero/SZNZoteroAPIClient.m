@@ -81,6 +81,7 @@
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     requestParameters[@"format"] = @"atom";
+    requestParameters[@"content"] = @"json";
     requestParameters[@"key"] = self.accessToken.secret;
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:requestParameters];
     

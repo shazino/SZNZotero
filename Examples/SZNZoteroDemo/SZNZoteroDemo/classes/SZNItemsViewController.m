@@ -7,7 +7,9 @@
 //
 
 #import "SZNItemsViewController.h"
-#import "SZNZotero.h"
+
+#import <SZNZotero.h>
+#import "SZNItemViewController.h"
 
 @interface SZNItemsViewController ()
 
@@ -25,6 +27,12 @@
 {
     [super viewDidLoad];
     
+    if (self.parentCollection)
+    {
+        self.title = self.parentCollection.title;
+        self.navigationItem.backBarButtonItem.title = self.title;
+    }
+    
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     if (self.client.isLoggedIn)
@@ -38,6 +46,14 @@
         } failure:^(NSError *error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
         }];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[SZNItemViewController class]])
+    {
+        ((SZNItemViewController *)segue.destinationViewController).item = self.items[self.tableView.indexPathForSelectedRow.row];
     }
 }
 
@@ -71,7 +87,7 @@
     {
         SZNItem *item = self.items[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"📄 %@", item.title];
-        cell.detailTextLabel.text = item.identifier;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@", item.type, item.identifier];
     }
     
     return cell;
@@ -81,6 +97,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0)
+    {
+        SZNItemsViewController *itemsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SZNItemsViewController"];
+        itemsViewController.parentCollection = self.collections[indexPath.row];
+        itemsViewController.client = self.client;
+        [self.navigationController pushViewController:itemsViewController animated:YES];
+    }
+    else
+        [self performSegueWithIdentifier:@"SZNPushItemSegue" sender:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -102,22 +127,44 @@
 
 - (void)fetchItemsInUserLibrary
 {
-    [SZNItem fetchTopItemsInLibraryWithClient:self.client success:^(NSArray *items) {
-        self.items = items;
-        [self.tableView reloadData];
-        
-        [SZNCollection fetchTopCollectionsInLibraryWithClient:self.client success:^(NSArray *collections) {
-            self.collections = collections;
+    if (self.parentCollection)
+    {
+        [self.parentCollection fetchTopItemsWithClient:self.client success:^(NSArray *items) {
+            self.items = items;
             [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
+            
+            [self.parentCollection fetchSubcollectionsWithClient:self.client success:^(NSArray *collections) {
+                self.collections = collections;
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+            } failure:^(NSError *error) {
+                [self.refreshControl endRefreshing];
+                NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+            }];
         } failure:^(NSError *error) {
             [self.refreshControl endRefreshing];
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
         }];
-    } failure:^(NSError *error) {
-        [self.refreshControl endRefreshing];
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-    }];
+    }
+    else
+    {
+        [SZNItem fetchTopItemsInLibraryWithClient:self.client success:^(NSArray *items) {
+            self.items = items;
+            [self.tableView reloadData];
+            
+            [SZNCollection fetchTopCollectionsInLibraryWithClient:self.client success:^(NSArray *collections) {
+                self.collections = collections;
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+            } failure:^(NSError *error) {
+                [self.refreshControl endRefreshing];
+                NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+            }];
+        } failure:^(NSError *error) {
+            [self.refreshControl endRefreshing];
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+        }];
+    }
 }
 
 @end

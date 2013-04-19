@@ -22,8 +22,9 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <TBXML.h>
 
-@class SZNZoteroAPIClient, TBXML;
+@class SZNZoteroAPIClient;
 
 /**
  `SZNCollection` is a Zotero collection.
@@ -44,6 +45,15 @@
  The collection key.
  */
 @property (copy, nonatomic) NSString *key;
+
+/**
+ Parses a collection from an API XML element.
+ 
+ @param XMLElement A `TBXMLElement` representation of the API response.
+ 
+ @return A `SZNCollection` object.
+ */
++ (SZNCollection *)collectionFromXMLElement:(TBXMLElement *)XMLElement;
 
 /**
  Parses collections from an API XML response.
@@ -73,12 +83,30 @@
 + (void)fetchTopCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
- Fetches items in the collection.
+ Fetches all items in the collection.
  
  @param client The API client to be used to send the fetch request.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNItems` objects created from the response data of request.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 - (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Fetches all top-level items in the collection.
+ 
+ @param client The API client to be used to send the fetch request.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNItems` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
+- (void)fetchTopItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Fetches all subcollections within the collection.
+ 
+ @param client The API client to be used to send the fetch request.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNCollection` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
+- (void)fetchSubcollectionsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end

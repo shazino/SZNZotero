@@ -38,14 +38,24 @@
 
 #pragma mark - Parse
 
++ (SZNItem *)itemFromXMLElement:(TBXMLElement *)XMLElement
+{
+    SZNItem *item = [SZNItem new];
+    item.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
+    item.title      = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:YES];
+    item.type       = [TBXML textForChildElementNamed:@"zapi:itemType" parentElement:XMLElement escaped:YES];
+    
+    NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
+    item.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
+    
+    return item;
+}
+
 + (NSArray *)itemsFromXML:(TBXML *)XML
 {
     NSMutableArray *items = [NSMutableArray array];
-    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *entry) {
-        SZNItem *item = [SZNItem new];
-        item.identifier = [TBXML textForChildElementNamed:@"id" parentElement:entry escaped:NO];
-        item.title      = [TBXML textForChildElementNamed:@"title" parentElement:entry escaped:YES];
-        [items addObject:item];
+    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
+        [items addObject:[self itemFromXMLElement:XMLElement]];
     }];
     return items;
 }
