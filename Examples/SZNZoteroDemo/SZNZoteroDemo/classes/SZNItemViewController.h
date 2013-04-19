@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class SZNItem;
+@class SZNZoteroAPIClient, SZNItem;
 
 @interface SZNItemViewController : UITableViewController
 
+@property (strong, nonatomic) SZNZoteroAPIClient *client;
 @property (nonatomic, strong) SZNItem *item;
 
 @end

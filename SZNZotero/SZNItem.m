@@ -32,6 +32,7 @@
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 + (NSString *)pathToTopItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
+- (NSString *)pathToChildItemsWithUserIdentifier:(NSString *)userIdentifier;
 
 @end
 
@@ -45,6 +46,7 @@
     item.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
     item.title      = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:YES];
     item.type       = [TBXML textForChildElementNamed:@"zapi:itemType" parentElement:XMLElement escaped:YES];
+    item.key        = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
     item.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
@@ -85,6 +87,12 @@
             success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); } failure:failure];
 }
 
+- (void)fetchChildItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [client getPath:[self pathToChildItemsWithUserIdentifier:client.userIdentifier] parameters:nil
+            success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); } failure:failure];
+}
+
 #pragma mark - Path
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier
@@ -95,6 +103,11 @@
 + (NSString *)pathToTopItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier
 {
     return [[self pathToItemsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"top"];
+}
+
+- (NSString *)pathToChildItemsWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [[[SZNItem pathToItemsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"children"];
 }
 
 @end

@@ -88,6 +88,7 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+        NSLog(@"%@", operation.responseString);
         NSError *error;
         TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
         

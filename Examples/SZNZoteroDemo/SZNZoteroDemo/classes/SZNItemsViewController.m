@@ -53,6 +53,7 @@
 {
     if ([segue.destinationViewController isKindOfClass:[SZNItemViewController class]])
     {
+        ((SZNItemViewController *)segue.destinationViewController).client = self.client;
         ((SZNItemViewController *)segue.destinationViewController).item = self.items[self.tableView.indexPathForSelectedRow.row];
     }
 }

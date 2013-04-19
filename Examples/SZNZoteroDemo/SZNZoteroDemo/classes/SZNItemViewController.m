@@ -9,9 +9,17 @@
 #import "SZNItemViewController.h"
 #import <SZNZotero.h>
 
+typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
+    SZNItemViewControllerGeneralSection = 0,
+    SZNItemViewControllerContentSection,
+    SZNItemViewControllerTagsSection,
+    SZNItemViewControllerNotesSection
+};
+
 @interface SZNItemViewController ()
 
-@property (nonatomic, strong) NSDictionary *displayableItemContent;
+@property (strong, nonatomic) NSDictionary *displayableItemContent;
+@property (strong, nonatomic) NSArray *notes;
 
 @end
 
@@ -28,23 +36,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.item fetchChildItemsWithClient:self.client success:^(NSArray *children) {
+        self.notes = children;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+    }];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-        return 3;
-    else if (section == 1)
-        return [[self.displayableItemContent allKeys] count];
-    else
-        return [self.item.tags count];
+    switch (section)
+    {
+        case SZNItemViewControllerGeneralSection:
+            return 3;
+        case SZNItemViewControllerContentSection:
+            return [[self.displayableItemContent allKeys] count];
+        case SZNItemViewControllerTagsSection:
+            return [self.item.tags count];
+        case SZNItemViewControllerNotesSection:
+            return [self.notes count];
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -53,35 +75,48 @@
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0)
+    switch (indexPath.section)
     {
-        switch (indexPath.row)
+        case SZNItemViewControllerGeneralSection:
         {
-            case 0:
-                cell.textLabel.text = @"Title";
-                cell.detailTextLabel.text = self.item.title;
-                break;
-            case 1:
-                cell.textLabel.text = @"Type";
-                cell.detailTextLabel.text = self.item.type;
-                break;
-            case 2:
-                cell.textLabel.text = @"Identifier";
-                cell.detailTextLabel.text = self.item.identifier;
-                break;
+            switch (indexPath.row)
+            {
+                case 0:
+                    cell.textLabel.text = @"Title";
+                    cell.detailTextLabel.text = self.item.title;
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Type";
+                    cell.detailTextLabel.text = self.item.type;
+                    break;
+                case 2:
+                    cell.textLabel.text = @"Identifier";
+                    cell.detailTextLabel.text = self.item.identifier;
+                    break;
+            }
         }
-    }
-    else if (indexPath.section == 1)
-    {
-        NSString *key = [self.displayableItemContent allKeys][indexPath.row];
-        cell.textLabel.text = key;
-        cell.detailTextLabel.text = self.displayableItemContent[key];
-    }
-    else
-    {
-        SZNTag *tag = [self.item.tags sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]][indexPath.row];
-        cell.textLabel.text = nil;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
+            break;
+        case SZNItemViewControllerContentSection:
+        {
+            NSString *key = [self.displayableItemContent allKeys][indexPath.row];
+            cell.textLabel.text = key;
+            cell.detailTextLabel.text = self.displayableItemContent[key];
+        }
+            break;
+        case SZNItemViewControllerTagsSection:
+        {
+            SZNTag *tag = [self.item.tags sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]][indexPath.row];
+            cell.textLabel.text = nil;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
+        }
+            break;
+        case SZNItemViewControllerNotesSection:
+        {
+            SZNItem *child = self.notes[indexPath.row];
+            cell.textLabel.text = nil;
+            cell.detailTextLabel.text = child.title;
+        }
+            break;
     }
     
     return cell;
