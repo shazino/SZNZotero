@@ -1,4 +1,0 @@
-Documentation set was installed to Xcode!
-
-Path: /Users/vincenttourraine/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.tbxml.TBXML-1.5.docset
-Time: 2013-04-16 15:52:56 +0000
