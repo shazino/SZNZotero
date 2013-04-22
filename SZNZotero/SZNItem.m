@@ -60,7 +60,7 @@
     {
         SZNTag *tag = [SZNTag new];
         tag.name = tagDictionary[@"tag"];
-        tag.type = [tagDictionary[@"type"] unsignedIntegerValue];
+        tag.type = [tagDictionary[@"type"] integerValue];
         [tags addObject:tag];
     }
     item.tags = tags;

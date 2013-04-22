@@ -26,6 +26,11 @@
 
 @class SZNZoteroAPIClient;
 
+typedef NS_ENUM(NSInteger, SZNTagType) {
+    SZNTagCustom = 0,
+    SZNTagShared = 1
+};
+
 /**
  `SZNTag` is a Zotero tag.
  */
@@ -39,7 +44,7 @@
 /**
  The tag type.
  */
-@property (assign, nonatomic) NSInteger type;
+@property (assign, nonatomic) SZNTagType type;
 
 /**
  Parses a tag from an API XML element.

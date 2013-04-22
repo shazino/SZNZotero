@@ -39,6 +39,11 @@
 {
     SZNTag *tag = [SZNTag new];
     tag.name = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:NO];
+    
+    NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
+    NSDictionary *content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
+    tag.type = [content[@"type"] integerValue];
+    
     return tag;
 }
 
