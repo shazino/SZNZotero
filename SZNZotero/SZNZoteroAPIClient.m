@@ -104,6 +104,27 @@
     [operation start];
 }
 
+- (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
+{
+    NSURLRequest *request = [self requestWithMethod:@"PUT" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError *error;
+        TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
+        if (!xml && failure)
+            failure(error);
+        else if (success)
+            success(xml);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure)
+            failure(error);
+    }];
+    
+    [operation start];
+}
+
 - (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];

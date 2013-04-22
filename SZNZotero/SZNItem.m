@@ -101,7 +101,15 @@
 
 #pragma mark - Update
 
-- (void)updatePartialItemWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
+- (void)updateWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+{
+    [client putPath:[self pathToItemWithUserIdentifier:client.userIdentifier] parameters:newContent success:^(TBXML *XML) {
+        if (success)
+            success(self);
+    } failure:failure];
+}
+
+- (void)updateWithClient:(SZNZoteroAPIClient *)client partialContent:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:partialContent];
     mutableParameters[@"itemVersion"] = self.version;

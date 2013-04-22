@@ -123,7 +123,7 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
         itemsViewController.client = self.client;
         [self.navigationController pushViewController:itemsViewController animated:YES];
     }
-    else if (indexPath.section == SZNItemsViewControllerTagsSection)
+    else if (indexPath.section == SZNItemsViewControllerItemsSection)
         [self performSegueWithIdentifier:@"SZNPushItemSegue" sender:nil];
 }
 

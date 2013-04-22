@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     SZNItemViewControllerNotesSection
 };
 
-@interface SZNItemViewController ()
+@interface SZNItemViewController () <SZNNoteViewDelegate>
 
 @property (strong, nonatomic) NSDictionary *displayableItemContent;
 @property (strong, nonatomic) NSArray *notes;
@@ -58,6 +58,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     {
         ((SZNNoteViewController *)segue.destinationViewController).noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
         ((SZNNoteViewController *)segue.destinationViewController).client = self.client;
+        ((SZNNoteViewController *)segue.destinationViewController).delegate = self;
     }
 }
 
@@ -161,6 +162,16 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
         if ([child.type isEqualToString:@"note"])
             [self performSegueWithIdentifier:@"SZNPushNoteSegue" sender:nil];
     }
+}
+
+#pragma mark - Note view delegate
+
+- (void)noteViewController:(SZNNoteViewController *)noteViewController didSaveItem:(SZNItem *)item
+{
+    NSMutableArray *notes = [NSMutableArray arrayWithArray:self.notes];
+    [notes replaceObjectAtIndex:[notes indexOfObject:item] withObject:item];
+    self.notes = notes;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemViewControllerNotesSection] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

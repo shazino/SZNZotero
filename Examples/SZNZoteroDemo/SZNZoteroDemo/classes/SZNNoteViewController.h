@@ -16,6 +16,7 @@
 @property (strong, nonatomic) SZNZoteroAPIClient *client;
 @property (strong, nonatomic) SZNItem *noteItem;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) id <SZNNoteViewDelegate> delegate;
 
 - (IBAction)save:(id)sender;
 

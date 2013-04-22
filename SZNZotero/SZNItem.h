@@ -117,14 +117,24 @@
 - (void)fetchChildItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
- Updates item with partial content.
+ Updates item with new content.
+ 
+ @param client The API client to be used to send the update request.
+ @param partialContent The new content key/values.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the updated `SZNItem` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
+- (void)updateWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Updates item with partial new content.
  
  @param client The API client to be used to send the update request.
  @param content The modified content key/values.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the updated `SZNItem` object.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)updatePartialItemWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+- (void)updateWithClient:(SZNZoteroAPIClient *)client partialContent:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
 
 /**
  Deletes item.
