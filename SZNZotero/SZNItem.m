@@ -33,6 +33,7 @@
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 + (NSString *)pathToTopItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
+- (NSString *)pathToItemWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToChildItemsWithUserIdentifier:(NSString *)userIdentifier;
 
 @end
@@ -48,6 +49,7 @@
     item.title      = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:YES];
     item.type       = [TBXML textForChildElementNamed:@"zapi:itemType" parentElement:XMLElement escaped:YES];
     item.key        = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
+    item.version    = [TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO];
     
     TBXMLElement *authorXMLElement = [TBXML childElementNamed:@"author" parentElement:XMLElement];
     item.author = [SZNAuthor authorFromXMLElement:authorXMLElement];
@@ -97,6 +99,20 @@
             success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); } failure:failure];
 }
 
+#pragma mark - Update
+
+- (void)updatePartialItemWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:partialContent];
+    mutableParameters[@"itemVersion"] = self.version;
+    mutableParameters[@"itemKey"] = self.key;
+    mutableParameters[@"itemType"] = self.type;
+    [client patchPath:[self pathToItemWithUserIdentifier:client.userIdentifier] parameters:mutableParameters success:^(TBXML *XML) {
+        if (success)
+            success(self);
+    } failure:failure];
+}
+
 #pragma mark - Path
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier
@@ -109,9 +125,14 @@
     return [[self pathToItemsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"top"];
 }
 
+- (NSString *)pathToItemWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [[SZNItem pathToItemsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:self.key];
+}
+     
 - (NSString *)pathToChildItemsWithUserIdentifier:(NSString *)userIdentifier
 {
-    return [[[SZNItem pathToItemsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"children"];
+    return [[self pathToItemWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"children"];
 }
 
 @end

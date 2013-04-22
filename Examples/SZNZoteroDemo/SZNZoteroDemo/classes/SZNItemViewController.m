@@ -8,6 +8,7 @@
 
 #import "SZNItemViewController.h"
 #import <SZNZotero.h>
+#import "SZNNoteViewController.h"
 
 typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     SZNItemViewControllerGeneralSection = 0,
@@ -45,6 +46,21 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[SZNNoteViewController class]])
+    {
+        ((SZNNoteViewController *)segue.destinationViewController).noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
+        ((SZNNoteViewController *)segue.destinationViewController).client = self.client;
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -74,6 +90,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     static NSString *cellIdentifier = @"SZNDetailCell";
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     switch (indexPath.section)
     {
@@ -119,6 +136,13 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
             SZNItem *child = self.notes[indexPath.row];
             cell.textLabel.text = nil;
             cell.detailTextLabel.text = child.title;
+            if ([child.type isEqualToString:@"note"])
+            {
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"📝 %@", child.title];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+            else
+                cell.detailTextLabel.text = child.title;
         }
             break;
     }
@@ -127,5 +151,16 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 }
 
 #pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    if (indexPath.section == SZNItemViewControllerNotesSection)
+    {
+        SZNItem *child = self.notes[indexPath.row];
+        if ([child.type isEqualToString:@"note"])
+            [self performSegueWithIdentifier:@"SZNPushNoteSegue" sender:nil];
+    }
+}
 
 @end

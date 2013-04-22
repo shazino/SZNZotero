@@ -42,6 +42,7 @@
     if (self)
     {
         self.URLScheme = URLScheme;
+        self.parameterEncoding = AFJSONParameterEncoding;
         [self setDefaultHeader:@"Zotero-API-Version" value:@"2"];
     }
     return self;
@@ -103,6 +104,37 @@
                 success(xml);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure)
+            failure(error);
+    }];
+    
+    [operation start];
+}
+
+- (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    NSURLRequest *request = [self requestWithMethod:@"PATCH" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:requestParameters];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%@", operation.responseString);
+        NSError *error;
+        TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
+        
+        if (!xml)
+        {
+            if (failure)
+                failure(error);
+        }
+        else
+        {
+            if (success)
+                success(xml);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", operation.responseString);
         if (failure)
             failure(error);
     }];

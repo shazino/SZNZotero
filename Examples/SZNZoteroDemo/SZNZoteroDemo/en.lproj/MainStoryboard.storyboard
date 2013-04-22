@@ -97,10 +97,48 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Item" id="hnn-wx-FMy"/>
+                    <connections>
+                        <segue destination="Ms1-iO-B3k" kind="push" identifier="SZNPushNoteSegue" id="iJg-ci-UCi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhD-TD-kqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1897" y="117"/>
+        </scene>
+        <!--Note View Controller - Note-->
+        <scene sceneID="8tN-H3-9OI">
+            <objects>
+                <viewController id="Ms1-iO-B3k" customClass="SZNNoteViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rBm-Lo-7sv">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBX-vM-fib">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jBX-vM-fib" firstAttribute="bottom" secondItem="rBm-Lo-7sv" secondAttribute="bottom" type="default" id="DdY-J1-Zrh"/>
+                            <constraint firstItem="jBX-vM-fib" firstAttribute="leading" secondItem="rBm-Lo-7sv" secondAttribute="leading" type="default" id="KaQ-3W-wXc"/>
+                            <constraint firstItem="jBX-vM-fib" firstAttribute="trailing" secondItem="rBm-Lo-7sv" secondAttribute="trailing" type="default" id="eNj-Ih-KpO"/>
+                            <constraint firstItem="jBX-vM-fib" firstAttribute="top" secondItem="rBm-Lo-7sv" secondAttribute="top" type="default" id="kkZ-PU-Gbc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Note" id="ftT-XR-bG7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Tk7-Vp-KGz">
+                            <connections>
+                                <action selector="save:" destination="Ms1-iO-B3k" id="xyP-br-ohT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="jBX-vM-fib" id="UQm-pr-u59"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mi-zH-43Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2402" y="-55"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oxm-yx-Q2h">

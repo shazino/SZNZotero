@@ -18,6 +18,7 @@
 		14AF54F7171DAC3100BA4CBE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AF54F5171DAC3100BA4CBE /* MainStoryboard.storyboard */; };
 		14AF54FC171DAC3C00BA4CBE /* SZNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF54F9171DAC3C00BA4CBE /* SZNAppDelegate.m */; };
 		14AF54FD171DAC3C00BA4CBE /* SZNItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF54FB171DAC3C00BA4CBE /* SZNItemsViewController.m */; };
+		14B64C26172540B300655592 /* SZNNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B64C25172540B300655592 /* SZNNoteViewController.m */; };
 		14D68469172170F1008804E2 /* SZNItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D68468172170F1008804E2 /* SZNItemViewController.m */; };
 		27ADE14AD120442183CD9113 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FEC7A8F06B4C2AB019B963 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,8 @@
 		14AF54F9171DAC3C00BA4CBE /* SZNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SZNAppDelegate.m; path = SZNZoteroDemo/classes/SZNAppDelegate.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		14AF54FA171DAC3C00BA4CBE /* SZNItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SZNItemsViewController.h; path = SZNZoteroDemo/classes/SZNItemsViewController.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14AF54FB171DAC3C00BA4CBE /* SZNItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SZNItemsViewController.m; path = SZNZoteroDemo/classes/SZNItemsViewController.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		14B64C24172540B300655592 /* SZNNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNNoteViewController.h; path = SZNZoteroDemo/classes/SZNNoteViewController.h; sourceTree = SOURCE_ROOT; };
+		14B64C25172540B300655592 /* SZNNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNNoteViewController.m; path = SZNZoteroDemo/classes/SZNNoteViewController.m; sourceTree = SOURCE_ROOT; };
 		14D68467172170F1008804E2 /* SZNItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNItemViewController.h; path = SZNZoteroDemo/classes/SZNItemViewController.h; sourceTree = SOURCE_ROOT; };
 		14D68468172170F1008804E2 /* SZNItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNItemViewController.m; path = SZNZoteroDemo/classes/SZNItemViewController.m; sourceTree = SOURCE_ROOT; };
 		92C44F002A254C92AC7FF550 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -98,6 +101,8 @@
 				14AF54FB171DAC3C00BA4CBE /* SZNItemsViewController.m */,
 				14D68467172170F1008804E2 /* SZNItemViewController.h */,
 				14D68468172170F1008804E2 /* SZNItemViewController.m */,
+				14B64C24172540B300655592 /* SZNNoteViewController.h */,
+				14B64C25172540B300655592 /* SZNNoteViewController.m */,
 				14AF54F5171DAC3100BA4CBE /* MainStoryboard.storyboard */,
 				14A83C9016F21E7D009D8F75 /* Supporting Files */,
 			);
@@ -208,6 +213,7 @@
 				14AF54FC171DAC3C00BA4CBE /* SZNAppDelegate.m in Sources */,
 				14AF54FD171DAC3C00BA4CBE /* SZNItemsViewController.m in Sources */,
 				14D68469172170F1008804E2 /* SZNItemViewController.m in Sources */,
+				14B64C26172540B300655592 /* SZNNoteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
