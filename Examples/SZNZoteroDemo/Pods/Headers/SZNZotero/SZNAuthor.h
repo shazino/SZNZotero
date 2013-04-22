@@ -1,0 +1,1 @@
+../../../../../SZNZotero/SZNAuthor.h
