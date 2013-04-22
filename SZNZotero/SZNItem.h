@@ -24,7 +24,7 @@
 #import <Foundation/Foundation.h>
 #import <TBXML.h>
 
-@class SZNZoteroAPIClient;
+@class SZNZoteroAPIClient, SZNAuthor;
 
 /**
  `SZNItem` is a Zotero item.
@@ -35,6 +35,11 @@
  The item identifier.
  */
 @property (copy, nonatomic) NSString *identifier;
+
+/**
+ The item author.
+ */
+@property (strong, nonatomic) SZNAuthor *author;
 
 /**
  The item key.

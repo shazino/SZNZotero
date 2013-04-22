@@ -1,5 +1,5 @@
 //
-// SZNZotero.h
+// SZNAuthor.m
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,14 +21,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef SZNZoteroDemo_SZNZotero_h
-    #define SZNZoteroDemo_SZNZotero_h
+#import "SZNAuthor.h"
+#import "SZNZoteroAPIClient.h"
 
-    #import "SZNZoteroAPIClient.h"
+@implementation SZNAuthor
 
-    #import "SZNAuthor.h"
-    #import "SZNCollection.h"
-    #import "SZNItem.h"
-    #import "SZNTag.h"
-    #import "SZNUser.h"
-#endif
++ (SZNAuthor *)authorFromXMLElement:(TBXMLElement *)XMLElement
+{
+    SZNAuthor *author = [SZNAuthor new];
+    author.name = [TBXML textForChildElementNamed:@"name" parentElement:XMLElement escaped:NO];
+    author.URI  = [NSURL URLWithString:[TBXML textForChildElementNamed:@"uri" parentElement:XMLElement escaped:YES]];
+    return author;
+}
+
+@end

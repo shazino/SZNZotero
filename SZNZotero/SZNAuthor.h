@@ -1,5 +1,5 @@
 //
-// SZNTag.h
+// SZNAuthor.h
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -24,48 +24,28 @@
 #import <Foundation/Foundation.h>
 #import <TBXML.h>
 
-@class SZNZoteroAPIClient;
-
 /**
- `SZNTag` is a Zotero tag.
+ `SZNAuthor` is a Zotero author.
  */
-@interface SZNTag : NSObject
+@interface SZNAuthor : NSObject
 
 /**
- The tag name.
+ The author name.
  */
 @property (copy, nonatomic) NSString *name;
 
 /**
- The tag type.
+ The author URI
  */
-@property (assign, nonatomic) NSInteger type;
+@property (strong, nonatomic) NSURL *URI;
 
 /**
- Parses a tag from an API XML element.
+ Parses an author from an API XML element.
  
  @param XMLElement A `TBXMLElement` representation of the API response.
  
- @return A `SZNTag` object.
+ @return A `SZNAuthor` object.
  */
-+ (SZNTag *)tagFromXMLElement:(TBXMLElement *)XMLElement;
-
-/**
- Parses tags from an API XML response.
- 
- @param XML A `TBXML` representation of the API response.
- 
- @return An array of `SZNTag` objects.
- */
-+ (NSArray *)tagsFromXML:(TBXML *)XML;
-
-/**
- Fetches all tags in the current user library.
- 
- @param client The API client to be used to send the fetch request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNTag` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
- */
-+ (void)fetchTagsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (SZNAuthor *)authorFromXMLElement:(TBXMLElement *)XMLElement;
 
 @end

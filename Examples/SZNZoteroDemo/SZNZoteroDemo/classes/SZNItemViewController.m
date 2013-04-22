@@ -57,7 +57,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     switch (section)
     {
         case SZNItemViewControllerGeneralSection:
-            return 3;
+            return 4;
         case SZNItemViewControllerContentSection:
             return [[self.displayableItemContent allKeys] count];
         case SZNItemViewControllerTagsSection:
@@ -90,6 +90,10 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
                     cell.detailTextLabel.text = self.item.type;
                     break;
                 case 2:
+                    cell.textLabel.text = @"Author";
+                    cell.detailTextLabel.text = self.item.author.name;
+                    break;
+                case 3:
                     cell.textLabel.text = @"Identifier";
                     cell.detailTextLabel.text = self.item.identifier;
                     break;

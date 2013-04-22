@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSArray *collections;
 @property (strong, nonatomic) NSArray *items;
+@property (strong, nonatomic) NSArray *tags;
 
 - (void)fetchItemsInUserLibrary;
 
@@ -62,15 +63,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
         return [self.collections count];
-    else
+    else if (section == 1)
         return [self.items count];
+    else
+        return [self.tags count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,11 +87,17 @@
         cell.textLabel.text = [NSString stringWithFormat:@"📂 %@", collection.title];
         cell.detailTextLabel.text = collection.identifier;
     }
-    else
+    else if (indexPath.section == 1)
     {
         SZNItem *item = self.items[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"📄 %@", item.title];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@", item.type, item.identifier];
+    }
+    else
+    {
+        SZNTag *tag = self.tags[indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
+        cell.detailTextLabel.text = nil;
     }
     
     return cell;
@@ -105,7 +114,7 @@
         itemsViewController.client = self.client;
         [self.navigationController pushViewController:itemsViewController animated:YES];
     }
-    else
+    else if (indexPath.section == 1)
         [self performSegueWithIdentifier:@"SZNPushItemSegue" sender:nil];
 }
 
@@ -113,8 +122,10 @@
 {
     if (section == 0)
         return @"Collections";
-    else
+    else if (section == 1)
         return @"Items";
+    else
+        return @"Tags";
 }
 
 #pragma mark - Actions
@@ -137,7 +148,15 @@
             [self.parentCollection fetchSubcollectionsWithClient:self.client success:^(NSArray *collections) {
                 self.collections = collections;
                 [self.tableView reloadData];
-                [self.refreshControl endRefreshing];
+                
+                [self.parentCollection fetchTagsWithClient:self.client success:^(NSArray *tags) {
+                    self.tags = tags;
+                    [self.tableView reloadData];
+                    [self.refreshControl endRefreshing];
+                } failure:^(NSError *error) {
+                    [self.refreshControl endRefreshing];
+                    NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+                }];
             } failure:^(NSError *error) {
                 [self.refreshControl endRefreshing];
                 NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
@@ -156,7 +175,15 @@
             [SZNCollection fetchTopCollectionsInLibraryWithClient:self.client success:^(NSArray *collections) {
                 self.collections = collections;
                 [self.tableView reloadData];
-                [self.refreshControl endRefreshing];
+                
+                [SZNTag fetchTagsInLibraryWithClient:self.client success:^(NSArray *tags) {
+                    self.tags = tags;
+                    [self.tableView reloadData];
+                    [self.refreshControl endRefreshing];
+                } failure:^(NSError *error) {
+                    [self.refreshControl endRefreshing];
+                    NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+                }];
             } failure:^(NSError *error) {
                 [self.refreshControl endRefreshing];
                 NSLog(@"%s %@", __PRETTY_FUNCTION__, error);

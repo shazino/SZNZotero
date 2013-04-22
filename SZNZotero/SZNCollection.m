@@ -23,6 +23,7 @@
 
 #import "SZNCollection.h"
 #import "SZNItem.h"
+#import "SZNTag.h"
 #import "SZNZoteroAPIClient.h"
 #import <TBXML.h>
 
@@ -30,9 +31,11 @@
 
 + (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 + (NSString *)pathToTopCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
+- (NSString *)pathToCollectionWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToTopItemsWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToSubcollectionsWithUserIdentifier:(NSString *)userIdentifier;
+- (NSString *)pathToTagsWithUserIdentifier:(NSString *)userIdentifier;
 
 @end
 
@@ -91,6 +94,12 @@
             success:^(TBXML *XML) { if (success) success([SZNCollection collectionsFromXML:XML]); } failure:failure];
 }
 
+- (void)fetchTagsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [client getPath:[self pathToTagsWithUserIdentifier:client.userIdentifier] parameters:nil
+            success:^(TBXML *XML) { if (success) success([SZNTag tagsFromXML:XML]); } failure:failure];
+}
+
 #pragma mark - Path
 
 + (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier
@@ -103,9 +112,14 @@
     return [[self pathToCollectionsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"top"];
 }
 
+- (NSString *)pathToCollectionWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [NSString stringWithFormat:@"users/%@/collections/%@", userIdentifier, self.key];
+}
+
 - (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier
 {
-    return [NSString stringWithFormat:@"users/%@/collections/%@/items", userIdentifier, self.key];
+    return [[self pathToCollectionWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"items"];
 }
 
 - (NSString *)pathToTopItemsWithUserIdentifier:(NSString *)userIdentifier
@@ -115,7 +129,12 @@
 
 - (NSString *)pathToSubcollectionsWithUserIdentifier:(NSString *)userIdentifier
 {
-    return [NSString stringWithFormat:@"users/%@/collections/%@/collections", userIdentifier, self.key];
+    return [[self pathToCollectionWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"collections"];
+}
+
+- (NSString *)pathToTagsWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [[self pathToCollectionWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"tags"];
 }
 
 @end

@@ -27,6 +27,7 @@
 #import <TBXML.h>
 #import "SZNZoteroAPIClient.h"
 #import "SZNTag.h"
+#import "SZNAuthor.h"
 
 @interface SZNItem ()
 
@@ -47,6 +48,9 @@
     item.title      = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:YES];
     item.type       = [TBXML textForChildElementNamed:@"zapi:itemType" parentElement:XMLElement escaped:YES];
     item.key        = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
+    
+    TBXMLElement *authorXMLElement = [TBXML childElementNamed:@"author" parentElement:XMLElement];
+    item.author = [SZNAuthor authorFromXMLElement:authorXMLElement];
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
     item.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
