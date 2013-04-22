@@ -92,17 +92,10 @@
         NSLog(@"%@", operation.responseString);
         NSError *error;
         TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
-        
-        if (!xml)
-        {
-            if (failure)
-                failure(error);
-        }
-        else
-        {
-            if (success)
-                success(xml);
-        }
+        if (!xml && failure)
+            failure(error);
+        else if (success)
+            success(xml);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure)
             failure(error);
@@ -113,8 +106,7 @@
 
 - (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    NSURLRequest *request = [self requestWithMethod:@"PATCH" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:requestParameters];
+    NSURLRequest *request = [self requestWithMethod:@"PATCH" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -122,19 +114,28 @@
         NSLog(@"%@", operation.responseString);
         NSError *error;
         TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
-        
-        if (!xml)
-        {
-            if (failure)
-                failure(error);
-        }
-        else
-        {
-            if (success)
-                success(xml);
-        }
+        if (!xml && failure)
+            failure(error);
+        else if (success)
+            success(xml);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", operation.responseString);
+        if (failure)
+            failure(error);
+    }];
+    
+    [operation start];
+}
+
+- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSString *itemVersion = parameters[@"itemVersion"];
+    NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
+    [request setValue:itemVersion forHTTPHeaderField:@"If-Unmodified-Since-Version"];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success)
+            success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure)
             failure(error);
     }];

@@ -113,6 +113,18 @@
     } failure:failure];
 }
 
+#pragma mark - Delete
+
+- (void)deleteWithClient:(SZNZoteroAPIClient *)client success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
+    mutableParameters[@"itemVersion"] = self.version;
+    [client deletePath:[self pathToItemWithUserIdentifier:client.userIdentifier] parameters:mutableParameters success:^() {
+        if (success)
+            success();
+    } failure:failure];
+}
+
 #pragma mark - Path
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier

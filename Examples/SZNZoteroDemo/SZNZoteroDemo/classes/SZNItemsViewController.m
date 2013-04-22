@@ -11,6 +11,13 @@
 #import <SZNZotero.h>
 #import "SZNItemViewController.h"
 
+typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
+    SZNItemsViewControllerCollectionsSection = 0,
+    SZNItemsViewControllerItemsSection,
+    SZNItemsViewControllerTagsSection
+};
+
+
 @interface SZNItemsViewController ()
 
 @property (strong, nonatomic) NSArray *collections;
@@ -27,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     if (self.parentCollection)
     {
@@ -68,9 +77,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (section == SZNItemsViewControllerCollectionsSection)
         return [self.collections count];
-    else if (section == 1)
+    else if (section == SZNItemsViewControllerItemsSection)
         return [self.items count];
     else
         return [self.tags count];
@@ -81,13 +90,13 @@
     static NSString *CellIdentifier = @"SZNItemCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0)
+    if (indexPath.section == SZNItemsViewControllerCollectionsSection)
     {
         SZNCollection *collection = self.collections[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"📂 %@", collection.title];
         cell.detailTextLabel.text = collection.identifier;
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == SZNItemsViewControllerItemsSection)
     {
         SZNItem *item = self.items[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"📄 %@", item.title];
@@ -107,25 +116,51 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == SZNItemsViewControllerCollectionsSection)
     {
         SZNItemsViewController *itemsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SZNItemsViewController"];
         itemsViewController.parentCollection = self.collections[indexPath.row];
         itemsViewController.client = self.client;
         [self.navigationController pushViewController:itemsViewController animated:YES];
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == SZNItemsViewControllerTagsSection)
         [self performSegueWithIdentifier:@"SZNPushItemSegue" sender:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (section == SZNItemsViewControllerCollectionsSection)
         return @"Collections";
-    else if (section == 1)
+    else if (section == SZNItemsViewControllerItemsSection)
         return @"Items";
     else
         return @"Tags";
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == SZNItemsViewControllerItemsSection)
+        return YES;
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        if (indexPath.section == SZNItemsViewControllerItemsSection)
+        {
+            SZNItem *item = self.items[indexPath.row];
+            [item deleteWithClient:self.client success:^{
+                NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+                [items removeObject:item];
+                self.items = items;
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            } failure:^(NSError *error) {
+                NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+            }];
+        }
+    }
 }
 
 #pragma mark - Actions
@@ -143,15 +178,15 @@
     {
         [self.parentCollection fetchTopItemsWithClient:self.client success:^(NSArray *items) {
             self.items = items;
-            [self.tableView reloadData];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
             
             [self.parentCollection fetchSubcollectionsWithClient:self.client success:^(NSArray *collections) {
                 self.collections = collections;
-                [self.tableView reloadData];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                 
                 [self.parentCollection fetchTagsWithClient:self.client success:^(NSArray *tags) {
                     self.tags = tags;
-                    [self.tableView reloadData];
+                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self.refreshControl endRefreshing];
                 } failure:^(NSError *error) {
                     [self.refreshControl endRefreshing];
@@ -170,15 +205,15 @@
     {
         [SZNItem fetchTopItemsInLibraryWithClient:self.client success:^(NSArray *items) {
             self.items = items;
-            [self.tableView reloadData];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
             
             [SZNCollection fetchTopCollectionsInLibraryWithClient:self.client success:^(NSArray *collections) {
                 self.collections = collections;
-                [self.tableView reloadData];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                 
                 [SZNTag fetchTagsInLibraryWithClient:self.client success:^(NSArray *tags) {
                     self.tags = tags;
-                    [self.tableView reloadData];
+                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self.refreshControl endRefreshing];
                 } failure:^(NSError *error) {
                     [self.refreshControl endRefreshing];

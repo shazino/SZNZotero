@@ -117,14 +117,23 @@
 - (void)fetchChildItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
- Update item with partial content.
+ Updates item with partial content.
  
- @param client The API client to be used to send the fetch request.
+ @param client The API client to be used to send the update request.
  @param content The modified content key/values.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the updated `SZNItem` object.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 - (void)updatePartialItemWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Deletes item.
+ 
+ @param client The API client to be used to send the delete request.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
+- (void)deleteWithClient:(SZNZoteroAPIClient *)client success:(void (^)())success failure:(void (^)(NSError *))failure;
 
 @end
 
