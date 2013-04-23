@@ -31,6 +31,8 @@
 
 @interface SZNItem ()
 
++ (NSString *)pathToItemTypes;
++ (NSString *)pathToValidFields;
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 + (NSString *)pathToTopItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToItemWithUserIdentifier:(NSString *)userIdentifier;
@@ -79,34 +81,71 @@
     return items;
 }
 
+#pragma mark - Create
+
++ (void)createItemWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)content success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
+{
+    [client postPath:[self pathToItemsInLibraryWithUserIdentifier:client.userIdentifier]
+          parameters:@{@"items": @[content]}
+            success:^(NSDictionary *responseObject) {
+                NSDictionary *successResponse = responseObject[@"success"];
+                NSDictionary *failedResponse = responseObject[@"failed"];
+                
+                if ([failedResponse count] > 0 && failure)
+                {
+                    NSDictionary *errorDictionary = failedResponse[[failedResponse allKeys][0]];
+                    failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
+                }
+                else if (success)
+                    success(nil);
+            }
+             failure:failure];
+}
+
 #pragma mark - Fetch
+
++ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [client getPath:[self pathToItemTypes] parameters:nil success:^(id responseObject) { if (success) success(responseObject); } failure:failure];
+}
+
++ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client forType:(NSString *)itemType success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [client getPath:[self pathToValidFields] parameters:@{@"itemType": itemType} success:^(id responseObject) { if (success) success(responseObject); } failure:failure];
+}
 
 + (void)fetchItemsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 {
-    [client getPath:[self pathToItemsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); } failure:failure];
+    [client getPath:[self pathToItemsInLibraryWithUserIdentifier:client.userIdentifier]
+         parameters:nil
+            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); }
+            failure:failure];
 }
 
 + (void)fetchTopItemsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToTopItemsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); } failure:failure];
+    [client getPath:[self pathToTopItemsInLibraryWithUserIdentifier:client.userIdentifier]
+         parameters:nil
+            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); }
+            failure:failure];
 }
 
 - (void)fetchChildItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToChildItemsWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); } failure:failure];
+    [client getPath:[self pathToChildItemsWithUserIdentifier:client.userIdentifier]
+         parameters:nil
+            success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); }
+            failure:failure];
 }
 
 #pragma mark - Update
 
 - (void)updateWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
 {
-    [client putPath:[self pathToItemWithUserIdentifier:client.userIdentifier] parameters:newContent success:^(TBXML *XML) {
-        if (success)
-            success(self);
-    } failure:failure];
+    [client putPath:[self pathToItemWithUserIdentifier:client.userIdentifier]
+         parameters:newContent
+            success:^(TBXML *XML) { if (success) success(self); }
+            failure:failure];
 }
 
 - (void)updateWithClient:(SZNZoteroAPIClient *)client partialContent:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
@@ -134,6 +173,16 @@
 }
 
 #pragma mark - Path
+
++ (NSString *)pathToItemTypes
+{
+    return @"/itemTypes";
+}
+
++ (NSString *)pathToValidFields
+{
+    return @"/itemTypeFields";
+}
 
 + (NSString *)pathToItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier
 {

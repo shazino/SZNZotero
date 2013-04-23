@@ -78,7 +78,7 @@
 
 #pragma mark - Methods
 
-- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
+- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     requestParameters[@"format"] = @"atom";
@@ -91,11 +91,21 @@
         
         NSLog(@"%@", operation.responseString);
         NSError *error;
-        TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
-        if (!xml && failure)
-            failure(error);
-        else if (success)
-            success(xml);
+        
+        if ([operation.response.MIMEType isEqualToString:@"application/json"])
+        {
+            NSArray *JSONObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+            if (success)
+                success(JSONObject);
+        }
+        else
+        {
+            TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
+            if (!xml && failure)
+                failure(error);
+            else if (success)
+                success(xml);
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure)
             failure(error);
@@ -104,7 +114,7 @@
     [operation start];
 }
 
-- (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
+- (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"PUT" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
     
@@ -125,7 +135,23 @@
     [operation start];
 }
 
-- (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(TBXML *))success failure:(void (^)(NSError *))failure
+- (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    NSURLRequest *request = [self requestWithMethod:@"POST" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success)
+            success([NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil]);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure)
+            failure(error);
+    }];
+    
+    [operation start];
+}
+
+- (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
     

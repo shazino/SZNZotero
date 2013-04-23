@@ -90,6 +90,35 @@
 + (NSArray *)itemsFromXML:(TBXML *)XML;
 
 /**
+ Creates a new item.
+ 
+ @param client The API client to be used to send the create request.
+ @param content The item content.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
++ (void)createItemWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)content success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Fetches all item types.
+ 
+ @param client The API client to be used to send the fetch request.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
++ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Fetches all valid fields for an item type.
+ 
+ @param client The API client to be used to send the fetch request.
+ @param itemType The item type.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
++ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client forType:(NSString *)itemType success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
  Fetches all items in the current user library.
  
  @param client The API client to be used to send the fetch request.

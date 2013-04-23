@@ -16,5 +16,6 @@
 @property (strong, nonatomic) SZNCollection *parentCollection;
 
 - (IBAction)refresh:(id)sender;
+- (IBAction)addItem:(id)sender;
 
 @end

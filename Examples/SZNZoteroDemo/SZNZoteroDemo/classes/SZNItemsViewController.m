@@ -10,6 +10,7 @@
 
 #import <SZNZotero.h>
 #import "SZNItemViewController.h"
+#import "SZNItemTypesViewController.h"
 
 typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     SZNItemsViewControllerCollectionsSection = 0,
@@ -42,6 +43,10 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
         self.title = self.parentCollection.title;
         self.navigationItem.backBarButtonItem.title = self.title;
     }
+    else
+    {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)];
+    }
     
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
@@ -65,6 +70,15 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     {
         ((SZNItemViewController *)segue.destinationViewController).client = self.client;
         ((SZNItemViewController *)segue.destinationViewController).item = self.items[self.tableView.indexPathForSelectedRow.row];
+    }
+    else if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
+    {
+        ((UINavigationController *)segue.destinationViewController).navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
+        
+        if ([((UINavigationController *)segue.destinationViewController).topViewController isKindOfClass:[SZNItemTypesViewController class]])
+        {
+            ((SZNItemTypesViewController *)((UINavigationController *)segue.destinationViewController).topViewController).client = self.client;
+        }
     }
 }
 
@@ -168,6 +182,11 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 - (IBAction)refresh:(id)sender
 {
     [self fetchItemsInUserLibrary];
+}
+
+- (IBAction)addItem:(id)sender
+{
+    [self performSegueWithIdentifier:@"SZNShowAddItemSegue" sender:sender];
 }
 
 #pragma mark - Fetch
