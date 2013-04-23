@@ -30,9 +30,15 @@
 - (NSDictionary *)OAuthParameters;
 @end
 
+
 @interface SZNZoteroAPIClient ()
+
 @property (nonatomic, strong) NSString *URLScheme;
+
+- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+
 @end
+
 
 @implementation SZNZoteroAPIClient
 
@@ -76,6 +82,23 @@
     return (self.accessToken);
 }
 
+- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    // NSLog(@"%@", operation.responseString);
+    NSError *error;
+    id parsedObject;
+    
+    if ([operation.response.MIMEType isEqualToString:@"application/json"])
+        parsedObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+    else
+        parsedObject = [TBXML tbxmlWithXMLData:responseObject error:&error];
+    
+    if (error && failure)
+        failure(error);
+    else if (success)
+        success(parsedObject);
+}
+
 #pragma mark - Methods
 
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
@@ -88,27 +111,9 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"%@", operation.responseString);
-        NSError *error;
-        
-        if ([operation.response.MIMEType isEqualToString:@"application/json"])
-        {
-            NSArray *JSONObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-            if (success)
-                success(JSONObject);
-        }
-        else
-        {
-            TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
-            if (!xml && failure)
-                failure(error);
-            else if (success)
-                success(xml);
-        }
+        [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
-            failure(error);
+        if (failure) failure(error);
     }];
     
     [operation start];
@@ -120,16 +125,9 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSError *error;
-        TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
-        if (!xml && failure)
-            failure(error);
-        else if (success)
-            success(xml);
+        [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
-            failure(error);
+        if (failure) failure(error);
     }];
     
     [operation start];
@@ -141,11 +139,9 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (success)
-            success([NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil]);
+        [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
-            failure(error);
+        if (failure) failure(error);
     }];
     
     [operation start];
@@ -157,17 +153,9 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"%@", operation.responseString);
-        NSError *error;
-        TBXML *xml = [TBXML tbxmlWithXMLData:responseObject error:&error];
-        if (!xml && failure)
-            failure(error);
-        else if (success)
-            success(xml);
+        [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
-            failure(error);
+        if (failure) failure(error);
     }];
     
     [operation start];
@@ -180,11 +168,9 @@
     [request setValue:itemVersion forHTTPHeaderField:@"If-Unmodified-Since-Version"];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (success)
-            success();
+        if (success) success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
-            failure(error);
+        if (failure) failure(error);
     }];
     
     [operation start];
