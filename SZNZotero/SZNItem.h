@@ -174,5 +174,14 @@
  */
 - (void)deleteWithClient:(SZNZoteroAPIClient *)client success:(void (^)())success failure:(void (^)(NSError *))failure;
 
+/**
+ The file URL request for attachment items.
+ 
+ @param client The API client to be used to send the delete request.
+ 
+ @return A `NSURLRequest` object.
+ */
+- (NSURLRequest *)fileURLRequestWithClient:(SZNZoteroAPIClient *)client;
+
 @end
 

@@ -8,6 +8,8 @@
 
 #import "SZNItemViewController.h"
 #import <SZNZotero.h>
+
+#import "SZNAttachmentViewController.h"
 #import "SZNNoteViewController.h"
 
 typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
@@ -22,6 +24,8 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 @property (strong, nonatomic) NSDictionary *displayableItemContent;
 @property (strong, nonatomic) NSArray *notes;
 
+- (IBAction)presentAttachment:(id)sender;
+
 @end
 
 @implementation SZNItemViewController
@@ -32,6 +36,11 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     self.displayableItemContent = [item.content dictionaryWithValuesForKeys:[[item.content keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
         return [obj isKindOfClass:[NSString class]] && ![obj isEqualToString:@""];
     }] allObjects]];
+    
+    if ([item.type isEqualToString:@"attachment"])
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"View Attachment" style:UIBarButtonItemStyleBordered target:self action:@selector(presentAttachment:)];
+    }
 }
 
 - (void)viewDidLoad
@@ -59,6 +68,10 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
         ((SZNNoteViewController *)segue.destinationViewController).noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
         ((SZNNoteViewController *)segue.destinationViewController).client = self.client;
         ((SZNNoteViewController *)segue.destinationViewController).delegate = self;
+    }
+    else if ([segue.destinationViewController isKindOfClass:[SZNAttachmentViewController class]])
+    {
+        ((SZNAttachmentViewController *)segue.destinationViewController).fileURLRequest = [self.item fileURLRequestWithClient:self.client];
     }
 }
 
@@ -172,6 +185,13 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     [notes replaceObjectAtIndex:[notes indexOfObject:item] withObject:item];
     self.notes = notes;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemViewControllerNotesSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - Actions 
+
+- (IBAction)presentAttachment:(id)sender
+{
+    [self performSegueWithIdentifier:@"SZNPushAttachmentSegue" sender:sender];
 }
 
 @end

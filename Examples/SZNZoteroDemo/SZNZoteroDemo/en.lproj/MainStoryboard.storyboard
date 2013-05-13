@@ -167,6 +167,35 @@
             </objects>
             <point key="canvasLocation" x="2830" y="-637"/>
         </scene>
+        <!--Attachment View Controller - Attachment-->
+        <scene sceneID="vtP-vj-hWi">
+            <objects>
+                <viewController id="TPV-VT-yNN" customClass="SZNAttachmentViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nTi-0t-xsv">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCc-rp-UJi">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XCc-rp-UJi" firstAttribute="trailing" secondItem="nTi-0t-xsv" secondAttribute="trailing" type="default" id="5IA-tn-9b4"/>
+                            <constraint firstItem="XCc-rp-UJi" firstAttribute="top" secondItem="nTi-0t-xsv" secondAttribute="top" type="default" id="NSt-SE-05v"/>
+                            <constraint firstItem="XCc-rp-UJi" firstAttribute="bottom" secondItem="nTi-0t-xsv" secondAttribute="bottom" type="default" id="PC7-8O-H4P"/>
+                            <constraint firstItem="XCc-rp-UJi" firstAttribute="leading" secondItem="nTi-0t-xsv" secondAttribute="leading" type="default" id="gDL-A1-Izm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Attachment" id="erQ-C0-Rt5"/>
+                    <connections>
+                        <outlet property="webView" destination="XCc-rp-UJi" id="20M-dm-tOf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="34q-BJ-Fh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2773" y="348"/>
+        </scene>
         <!--Item View Controller - Item-->
         <scene sceneID="UJP-Gn-aUA">
             <objects>
@@ -211,6 +240,7 @@
                     <navigationItem key="navigationItem" title="Item" id="hnn-wx-FMy"/>
                     <connections>
                         <segue destination="Ms1-iO-B3k" kind="push" identifier="SZNPushNoteSegue" id="iJg-ci-UCi"/>
+                        <segue destination="TPV-VT-yNN" kind="push" identifier="SZNPushAttachmentSegue" id="4Uy-1J-w17"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhD-TD-kqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -290,6 +320,52 @@
             <point key="canvasLocation" x="1897" y="-637"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SZNAttachmentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNAttachmentViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SZNItemFieldsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemFieldsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+            </relationships>
+        </class>
+        <class className="SZNItemTypesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemTypesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+            </relationships>
+        </class>
+        <class className="SZNItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="presentAttachment:"/>
+            </relationships>
+        </class>
+        <class className="SZNItemsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addItem:"/>
+                <relationship kind="action" name="refresh:"/>
+            </relationships>
+        </class>
+        <class className="SZNNoteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNNoteViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

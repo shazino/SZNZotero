@@ -99,6 +99,21 @@
         success(parsedObject);
 }
 
+#pragma mark - AFHTTPClient
+
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
+                                      path:(NSString *)path
+                                parameters:(NSDictionary *)parameters
+{
+    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    if ([method isEqualToString:@"GET"])
+        requestParameters[@"key"] = self.accessToken.secret;
+    else
+        path = [path stringByAppendingFormat:@"?key=%@", self.accessToken.secret];
+    NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:requestParameters];
+    return request;
+}
+
 #pragma mark - Methods
 
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
@@ -106,7 +121,6 @@
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     requestParameters[@"format"] = @"atom";
     requestParameters[@"content"] = @"json";
-    requestParameters[@"key"] = self.accessToken.secret;
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:requestParameters];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -121,8 +135,7 @@
 
 - (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
-    NSURLRequest *request = [self requestWithMethod:@"PUT" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
-    
+    NSURLRequest *request = [self requestWithMethod:@"PUT" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
@@ -135,8 +148,7 @@
 
 - (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
-    NSURLRequest *request = [self requestWithMethod:@"POST" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
-    
+    NSURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
@@ -149,8 +161,7 @@
 
 - (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
-    NSURLRequest *request = [self requestWithMethod:@"PATCH" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
-    
+    NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
@@ -164,7 +175,7 @@
 - (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)())success failure:(void (^)(NSError *))failure
 {
     NSString *itemVersion = parameters[@"itemVersion"];
-    NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"%@?key=%@", path, self.accessToken.secret] parameters:parameters];
+    NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
     [request setValue:itemVersion forHTTPHeaderField:@"If-Unmodified-Since-Version"];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {

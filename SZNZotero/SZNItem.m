@@ -37,6 +37,7 @@
 + (NSString *)pathToTopItemsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToItemWithUserIdentifier:(NSString *)userIdentifier;
 - (NSString *)pathToChildItemsWithUserIdentifier:(NSString *)userIdentifier;
+- (NSString *)pathToFileWithUserIdentifier:(NSString *)userIdentifier;
 
 @end
 
@@ -138,6 +139,11 @@
             failure:failure];
 }
 
+- (NSURLRequest *)fileURLRequestWithClient:(SZNZoteroAPIClient *)client
+{
+    return [client requestWithMethod:@"GET" path:[self pathToFileWithUserIdentifier:client.userIdentifier] parameters:nil];
+}
+
 #pragma mark - Update
 
 - (void)updateWithClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
@@ -202,6 +208,11 @@
 - (NSString *)pathToChildItemsWithUserIdentifier:(NSString *)userIdentifier
 {
     return [[self pathToItemWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"children"];
+}
+
+- (NSString *)pathToFileWithUserIdentifier:(NSString *)userIdentifier
+{
+    return [[self pathToItemWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"file"];
 }
 
 @end
