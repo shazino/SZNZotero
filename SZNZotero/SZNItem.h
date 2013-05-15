@@ -21,35 +21,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "SZNObject.h"
 #import <TBXML.h>
 
 @class SZNZoteroAPIClient, SZNAuthor;
 
-/**
- `SZNItem` is a Zotero item.
- */
-@interface SZNItem : NSObject
+@protocol SZNResource <NSObject>
+
++ (NSString *)pathComponent;
++ (NSString *)keyParameter;
 
 /**
- The item identifier.
+ Parses objects from an API XML response.
+ 
+ @param XML A `TBXML` representation of the API response.
+ 
+ @return An array of newly-created objects.
  */
-@property (copy, nonatomic) NSString *identifier;
++ (NSArray *)objectsFromXML:(TBXML *)XML;
 
-/**
- The item author.
- */
-@property (strong, nonatomic) SZNAuthor *author;
+@end
 
-/**
- The item key.
- */
-@property (copy, nonatomic) NSString *key;
-
-/**
- The item title.
- */
-@property (copy, nonatomic) NSString *title;
+@protocol SZNItemProtocol <SZNObjectProtocol>
 
 /**
  The item type.
@@ -57,19 +50,24 @@
 @property (copy, nonatomic) NSString *type;
 
 /**
- The item version.
- */
-@property (copy, nonatomic) NSString *version;
-
-/**
  The item content.
  */
 @property (strong, nonatomic) NSDictionary *content;
 
+@end
+
+
+@interface SZNItemDescriptor : NSObject
+
++ (NSSet *)tagsForItem:(id<SZNItemProtocol>)item;
+
+@end
+
+
 /**
- The item tags.
+ `SZNItem` is a Zotero item.
  */
-@property (strong, nonatomic) NSSet *tags;
+@interface SZNItem : SZNObject <SZNItemProtocol, SZNResource>
 
 /**
  Parses an item from an API XML element.
@@ -79,15 +77,6 @@
  @return A `SZNItem` object.
  */
 + (SZNItem *)itemFromXMLElement:(TBXMLElement *)XMLElement;
-
-/**
- Parses items from an API XML response.
- 
- @param XML A `TBXML` representation of the API response.
- 
- @return An array of `SZNItem` objects.
- */
-+ (NSArray *)itemsFromXML:(TBXML *)XML;
 
 /**
  Creates a new item.

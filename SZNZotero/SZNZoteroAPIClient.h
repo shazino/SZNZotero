@@ -38,17 +38,19 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
 /**
  The Altmetric identifier for the current user.
  */
-@property (copy, nonatomic) NSString *userIdentifier;
+@property (nonatomic, copy) NSString *userIdentifier;
 
 /**
  The Altmetric username for the current user.
  */
-@property (copy, nonatomic) NSString *username;
+@property (nonatomic, copy) NSString *username;
 
 /**
  Whether the client is currently logged in.
  */
-@property (readonly, getter = isLoggedIn) BOOL loggedIn;
+@property (readonly, nonatomic, getter = isLoggedIn) BOOL loggedIn;
+
+@property (nonatomic, strong) NSNumber *lastModifiedVersion;
 
 /**
  Initializes an `SZNZoteroAPIClient` object with the specified API key, secret, and URL scheme.

@@ -29,6 +29,25 @@
 #import "SZNTag.h"
 #import "SZNAuthor.h"
 
+
+@implementation SZNItemDescriptor
+
++ (NSSet *)tagsForItem:(id<SZNItemProtocol>)item
+{
+    NSMutableSet *tags = [NSMutableSet set];
+    for (NSDictionary *tagDictionary in item.content[@"tags"])
+    {
+        SZNTag *tag = [SZNTag new];
+        tag.name = tagDictionary[@"tag"];
+        tag.type = [tagDictionary[@"type"] integerValue];
+        [tags addObject:tag];
+    }
+    return tags;
+}
+
+@end
+
+
 @interface SZNItem ()
 
 + (NSString *)pathToItemTypes;
@@ -41,39 +60,39 @@
 
 @end
 
+
 @implementation SZNItem
+
+@synthesize type;
+@synthesize content;
+
+- (NSString *)title
+{
+    return self.content[@"title"];
+}
 
 #pragma mark - Parse
 
 + (SZNItem *)itemFromXMLElement:(TBXMLElement *)XMLElement
 {
+    NSNumberFormatter *f = [NSNumberFormatter new];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    
     SZNItem *item = [SZNItem new];
-    item.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
-    item.title      = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:YES];
     item.type       = [TBXML textForChildElementNamed:@"zapi:itemType" parentElement:XMLElement escaped:YES];
     item.key        = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
-    item.version    = [TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO];
+    item.version    = [f numberFromString:[TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO]];
     
-    TBXMLElement *authorXMLElement = [TBXML childElementNamed:@"author" parentElement:XMLElement];
-    item.author = [SZNAuthor authorFromXMLElement:authorXMLElement];
+//    TBXMLElement *authorXMLElement = [TBXML childElementNamed:@"author" parentElement:XMLElement];
+//    item.author = [SZNAuthor authorFromXMLElement:authorXMLElement];
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
     item.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
     
-    NSMutableSet *tags = [NSMutableSet set];
-    for (NSDictionary *tagDictionary in item.content[@"tags"])
-    {
-        SZNTag *tag = [SZNTag new];
-        tag.name = tagDictionary[@"tag"];
-        tag.type = [tagDictionary[@"type"] integerValue];
-        [tags addObject:tag];
-    }
-    item.tags = tags;
-    
     return item;
 }
 
-+ (NSArray *)itemsFromXML:(TBXML *)XML
++ (NSArray *)objectsFromXML:(TBXML *)XML
 {
     NSMutableArray *items = [NSMutableArray array];
     [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
@@ -119,15 +138,15 @@
 {
     [client getPath:[self pathToItemsInLibraryWithUserIdentifier:client.userIdentifier]
          parameters:nil
-            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); }
+            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
             failure:failure];
 }
 
 + (void)fetchTopItemsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [client getPath:[self pathToTopItemsInLibraryWithUserIdentifier:client.userIdentifier]
-         parameters:nil
-            success:^(TBXML *XML) { if (success) success([self itemsFromXML:XML]); }
+         parameters:@{@"content": @"json"}
+            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
             failure:failure];
 }
 
@@ -135,7 +154,7 @@
 {
     [client getPath:[self pathToChildItemsWithUserIdentifier:client.userIdentifier]
          parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); }
+            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); }
             failure:failure];
 }
 
@@ -179,6 +198,16 @@
 }
 
 #pragma mark - Path
+
++ (NSString *)keyParameter
+{
+    return @"itemKey";
+}
+
++ (NSString *)pathComponent
+{
+    return @"items";
+}
 
 + (NSString *)pathToItemTypes
 {

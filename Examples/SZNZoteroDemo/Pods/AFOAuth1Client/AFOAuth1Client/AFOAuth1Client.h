@@ -31,7 +31,7 @@ typedef enum {
 /**
 
  */
-@interface AFOAuth1Client : AFHTTPClient
+@interface AFOAuth1Client : AFHTTPClient <NSCoding, NSCopying>
 
 ///-----------------------------------
 /// @name Managing OAuth Configuration
@@ -72,7 +72,6 @@ typedef enum {
 /// @name Authenticating
 ///---------------------
 
-
 /**
 
  */
@@ -81,16 +80,18 @@ typedef enum {
                                     callbackURL:(NSURL *)callbackURL
                                 accessTokenPath:(NSString *)accessTokenPath
                                    accessMethod:(NSString *)accessMethod
-                                        success:(void (^)(AFOAuth1Token *accessToken))success
+                                          scope:(NSString *)scope
+                                        success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
                                         failure:(void (^)(NSError *error))failure;
 
 /**
 
  */
 - (void)acquireOAuthRequestTokenWithPath:(NSString *)path
-                                callback:(NSURL *)url
+                             callbackURL:(NSURL *)url
                             accessMethod:(NSString *)accessMethod
-                                 success:(void (^)(AFOAuth1Token *requestToken))success
+                                   scope:(NSString *)scope
+                                 success:(void (^)(AFOAuth1Token *requestToken, id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
 
 /**
@@ -99,7 +100,7 @@ typedef enum {
 - (void)acquireOAuthAccessTokenWithPath:(NSString *)path
                            requestToken:(AFOAuth1Token *)requestToken
                            accessMethod:(NSString *)accessMethod
-                                success:(void (^)(AFOAuth1Token *accessToken))success
+                                success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
                                 failure:(void (^)(NSError *error))failure;
 
 @end
@@ -123,7 +124,7 @@ extern NSString * const kAFApplicationLaunchOptionsURLKey;
 /**
 
  */
-@interface AFOAuth1Token : NSObject
+@interface AFOAuth1Token : NSObject <NSCoding, NSCopying>
 
 /**
 

@@ -1,5 +1,5 @@
 //
-// SZNUser.m
+// SZNObject.h
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,17 +21,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "SZNUser.h"
+#import <Foundation/Foundation.h>
 
-#import <AFNetworking.h>
-#import <TBXML.h>
-#import "SZNZoteroAPIClient.h"
+@protocol SZNObjectProtocol <NSObject>
 
-@implementation SZNUser
+/**
+ The object deleted status.
+ */
+@property (nonatomic, strong) NSNumber *deleted;
 
-- (NSString *)pathPrefix
-{
-    return [@"/users" stringByAppendingPathComponent:self.identifier];
-}
+/**
+ The object key.
+ */
+@property (nonatomic, copy) NSString *key;
+
+/**
+ The object synced status.
+ */
+@property (nonatomic, strong) NSNumber *synced;
+
+/**
+ The object version.
+ */
+@property (nonatomic, strong) NSNumber *version;
+
+@end
+
+
+/**
+ `SZNObject` is a Zotero object.
+ */
+@interface SZNObject : NSObject <SZNObjectProtocol>
+
+- (BOOL)isSynced;
 
 @end

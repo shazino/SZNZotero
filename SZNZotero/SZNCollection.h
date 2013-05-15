@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "SZNObject.h"
 #import <TBXML.h>
 
 @class SZNZoteroAPIClient;
@@ -29,7 +29,7 @@
 /**
  `SZNCollection` is a Zotero collection.
  */
-@interface SZNCollection : NSObject
+@interface SZNCollection : SZNObject
 
 /**
  The collection identifier.
@@ -40,11 +40,6 @@
  The collection title.
  */
 @property (copy, nonatomic) NSString *title;
-
-/**
- The collection key.
- */
-@property (copy, nonatomic) NSString *key;
 
 /**
  Parses a collection from an API XML element.

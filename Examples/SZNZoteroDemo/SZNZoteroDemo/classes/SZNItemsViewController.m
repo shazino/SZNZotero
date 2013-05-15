@@ -113,8 +113,8 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     else if (indexPath.section == SZNItemsViewControllerItemsSection)
     {
         SZNItem *item = self.items[indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"📄 %@", item.title];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@", item.type, item.identifier];
+        cell.textLabel.text = [NSString stringWithFormat:@"📄 %@", item.content[@"title"]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@", item.type, item.key];
     }
     else
     {

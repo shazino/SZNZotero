@@ -1,5 +1,5 @@
 //
-// SZNUser.m
+// SZNGroup.h
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,17 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "SZNUser.h"
+#import "SZNLibrary.h"
 
-#import <AFNetworking.h>
-#import <TBXML.h>
-#import "SZNZoteroAPIClient.h"
-
-@implementation SZNUser
-
-- (NSString *)pathPrefix
-{
-    return [@"/users" stringByAppendingPathComponent:self.identifier];
-}
+/**
+ `SZNGroup` is a Zotero group library.
+ */
+@interface SZNGroup : SZNLibrary
 
 @end

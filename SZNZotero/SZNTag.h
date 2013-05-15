@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "SZNObject.h"
 #import <TBXML.h>
 
 @class SZNZoteroAPIClient;
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, SZNTagType) {
 /**
  `SZNTag` is a Zotero tag.
  */
-@interface SZNTag : NSObject
+@interface SZNTag : SZNObject
 
 /**
  The tag name.

@@ -28,7 +28,10 @@
 
     #import "SZNAuthor.h"
     #import "SZNCollection.h"
+    #import "SZNGroup.h"
     #import "SZNItem.h"
+    #import "SZNLibrary.h"
+    #import "SZNObject.h"
     #import "SZNTag.h"
     #import "SZNUser.h"
 #endif

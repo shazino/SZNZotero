@@ -91,7 +91,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
         case SZNItemViewControllerContentSection:
             return [[self.displayableItemContent allKeys] count];
         case SZNItemViewControllerTagsSection:
-            return [self.item.tags count];
+            return [[SZNItemDescriptor tagsForItem:self.item] count];
         case SZNItemViewControllerNotesSection:
             return [self.notes count];
     }
@@ -114,7 +114,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
             {
                 case 0:
                     cell.textLabel.text = @"Title";
-                    cell.detailTextLabel.text = self.item.title;
+                    cell.detailTextLabel.text = self.item.content[@"title"];
                     break;
                 case 1:
                     cell.textLabel.text = @"Type";
@@ -122,11 +122,11 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
                     break;
                 case 2:
                     cell.textLabel.text = @"Author";
-                    cell.detailTextLabel.text = self.item.author.name;
+                    cell.detailTextLabel.text = @"?";//self.item.author.name;
                     break;
                 case 3:
-                    cell.textLabel.text = @"Identifier";
-                    cell.detailTextLabel.text = self.item.identifier;
+                    cell.textLabel.text = @"Key";
+                    cell.detailTextLabel.text = self.item.key;
                     break;
             }
         }
@@ -140,7 +140,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
             break;
         case SZNItemViewControllerTagsSection:
         {
-            SZNTag *tag = [self.item.tags sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]][indexPath.row];
+            SZNTag *tag = [[SZNItemDescriptor tagsForItem:self.item] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]][indexPath.row];
             cell.textLabel.text = nil;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
         }
@@ -149,14 +149,13 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
         {
             SZNItem *child = self.notes[indexPath.row];
             cell.textLabel.text = nil;
-            cell.detailTextLabel.text = child.title;
             if ([child.type isEqualToString:@"note"])
             {
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"📝 %@", child.title];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"📝 %@", child.content[@"title"]];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             else
-                cell.detailTextLabel.text = child.title;
+                cell.detailTextLabel.text = child.content[@"title"];
         }
             break;
     }

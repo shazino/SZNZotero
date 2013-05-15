@@ -79,13 +79,13 @@
 - (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [client getPath:[self pathToItemsWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); } failure:failure];
+            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); } failure:failure];
 }
 
 - (void)fetchTopItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [client getPath:[self pathToTopItemsWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNItem itemsFromXML:XML]); } failure:failure];
+            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); } failure:failure];
 }
 
 - (void)fetchSubcollectionsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure

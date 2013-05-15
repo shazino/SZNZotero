@@ -23,6 +23,7 @@
 
 #import "SZNZoteroAPIClient.h"
 #import <AFNetworking.h>
+#import <AFOAuth1Client.h>
 #import <TBXML.h>
 #import "GTMNSString+HTML.h"
 
@@ -66,15 +67,15 @@
                                                    libraryAccess, notesAccess, writeAccess,
                                                    (groupAccessLevel == SZNZoteroAccessReadWrite) ? @"write" : (groupAccessLevel == SZNZoteroAccessRead) ? @"read" : @"none" ]
                                       callbackURL:[NSURL URLWithString:[self.URLScheme stringByAppendingString:@"://"]]
-                                  accessTokenPath:@"//www.zotero.org/oauth/access" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
-        if (success)
-            success(accessToken);
-    } failure:^(NSError *authError) {
-        [self.operationQueue cancelAllOperations];
-        self.accessToken = nil;
-        if (failure)
-            failure(authError);
-    }];
+                                  accessTokenPath:@"//www.zotero.org/oauth/access" accessMethod:@"GET" scope:@"" success:^(AFOAuth1Token *accessToken, id responseObject) {
+                                      if (success)
+                                          success(accessToken);
+                                  } failure:^(NSError *authError) {
+                                      [self.operationQueue cancelAllOperations];
+                                      self.accessToken = nil;
+                                      if (failure)
+                                          failure(authError);
+                                  }];
 }
 
 - (BOOL)isLoggedIn
@@ -85,6 +86,11 @@
 - (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     // NSLog(@"%@", operation.responseString);
+    
+    NSNumberFormatter *f = [NSNumberFormatter new];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    self.lastModifiedVersion = [f numberFromString:[operation.response allHeaderFields][@"Last-Modified-Version"]];
+    
     NSError *error;
     id parsedObject;
     
@@ -93,7 +99,7 @@
     else
         parsedObject = [TBXML tbxmlWithXMLData:responseObject error:&error];
     
-    if (error && failure)
+    if (responseObject && error && failure)
         failure(error);
     else if (success)
         success(parsedObject);
@@ -118,11 +124,7 @@
 
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    requestParameters[@"format"] = @"atom";
-    requestParameters[@"content"] = @"json";
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:requestParameters];
-    
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
@@ -192,7 +194,7 @@
 - (void)acquireOAuthAccessTokenWithPath:(NSString *)path
                            requestToken:(AFOAuth1Token *)requestToken
                            accessMethod:(NSString *)accessMethod
-                                success:(void (^)(AFOAuth1Token *accessToken))success
+                                success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
                                 failure:(void (^)(NSError *error))failure
 {
     self.accessToken = requestToken;
@@ -209,7 +211,7 @@
             NSDictionary *parameters = AFParametersFromQueryString(operation.responseString);
             self.userIdentifier = parameters[@"userID"];
             self.username = parameters[@"username"];
-            success(accessToken);
+            success(accessToken, responseObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {

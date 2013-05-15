@@ -1,5 +1,5 @@
 //
-// SZNUser.m
+// SZNObject.m
 //
 // Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,17 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "SZNUser.h"
+#import "SZNObject.h"
 
-#import <AFNetworking.h>
-#import <TBXML.h>
-#import "SZNZoteroAPIClient.h"
+@implementation SZNObject
 
-@implementation SZNUser
+@synthesize deleted;
+@synthesize key;
+@synthesize synced;
+@synthesize version;
 
-- (NSString *)pathPrefix
+- (BOOL)isSynced
 {
-    return [@"/users" stringByAppendingPathComponent:self.identifier];
+    return [self.synced boolValue];
 }
 
 @end
