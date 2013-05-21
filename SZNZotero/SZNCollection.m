@@ -24,117 +24,82 @@
 #import "SZNCollection.h"
 #import "SZNItem.h"
 #import "SZNTag.h"
+#import "SZNLibrary.h"
 #import "SZNZoteroAPIClient.h"
 #import <TBXML.h>
-
-@interface SZNCollection ()
-
-+ (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
-+ (NSString *)pathToTopCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
-- (NSString *)pathToCollectionWithUserIdentifier:(NSString *)userIdentifier;
-- (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier;
-- (NSString *)pathToTopItemsWithUserIdentifier:(NSString *)userIdentifier;
-- (NSString *)pathToSubcollectionsWithUserIdentifier:(NSString *)userIdentifier;
-- (NSString *)pathToTagsWithUserIdentifier:(NSString *)userIdentifier;
-
-@end
 
 
 @implementation SZNCollection
 
 #pragma mark - Parse
 
-+ (SZNCollection *)collectionFromXMLElement:(TBXMLElement *)XMLElement
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
 {
-    SZNCollection *collection = [SZNCollection new];
-    collection.identifier   = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
-    collection.title        = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:YES];
-    collection.key          = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
+    SZNCollection *collection = (SZNCollection *)[super objectFromXMLElement:XMLElement];
+    collection.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
     return collection;
-}
-
-+ (NSArray *)collectionsFromXML:(TBXML *)XML
-{
-    NSMutableArray *collections = [NSMutableArray array];
-    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
-        [collections addObject:[self collectionFromXMLElement:XMLElement]];
-    }];
-    return collections;
 }
 
 #pragma mark - Fetch
 
-+ (void)fetchCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchCollectionsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToCollectionsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([self collectionsFromXML:XML]); } failure:failure];
+    [client getPath:[library pathForResource:[SZNCollection class]]
+         parameters:@{@"content": @"json"}
+            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
+            failure:failure];
 }
 
-+ (void)fetchTopCollectionsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopCollectionsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToTopCollectionsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([self collectionsFromXML:XML]); } failure:failure];
+    [client getPath:[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:@"top"]
+         parameters:@{@"content": @"json"}
+            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
+            failure:failure];
 }
 
-- (void)fetchItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchItemsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToItemsWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); } failure:failure];
+    [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"items"]
+         parameters:@{@"content": @"json"}
+            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); }
+            failure:failure];
 }
 
-- (void)fetchTopItemsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchTopItemsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToTopItemsWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); } failure:failure];
+    [client getPath:[[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"items"] stringByAppendingPathComponent:@"top"]
+         parameters:@{@"content": @"json"}
+            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); }
+            failure:failure];
 }
 
-- (void)fetchSubcollectionsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchSubcollectionsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToSubcollectionsWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNCollection collectionsFromXML:XML]); } failure:failure];
+    [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"collections"]
+         parameters:@{@"content": @"json"}
+            success:^(TBXML *XML) { if (success) success([SZNCollection objectsFromXML:XML]); }
+            failure:failure];
 }
 
-- (void)fetchTagsWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchTagsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToTagsWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([SZNTag tagsFromXML:XML]); } failure:failure];
+    [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"tags"]
+         parameters:@{@"content": @"json"}
+            success:^(TBXML *XML) { if (success) success([SZNTag tagsFromXML:XML]); }
+            failure:failure];
 }
 
 #pragma mark - Path
 
-+ (NSString *)pathToCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier
++ (NSString *)keyParameter
 {
-    return [NSString stringWithFormat:@"users/%@/collections", userIdentifier];
+    return @"collectionKey";
 }
 
-+ (NSString *)pathToTopCollectionsInLibraryWithUserIdentifier:(NSString *)userIdentifier
++ (NSString *)pathComponent
 {
-    return [[self pathToCollectionsInLibraryWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"top"];
-}
-
-- (NSString *)pathToCollectionWithUserIdentifier:(NSString *)userIdentifier
-{
-    return [NSString stringWithFormat:@"users/%@/collections/%@", userIdentifier, self.key];
-}
-
-- (NSString *)pathToItemsWithUserIdentifier:(NSString *)userIdentifier
-{
-    return [[self pathToCollectionWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"items"];
-}
-
-- (NSString *)pathToTopItemsWithUserIdentifier:(NSString *)userIdentifier
-{
-    return [[self pathToItemsWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"top"];
-}
-
-- (NSString *)pathToSubcollectionsWithUserIdentifier:(NSString *)userIdentifier
-{
-    return [[self pathToCollectionWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"collections"];
-}
-
-- (NSString *)pathToTagsWithUserIdentifier:(NSString *)userIdentifier
-{
-    return [[self pathToCollectionWithUserIdentifier:userIdentifier] stringByAppendingPathComponent:@"tags"];
+    return @"collections";
 }
 
 @end

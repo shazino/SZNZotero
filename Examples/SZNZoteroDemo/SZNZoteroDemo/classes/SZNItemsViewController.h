@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class SZNZoteroAPIClient, SZNCollection;
+@class SZNZoteroAPIClient, SZNCollection, SZNLibrary;
 
 @interface SZNItemsViewController : UITableViewController
 
 @property (strong, nonatomic) SZNZoteroAPIClient *client;
+@property (strong, nonatomic) SZNLibrary *library;
 @property (strong, nonatomic) SZNCollection *parentCollection;
 
 - (IBAction)refresh:(id)sender;

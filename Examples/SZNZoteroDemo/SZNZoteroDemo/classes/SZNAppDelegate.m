@@ -12,7 +12,7 @@
 #import <AFOAuth1Client.h>
 #import "SZNZotero.h"
 
-#import "SZNItemsViewController.h"
+#import "SZNLibrariesViewController.h"
 
 NSString * const SZNURLScheme = @"sznzoterodemo";
 
@@ -31,8 +31,10 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
     NSString *clientSecret = @"###";
     
     SZNZoteroAPIClient *client = [[SZNZoteroAPIClient alloc] initWithKey:clientKey secret:clientSecret URLScheme:SZNURLScheme];
-    SZNItemsViewController *itemsViewController  = (SZNItemsViewController *)((UINavigationController *)self.window.rootViewController).topViewController;
-    itemsViewController.client = client;
+    
+    SZNLibrariesViewController *librariesViewController  = (SZNLibrariesViewController *)((UINavigationController *)self.window.rootViewController).topViewController;
+    librariesViewController.client = client;
+    librariesViewController.user   = (SZNUser *)[SZNUser libraryWithIdentifier:client.userIdentifier];
     
     return YES;
 }

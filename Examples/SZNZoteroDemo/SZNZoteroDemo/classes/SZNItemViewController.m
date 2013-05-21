@@ -47,7 +47,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 {
     [super viewDidLoad];
     
-    [self.item fetchChildItemsWithClient:self.client success:^(NSArray *children) {
+    [self.item fetchChildItemsInLibrary:self.library withClient:self.client success:^(NSArray *children) {
         self.notes = children;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     }
     else if ([segue.destinationViewController isKindOfClass:[SZNAttachmentViewController class]])
     {
-        ((SZNAttachmentViewController *)segue.destinationViewController).fileURLRequest = [self.item fileURLRequestWithClient:self.client];
+        ((SZNAttachmentViewController *)segue.destinationViewController).fileURLRequest = [self.item fileURLRequestInLibrary:self.library withClient:self.client];
     }
 }
 
@@ -87,7 +87,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     switch (section)
     {
         case SZNItemViewControllerGeneralSection:
-            return 4;
+            return 3;
         case SZNItemViewControllerContentSection:
             return [[self.displayableItemContent allKeys] count];
         case SZNItemViewControllerTagsSection:
@@ -121,10 +121,6 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
                     cell.detailTextLabel.text = self.item.type;
                     break;
                 case 2:
-                    cell.textLabel.text = @"Author";
-                    cell.detailTextLabel.text = @"?";//self.item.author.name;
-                    break;
-                case 3:
                     cell.textLabel.text = @"Key";
                     cell.detailTextLabel.text = self.item.key;
                     break;
@@ -151,7 +147,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
             cell.textLabel.text = nil;
             if ([child.type isEqualToString:@"note"])
             {
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"📝 %@", child.content[@"title"]];
+                cell.detailTextLabel.text = @"📝 Note";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             else

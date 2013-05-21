@@ -45,7 +45,11 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     }
     else
     {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)];
+        if ([self.library isKindOfClass:[SZNGroup class]])
+            self.title = self.library.content[@"name"];
+        
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)], self.editButtonItem];
     }
     
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
@@ -68,8 +72,9 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 {
     if ([segue.destinationViewController isKindOfClass:[SZNItemViewController class]])
     {
-        ((SZNItemViewController *)segue.destinationViewController).client = self.client;
-        ((SZNItemViewController *)segue.destinationViewController).item = self.items[self.tableView.indexPathForSelectedRow.row];
+        ((SZNItemViewController *)segue.destinationViewController).client  = self.client;
+        ((SZNItemViewController *)segue.destinationViewController).library = self.library;
+        ((SZNItemViewController *)segue.destinationViewController).item    = self.items[self.tableView.indexPathForSelectedRow.row];
     }
     else if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
     {
@@ -107,7 +112,7 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     if (indexPath.section == SZNItemsViewControllerCollectionsSection)
     {
         SZNCollection *collection = self.collections[indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"📂 %@", collection.title];
+        cell.textLabel.text = [NSString stringWithFormat:@"📂 %@", collection.content[@"name"]];
         cell.detailTextLabel.text = collection.identifier;
     }
     else if (indexPath.section == SZNItemsViewControllerItemsSection)
@@ -134,7 +139,8 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     {
         SZNItemsViewController *itemsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SZNItemsViewController"];
         itemsViewController.parentCollection = self.collections[indexPath.row];
-        itemsViewController.client = self.client;
+        itemsViewController.client  = self.client;
+        itemsViewController.library = self.library;
         [self.navigationController pushViewController:itemsViewController animated:YES];
     }
     else if (indexPath.section == SZNItemsViewControllerItemsSection)
@@ -165,7 +171,7 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
         if (indexPath.section == SZNItemsViewControllerItemsSection)
         {
             SZNItem *item = self.items[indexPath.row];
-            [item deleteWithClient:self.client success:^{
+            [item deleteInLibrary:self.library withClient:self.client success:^{
                 NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
                 [items removeObject:item];
                 self.items = items;
@@ -195,15 +201,15 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 {
     if (self.parentCollection)
     {
-        [self.parentCollection fetchTopItemsWithClient:self.client success:^(NSArray *items) {
+        [self.parentCollection fetchTopItemsInLibrary:self.library withClient:self.client success:^(NSArray *items) {
             self.items = items;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
             
-            [self.parentCollection fetchSubcollectionsWithClient:self.client success:^(NSArray *collections) {
+            [self.parentCollection fetchSubcollectionsInLibrary:self.library withClient:self.client success:^(NSArray *collections) {
                 self.collections = collections;
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                 
-                [self.parentCollection fetchTagsWithClient:self.client success:^(NSArray *tags) {
+                [self.parentCollection fetchTagsInLibrary:self.library withClient:self.client success:^(NSArray *tags) {
                     self.tags = tags;
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self.refreshControl endRefreshing];
@@ -222,15 +228,15 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     }
     else
     {
-        [SZNItem fetchTopItemsInLibraryWithClient:self.client success:^(NSArray *items) {
+        [SZNItem fetchTopItemsInLibrary:self.library withClient:self.client success:^(NSArray *items) {
             self.items = items;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
             
-            [SZNCollection fetchTopCollectionsInLibraryWithClient:self.client success:^(NSArray *collections) {
+            [SZNCollection fetchTopCollectionsInLibrary:self.library withClient:self.client success:^(NSArray *collections) {
                 self.collections = collections;
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                 
-                [SZNTag fetchTagsInLibraryWithClient:self.client success:^(NSArray *tags) {
+                [SZNTag fetchTagsInLibrary:self.library withClient:self.client success:^(NSArray *tags) {
                     self.tags = tags;
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self.refreshControl endRefreshing];

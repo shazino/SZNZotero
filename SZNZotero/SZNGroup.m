@@ -22,7 +22,35 @@
 // THE SOFTWARE.
 
 #import "SZNGroup.h"
+#import "SZNZoteroAPIClient.h"
+#import <TBXML.h>
+
+@interface SZNGroup ()
++ (id)objectFromXMLElement:(TBXMLElement *)XMLElement;
+@end
 
 @implementation SZNGroup
+
++ (NSString *)pathComponent
+{
+    return @"groups";
+}
+
++ (id)objectFromXMLElement:(TBXMLElement *)XMLElement
+{
+    SZNGroup *group = [[self class] new];
+    group.identifier = [TBXML textForChildElementNamed:@"zapi:groupID" parentElement:XMLElement escaped:NO];
+    
+    NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
+    if (JSONContent)
+        group.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
+    
+    return group;
+}
+
+- (NSString *)pathPrefix
+{
+    return [@"/groups" stringByAppendingPathComponent:self.identifier];
+}
 
 @end

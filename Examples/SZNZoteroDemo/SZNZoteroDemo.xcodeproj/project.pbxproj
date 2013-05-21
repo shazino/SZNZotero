@@ -10,6 +10,7 @@
 		14A83C8A16F21E7D009D8F75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8916F21E7D009D8F75 /* UIKit.framework */; };
 		14A83C8C16F21E7D009D8F75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8B16F21E7D009D8F75 /* Foundation.framework */; };
 		14A83C8E16F21E7D009D8F75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8D16F21E7D009D8F75 /* CoreGraphics.framework */; };
+		14AD3189174BA0FB0036897A /* SZNLibrariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AD3188174BA0FB0036897A /* SZNLibrariesViewController.m */; };
 		14AF54ED171DAC0A00BA4CBE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14AF54E7171DAC0A00BA4CBE /* Default-568h@2x.png */; };
 		14AF54EE171DAC0A00BA4CBE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 14AF54E8171DAC0A00BA4CBE /* Default.png */; };
 		14AF54EF171DAC0A00BA4CBE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14AF54E9171DAC0A00BA4CBE /* Default@2x.png */; };
@@ -31,6 +32,8 @@
 		14A83C8916F21E7D009D8F75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		14A83C8B16F21E7D009D8F75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		14A83C8D16F21E7D009D8F75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		14AD3187174BA0FB0036897A /* SZNLibrariesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNLibrariesViewController.h; path = SZNZoteroDemo/classes/SZNLibrariesViewController.h; sourceTree = SOURCE_ROOT; };
+		14AD3188174BA0FB0036897A /* SZNLibrariesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNLibrariesViewController.m; path = SZNZoteroDemo/classes/SZNLibrariesViewController.m; sourceTree = SOURCE_ROOT; };
 		14AF54E7171DAC0A00BA4CBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "SZNZoteroDemo/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		14AF54E8171DAC0A00BA4CBE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = SZNZoteroDemo/Default.png; sourceTree = SOURCE_ROOT; };
 		14AF54E9171DAC0A00BA4CBE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "SZNZoteroDemo/Default@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -106,6 +109,8 @@
 			children = (
 				14AF54F8171DAC3C00BA4CBE /* SZNAppDelegate.h */,
 				14AF54F9171DAC3C00BA4CBE /* SZNAppDelegate.m */,
+				14AD3187174BA0FB0036897A /* SZNLibrariesViewController.h */,
+				14AD3188174BA0FB0036897A /* SZNLibrariesViewController.m */,
 				14AF54FA171DAC3C00BA4CBE /* SZNItemsViewController.h */,
 				14AF54FB171DAC3C00BA4CBE /* SZNItemsViewController.m */,
 				14D68467172170F1008804E2 /* SZNItemViewController.h */,
@@ -232,6 +237,7 @@
 				14B744C1172673980031B2A2 /* SZNItemTypesViewController.m in Sources */,
 				14B744C417267E670031B2A2 /* SZNItemFieldsViewController.m in Sources */,
 				14FA643F174104E700AEEE50 /* SZNAttachmentViewController.m in Sources */,
+				14AD3189174BA0FB0036897A /* SZNLibrariesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -176,9 +176,9 @@
 
 - (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    NSString *itemVersion = parameters[@"itemVersion"];
+    NSNumber *itemVersion = parameters[@"itemVersion"];
     NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
-    [request setValue:itemVersion forHTTPHeaderField:@"If-Unmodified-Since-Version"];
+    [request setValue:[itemVersion stringValue] forHTTPHeaderField:@"If-Unmodified-Since-Version"];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) success();
@@ -259,7 +259,10 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString)
 
 + (NSString *)textForChildElementNamed:(NSString *)childElementName parentElement:(TBXMLElement *)parentElement escaped:(BOOL)escaped
 {
-    NSString *text = [TBXML textForElement:[TBXML childElementNamed:childElementName parentElement:parentElement]];
+    TBXMLElement *element = [TBXML childElementNamed:childElementName parentElement:parentElement];
+    if (!element)
+        return nil;
+    NSString *text = [TBXML textForElement:element];
     return (escaped) ? [text gtm_stringByUnescapingFromHTML] : text;
 }
 

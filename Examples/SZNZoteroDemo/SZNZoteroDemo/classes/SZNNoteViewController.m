@@ -32,8 +32,8 @@
 {
     self.navigationItem.rightBarButtonItem.enabled = NO;
     NSString *HTMLString = [self HTMLString];
-    [self.noteItem updateWithClient:self.client partialContent:@{@"note" : HTMLString} success:^(SZNItem *item) {
-        
+    
+    [self.noteItem updateInLibrary:self.library withClient:self.client partialContent:@{@"note" : HTMLString} success:^(SZNItem *item) {
         NSMutableDictionary *content = [NSMutableDictionary dictionaryWithDictionary:self.noteItem.content];
         content[@"note"] = HTMLString;
         self.noteItem.content = content;

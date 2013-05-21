@@ -24,11 +24,11 @@
 #import "SZNLibrary.h"
 #import "SZNZoteroAPIClient.h"
 #import "SZNItem.h"
+#import "SZNCollection.h"
+#import "SZNObject.h"
 
 @interface SZNLibrary ()
-- (NSString *)itemsPath;
 - (NSString *)deletedDataPath;
-- (NSString *)pathForResource:(Class <SZNResource>)resource;
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSMutableArray *)objectsKeys
@@ -45,6 +45,14 @@
 @synthesize identifier;
 @synthesize version;
 @synthesize lastItemsVersion;
+@synthesize lastCollectionsVersion;
+
++ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier
+{
+    SZNLibrary *library = [self new];
+    library.identifier = identifier;
+    return library;
+}
 
 #pragma mark - Requests
 
@@ -71,7 +79,7 @@
     NSArray *batchOfKeys = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
     
     [client getPath:[self pathForResource:resource]
-         parameters:@{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]}
+         parameters:[batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"}
             success:^(TBXML *XML) {
                 [downloadedObjects addObjectsFromArray:[resource objectsFromXML:XML]];
                 [objectsKeys removeObjectsInArray:batchOfKeys];
@@ -98,13 +106,13 @@
                           failure:failure];
 }
 
-- (void)fetchDeletedDataWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *deletedItemsKeys))success failure:(void (^)(NSError *))failure
+- (void)fetchDeletedDataWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success failure:(void (^)(NSError *))failure
 {
     [client getPath:[self deletedDataPath]
          parameters:@{@"newer": @"0"}
             success:^(NSDictionary *deletedData) {
                 if (success)
-                    success(deletedData[@"items"]);
+                    success(deletedData[@"items"], deletedData[@"collections"]);
             } failure:failure];
 }
 
@@ -114,11 +122,24 @@
     mutableParameters[@"itemVersion"] = updatedItem.version;
     mutableParameters[@"itemKey"]     = updatedItem.key;
     mutableParameters[@"itemType"]    = updatedItem.type;
-    [client patchPath:[[self itemsPath] stringByAppendingPathComponent:updatedItem.key] parameters:mutableParameters success:^(id responseObject) {
+    [client patchPath:[[self pathForResource:[SZNItem class]] stringByAppendingPathComponent:updatedItem.key] parameters:mutableParameters success:^(id responseObject) {
         updatedItem.synced  = @YES;
         updatedItem.version = client.lastModifiedVersion;
         if (success)
             success(updatedItem);
+    } failure:failure];
+}
+
+- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection withClient:(SZNZoteroAPIClient *)client success:(void (^)(id<SZNCollectionProtocol>))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedCollection.content];
+    mutableParameters[@"itemVersion"] = updatedCollection.version;
+    mutableParameters[@"itemKey"]     = updatedCollection.key;
+    [client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key] parameters:mutableParameters success:^(id responseObject) {
+        updatedCollection.synced  = @YES;
+        updatedCollection.version = client.lastModifiedVersion;
+        if (success)
+            success(updatedCollection);
     } failure:failure];
 }
 
@@ -148,11 +169,6 @@
 - (NSString *)pathForResource:(Class <SZNResource>)resource
 {
     return [[self pathPrefix] stringByAppendingPathComponent:[resource pathComponent]];
-}
-
-- (NSString *)itemsPath
-{
-    return [[self pathPrefix] stringByAppendingPathComponent:@"items"];
 }
 
 - (NSString *)deletedDataPath

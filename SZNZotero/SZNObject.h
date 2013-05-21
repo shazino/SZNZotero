@@ -22,8 +22,42 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <TBXML.h>
+
+@class SZNObject;
+
+@protocol SZNResource <NSObject>
+
++ (NSString *)pathComponent;
++ (NSString *)keyParameter;
+
+/**
+ Parses objects from an API XML response.
+ 
+ @param XML A `TBXML` representation of the API response.
+ 
+ @return An array of newly-created objects.
+ */
++ (NSArray *)objectsFromXML:(TBXML *)XML;
+
+/**
+ Parses an object from an API XML element.
+ 
+ @param XMLElement A `TBXMLElement` representation of the API response.
+ 
+ @return A `SZNObject` object.
+ */
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement;
+
+@end
+
 
 @protocol SZNObjectProtocol <NSObject>
+
+/**
+ The item content.
+ */
+@property (strong, nonatomic) NSDictionary *content;
 
 /**
  The object deleted status.
@@ -51,7 +85,7 @@
 /**
  `SZNObject` is a Zotero object.
  */
-@interface SZNObject : NSObject <SZNObjectProtocol>
+@interface SZNObject : NSObject <SZNObjectProtocol, SZNResource>
 
 - (BOOL)isSynced;
 

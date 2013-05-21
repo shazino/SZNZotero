@@ -24,7 +24,7 @@
 #import "SZNObject.h"
 #import <TBXML.h>
 
-@class SZNZoteroAPIClient;
+@class SZNZoteroAPIClient, SZNLibrary;
 
 typedef NS_ENUM(NSInteger, SZNTagType) {
     SZNTagCustom = 0,
@@ -71,6 +71,6 @@ typedef NS_ENUM(NSInteger, SZNTagType) {
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNTag` objects created from the response data of request.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchTagsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchTagsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end

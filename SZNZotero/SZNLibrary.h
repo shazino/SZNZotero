@@ -21,10 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "SZNObject.h"
 
 @class SZNZoteroAPIClient;
-@protocol SZNItemProtocol, SZNResource;
+@protocol SZNItemProtocol, SZNCollectionProtocol, SZNResource;
 
 @protocol SZNLibraryProtocol <NSObject>
 
@@ -39,6 +39,7 @@
 @property (nonatomic, strong) NSNumber *version;
 
 @property (nonatomic, strong) NSNumber *lastItemsVersion;
+@property (nonatomic, strong) NSNumber *lastCollectionsVersion;
 
 @end
 
@@ -46,7 +47,9 @@
 /**
  `SZNLibrary` is a Zotero library.
  */
-@interface SZNLibrary : NSObject <SZNLibraryProtocol>
+@interface SZNLibrary : SZNObject <SZNLibraryProtocol>
+
++ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier;
 
 /**
  Fetches items versions in the current library.
@@ -67,9 +70,10 @@
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure;
 
-- (void)fetchDeletedDataWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *deletedItemsKeys))success failure:(void (^)(NSError *))failure;
+- (void)fetchDeletedDataWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success failure:(void (^)(NSError *))failure;
 
 - (void)updateItem:(id<SZNItemProtocol>)updatedItem withClient:(SZNZoteroAPIClient *)client success:(void (^)(id<SZNItemProtocol>))success failure:(void (^)(NSError *))failure;
+- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection withClient:(SZNZoteroAPIClient *)client success:(void (^)(id<SZNCollectionProtocol>))success failure:(void (^)(NSError *))failure;
 
 - (void)deleteObjectsForResource:(Class <SZNResource>)resource
                             keys:(NSArray *)objectsKeys
@@ -78,5 +82,6 @@
                          failure:(void (^)(NSError *))failure;
 
 - (NSString *)pathPrefix;
+- (NSString *)pathForResource:(Class <SZNResource>)resource;
 
 @end

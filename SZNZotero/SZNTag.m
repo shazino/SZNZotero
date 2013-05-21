@@ -23,13 +23,7 @@
 
 #import "SZNTag.h"
 #import "SZNZoteroAPIClient.h"
-
-@interface SZNTag ()
-
-+ (NSString *)pathToTagsInLibraryWithUserIdentifier:(NSString *)userIdentifier;
-
-@end
-
+#import "SZNLibrary.h"
 
 @implementation SZNTag
 
@@ -58,17 +52,12 @@
 
 #pragma mark - Fetch
 
-+ (void)fetchTagsInLibraryWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTagsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToTagsInLibraryWithUserIdentifier:client.userIdentifier] parameters:nil
-            success:^(TBXML *XML) { if (success) success([self tagsFromXML:XML]); } failure:failure];
-}
-
-#pragma mark - Path
-
-+ (NSString *)pathToTagsInLibraryWithUserIdentifier:(NSString *)userIdentifier
-{
-    return [NSString stringWithFormat:@"users/%@/tags", userIdentifier];
+    [client getPath:[[library pathForResource:[SZNTag class]] stringByAppendingPathComponent:@"tags"]
+         parameters:nil
+            success:^(TBXML *XML) { if (success) success([self tagsFromXML:XML]); }
+            failure:failure];
 }
 
 @end

@@ -23,8 +23,12 @@
 
 #import "SZNObject.h"
 
+#import "SZNZoteroAPIClient.h"
+#import <TBXML.h>
+
 @implementation SZNObject
 
+@synthesize content;
 @synthesize deleted;
 @synthesize key;
 @synthesize synced;
@@ -33,6 +37,43 @@
 - (BOOL)isSynced
 {
     return [self.synced boolValue];
+}
+
+#pragma mark - Resource
+
++ (NSString *)pathComponent
+{
+    return nil;
+}
+
++ (NSString *)keyParameter
+{
+    return nil;
+}
+
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
+{
+    NSNumberFormatter *f = [NSNumberFormatter new];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    SZNObject *object = [[self class] new];
+    object.key        = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
+    object.version    = [f numberFromString:[TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO]];
+    
+    NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
+    if (JSONContent)
+        object.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
+    
+    return object;
+}
+
++ (NSArray *)objectsFromXML:(TBXML *)XML
+{
+    NSMutableArray *items = [NSMutableArray array];
+    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
+        [items addObject:[self objectFromXMLElement:XMLElement]];
+    }];
+    return items;
 }
 
 @end

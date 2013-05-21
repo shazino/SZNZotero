@@ -110,7 +110,7 @@
             content[field[@"field"]] = field[@"value"];
     }
     
-    [SZNItem createItemWithClient:self.client content:content success:^(id newItem) {
+    [SZNItem createItemInLibrary:self.library withClient:self.client content:content success:^(id newItem) {
         [[[UIAlertView alloc] initWithTitle:@"New Item Created" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
     } failure:^(NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
