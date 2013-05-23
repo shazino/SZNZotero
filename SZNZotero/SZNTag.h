@@ -46,35 +46,4 @@ typedef NS_ENUM(NSInteger, SZNTagType) {
  */
 @property (assign, nonatomic) SZNTagType type;
 
-/**
- Parses a tag from an API XML element.
- 
- @param XMLElement A `TBXMLElement` representation of the API response.
- 
- @return A `SZNTag` object.
- */
-+ (SZNTag *)tagFromXMLElement:(TBXMLElement *)XMLElement;
-
-/**
- Parses tags from an API XML response.
- 
- @param XML A `TBXML` representation of the API response.
- 
- @return An array of `SZNTag` objects.
- */
-+ (NSArray *)tagsFromXML:(TBXML *)XML;
-
-/**
- Fetches all the tags in the given library.
- 
- @param library The tag’s library.
- @param success A block object to be executed when the request operation finishes successfully. 
-  This block has no return value and takes one argument: an array of `SZNTag` objects created from the response data.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
-  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
- */
-+ (void)fetchTagsInLibrary:(SZNLibrary *)library
-                   success:(void (^)(NSArray *))success
-                   failure:(void (^)(NSError *))failure;
-
 @end

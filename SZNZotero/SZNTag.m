@@ -25,42 +25,21 @@
 #import "SZNZoteroAPIClient.h"
 #import "SZNLibrary.h"
 
+
 @implementation SZNTag
 
-#pragma mark - Parse
-
-+ (SZNTag *)tagFromXMLElement:(TBXMLElement *)XMLElement
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
+                          inLibrary:(SZNLibrary *)library
 {
-    SZNTag *tag = [SZNTag new];
-    tag.name = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:NO];
-    
-    NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
-    NSDictionary *content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]
-                                                            options:kNilOptions error:nil];
-    tag.type = [content[@"type"] integerValue];
-    
+    SZNTag *tag = (SZNTag *)[super objectFromXMLElement:XMLElement inLibrary:library];
+    tag.type = [tag.content[@"type"] integerValue];
+    tag.name = tag.content[@"tag"];
     return tag;
 }
 
-+ (NSArray *)tagsFromXML:(TBXML *)XML
++ (NSString *)pathComponent
 {
-    NSMutableArray *tags = [NSMutableArray array];
-    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
-        [tags addObject:[self tagFromXMLElement:XMLElement]];
-    }];
-    return tags;
-}
-
-#pragma mark - Fetch
-
-+ (void)fetchTagsInLibrary:(SZNLibrary *)library
-                   success:(void (^)(NSArray *))success
-                   failure:(void (^)(NSError *))failure
-{
-    [library.client getPath:[[library pathForResource:[SZNTag class]] stringByAppendingPathComponent:@"tags"]
-                 parameters:nil
-                    success:^(TBXML *XML) { if (success) success([self tagsFromXML:XML]); }
-                    failure:failure];
+    return @"tags";
 }
 
 @end

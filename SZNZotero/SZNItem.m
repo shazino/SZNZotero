@@ -125,33 +125,6 @@
             failure:failure];
 }
 
-+ (void)fetchItemsInLibrary:(SZNLibrary *)library
-                    success:(void (^)(NSArray *))success
-                    failure:(void (^)(NSError *))failure;
-{
-    [library.client getPath:[library pathForResource:[SZNItem class]]
-                 parameters:nil
-                    success:^(TBXML *XML) {
-                        if (success)
-                            success([self objectsFromXML:XML inLibrary:library]);
-                    }
-                    failure:failure];
-}
-
-+ (void)fetchTopItemsInLibrary:(SZNLibrary *)library
-                       success:(void (^)(NSArray *))success
-                       failure:(void (^)(NSError *))failure
-{
-    NSString *resourcePath = [library pathForResource:[SZNItem class]];
-    [library.client getPath:[resourcePath stringByAppendingPathComponent:@"top"]
-                 parameters:@{@"content": @"json"}
-                    success:^(TBXML *XML) {
-                        if (success)
-                            success([self objectsFromXML:XML inLibrary:library]);
-                    }
-                    failure:failure];
-}
-
 - (void)fetchChildItemsSuccess:(void (^)(NSArray *))success
                        failure:(void (^)(NSError *))failure
 {

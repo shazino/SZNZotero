@@ -212,17 +212,17 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     }
     else
     {
-        [SZNItem fetchTopItemsInLibrary:self.library success:^(NSArray *items) {
+        [self.library fetchObjectsForResource:[SZNItem class] keys:nil specifier:@"top" success:^(NSArray *items) {
             self.items = items;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
             
-            [SZNCollection fetchTopCollectionsInLibrary:self.library success:^(NSArray *collections) {
+            [self.library fetchObjectsForResource:[SZNCollection class] keys:nil specifier:@"top" success:^(NSArray *collections) {
                 self.collections = collections;
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection]
                               withRowAnimation:UITableViewRowAnimationAutomatic];
                 
-                [SZNTag fetchTagsInLibrary:self.library success:^(NSArray *tags) {
+                [self.library fetchObjectsForResource:[SZNTag class] keys:nil specifier:nil success:^(NSArray *tags) {
                     self.tags = tags;
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection]
                                   withRowAnimation:UITableViewRowAnimationAutomatic];

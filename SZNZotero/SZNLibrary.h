@@ -92,6 +92,7 @@
  
  @param resource The resource to fetch.
  @param objectsKeys An array of `NSString` corresponding to the keys of resources to fetch.
+ @param specifier A string to be added to the main path
  @param success A block object to be executed when the request operation finishes successfully.
  This block has no return value and takes one argument: an array of objects created from the response data.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
@@ -99,6 +100,7 @@
  */
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSArray *)objectsKeys
+                      specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure;
 

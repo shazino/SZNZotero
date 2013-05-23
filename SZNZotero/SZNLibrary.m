@@ -32,6 +32,7 @@
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSMutableArray *)objectsKeys
+                      specifier:(NSString *)specifier
               downloadedObjects:(NSMutableArray *)downloadedObjects
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure;
@@ -73,15 +74,19 @@
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSMutableArray *)objectsKeys
+                      specifier:(NSString *)specifier
               downloadedObjects:(NSMutableArray *)downloadedObjects
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure
 {
     const NSUInteger batchLimit = 50;
-    NSArray *batchOfKeys = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
+    NSArray *batchOfKeys     = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
     NSDictionary *parameters = [batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"};
+    NSString *path           = [self pathForResource:resource];
+    if (specifier)
+        path = [path stringByAppendingPathComponent:specifier];
     
-    [self.client getPath:[self pathForResource:resource]
+    [self.client getPath:path
               parameters:parameters
                  success:^(TBXML *XML) {
                      NSArray *parsedObjects = [resource objectsFromXML:XML inLibrary:self];
@@ -97,6 +102,7 @@
                      if ([objectsKeys count] > 0)
                          [self fetchObjectsForResource:resource
                                                   keys:objectsKeys
+                                             specifier:nil
                                      downloadedObjects:downloadedObjects
                                                success:success
                                                failure:failure];
@@ -108,11 +114,13 @@
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSArray *)objectsKeys
+                      specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure
 {
     [self fetchObjectsForResource:resource
                              keys:[NSMutableArray arrayWithArray:objectsKeys]
+                        specifier:specifier
                 downloadedObjects:[NSMutableArray array]
                           success:success
                           failure:failure];

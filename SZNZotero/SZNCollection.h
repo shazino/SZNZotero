@@ -47,34 +47,6 @@
 @property (copy, nonatomic) NSString *title;
 
 /**
- Fetches all collections in library.
- 
- @param library The collection’s library.
- @param success A block object to be executed when the request operation finishes successfully. 
-  This block has no return value and takes one argument: an array of `SZNCollection` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, 
-  or that finishes successfully, but encountered an error while parsing the response data.
-  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
- */
-+ (void)fetchCollectionsInLibrary:(SZNLibrary *)library
-                          success:(void (^)(NSArray *))success
-                          failure:(void (^)(NSError *))failure;
-
-/**
- Fetches all top-level collections in library.
- 
- @param library The collection’s library.
- @param success A block object to be executed when the request operation finishes successfully. 
-  This block has no return value and takes one argument: an array of `SZNCollection` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, 
-  or that finishes successfully, but encountered an error while parsing the response data.
-  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
- */
-+ (void)fetchTopCollectionsInLibrary:(SZNLibrary *)library
-                             success:(void (^)(NSArray *))success
-                             failure:(void (^)(NSError *))failure;
-
-/**
  Fetches all items in the collection.
  
  @param success A block object to be executed when the request operation finishes successfully.

@@ -38,11 +38,16 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
 {
     if ([[url scheme] isEqualToString:SZNURLScheme])
     {
-        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:@{kAFApplicationLaunchOptionsURLKey: url}];
+        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification
+                                                                     object:nil
+                                                                   userInfo:@{kAFApplicationLaunchOptionsURLKey: url}];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
     

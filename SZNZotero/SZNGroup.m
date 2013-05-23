@@ -25,12 +25,6 @@
 #import "SZNZoteroAPIClient.h"
 #import <TBXML.h>
 
-@interface SZNGroup ()
-
-+ (id)objectFromXMLElement:(TBXMLElement *)XMLElement;
-
-@end
-
 
 @implementation SZNGroup
 
@@ -39,17 +33,11 @@
     return @"groups";
 }
 
-+ (id)objectFromXMLElement:(TBXMLElement *)XMLElement
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
+                          inLibrary:(SZNLibrary *)library
 {
-    SZNGroup *group = [[self class] new];
+    SZNGroup *group = (SZNGroup *)[super objectFromXMLElement:XMLElement inLibrary:library];
     group.identifier = [TBXML textForChildElementNamed:@"zapi:groupID" parentElement:XMLElement escaped:NO];
-    
-    NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
-    if (JSONContent) {
-        NSData *JSONData = [JSONContent dataUsingEncoding:NSUTF8StringEncoding];
-        group.content = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
-    }
-    
     return group;
 }
 
