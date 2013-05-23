@@ -31,15 +31,15 @@
 /**
  The library identifier.
  */
-@property (nonatomic, copy) NSString *identifier;
+@property (copy, nonatomic) NSString *identifier;
 
 /**
  The library version.
  */
-@property (nonatomic, strong) NSNumber *version;
+@property (strong, nonatomic) NSNumber *version;
 
-@property (nonatomic, strong) NSNumber *lastItemsVersion;
-@property (nonatomic, strong) NSNumber *lastCollectionsVersion;
+@property (strong, nonatomic) NSNumber *lastItemsVersion;
+@property (strong, nonatomic) NSNumber *lastCollectionsVersion;
 
 @end
 
@@ -49,7 +49,9 @@
  */
 @interface SZNLibrary : SZNObject <SZNLibraryProtocol>
 
-+ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier;
+@property (strong, nonatomic) SZNZoteroAPIClient *client;
+
++ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier client:(SZNZoteroAPIClient *)client;
 
 /**
  Fetches items versions in the current library.
@@ -60,24 +62,21 @@
  */
 - (void)fetchObjectsVersionsForResource:(Class <SZNResource>)resource
                    newerThanLastVersion:(NSNumber *)lastVersion
-                             withClient:(SZNZoteroAPIClient *)client
                                 success:(void (^)(NSDictionary *))success
                                 failure:(void (^)(NSError *))failure;
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSArray *)objectsKeys
-                     withClient:(SZNZoteroAPIClient *)client
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure;
 
-- (void)fetchDeletedDataWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success failure:(void (^)(NSError *))failure;
+- (void)fetchDeletedDataWithSuccess:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success failure:(void (^)(NSError *))failure;
 
-- (void)updateItem:(id<SZNItemProtocol>)updatedItem withClient:(SZNZoteroAPIClient *)client success:(void (^)(id<SZNItemProtocol>))success failure:(void (^)(NSError *))failure;
-- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection withClient:(SZNZoteroAPIClient *)client success:(void (^)(id<SZNCollectionProtocol>))success failure:(void (^)(NSError *))failure;
+- (void)updateItem:(id<SZNItemProtocol>)updatedItem success:(void (^)(id<SZNItemProtocol>))success failure:(void (^)(NSError *))failure;
+- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection success:(void (^)(id<SZNCollectionProtocol>))success failure:(void (^)(NSError *))failure;
 
 - (void)deleteObjectsForResource:(Class <SZNResource>)resource
                             keys:(NSArray *)objectsKeys
-                      withClient:(SZNZoteroAPIClient *)client
                          success:(void (^)())success
                          failure:(void (^)(NSError *))failure;
 

@@ -33,7 +33,6 @@
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSMutableArray *)objectsKeys
               downloadedObjects:(NSMutableArray *)downloadedObjects
-                     withClient:(SZNZoteroAPIClient *)client
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure;
 
@@ -47,10 +46,11 @@
 @synthesize lastItemsVersion;
 @synthesize lastCollectionsVersion;
 
-+ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier
++ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier client:(SZNZoteroAPIClient *)client
 {
     SZNLibrary *library = [self new];
     library.identifier = identifier;
+    library.client = client;
     return library;
 }
 
@@ -58,86 +58,89 @@
 
 - (void)fetchObjectsVersionsForResource:(Class <SZNResource>)resource
                    newerThanLastVersion:(NSNumber *)lastVersion
-                             withClient:(SZNZoteroAPIClient *)client
                                 success:(void (^)(NSDictionary *))success
                                 failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathForResource:resource]
-         parameters:@{@"newer": lastVersion ?: @(0), @"format": @"versions"}
-            success:^(id responseObject) { if (success) success([responseObject isKindOfClass:[NSDictionary class]] ? responseObject : nil); }
-            failure:failure];
+    [self.client getPath:[self pathForResource:resource]
+              parameters:@{@"newer": lastVersion ?: @(0), @"format": @"versions"}
+                 success:^(id responseObject) { if (success) success([responseObject isKindOfClass:[NSDictionary class]] ? responseObject : nil); }
+                 failure:failure];
 }
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSMutableArray *)objectsKeys
               downloadedObjects:(NSMutableArray *)downloadedObjects
-                     withClient:(SZNZoteroAPIClient *)client
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure
 {
     const NSUInteger batchLimit = 50;
     NSArray *batchOfKeys = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
     
-    [client getPath:[self pathForResource:resource]
-         parameters:[batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"}
-            success:^(TBXML *XML) {
-                [downloadedObjects addObjectsFromArray:[resource objectsFromXML:XML]];
-                [objectsKeys removeObjectsInArray:batchOfKeys];
-                
-                if ([objectsKeys count] > 0)
-                    [self fetchObjectsForResource:resource keys:objectsKeys downloadedObjects:downloadedObjects withClient:client success:success failure:failure];
-                else if (success)
-                    success(downloadedObjects);
-            }
-            failure:failure];
+    [self.client getPath:[self pathForResource:resource]
+              parameters:[batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"}
+                 success:^(TBXML *XML) {
+                     NSArray *parsedObjects = [resource objectsFromXML:XML inLibrary:self];
+                     for (id object in parsedObjects) {
+                         if ([object isKindOfClass:[SZNLibrary class]])
+                             ((SZNLibrary *)object).client = self.client;
+                         if ([object isKindOfClass:[SZNObject class]])
+                             ((SZNObject *)object).library = self;
+                     }
+                     [downloadedObjects addObjectsFromArray:parsedObjects];
+                     [objectsKeys removeObjectsInArray:batchOfKeys];
+                     
+                     if ([objectsKeys count] > 0)
+                         [self fetchObjectsForResource:resource keys:objectsKeys downloadedObjects:downloadedObjects success:success failure:failure];
+                     else if (success)
+                         success(downloadedObjects);
+                 }
+                 failure:failure];
 }
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
                            keys:(NSArray *)objectsKeys
-                     withClient:(SZNZoteroAPIClient *)client
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure
 {
     [self fetchObjectsForResource:resource
                              keys:[NSMutableArray arrayWithArray:objectsKeys]
                 downloadedObjects:[NSMutableArray array]
-                       withClient:client
                           success:success
                           failure:failure];
 }
 
-- (void)fetchDeletedDataWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success failure:(void (^)(NSError *))failure
+- (void)fetchDeletedDataWithSuccess:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self deletedDataPath]
-         parameters:@{@"newer": @"0"}
-            success:^(NSDictionary *deletedData) {
-                if (success)
-                    success(deletedData[@"items"], deletedData[@"collections"]);
-            } failure:failure];
+    [self.client getPath:[self deletedDataPath]
+              parameters:@{@"newer": @"0"}
+                 success:^(NSDictionary *deletedData) {
+                     if (success)
+                         success(deletedData[@"items"], deletedData[@"collections"]);
+                 } failure:failure];
 }
 
-- (void)updateItem:(id<SZNItemProtocol>)updatedItem withClient:(SZNZoteroAPIClient *)client success:(void (^)(id<SZNItemProtocol>))success failure:(void (^)(NSError *))failure
+- (void)updateItem:(id<SZNItemProtocol>)updatedItem success:(void (^)(id<SZNItemProtocol>))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedItem.content];
     mutableParameters[@"itemVersion"] = updatedItem.version;
     mutableParameters[@"itemKey"]     = updatedItem.key;
     mutableParameters[@"itemType"]    = updatedItem.type;
-    [client patchPath:[[self pathForResource:[SZNItem class]] stringByAppendingPathComponent:updatedItem.key] parameters:mutableParameters success:^(id responseObject) {
+    [self.client patchPath:[[self pathForResource:[SZNItem class]] stringByAppendingPathComponent:updatedItem.key] parameters:mutableParameters success:^(id responseObject) {
         updatedItem.synced  = @YES;
-        updatedItem.version = client.lastModifiedVersion;
+        updatedItem.version = self.client.lastModifiedVersion;
         if (success)
             success(updatedItem);
     } failure:failure];
 }
 
-- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection withClient:(SZNZoteroAPIClient *)client success:(void (^)(id<SZNCollectionProtocol>))success failure:(void (^)(NSError *))failure
+- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection success:(void (^)(id<SZNCollectionProtocol>))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedCollection.content];
     mutableParameters[@"itemVersion"] = updatedCollection.version;
     mutableParameters[@"itemKey"]     = updatedCollection.key;
-    [client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key] parameters:mutableParameters success:^(id responseObject) {
+    [self.client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key] parameters:mutableParameters success:^(id responseObject) {
         updatedCollection.synced  = @YES;
-        updatedCollection.version = client.lastModifiedVersion;
+        updatedCollection.version = self.client.lastModifiedVersion;
         if (success)
             success(updatedCollection);
     } failure:failure];
@@ -145,7 +148,6 @@
 
 - (void)deleteObjectsForResource:(Class <SZNResource>)resource
                             keys:(NSArray *)objectsKeys
-                      withClient:(SZNZoteroAPIClient *)client
                          success:(void (^)())success
                          failure:(void (^)(NSError *))failure
 {
@@ -156,7 +158,10 @@
         NSLog(@"[!] Warning: cannot delete more than 50 objects");
     }
     
-    [client deletePath:[self pathForResource:resource] parameters:@{[resource keyParameter]: [objectsKeys componentsJoinedByString:@","]} success:success failure:failure];
+    [self.client deletePath:[self pathForResource:resource]
+                 parameters:@{[resource keyParameter]: [objectsKeys componentsJoinedByString:@","]}
+                    success:success
+                    failure:failure];
 }
 
 #pragma mark - Path

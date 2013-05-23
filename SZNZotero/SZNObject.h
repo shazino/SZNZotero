@@ -24,7 +24,7 @@
 #import <Foundation/Foundation.h>
 #import <TBXML.h>
 
-@class SZNObject;
+@class SZNObject, SZNLibrary;
 
 @protocol SZNResource <NSObject>
 
@@ -38,7 +38,7 @@
  
  @return An array of newly-created objects.
  */
-+ (NSArray *)objectsFromXML:(TBXML *)XML;
++ (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library;
 
 /**
  Parses an object from an API XML element.
@@ -47,7 +47,7 @@
  
  @return A `SZNObject` object.
  */
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement;
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement inLibrary:(SZNLibrary *)library;
 
 @end
 
@@ -86,6 +86,8 @@
  `SZNObject` is a Zotero object.
  */
 @interface SZNObject : NSObject <SZNObjectProtocol, SZNResource>
+
+@property (strong, nonatomic) SZNLibrary *library;
 
 - (BOOL)isSynced;
 

@@ -12,7 +12,6 @@
 
 @interface SZNItemViewController : UITableViewController
 
-@property (strong, nonatomic) SZNZoteroAPIClient *client;
 @property (strong, nonatomic) SZNLibrary *library;
 @property (nonatomic, strong) SZNItem *item;
 

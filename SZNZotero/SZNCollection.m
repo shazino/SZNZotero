@@ -33,9 +33,9 @@
 
 #pragma mark - Parse
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement inLibrary:(SZNLibrary *)library
 {
-    SZNCollection *collection = (SZNCollection *)[super objectFromXMLElement:XMLElement];
+    SZNCollection *collection = (SZNCollection *)[super objectFromXMLElement:XMLElement inLibrary:library];
     collection.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
     return collection;
 }
@@ -46,7 +46,7 @@
 {
     [client getPath:[library pathForResource:[SZNCollection class]]
          parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
+            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
             failure:failure];
 }
 
@@ -54,7 +54,7 @@
 {
     [client getPath:[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:@"top"]
          parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
+            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
             failure:failure];
 }
 
@@ -62,7 +62,7 @@
 {
     [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"items"]
          parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); }
+            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML inLibrary:library]); }
             failure:failure];
 }
 
@@ -70,7 +70,7 @@
 {
     [client getPath:[[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"items"] stringByAppendingPathComponent:@"top"]
          parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); }
+            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML inLibrary:library]); }
             failure:failure];
 }
 
@@ -78,7 +78,7 @@
 {
     [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"collections"]
          parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNCollection objectsFromXML:XML]); }
+            success:^(TBXML *XML) { if (success) success([SZNCollection objectsFromXML:XML inLibrary:library]); }
             failure:failure];
 }
 

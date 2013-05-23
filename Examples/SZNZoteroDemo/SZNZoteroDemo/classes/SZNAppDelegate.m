@@ -32,9 +32,8 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
     
     SZNZoteroAPIClient *client = [[SZNZoteroAPIClient alloc] initWithKey:clientKey secret:clientSecret URLScheme:SZNURLScheme];
     
-    SZNLibrariesViewController *librariesViewController  = (SZNLibrariesViewController *)((UINavigationController *)self.window.rootViewController).topViewController;
-    librariesViewController.client = client;
-    librariesViewController.user   = (SZNUser *)[SZNUser libraryWithIdentifier:client.userIdentifier];
+    SZNLibrariesViewController *librariesViewController = (SZNLibrariesViewController *)((UINavigationController *)self.window.rootViewController).topViewController;
+    librariesViewController.user = (SZNUser *)[SZNUser libraryWithIdentifier:client.userIdentifier client:client];
     
     return YES;
 }

@@ -20,6 +20,8 @@ NS_ENUM(NSUInteger, SZNLibrariesSections)
 
 @property (strong, nonatomic) NSArray *groups;
 
+- (void)fetchGroupsInLibrary:(SZNLibrary *)library;
+
 @end
 
 
@@ -31,24 +33,44 @@ NS_ENUM(NSUInteger, SZNLibrariesSections)
 {
     [super viewDidLoad];
     
-    [self.user fetchObjectsForResource:[SZNGroup class] keys:nil withClient:self.client success:^(NSArray *groups) {
-        self.groups = groups;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNGroupsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } failure:^(NSError *error) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-    }];
+    
+    if (self.user.client.isLoggedIn)
+    {
+        [self fetchGroupsInLibrary:self.user];
+    }
+    else
+    {
+        [self.user.client authenticateWithLibraryAccess:YES notesAccess:YES writeAccess:YES groupAccessLevel:SZNZoteroAccessReadWrite success:^(AFOAuth1Token *token) {
+            [self fetchGroupsInLibrary:self.user];
+        } failure:^(NSError *error) {
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+        }];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.destinationViewController isKindOfClass:[SZNItemsViewController class]])
     {
-        ((SZNItemsViewController *)segue.destinationViewController).client = self.client;
         if (self.tableView.indexPathForSelectedRow.section == SZNMyLibrarySection)
             ((SZNItemsViewController *)segue.destinationViewController).library = self.user;
         else
             ((SZNItemsViewController *)segue.destinationViewController).library = self.groups[self.tableView.indexPathForSelectedRow.row];
     }
+}
+
+#pragma mark - Fetch
+
+- (void)fetchGroupsInLibrary:(SZNLibrary *)library
+{
+    [self.user fetchObjectsForResource:[SZNGroup class] keys:nil success:^(NSArray *groups) {
+        for (SZNGroup *group in groups)
+            group.client = self.user.client;
+        self.groups = groups;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNGroupsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } failure:^(NSError *error) {
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+    }];
 }
 
 #pragma mark - Table view data source

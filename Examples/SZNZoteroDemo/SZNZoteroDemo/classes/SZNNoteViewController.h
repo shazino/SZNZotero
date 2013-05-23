@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @protocol SZNNoteViewDelegate;
-@class SZNZoteroAPIClient, SZNLibrary, SZNItem;
+@class SZNLibrary, SZNItem;
 
 @interface SZNNoteViewController : UIViewController
 
-@property (strong, nonatomic) SZNZoteroAPIClient *client;
 @property (strong, nonatomic) SZNLibrary *library;
 @property (strong, nonatomic) SZNItem *noteItem;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

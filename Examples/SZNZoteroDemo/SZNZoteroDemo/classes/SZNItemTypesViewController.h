@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class SZNZoteroAPIClient;
+@class SZNLibrary;
 
 @interface SZNItemTypesViewController : UITableViewController
 
-@property (strong, nonatomic) SZNZoteroAPIClient *client;
+@property (strong, nonatomic) SZNLibrary *library;
 
 - (IBAction)cancel:(id)sender;
 

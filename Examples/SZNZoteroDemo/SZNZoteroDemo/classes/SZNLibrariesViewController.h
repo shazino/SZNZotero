@@ -13,7 +13,6 @@
 
 @interface SZNLibrariesViewController : UITableViewController
 
-@property (strong, nonatomic) SZNZoteroAPIClient *client;
 @property (strong, nonatomic) SZNUser *user;
 
 @end

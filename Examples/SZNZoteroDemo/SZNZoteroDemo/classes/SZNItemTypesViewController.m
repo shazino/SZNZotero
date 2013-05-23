@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     
-    [SZNItem fetchTypesWithClient:self.client success:^(NSArray *types) {
+    [SZNItem fetchTypesWithClient:self.library.client success:^(NSArray *types) {
         self.itemTypes = types;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
@@ -33,9 +33,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.destinationViewController isKindOfClass:[SZNItemFieldsViewController class]])
-    {
-        ((SZNItemFieldsViewController *)segue.destinationViewController).client = self.client;
+    if ([segue.destinationViewController isKindOfClass:[SZNItemFieldsViewController class]]) {
+        ((SZNItemFieldsViewController *)segue.destinationViewController).library = self.library;
         ((SZNItemFieldsViewController *)segue.destinationViewController).itemType = self.itemTypes[self.tableView.indexPathForSelectedRow.row][@"itemType"];
     }
 }
@@ -56,12 +55,9 @@
 {
     static NSString *CellIdentifier = @"SZNTypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
     cell.textLabel.text = self.itemTypes[indexPath.row][@"localized"];
     return cell;
 }
-
-#pragma mark - Table view delegate
 
 #pragma mark - Actions
 

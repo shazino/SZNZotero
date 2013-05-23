@@ -25,7 +25,7 @@
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
-    [SZNItem fetchValidFieldsWithClient:self.client forType:self.itemType success:^(NSArray *fields) {
+    [SZNItem fetchValidFieldsWithClient:self.library.client forType:self.itemType success:^(NSArray *fields) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         self.itemFields = [NSMutableArray arrayWithArray:fields];
         [self.tableView reloadData];
@@ -110,7 +110,7 @@
             content[field[@"field"]] = field[@"value"];
     }
     
-    [SZNItem createItemInLibrary:self.library withClient:self.client content:content success:^(id newItem) {
+    [SZNItem createItemInLibrary:self.library content:content success:^(id newItem) {
         [[[UIAlertView alloc] initWithTitle:@"New Item Created" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
     } failure:^(NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);

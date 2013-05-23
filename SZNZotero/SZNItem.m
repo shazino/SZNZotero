@@ -65,32 +65,32 @@
 
 #pragma mark - Parse
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement inLibrary:(SZNLibrary *)library
 {
-    SZNItem *item = (SZNItem *)[super objectFromXMLElement:XMLElement];
+    SZNItem *item = (SZNItem *)[super objectFromXMLElement:XMLElement inLibrary:library];
     item.type     = item.content[@"itemType"];
     return item;
 }
 
 #pragma mark - Create
 
-+ (void)createItemInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)content success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
++ (void)createItemInLibrary:(SZNLibrary *)library content:(NSDictionary *)content success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
 {
-    [client postPath:[library pathForResource:[SZNItem class]]
-          parameters:@{@"items": @[content]}
-            success:^(NSDictionary *responseObject) {
-                NSDictionary *successResponse = responseObject[@"success"];
-                NSDictionary *failedResponse  = responseObject[@"failed"];
-                
-                if ([failedResponse count] > 0 && failure)
-                {
-                    NSDictionary *errorDictionary = failedResponse[[failedResponse allKeys][0]];
-                    failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
-                }
-                else if (success)
-                    success(nil);
-            }
-             failure:failure];
+    [library.client postPath:[library pathForResource:[SZNItem class]]
+                  parameters:@{@"items": @[content]}
+                     success:^(NSDictionary *responseObject) {
+                         NSDictionary *successResponse = responseObject[@"success"];
+                         NSDictionary *failedResponse  = responseObject[@"failed"];
+                         
+                         if ([failedResponse count] > 0 && failure)
+                         {
+                             NSDictionary *errorDictionary = failedResponse[[failedResponse allKeys][0]];
+                             failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
+                         }
+                         else if (success)
+                             success(nil);
+                     }
+                     failure:failure];
 }
 
 #pragma mark - Fetch
@@ -105,69 +105,69 @@
     [client getPath:[self pathToValidFields] parameters:@{@"itemType": itemType} success:^(id responseObject) { if (success) success(responseObject); } failure:failure];
 }
 
-+ (void)fetchItemsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchItemsInLibrary:(SZNLibrary *)library success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 {
-    [client getPath:[library pathForResource:[SZNItem class]]
-         parameters:nil
-            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
-            failure:failure];
+    [library.client getPath:[library pathForResource:[SZNItem class]]
+                 parameters:nil
+                    success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
+                    failure:failure];
 }
 
-+ (void)fetchTopItemsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopItemsInLibrary:(SZNLibrary *)library success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:@"top"]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML]); }
-            failure:failure];
+    [library.client getPath:[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:@"top"]
+                 parameters:@{@"content": @"json"}
+                    success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
+                    failure:failure];
 }
 
-- (void)fetchChildItemsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchChildItemsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"child"]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML]); }
-            failure:failure];
+    [self.library.client getPath:[[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"child"]
+                      parameters:@{@"content": @"json"}
+                         success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML inLibrary:self.library]); }
+                         failure:failure];
 }
 
-- (NSURLRequest *)fileURLRequestInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client
+- (NSURLRequest *)fileURLRequest
 {
-    return [client requestWithMethod:@"GET"
-                                path:[[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"file"]
-                          parameters:nil];
+    return [self.library.client requestWithMethod:@"GET"
+                                             path:[[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"file"]
+                                       parameters:nil];
 }
 
 #pragma mark - Update
 
-- (void)updateInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client content:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+- (void)updateWithContent:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
 {
-    [client putPath:[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
-         parameters:newContent
-            success:^(TBXML *XML) { if (success) success(self); }
-            failure:failure];
+    [self.library.client putPath:[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
+                      parameters:newContent
+                         success:^(TBXML *XML) { if (success) success(self); }
+                         failure:failure];
 }
 
-- (void)updateInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client partialContent:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
+- (void)updateWithPartialContent:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:partialContent];
     mutableParameters[@"itemVersion"] = self.version;
     mutableParameters[@"itemKey"]     = self.key;
     mutableParameters[@"itemType"]    = self.type;
-    [client patchPath:[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
-           parameters:mutableParameters
-              success:^(TBXML *XML) { if (success) success(self); }
-              failure:failure];
+    [self.library.client patchPath:[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
+                        parameters:mutableParameters
+                           success:^(TBXML *XML) { if (success) success(self); }
+                           failure:failure];
 }
 
 #pragma mark - Delete
 
-- (void)deleteInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)())success failure:(void (^)(NSError *))failure
+- (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
     mutableParameters[@"itemVersion"] = self.version;
-    [client deletePath:[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
-            parameters:mutableParameters
-               success:^() { if (success) success(); }
-               failure:failure];
+    [self.library.client deletePath:[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
+                         parameters:mutableParameters
+                            success:^() { if (success) success(); }
+                            failure:failure];
 }
 
 #pragma mark - Path

@@ -33,17 +33,19 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
     NSString *HTMLString = [self HTMLString];
     
-    [self.noteItem updateInLibrary:self.library withClient:self.client partialContent:@{@"note" : HTMLString} success:^(SZNItem *item) {
-        NSMutableDictionary *content = [NSMutableDictionary dictionaryWithDictionary:self.noteItem.content];
-        content[@"note"] = HTMLString;
-        self.noteItem.content = content;
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-        
-        [self.delegate noteViewController:self didSaveItem:self.noteItem];
-    } failure:^(NSError *error) {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-    }];
+    [self.noteItem updateWithPartialContent:@{@"note": HTMLString}
+                                    success:^(SZNItem *item) {
+                                        NSMutableDictionary *content = [NSMutableDictionary dictionaryWithDictionary:self.noteItem.content];
+                                        content[@"note"] = HTMLString;
+                                        self.noteItem.content = content;
+                                        self.navigationItem.rightBarButtonItem.enabled = YES;
+                                        
+                                        [self.delegate noteViewController:self didSaveItem:self.noteItem];
+                                    }
+                                    failure:^(NSError *error) {
+                                        self.navigationItem.rightBarButtonItem.enabled = YES;
+                                        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+                                    }];
 }
 
 @end

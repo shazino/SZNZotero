@@ -47,7 +47,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 {
     [super viewDidLoad];
     
-    [self.item fetchChildItemsInLibrary:self.library withClient:self.client success:^(NSArray *children) {
+    [self.item fetchChildItemsSuccess:^(NSArray *children) {
         self.notes = children;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
@@ -66,12 +66,11 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     if ([segue.destinationViewController isKindOfClass:[SZNNoteViewController class]])
     {
         ((SZNNoteViewController *)segue.destinationViewController).noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
-        ((SZNNoteViewController *)segue.destinationViewController).client = self.client;
         ((SZNNoteViewController *)segue.destinationViewController).delegate = self;
     }
     else if ([segue.destinationViewController isKindOfClass:[SZNAttachmentViewController class]])
     {
-        ((SZNAttachmentViewController *)segue.destinationViewController).fileURLRequest = [self.item fileURLRequestInLibrary:self.library withClient:self.client];
+        ((SZNAttachmentViewController *)segue.destinationViewController).fileURLRequest = [self.item fileURLRequest];
     }
 }
 
