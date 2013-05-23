@@ -52,10 +52,11 @@ NS_ENUM(NSUInteger, SZNLibrariesSections)
 {
     if ([segue.destinationViewController isKindOfClass:[SZNItemsViewController class]])
     {
+        SZNItemsViewController *itemsViewController = (SZNItemsViewController *)segue.destinationViewController;
         if (self.tableView.indexPathForSelectedRow.section == SZNMyLibrarySection)
-            ((SZNItemsViewController *)segue.destinationViewController).library = self.user;
+            itemsViewController.library = self.user;
         else
-            ((SZNItemsViewController *)segue.destinationViewController).library = self.groups[self.tableView.indexPathForSelectedRow.row];
+            itemsViewController.library = self.groups[self.tableView.indexPathForSelectedRow.row];
     }
 }
 
@@ -67,7 +68,8 @@ NS_ENUM(NSUInteger, SZNLibrariesSections)
         for (SZNGroup *group in groups)
             group.client = self.user.client;
         self.groups = groups;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNGroupsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNGroupsSection]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     }];

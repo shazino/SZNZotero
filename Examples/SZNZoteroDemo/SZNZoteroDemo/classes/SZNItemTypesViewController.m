@@ -33,9 +33,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.destinationViewController isKindOfClass:[SZNItemFieldsViewController class]]) {
-        ((SZNItemFieldsViewController *)segue.destinationViewController).library = self.library;
-        ((SZNItemFieldsViewController *)segue.destinationViewController).itemType = self.itemTypes[self.tableView.indexPathForSelectedRow.row][@"itemType"];
+    if ([segue.destinationViewController isKindOfClass:[SZNItemFieldsViewController class]])
+    {
+        SZNItemFieldsViewController *itemFieldsViewController = (SZNItemFieldsViewController *)segue.destinationViewController;
+        itemFieldsViewController.library = self.library;
+        itemFieldsViewController.itemType = self.itemTypes[self.tableView.indexPathForSelectedRow.row][@"itemType"];
     }
 }
 

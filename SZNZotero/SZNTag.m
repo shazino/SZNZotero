@@ -35,7 +35,8 @@
     tag.name = [TBXML textForChildElementNamed:@"title" parentElement:XMLElement escaped:NO];
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
-    NSDictionary *content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
+    NSDictionary *content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]
+                                                            options:kNilOptions error:nil];
     tag.type = [content[@"type"] integerValue];
     
     return tag;
@@ -52,12 +53,14 @@
 
 #pragma mark - Fetch
 
-+ (void)fetchTagsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTagsInLibrary:(SZNLibrary *)library
+                   success:(void (^)(NSArray *))success
+                   failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[library pathForResource:[SZNTag class]] stringByAppendingPathComponent:@"tags"]
-         parameters:nil
-            success:^(TBXML *XML) { if (success) success([self tagsFromXML:XML]); }
-            failure:failure];
+    [library.client getPath:[[library pathForResource:[SZNTag class]] stringByAppendingPathComponent:@"tags"]
+                 parameters:nil
+                    success:^(TBXML *XML) { if (success) success([self tagsFromXML:XML]); }
+                    failure:failure];
 }
 
 @end

@@ -51,7 +51,8 @@
     return nil;
 }
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement inLibrary:(SZNLibrary *)library
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
+                          inLibrary:(SZNLibrary *)library
 {
     NSNumberFormatter *f = [NSNumberFormatter new];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];

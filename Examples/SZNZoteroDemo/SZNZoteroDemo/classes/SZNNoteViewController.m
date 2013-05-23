@@ -18,7 +18,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.webView loadHTMLString:[NSString stringWithFormat:@"<body contentEditable=\"true\" style=\"font-family:Helvetica;\">%@</body>", self.noteItem.content[@"note"]] baseURL:nil];
+    
+    NSString * HTMLString = [NSString stringWithFormat:@"<body contentEditable=\"true\" style=\"font-family:Helvetica;\">%@</body>", self.noteItem.content[@"note"]];
+    [self.webView loadHTMLString:HTMLString baseURL:nil];
 }
 
 #pragma mark - Actions
@@ -35,7 +37,7 @@
     
     [self.noteItem updateWithPartialContent:@{@"note": HTMLString}
                                     success:^(SZNItem *item) {
-                                        NSMutableDictionary *content = [NSMutableDictionary dictionaryWithDictionary:self.noteItem.content];
+                                        NSMutableDictionary *content = [self.noteItem.content mutableCopy];
                                         content[@"note"] = HTMLString;
                                         self.noteItem.content = content;
                                         self.navigationItem.rightBarButtonItem.enabled = YES;

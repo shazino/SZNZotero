@@ -24,6 +24,7 @@
 
 @protocol SZNNoteViewDelegate <NSObject>
 
-- (void)noteViewController:(SZNNoteViewController *)noteViewController didSaveItem:(SZNItem *)item;
+- (void)noteViewController:(SZNNoteViewController *)noteViewController
+               didSaveItem:(SZNItem *)item;
 
 @end

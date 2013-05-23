@@ -36,14 +36,19 @@
 
 @property (nonatomic, strong) NSString *URLScheme;
 
-- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
+                    responseObject:(id)responseObject
+                           success:(void (^)(id))success
+                           failure:(void (^)(NSError *))failure;
 
 @end
 
 
 @implementation SZNZoteroAPIClient
 
-- (id)initWithKey:(NSString *)key secret:(NSString *)secret URLScheme:(NSString *)URLScheme
+- (id)initWithKey:(NSString *)key
+           secret:(NSString *)secret
+        URLScheme:(NSString *)URLScheme
 {
     self = [super initWithBaseURL:[NSURL URLWithString:@"https://api.zotero.org"] key:key secret:secret];
     if (self)
@@ -55,27 +60,45 @@
     return self;
 }
 
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
+- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
+                        failure:(void (^)(NSError *))failure
 {
-    [self authenticateWithLibraryAccess:YES notesAccess:NO writeAccess:NO groupAccessLevel:SZNZoteroAccessNone success:success failure:failure];
+    [self authenticateWithLibraryAccess:YES
+                            notesAccess:NO
+                            writeAccess:NO
+                       groupAccessLevel:SZNZoteroAccessNone
+                                success:success
+                                failure:failure];
 }
 
-- (void)authenticateWithLibraryAccess:(BOOL)libraryAccess notesAccess:(BOOL)notesAccess writeAccess:(BOOL)writeAccess groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
+- (void)authenticateWithLibraryAccess:(BOOL)libraryAccess
+                          notesAccess:(BOOL)notesAccess
+                          writeAccess:(BOOL)writeAccess
+                     groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel
+                              success:(void (^)(AFOAuth1Token *))success
+                              failure:(void (^)(NSError *))failure
 {
+    NSString *userAuthorizationPath = [NSString stringWithFormat:@"//www.zotero.org/oauth/authorize?library_access=%d&notes_access=%d&write_access=%d&all_groups=%@",
+                                       libraryAccess, notesAccess, writeAccess,
+                                       (groupAccessLevel == SZNZoteroAccessReadWrite) ? @"write" : (groupAccessLevel == SZNZoteroAccessRead) ? @"read" : @"none"];
+    NSURL *callbackURL = [NSURL URLWithString:[self.URLScheme stringByAppendingString:@"://"]];
+    
     [self authorizeUsingOAuthWithRequestTokenPath:@"//www.zotero.org/oauth/request"
-                            userAuthorizationPath:[NSString stringWithFormat:@"//www.zotero.org/oauth/authorize?library_access=%d&notes_access=%d&write_access=%d&all_groups=%@",
-                                                   libraryAccess, notesAccess, writeAccess,
-                                                   (groupAccessLevel == SZNZoteroAccessReadWrite) ? @"write" : (groupAccessLevel == SZNZoteroAccessRead) ? @"read" : @"none" ]
-                                      callbackURL:[NSURL URLWithString:[self.URLScheme stringByAppendingString:@"://"]]
-                                  accessTokenPath:@"//www.zotero.org/oauth/access" accessMethod:@"GET" scope:@"" success:^(AFOAuth1Token *accessToken, id responseObject) {
-                                      if (success)
-                                          success(accessToken);
-                                  } failure:^(NSError *authError) {
-                                      [self.operationQueue cancelAllOperations];
-                                      self.accessToken = nil;
-                                      if (failure)
-                                          failure(authError);
-                                  }];
+                            userAuthorizationPath:userAuthorizationPath
+                                      callbackURL:callbackURL
+                                  accessTokenPath:@"//www.zotero.org/oauth/access"
+                                     accessMethod:@"GET"
+                                            scope:@""
+                                          success:^(AFOAuth1Token *accessToken, id responseObject) {
+                                              if (success)
+                                                  success(accessToken);
+                                          }
+                                          failure:^(NSError *authError) {
+                                              [self.operationQueue cancelAllOperations];
+                                              self.accessToken = nil;
+                                              if (failure)
+                                                  failure(authError);
+                                          }];
 }
 
 - (BOOL)isLoggedIn
@@ -83,7 +106,10 @@
     return (self.accessToken);
 }
 
-- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject success:(void (^)(id))success failure:(void (^)(NSError *))failure
+- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
+                    responseObject:(id)responseObject
+                           success:(void (^)(id))success
+                           failure:(void (^)(NSError *))failure
 {
     // NSLog(@"%@", operation.responseString);
     
@@ -122,7 +148,10 @@
 
 #pragma mark - Methods
 
-- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
+- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id))success
+        failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -135,7 +164,10 @@
     [operation start];
 }
 
-- (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id))success
+        failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"PUT" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -148,7 +180,10 @@
     [operation start];
 }
 
-- (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(id))success
+         failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -161,7 +196,10 @@
     [operation start];
 }
 
-- (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
+- (void)patchPath:(NSString *)path
+       parameters:(NSDictionary *)parameters
+          success:(void (^)(id))success
+          failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -174,7 +212,10 @@
     [operation start];
 }
 
-- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)())success failure:(void (^)(NSError *))failure
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
+           success:(void (^)())success
+           failure:(void (^)(NSError *))failure
 {
     NSNumber *itemVersion = parameters[@"itemVersion"];
     NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
@@ -205,19 +246,21 @@
     
     NSMutableURLRequest *request = [self requestWithMethod:accessMethod path:path parameters:parameters];
     
-    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (success) {
-            AFOAuth1Token *accessToken = [[AFOAuth1Token alloc] initWithQueryString:operation.responseString];
-            NSDictionary *parameters = AFParametersFromQueryString(operation.responseString);
-            self.userIdentifier = parameters[@"userID"];
-            self.username = parameters[@"username"];
-            success(accessToken, responseObject);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
+    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request
+                                                                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                                          if (success) {
+                                                                              AFOAuth1Token *accessToken = [[AFOAuth1Token alloc] initWithQueryString:operation.responseString];
+                                                                              NSDictionary *parameters = AFParametersFromQueryString(operation.responseString);
+                                                                              self.userIdentifier = parameters[@"userID"];
+                                                                              self.username = parameters[@"username"];
+                                                                              success(accessToken, responseObject);
+                                                                          }
+                                                                      }
+                                                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                                          if (failure) {
+                                                                              failure(error);
+                                                                          }
+                                                                      }];
     
     [self enqueueHTTPRequestOperation:operation];
 }
@@ -244,7 +287,8 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString)
             
             if (name && value)
             {
-                [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+                              forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             }
         }
     }
@@ -257,7 +301,9 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString)
 
 @implementation TBXML (TextForChild)
 
-+ (NSString *)textForChildElementNamed:(NSString *)childElementName parentElement:(TBXMLElement *)parentElement escaped:(BOOL)escaped
++ (NSString *)textForChildElementNamed:(NSString *)childElementName
+                         parentElement:(TBXMLElement *)parentElement
+                               escaped:(BOOL)escaped
 {
     TBXMLElement *element = [TBXML childElementNamed:childElementName parentElement:parentElement];
     if (!element)

@@ -39,7 +39,10 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     
     if ([item.type isEqualToString:@"attachment"])
     {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"View Attachment" style:UIBarButtonItemStyleBordered target:self action:@selector(presentAttachment:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"View Attachment"
+                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                 target:self
+                                                                                 action:@selector(presentAttachment:)];
     }
 }
 
@@ -65,8 +68,9 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 {
     if ([segue.destinationViewController isKindOfClass:[SZNNoteViewController class]])
     {
-        ((SZNNoteViewController *)segue.destinationViewController).noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
-        ((SZNNoteViewController *)segue.destinationViewController).delegate = self;
+        SZNNoteViewController *noteViewController = (SZNNoteViewController *)segue.destinationViewController;
+        noteViewController.noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
+        noteViewController.delegate = self;
     }
     else if ([segue.destinationViewController isKindOfClass:[SZNAttachmentViewController class]])
     {
@@ -135,7 +139,9 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
             break;
         case SZNItemViewControllerTagsSection:
         {
-            SZNTag *tag = [[SZNItemDescriptor tagsForItem:self.item] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]][indexPath.row];
+            NSSet *tags = [SZNItemDescriptor tagsForItem:self.item];
+            NSArray *sortedTags = [tags sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+            SZNTag *tag = sortedTags[indexPath.row];
             cell.textLabel.text = nil;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
         }
@@ -178,7 +184,8 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     NSMutableArray *notes = [NSMutableArray arrayWithArray:self.notes];
     [notes replaceObjectAtIndex:[notes indexOfObject:item] withObject:item];
     self.notes = notes;
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemViewControllerNotesSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemViewControllerNotesSection]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Actions 

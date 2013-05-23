@@ -47,8 +47,7 @@
 
 @interface SZNItem ()
 
-+ (NSString *)pathToItemTypes;
-+ (NSString *)pathToValidFields;
+- (NSString *)path;
 
 @end
 
@@ -65,7 +64,8 @@
 
 #pragma mark - Parse
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement inLibrary:(SZNLibrary *)library
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
+                          inLibrary:(SZNLibrary *)library
 {
     SZNItem *item = (SZNItem *)[super objectFromXMLElement:XMLElement inLibrary:library];
     item.type     = item.content[@"itemType"];
@@ -74,7 +74,10 @@
 
 #pragma mark - Create
 
-+ (void)createItemInLibrary:(SZNLibrary *)library content:(NSDictionary *)content success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
++ (void)createItemInLibrary:(SZNLibrary *)library
+                    content:(NSDictionary *)content
+                    success:(void (^)(SZNItem *))success
+                    failure:(void (^)(NSError *))failure
 {
     [library.client postPath:[library pathForResource:[SZNItem class]]
                   parameters:@{@"items": @[content]}
@@ -95,64 +98,99 @@
 
 #pragma mark - Fetch
 
-+ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client
+                     success:(void (^)(NSArray *))success
+                     failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToItemTypes] parameters:nil success:^(id responseObject) { if (success) success(responseObject); } failure:failure];
+    [client getPath:@"/itemTypes"
+         parameters:nil
+            success:^(id responseObject) {
+                if (success)
+                    success(responseObject);
+            }
+            failure:failure];
 }
 
-+ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client forType:(NSString *)itemType success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client
+                           forType:(NSString *)itemType
+                           success:(void (^)(NSArray *))success
+                           failure:(void (^)(NSError *))failure
 {
-    [client getPath:[self pathToValidFields] parameters:@{@"itemType": itemType} success:^(id responseObject) { if (success) success(responseObject); } failure:failure];
+    [client getPath:@"/itemTypeFields"
+         parameters:@{@"itemType": itemType}
+            success:^(id responseObject) {
+                if (success)
+                    success(responseObject);
+            }
+            failure:failure];
 }
 
-+ (void)fetchItemsInLibrary:(SZNLibrary *)library success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchItemsInLibrary:(SZNLibrary *)library
+                    success:(void (^)(NSArray *))success
+                    failure:(void (^)(NSError *))failure;
 {
     [library.client getPath:[library pathForResource:[SZNItem class]]
                  parameters:nil
-                    success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
+                    success:^(TBXML *XML) {
+                        if (success)
+                            success([self objectsFromXML:XML inLibrary:library]);
+                    }
                     failure:failure];
 }
 
-+ (void)fetchTopItemsInLibrary:(SZNLibrary *)library success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopItemsInLibrary:(SZNLibrary *)library
+                       success:(void (^)(NSArray *))success
+                       failure:(void (^)(NSError *))failure
 {
-    [library.client getPath:[[library pathForResource:[SZNItem class]] stringByAppendingPathComponent:@"top"]
+    NSString *resourcePath = [library pathForResource:[SZNItem class]];
+    [library.client getPath:[resourcePath stringByAppendingPathComponent:@"top"]
                  parameters:@{@"content": @"json"}
-                    success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
+                    success:^(TBXML *XML) {
+                        if (success)
+                            success([self objectsFromXML:XML inLibrary:library]);
+                    }
                     failure:failure];
 }
 
-- (void)fetchChildItemsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchChildItemsSuccess:(void (^)(NSArray *))success
+                       failure:(void (^)(NSError *))failure
 {
-    [self.library.client getPath:[[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"child"]
+    [self.library.client getPath:[[self path] stringByAppendingPathComponent:@"child"]
                       parameters:@{@"content": @"json"}
-                         success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML inLibrary:self.library]); }
+                         success:^(TBXML *XML) {
+                             if (success)
+                                 success([SZNItem objectsFromXML:XML inLibrary:self.library]);
+                         }
                          failure:failure];
 }
 
 - (NSURLRequest *)fileURLRequest
 {
-    return [self.library.client requestWithMethod:@"GET"
-                                             path:[[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"file"]
-                                       parameters:nil];
+    NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
+    return [self.library.client requestWithMethod:@"GET" path:path parameters:nil];
 }
 
 #pragma mark - Update
 
-- (void)updateWithContent:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+- (void)updateWithContent:(NSDictionary *)newContent
+                  success:(void (^)(SZNItem *))success
+                  failure:(void (^)(NSError *))failure;
 {
-    [self.library.client putPath:[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
+    [self.library.client putPath:[self path]
                       parameters:newContent
                          success:^(TBXML *XML) { if (success) success(self); }
                          failure:failure];
 }
 
-- (void)updateWithPartialContent:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure
+- (void)updateWithPartialContent:(NSDictionary *)partialContent
+                         success:(void (^)(SZNItem *))success
+                         failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:partialContent];
+    NSMutableDictionary *mutableParameters = [partialContent mutableCopy];
     mutableParameters[@"itemVersion"] = self.version;
     mutableParameters[@"itemKey"]     = self.key;
     mutableParameters[@"itemType"]    = self.type;
-    [self.library.client patchPath:[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
+    [self.library.client patchPath:[self path]
                         parameters:mutableParameters
                            success:^(TBXML *XML) { if (success) success(self); }
                            failure:failure];
@@ -164,7 +202,7 @@
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
     mutableParameters[@"itemVersion"] = self.version;
-    [self.library.client deletePath:[[self.library pathForResource:[SZNItem class]] stringByAppendingPathComponent:self.key]
+    [self.library.client deletePath:[self path]
                          parameters:mutableParameters
                             success:^() { if (success) success(); }
                             failure:failure];
@@ -182,14 +220,10 @@
     return @"items";
 }
 
-+ (NSString *)pathToItemTypes
+- (NSString *)path
 {
-    return @"/itemTypes";
-}
-
-+ (NSString *)pathToValidFields
-{
-    return @"/itemTypeFields";
+    NSString *resourcePath = [self.library pathForResource:[SZNItem class]];
+    return [resourcePath stringByAppendingPathComponent:self.key];
 }
 
 @end

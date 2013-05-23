@@ -33,7 +33,8 @@
 
 #pragma mark - Parse
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement inLibrary:(SZNLibrary *)library
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
+                          inLibrary:(SZNLibrary *)library
 {
     SZNCollection *collection = (SZNCollection *)[super objectFromXMLElement:XMLElement inLibrary:library];
     collection.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
@@ -42,52 +43,77 @@
 
 #pragma mark - Fetch
 
-+ (void)fetchCollectionsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchCollectionsInLibrary:(SZNLibrary *)library
+                          success:(void (^)(NSArray *))success
+                          failure:(void (^)(NSError *))failure
 {
-    [client getPath:[library pathForResource:[SZNCollection class]]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
-            failure:failure];
+    [library.client getPath:[library pathForResource:[SZNCollection class]]
+                 parameters:@{@"content": @"json"}
+                    success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
+                    failure:failure];
 }
 
-+ (void)fetchTopCollectionsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopCollectionsInLibrary:(SZNLibrary *)library
+                             success:(void (^)(NSArray *))success
+                             failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:@"top"]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([self objectsFromXML:XML inLibrary:library]); }
-            failure:failure];
+    [library.client getPath:[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:@"top"]
+                 parameters:@{@"content": @"json"}
+                    success:^(TBXML *XML) {
+                        if (success)
+                            success([self objectsFromXML:XML inLibrary:library]);
+                    }
+                    failure:failure];
 }
 
-- (void)fetchItemsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchItemsSuccess:(void (^)(NSArray *))success
+                  failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"items"]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML inLibrary:library]); }
-            failure:failure];
+    NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
+    [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/items", resourcePath, self.key]
+                      parameters:@{@"content": @"json"}
+                         success:^(TBXML *XML) {
+                             if (success)
+                                 success([SZNItem objectsFromXML:XML inLibrary:self.library]);
+                         }
+                         failure:failure];
 }
 
-- (void)fetchTopItemsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchTopItemsSuccess:(void (^)(NSArray *))success
+                     failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"items"] stringByAppendingPathComponent:@"top"]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNItem objectsFromXML:XML inLibrary:library]); }
-            failure:failure];
+    NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
+    [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/items/top", resourcePath, self.key]
+                      parameters:@{@"content": @"json"}
+                         success:^(TBXML *XML) {
+                             if (success)
+                                 success([SZNItem objectsFromXML:XML inLibrary:self.library]);
+                         }
+                         failure:failure];
 }
 
-- (void)fetchSubcollectionsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchSubcollectionsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"collections"]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNCollection objectsFromXML:XML inLibrary:library]); }
-            failure:failure];
+    NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
+    [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/collections", resourcePath, self.key]
+                      parameters:@{@"content": @"json"}
+                         success:^(TBXML *XML) {
+                             if (success)
+                                 success([SZNCollection objectsFromXML:XML inLibrary:self.library]);
+                         }
+                         failure:failure];
 }
 
-- (void)fetchTagsInLibrary:(SZNLibrary *)library withClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchTagsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [client getPath:[[[library pathForResource:[SZNCollection class]] stringByAppendingPathComponent:self.key] stringByAppendingPathComponent:@"tags"]
-         parameters:@{@"content": @"json"}
-            success:^(TBXML *XML) { if (success) success([SZNTag tagsFromXML:XML]); }
-            failure:failure];
+    NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
+    [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/tags", resourcePath, self.key]
+                      parameters:@{@"content": @"json"}
+                         success:^(TBXML *XML) {
+                             if (success)
+                                 success([SZNTag tagsFromXML:XML]);
+                         }
+                         failure:failure];
 }
 
 #pragma mark - Path

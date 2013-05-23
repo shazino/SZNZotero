@@ -26,7 +26,9 @@
 
 @class SZNZoteroAPIClient, SZNAuthor, SZNLibrary;
 
-
+/**
+ The `SZNItemProtocol` protocol defines the properties an item representation.
+ */
 @protocol SZNItemProtocol <SZNObjectProtocol>
 
 /**
@@ -52,92 +54,121 @@
 /**
  Creates a new item.
  
- @param client The API client to be used to send the create request.
+ @param library The item’s library.
  @param content The item content.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)createItemInLibrary:(SZNLibrary *)library content:(NSDictionary *)content success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
++ (void)createItemInLibrary:(SZNLibrary *)library
+                    content:(NSDictionary *)content
+                    success:(void (^)(SZNItem *))success
+                    failure:(void (^)(NSError *))failure;
 
 /**
  Fetches all item types.
  
  @param client The API client to be used to send the fetch request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client
+                     success:(void (^)(NSArray *))success
+                     failure:(void (^)(NSError *))failure;
 
 /**
  Fetches all valid fields for an item type.
  
  @param client The API client to be used to send the fetch request.
  @param itemType The item type.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client forType:(NSString *)itemType success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client
+                           forType:(NSString *)itemType
+                           success:(void (^)(NSArray *))success
+                           failure:(void (^)(NSError *))failure;
 
 /**
  Fetches all items in the current user library.
  
- @param client The API client to be used to send the fetch request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNItem` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param library The items’ library.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `SZNItem` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchItemsInLibrary:(SZNLibrary *)library success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchItemsInLibrary:(SZNLibrary *)library
+                    success:(void (^)(NSArray *))success
+                    failure:(void (^)(NSError *))failure;
 
 /**
- Fetches all top-level items in the current user library.
+ Fetches all top-level items in library.
  
- @param client The API client to be used to send the fetch request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNItem` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param library The items’ library.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `SZNItem` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchTopItemsInLibrary:(SZNLibrary *)library success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchTopItemsInLibrary:(SZNLibrary *)library
+                       success:(void (^)(NSArray *))success
+                       failure:(void (^)(NSError *))failure;
 
 /**
  Fetches all child items under this item.
  
- @param client The API client to be used to send the fetch request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `SZNItems` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `SZNItems` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchChildItemsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+- (void)fetchChildItemsSuccess:(void (^)(NSArray *))success
+                       failure:(void (^)(NSError *))failure;
 
 /**
  Updates item with new content.
- 
- @param client The API client to be used to send the update request.
- @param partialContent The new content key/values.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the updated `SZNItem` object.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+
+ @param newContent The new content key/values.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the updated `SZNItem` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)updateWithContent:(NSDictionary *)newContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+- (void)updateWithContent:(NSDictionary *)newContent
+                  success:(void (^)(SZNItem *))success
+                  failure:(void (^)(NSError *))failure;
 
 /**
  Updates item with partial new content.
  
- @param client The API client to be used to send the update request.
- @param content The modified content key/values.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the updated `SZNItem` object.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param partialContent The modified content key/values.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the updated `SZNItem` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)updateWithPartialContent:(NSDictionary *)partialContent success:(void (^)(SZNItem *))success failure:(void (^)(NSError *))failure;
+- (void)updateWithPartialContent:(NSDictionary *)partialContent
+                         success:(void (^)(SZNItem *))success
+                         failure:(void (^)(NSError *))failure;
 
 /**
  Deletes item.
  
- @param client The API client to be used to send the delete request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes no argument.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 - (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure;
 
 /**
  The file URL request for attachment items.
- 
- @param client The API client to be used to send the delete request.
  
  @return A `NSURLRequest` object.
  */

@@ -46,7 +46,8 @@
 @synthesize lastItemsVersion;
 @synthesize lastCollectionsVersion;
 
-+ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier client:(SZNZoteroAPIClient *)client
++ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier
+                               client:(SZNZoteroAPIClient *)client
 {
     SZNLibrary *library = [self new];
     library.identifier = identifier;
@@ -63,7 +64,10 @@
 {
     [self.client getPath:[self pathForResource:resource]
               parameters:@{@"newer": lastVersion ?: @(0), @"format": @"versions"}
-                 success:^(id responseObject) { if (success) success([responseObject isKindOfClass:[NSDictionary class]] ? responseObject : nil); }
+                 success:^(id responseObject) {
+                     if (success)
+                         success([responseObject isKindOfClass:[NSDictionary class]] ? responseObject : nil);
+                 }
                  failure:failure];
 }
 
@@ -75,9 +79,10 @@
 {
     const NSUInteger batchLimit = 50;
     NSArray *batchOfKeys = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
+    NSDictionary *parameters = [batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"};
     
     [self.client getPath:[self pathForResource:resource]
-              parameters:[batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"}
+              parameters:parameters
                  success:^(TBXML *XML) {
                      NSArray *parsedObjects = [resource objectsFromXML:XML inLibrary:self];
                      for (id object in parsedObjects) {
@@ -90,7 +95,11 @@
                      [objectsKeys removeObjectsInArray:batchOfKeys];
                      
                      if ([objectsKeys count] > 0)
-                         [self fetchObjectsForResource:resource keys:objectsKeys downloadedObjects:downloadedObjects success:success failure:failure];
+                         [self fetchObjectsForResource:resource
+                                                  keys:objectsKeys
+                                     downloadedObjects:downloadedObjects
+                                               success:success
+                                               failure:failure];
                      else if (success)
                          success(downloadedObjects);
                  }
@@ -109,7 +118,8 @@
                           failure:failure];
 }
 
-- (void)fetchDeletedDataWithSuccess:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success failure:(void (^)(NSError *))failure
+- (void)fetchDeletedDataWithSuccess:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success
+                            failure:(void (^)(NSError *))failure
 {
     [self.client getPath:[self deletedDataPath]
               parameters:@{@"newer": @"0"}
@@ -119,31 +129,41 @@
                  } failure:failure];
 }
 
-- (void)updateItem:(id<SZNItemProtocol>)updatedItem success:(void (^)(id<SZNItemProtocol>))success failure:(void (^)(NSError *))failure
+- (void)updateItem:(id<SZNItemProtocol>)updatedItem
+           success:(void (^)(id<SZNItemProtocol>))success
+           failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedItem.content];
     mutableParameters[@"itemVersion"] = updatedItem.version;
     mutableParameters[@"itemKey"]     = updatedItem.key;
     mutableParameters[@"itemType"]    = updatedItem.type;
-    [self.client patchPath:[[self pathForResource:[SZNItem class]] stringByAppendingPathComponent:updatedItem.key] parameters:mutableParameters success:^(id responseObject) {
+    [self.client patchPath:[[self pathForResource:[SZNItem class]] stringByAppendingPathComponent:updatedItem.key]
+                parameters:mutableParameters
+                   success:^(id responseObject) {
         updatedItem.synced  = @YES;
         updatedItem.version = self.client.lastModifiedVersion;
         if (success)
             success(updatedItem);
-    } failure:failure];
+    }
+                   failure:failure];
 }
 
-- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection success:(void (^)(id<SZNCollectionProtocol>))success failure:(void (^)(NSError *))failure
+- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection
+                 success:(void (^)(id<SZNCollectionProtocol>))success
+                 failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedCollection.content];
     mutableParameters[@"itemVersion"] = updatedCollection.version;
     mutableParameters[@"itemKey"]     = updatedCollection.key;
-    [self.client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key] parameters:mutableParameters success:^(id responseObject) {
-        updatedCollection.synced  = @YES;
-        updatedCollection.version = self.client.lastModifiedVersion;
-        if (success)
-            success(updatedCollection);
-    } failure:failure];
+    [self.client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key]
+                parameters:mutableParameters
+                   success:^(id responseObject) {
+                       updatedCollection.synced  = @YES;
+                       updatedCollection.version = self.client.lastModifiedVersion;
+                       if (success)
+                           success(updatedCollection);
+                   }
+                   failure:failure];
 }
 
 - (void)deleteObjectsForResource:(Class <SZNResource>)resource

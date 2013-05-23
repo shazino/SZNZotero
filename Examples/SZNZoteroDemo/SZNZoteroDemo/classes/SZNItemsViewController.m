@@ -184,59 +184,52 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 
 - (void)fetchItemsInUserLibrary
 {
+    void(^failure)(NSError *) = ^(NSError *error) {
+        [self.refreshControl endRefreshing];
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+    };
+    
     if (self.parentCollection)
     {
-        [self.parentCollection fetchTopItemsInLibrary:self.library withClient:self.library.client success:^(NSArray *items) {
+        [self.parentCollection fetchTopItemsSuccess:^(NSArray *items) {
             self.items = items;
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
             
-            [self.parentCollection fetchSubcollectionsInLibrary:self.library withClient:self.library.client success:^(NSArray *collections) {
+            [self.parentCollection fetchSubcollectionsSuccess:^(NSArray *collections) {
                 self.collections = collections;
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
                 
-                [self.parentCollection fetchTagsInLibrary:self.library withClient:self.library.client success:^(NSArray *tags) {
+                [self.parentCollection fetchTagsSuccess:^(NSArray *tags) {
                     self.tags = tags;
-                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self.refreshControl endRefreshing];
-                } failure:^(NSError *error) {
-                    [self.refreshControl endRefreshing];
-                    NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-                }];
-            } failure:^(NSError *error) {
-                [self.refreshControl endRefreshing];
-                NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-            }];
-        } failure:^(NSError *error) {
-            [self.refreshControl endRefreshing];
-            NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-        }];
+                } failure:failure];
+            } failure:failure];
+        } failure:failure];
     }
     else
     {
         [SZNItem fetchTopItemsInLibrary:self.library success:^(NSArray *items) {
             self.items = items;
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
             
-            [SZNCollection fetchTopCollectionsInLibrary:self.library withClient:self.library.client success:^(NSArray *collections) {
+            [SZNCollection fetchTopCollectionsInLibrary:self.library success:^(NSArray *collections) {
                 self.collections = collections;
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
                 
-                [SZNTag fetchTagsInLibrary:self.library withClient:self.library.client success:^(NSArray *tags) {
+                [SZNTag fetchTagsInLibrary:self.library success:^(NSArray *tags) {
                     self.tags = tags;
-                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self.refreshControl endRefreshing];
-                } failure:^(NSError *error) {
-                    [self.refreshControl endRefreshing];
-                    NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-                }];
-            } failure:^(NSError *error) {
-                [self.refreshControl endRefreshing];
-                NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-            }];
-        } failure:^(NSError *error) {
-            [self.refreshControl endRefreshing];
-            NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-        }];
+                } failure:failure];
+            } failure:failure];
+        } failure:failure];
     }
 }
 

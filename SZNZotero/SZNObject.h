@@ -26,15 +26,26 @@
 
 @class SZNObject, SZNLibrary;
 
+/**
+ The `SZNResource` protocol defines the methods for an API resource.
+ */
 @protocol SZNResource <NSObject>
 
+/**
+ The path component for the resource.
+ */
 + (NSString *)pathComponent;
+
+/**
+ The key parameter for the resource.
+ */
 + (NSString *)keyParameter;
 
 /**
  Parses objects from an API XML response.
  
  @param XML A `TBXML` representation of the API response.
+ @param library The `SZNLibrary` where the objects belong.
  
  @return An array of newly-created objects.
  */
@@ -44,14 +55,19 @@
  Parses an object from an API XML element.
  
  @param XMLElement A `TBXMLElement` representation of the API response.
+ @param library The `SZNLibrary` where the objects belong.
  
  @return A `SZNObject` object.
  */
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement inLibrary:(SZNLibrary *)library;
++ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
+                          inLibrary:(SZNLibrary *)library;
 
 @end
 
 
+/**
+ The `SZNItemProtocol` protocol defines the properties an item representation.
+ */
 @protocol SZNObjectProtocol <NSObject>
 
 /**

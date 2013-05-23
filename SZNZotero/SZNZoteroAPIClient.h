@@ -61,15 +61,20 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  
  @return The newly-initialized client
  */
-- (id)initWithKey:(NSString *)key secret:(NSString *)secret URLScheme:(NSString *)URLScheme;
+- (id)initWithKey:(NSString *)key
+           secret:(NSString *)secret
+        URLScheme:(NSString *)URLScheme;
 
 /**
  Authenticates the client with default access level parameters.
  
- @param success A block object to be executed when the authentication operations finish successfully. This block has no return value and takes one argument: the newly-acquired OAuth token.
- @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the authentication operations finish successfully. 
+  This block has no return value and takes one argument: the newly-acquired OAuth token.
+ @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
+                        failure:(void (^)(NSError *))failure;
 
 /**
  Authenticates the client with the specified access level parameters.
@@ -78,66 +83,100 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param notesAccess Whether the API should allow read access to personal library notes.
  @param writeAccess Whether the API should allow write access to personal library.
  @param groupAccessLevel The level of access the API should allow to all current and future groups.
- @param success A block object to be executed when the authentication operations finish successfully. This block has no return value and takes one argument: the newly-acquired OAuth token.
- @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the authentication operations finish successfully. 
+  This block has no return value and takes one argument: the newly-acquired OAuth token.
+ @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)authenticateWithLibraryAccess:(BOOL)libraryAccess notesAccess:(BOOL)notesAccess writeAccess:(BOOL)writeAccess groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+- (void)authenticateWithLibraryAccess:(BOOL)libraryAccess
+                          notesAccess:(BOOL)notesAccess
+                          writeAccess:(BOOL)writeAccess
+                     groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel
+                              success:(void (^)(AFOAuth1Token *))success
+                              failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the object created from the response data.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id))success
+        failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `PUT` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the object created from the response data.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id))success
+        failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `POST` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the object created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(id))success
+         failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `PATCH` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: the object created from the response data.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)patchPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+- (void)patchPath:(NSString *)path
+       parameters:(NSDictionary *)parameters
+          success:(void (^)(id))success
+          failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `DELETE` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes no argument.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)())success failure:(void (^)(NSError *))failure;
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
+           success:(void (^)())success
+           failure:(void (^)(NSError *))failure;
 
 @end
 
 
 @interface TBXML (TextForChild)
 
-+ (NSString *)textForChildElementNamed:(NSString *)childElementName parentElement:(TBXMLElement *)parentElement escaped:(BOOL)escaped;
++ (NSString *)textForChildElementNamed:(NSString *)childElementName
+                         parentElement:(TBXMLElement *)parentElement
+                               escaped:(BOOL)escaped;
 
 @end

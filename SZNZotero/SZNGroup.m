@@ -26,8 +26,11 @@
 #import <TBXML.h>
 
 @interface SZNGroup ()
+
 + (id)objectFromXMLElement:(TBXMLElement *)XMLElement;
+
 @end
+
 
 @implementation SZNGroup
 
@@ -42,8 +45,10 @@
     group.identifier = [TBXML textForChildElementNamed:@"zapi:groupID" parentElement:XMLElement escaped:NO];
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
-    if (JSONContent)
-        group.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]  options:kNilOptions error:nil];
+    if (JSONContent) {
+        NSData *JSONData = [JSONContent dataUsingEncoding:NSUTF8StringEncoding];
+        group.content = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
+    }
     
     return group;
 }
