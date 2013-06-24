@@ -42,11 +42,6 @@
 @property (copy, nonatomic) NSString *identifier;
 
 /**
- The collection title.
- */
-@property (copy, nonatomic) NSString *title;
-
-/**
  Fetches all items in the collection.
  
  @param success A block object to be executed when the request operation finishes successfully.

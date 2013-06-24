@@ -99,6 +99,7 @@
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
+                           path:(NSString *)path
                            keys:(NSArray *)objectsKeys
                       specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success

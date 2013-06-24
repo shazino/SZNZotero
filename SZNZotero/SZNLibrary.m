@@ -31,6 +31,7 @@
 - (NSString *)deletedDataPath;
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
+                           path:(NSString *)path
                            keys:(NSMutableArray *)objectsKeys
                       specifier:(NSString *)specifier
               downloadedObjects:(NSMutableArray *)downloadedObjects
@@ -71,6 +72,7 @@
 }
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
+                           path:(NSString *)path
                            keys:(NSMutableArray *)objectsKeys
                       specifier:(NSString *)specifier
               downloadedObjects:(NSMutableArray *)downloadedObjects
@@ -79,9 +81,11 @@
     const NSUInteger batchLimit = 50;
     NSArray *batchOfKeys     = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
     NSDictionary *parameters = [batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"};
-    NSString *path           = [self pathForResource:resource];
-    if (specifier)
-        path = [path stringByAppendingPathComponent:specifier];
+    if (!path) {
+        path = [self pathForResource:resource];
+        if (specifier)
+            path = [path stringByAppendingPathComponent:specifier];
+    }
     
     [self.client getPath:path
               parameters:parameters
@@ -98,6 +102,7 @@
                      
                      if ([objectsKeys count] > 0)
                          [self fetchObjectsForResource:resource
+                                                  path:nil
                                                   keys:objectsKeys
                                              specifier:nil
                                      downloadedObjects:downloadedObjects
@@ -110,11 +115,13 @@
 }
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
+                           path:(NSString *)path
                            keys:(NSArray *)objectsKeys
                       specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure {
     [self fetchObjectsForResource:resource
+                             path:path
                              keys:[NSMutableArray arrayWithArray:objectsKeys]
                         specifier:specifier
                 downloadedObjects:[NSMutableArray array]

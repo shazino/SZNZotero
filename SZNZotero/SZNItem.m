@@ -57,10 +57,6 @@
 @synthesize type;
 @synthesize content;
 
-- (NSString *)title {
-    return self.content[@"title"];
-}
-
 #pragma mark - Parse
 
 + (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement

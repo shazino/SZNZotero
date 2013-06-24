@@ -64,7 +64,7 @@ NS_ENUM(NSUInteger, SZNLibrariesSections)
 
 - (void)fetchGroupsInLibrary:(SZNLibrary *)library
 {
-    [self.user fetchObjectsForResource:[SZNGroup class] keys:nil specifier:nil success:^(NSArray *groups) {
+    [self.user fetchObjectsForResource:[SZNGroup class] path:nil keys:nil specifier:nil success:^(NSArray *groups) {
         for (SZNGroup *group in groups)
             group.client = self.user.client;
         self.groups = groups;
