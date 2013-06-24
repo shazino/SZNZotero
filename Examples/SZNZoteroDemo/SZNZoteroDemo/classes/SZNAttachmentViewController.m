@@ -7,17 +7,33 @@
 //
 
 #import "SZNAttachmentViewController.h"
+#import <AFNetworking.h>
 
-@interface SZNAttachmentViewController ()
+@interface SZNAttachmentViewController () <UIWebViewDelegate>
 
 @end
 
 @implementation SZNAttachmentViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.webView.delegate = self;
     [self.webView loadRequest:self.fileURLRequest];
+}
+
+#pragma mark - Web view delegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
 }
 
 @end
