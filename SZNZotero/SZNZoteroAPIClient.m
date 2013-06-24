@@ -48,21 +48,20 @@
 
 - (id)initWithKey:(NSString *)key
            secret:(NSString *)secret
-        URLScheme:(NSString *)URLScheme
-{
+        URLScheme:(NSString *)URLScheme {
     self = [super initWithBaseURL:[NSURL URLWithString:@"https://api.zotero.org"] key:key secret:secret];
-    if (self)
-    {
+    
+    if (self) {
         self.URLScheme = URLScheme;
         self.parameterEncoding = AFJSONParameterEncoding;
         [self setDefaultHeader:@"Zotero-API-Version" value:@"2"];
     }
+    
     return self;
 }
 
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
-                        failure:(void (^)(NSError *))failure
-{
+                        failure:(void (^)(NSError *))failure {
     [self authenticateWithLibraryAccess:YES
                             notesAccess:NO
                             writeAccess:NO
@@ -76,8 +75,7 @@
                           writeAccess:(BOOL)writeAccess
                      groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel
                               success:(void (^)(AFOAuth1Token *))success
-                              failure:(void (^)(NSError *))failure
-{
+                              failure:(void (^)(NSError *))failure {
     NSString *userAuthorizationPath = [NSString stringWithFormat:@"//www.zotero.org/oauth/authorize?library_access=%d&notes_access=%d&write_access=%d&all_groups=%@",
                                        libraryAccess, notesAccess, writeAccess,
                                        (groupAccessLevel == SZNZoteroAccessReadWrite) ? @"write" : (groupAccessLevel == SZNZoteroAccessRead) ? @"read" : @"none"];
@@ -101,16 +99,14 @@
                                           }];
 }
 
-- (BOOL)isLoggedIn
-{
+- (BOOL)isLoggedIn {
     return (self.accessToken);
 }
 
 - (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
                     responseObject:(id)responseObject
                            success:(void (^)(id))success
-                           failure:(void (^)(NSError *))failure
-{
+                           failure:(void (^)(NSError *))failure {
     // NSLog(@"%@", operation.responseString);
     
     NSNumberFormatter *f = [NSNumberFormatter new];
@@ -135,13 +131,13 @@
 
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
-                                parameters:(NSDictionary *)parameters
-{
+                                parameters:(NSDictionary *)parameters {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     if ([method isEqualToString:@"GET"])
         requestParameters[@"key"] = self.accessToken.secret;
     else
         path = [path stringByAppendingFormat:@"?key=%@", self.accessToken.secret];
+    
     NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:requestParameters];
     return request;
 }
@@ -151,8 +147,7 @@
 - (void)getPath:(NSString *)path
      parameters:(NSDictionary *)parameters
         success:(void (^)(id))success
-        failure:(void (^)(NSError *))failure
-{
+        failure:(void (^)(NSError *))failure {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -167,8 +162,7 @@
 - (void)putPath:(NSString *)path
      parameters:(NSDictionary *)parameters
         success:(void (^)(id))success
-        failure:(void (^)(NSError *))failure
-{
+        failure:(void (^)(NSError *))failure {
     NSURLRequest *request = [self requestWithMethod:@"PUT" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -183,8 +177,7 @@
 - (void)postPath:(NSString *)path
       parameters:(NSDictionary *)parameters
          success:(void (^)(id))success
-         failure:(void (^)(NSError *))failure
-{
+         failure:(void (^)(NSError *))failure {
     NSURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -199,8 +192,7 @@
 - (void)patchPath:(NSString *)path
        parameters:(NSDictionary *)parameters
           success:(void (^)(id))success
-          failure:(void (^)(NSError *))failure
-{
+          failure:(void (^)(NSError *))failure {
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -215,8 +207,7 @@
 - (void)deletePath:(NSString *)path
         parameters:(NSDictionary *)parameters
            success:(void (^)())success
-           failure:(void (^)(NSError *))failure
-{
+           failure:(void (^)(NSError *))failure {
     NSNumber *itemVersion = parameters[@"itemVersion"];
     NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
     [request setValue:[itemVersion stringValue] forHTTPHeaderField:@"If-Unmodified-Since-Version"];
@@ -236,8 +227,7 @@
                            requestToken:(AFOAuth1Token *)requestToken
                            accessMethod:(NSString *)accessMethod
                                 success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
-                                failure:(void (^)(NSError *error))failure
-{
+                                failure:(void (^)(NSError *error))failure {
     self.accessToken = requestToken;
     
     NSMutableDictionary *parameters = [[self OAuthParameters] mutableCopy];
@@ -265,18 +255,14 @@
     [self enqueueHTTPRequestOperation:operation];
 }
 
-
-static NSDictionary * AFParametersFromQueryString(NSString *queryString)
-{
+static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (queryString)
-    {
+    if (queryString) {
         NSScanner *parameterScanner = [[NSScanner alloc] initWithString:queryString];
         NSString *name = nil;
         NSString *value = nil;
         
-        while (![parameterScanner isAtEnd])
-        {
+        while (![parameterScanner isAtEnd]) {
             name = nil;
             [parameterScanner scanUpToString:@"=" intoString:&name];
             [parameterScanner scanString:@"=" intoString:NULL];
@@ -285,8 +271,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString)
             [parameterScanner scanUpToString:@"&" intoString:&value];
             [parameterScanner scanString:@"&" intoString:NULL];
             
-            if (name && value)
-            {
+            if (name && value) {
                 [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
                               forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             }
@@ -303,8 +288,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString)
 
 + (NSString *)textForChildElementNamed:(NSString *)childElementName
                          parentElement:(TBXMLElement *)parentElement
-                               escaped:(BOOL)escaped
-{
+                               escaped:(BOOL)escaped {
     TBXMLElement *element = [TBXML childElementNamed:childElementName parentElement:parentElement];
     if (!element)
         return nil;

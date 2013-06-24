@@ -34,8 +34,7 @@
 #pragma mark - Parse
 
 + (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library
-{
+                          inLibrary:(SZNLibrary *)library {
     SZNCollection *collection = (SZNCollection *)[super objectFromXMLElement:XMLElement inLibrary:library];
     collection.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
     return collection;
@@ -44,8 +43,7 @@
 #pragma mark - Fetch
 
 - (void)fetchItemsSuccess:(void (^)(NSArray *))success
-                  failure:(void (^)(NSError *))failure
-{
+                  failure:(void (^)(NSError *))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/items", resourcePath, self.key]
                       parameters:@{@"content": @"json"}
@@ -57,8 +55,7 @@
 }
 
 - (void)fetchTopItemsSuccess:(void (^)(NSArray *))success
-                     failure:(void (^)(NSError *))failure
-{
+                     failure:(void (^)(NSError *))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/items/top", resourcePath, self.key]
                       parameters:@{@"content": @"json"}
@@ -69,8 +66,7 @@
                          failure:failure];
 }
 
-- (void)fetchSubcollectionsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
-{
+- (void)fetchSubcollectionsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/collections", resourcePath, self.key]
                       parameters:@{@"content": @"json"}
@@ -81,8 +77,7 @@
                          failure:failure];
 }
 
-- (void)fetchTagsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
-{
+- (void)fetchTagsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/tags", resourcePath, self.key]
                       parameters:@{@"content": @"json"}
@@ -95,13 +90,11 @@
 
 #pragma mark - Path
 
-+ (NSString *)keyParameter
-{
++ (NSString *)keyParameter {
     return @"collectionKey";
 }
 
-+ (NSString *)pathComponent
-{
++ (NSString *)pathComponent {
     return @"collections";
 }
 

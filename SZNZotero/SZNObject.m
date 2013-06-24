@@ -34,33 +34,29 @@
 @synthesize synced;
 @synthesize version;
 
-- (BOOL)isSynced
-{
+- (BOOL)isSynced {
     return [self.synced boolValue];
 }
 
 #pragma mark - Resource
 
-+ (NSString *)pathComponent
-{
++ (NSString *)pathComponent {
     return nil;
 }
 
-+ (NSString *)keyParameter
-{
++ (NSString *)keyParameter {
     return nil;
 }
 
 + (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library
-{
+                          inLibrary:(SZNLibrary *)library {
     NSNumberFormatter *f = [NSNumberFormatter new];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     
     SZNObject *object = [[self class] new];
-    object.key        = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
-    object.version    = [f numberFromString:[TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO]];
-    object.library    = library;
+    object.key     = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
+    object.version = [f numberFromString:[TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO]];
+    object.library = library;
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
     if (JSONContent)
@@ -69,8 +65,7 @@
     return object;
 }
 
-+ (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library
-{
++ (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library {
     NSMutableArray *items = [NSMutableArray array];
     [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
         [items addObject:[self objectFromXMLElement:XMLElement inLibrary:library]];

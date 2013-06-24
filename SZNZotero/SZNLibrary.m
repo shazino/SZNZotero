@@ -48,11 +48,10 @@
 @synthesize lastCollectionsVersion;
 
 + (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier
-                               client:(SZNZoteroAPIClient *)client
-{
+                               client:(SZNZoteroAPIClient *)client {
     SZNLibrary *library = [self new];
     library.identifier = identifier;
-    library.client = client;
+    library.client     = client;
     return library;
 }
 
@@ -61,8 +60,7 @@
 - (void)fetchObjectsVersionsForResource:(Class <SZNResource>)resource
                    newerThanLastVersion:(NSNumber *)lastVersion
                                 success:(void (^)(NSDictionary *))success
-                                failure:(void (^)(NSError *))failure
-{
+                                failure:(void (^)(NSError *))failure {
     [self.client getPath:[self pathForResource:resource]
               parameters:@{@"newer": lastVersion ?: @(0), @"format": @"versions"}
                  success:^(id responseObject) {
@@ -77,8 +75,7 @@
                       specifier:(NSString *)specifier
               downloadedObjects:(NSMutableArray *)downloadedObjects
                         success:(void (^)(NSArray *))success
-                        failure:(void (^)(NSError *))failure
-{
+                        failure:(void (^)(NSError *))failure {
     const NSUInteger batchLimit = 50;
     NSArray *batchOfKeys     = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
     NSDictionary *parameters = [batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"};
@@ -116,8 +113,7 @@
                            keys:(NSArray *)objectsKeys
                       specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success
-                        failure:(void (^)(NSError *))failure
-{
+                        failure:(void (^)(NSError *))failure {
     [self fetchObjectsForResource:resource
                              keys:[NSMutableArray arrayWithArray:objectsKeys]
                         specifier:specifier
@@ -127,8 +123,7 @@
 }
 
 - (void)fetchDeletedDataWithSuccess:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success
-                            failure:(void (^)(NSError *))failure
-{
+                            failure:(void (^)(NSError *))failure {
     [self.client getPath:[self deletedDataPath]
               parameters:@{@"newer": @"0"}
                  success:^(NSDictionary *deletedData) {
@@ -139,8 +134,7 @@
 
 - (void)updateItem:(id<SZNItemProtocol>)updatedItem
            success:(void (^)(id<SZNItemProtocol>))success
-           failure:(void (^)(NSError *))failure
-{
+           failure:(void (^)(NSError *))failure {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedItem.content];
     mutableParameters[@"itemVersion"] = updatedItem.version;
     mutableParameters[@"itemKey"]     = updatedItem.key;
@@ -158,8 +152,7 @@
 
 - (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection
                  success:(void (^)(id<SZNCollectionProtocol>))success
-                 failure:(void (^)(NSError *))failure
-{
+                 failure:(void (^)(NSError *))failure {
     NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedCollection.content];
     mutableParameters[@"itemVersion"] = updatedCollection.version;
     mutableParameters[@"itemKey"]     = updatedCollection.key;
@@ -177,8 +170,7 @@
 - (void)deleteObjectsForResource:(Class <SZNResource>)resource
                             keys:(NSArray *)objectsKeys
                          success:(void (^)())success
-                         failure:(void (^)(NSError *))failure
-{
+                         failure:(void (^)(NSError *))failure {
     // TODO: use batch for 50+ objects
     if ([objectsKeys count] >= 50)
     {
@@ -194,18 +186,15 @@
 
 #pragma mark - Path
 
-- (NSString *)pathPrefix
-{
+- (NSString *)pathPrefix {
     return nil;
 }
 
-- (NSString *)pathForResource:(Class <SZNResource>)resource
-{
+- (NSString *)pathForResource:(Class <SZNResource>)resource {
     return [[self pathPrefix] stringByAppendingPathComponent:[resource pathComponent]];
 }
 
-- (NSString *)deletedDataPath
-{
+- (NSString *)deletedDataPath {
     return [[self pathPrefix] stringByAppendingPathComponent:@"deleted"];
 }
 

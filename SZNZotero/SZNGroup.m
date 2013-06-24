@@ -28,21 +28,18 @@
 
 @implementation SZNGroup
 
-+ (NSString *)pathComponent
-{
++ (NSString *)pathComponent {
     return @"groups";
 }
 
 + (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library
-{
+                          inLibrary:(SZNLibrary *)library {
     SZNGroup *group = (SZNGroup *)[super objectFromXMLElement:XMLElement inLibrary:library];
     group.identifier = [TBXML textForChildElementNamed:@"zapi:groupID" parentElement:XMLElement escaped:NO];
     return group;
 }
 
-- (NSString *)pathPrefix
-{
+- (NSString *)pathPrefix {
     return [@"/groups" stringByAppendingPathComponent:self.identifier];
 }
 

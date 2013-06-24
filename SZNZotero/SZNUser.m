@@ -29,8 +29,7 @@
 
 @implementation SZNUser
 
-- (NSString *)pathPrefix
-{
+- (NSString *)pathPrefix {
     return [@"/users" stringByAppendingPathComponent:self.identifier];
 }
 

@@ -26,8 +26,7 @@
 
 @implementation SZNAuthor
 
-+ (SZNAuthor *)authorFromXMLElement:(TBXMLElement *)XMLElement
-{
++ (SZNAuthor *)authorFromXMLElement:(TBXMLElement *)XMLElement {
     SZNAuthor *author = [SZNAuthor new];
     author.name = [TBXML textForChildElementNamed:@"name" parentElement:XMLElement escaped:NO];
     author.URI  = [NSURL URLWithString:[TBXML textForChildElementNamed:@"uri" parentElement:XMLElement escaped:YES]];

@@ -29,16 +29,14 @@
 @implementation SZNTag
 
 + (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library
-{
+                          inLibrary:(SZNLibrary *)library {
     SZNTag *tag = (SZNTag *)[super objectFromXMLElement:XMLElement inLibrary:library];
     tag.type = [tag.content[@"type"] integerValue];
     tag.name = tag.content[@"tag"];
     return tag;
 }
 
-+ (NSString *)pathComponent
-{
++ (NSString *)pathComponent {
     return @"tags";
 }
 
