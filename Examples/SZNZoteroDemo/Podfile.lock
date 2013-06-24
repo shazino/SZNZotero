@@ -1,5 +1,5 @@
 PODS:
-  - AFNetworking (1.2.1)
+  - AFNetworking (1.3.1)
   - AFOAuth1Client (0.2.0):
     - AFNetworking (>= 1.0)
   - SZNZotero (1.0):
@@ -19,9 +19,9 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
   AFOAuth1Client: 3e01e6e4218116c2e279671c8ab086133514a350
   SZNZotero: e04752e73b5bfad7df3c6be6a3f6ce6f873db4fb
   TBXML: 0511ac325d83e59d3aefa4bc8cd6cbeff07a8d9e
 
-COCOAPODS: 0.19.1
+COCOAPODS: 0.20.2

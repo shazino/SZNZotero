@@ -1,7 +1,7 @@
 ALWAYS_SEARCH_USER_PATHS = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) ARC_ENABLED
 HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS}
-OTHER_LDFLAGS = -ObjC -lz -framework MobileCoreServices -framework Security -framework SystemConfiguration
+OTHER_LDFLAGS = -ObjC -lz -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration
 PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/AFNetworking" "${PODS_ROOT}/BuildHeaders/AFOAuth1Client" "${PODS_ROOT}/BuildHeaders/SZNZotero" "${PODS_ROOT}/BuildHeaders/TBXML"
 PODS_HEADERS_SEARCH_PATHS = ${PODS_PUBLIC_HEADERS_SEARCH_PATHS}
 PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/AFOAuth1Client" "${PODS_ROOT}/Headers/SZNZotero" "${PODS_ROOT}/Headers/TBXML"
