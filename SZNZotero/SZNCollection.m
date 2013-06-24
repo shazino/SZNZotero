@@ -46,7 +46,7 @@
 - (void)fetchItemsSuccess:(void (^)(NSArray *))success
                   failure:(void (^)(NSError *))failure
 {
-    NSString *resourcePath = [self.library pathForResource:[SZNItem class]];
+    NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/items", resourcePath, self.key]
                       parameters:@{@"content": @"json"}
                          success:^(TBXML *XML) {
@@ -59,7 +59,7 @@
 - (void)fetchTopItemsSuccess:(void (^)(NSArray *))success
                      failure:(void (^)(NSError *))failure
 {
-    NSString *resourcePath = [self.library pathForResource:[SZNItem class]];
+    NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/items/top", resourcePath, self.key]
                       parameters:@{@"content": @"json"}
                          success:^(TBXML *XML) {
@@ -83,7 +83,7 @@
 
 - (void)fetchTagsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSString *resourcePath = [self.library pathForResource:[SZNTag class]];
+    NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     [self.library.client getPath:[NSString stringWithFormat:@"%@/%@/tags", resourcePath, self.key]
                       parameters:@{@"content": @"json"}
                          success:^(TBXML *XML) {

@@ -125,16 +125,21 @@
             failure:failure];
 }
 
-- (void)fetchChildItemsSuccess:(void (^)(NSArray *))success
-                       failure:(void (^)(NSError *))failure
+- (void)fetchChildrenItemsSuccess:(void (^)(NSArray *))success
+                          failure:(void (^)(NSError *))failure
 {
-    [self.library.client getPath:[[self path] stringByAppendingPathComponent:@"child"]
-                      parameters:@{@"content": @"json"}
-                         success:^(TBXML *XML) {
-                             if (success)
-                                 success([SZNItem objectsFromXML:XML inLibrary:self.library]);
-                         }
-                         failure:failure];
+    if ([self.type isEqualToString:@"attachment"]) {
+        if (failure) failure(nil);
+    }
+    else {
+        [self.library.client getPath:[[self path] stringByAppendingPathComponent:@"children"]
+                          parameters:@{@"content": @"json"}
+                             success:^(TBXML *XML) {
+                                 if (success)
+                                     success([SZNItem objectsFromXML:XML inLibrary:self.library]);
+                             }
+                             failure:failure];
+    }
 }
 
 - (NSURLRequest *)fileURLRequest

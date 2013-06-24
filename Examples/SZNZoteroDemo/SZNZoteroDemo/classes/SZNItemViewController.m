@@ -37,8 +37,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
         return [obj isKindOfClass:[NSString class]] && ![obj isEqualToString:@""];
     }] allObjects]];
     
-    if ([item.type isEqualToString:@"attachment"])
-    {
+    if ([item.type isEqualToString:@"attachment"]) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"View Attachment"
                                                                                   style:UIBarButtonItemStyleBordered
                                                                                  target:self
@@ -50,12 +49,14 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 {
     [super viewDidLoad];
     
-    [self.item fetchChildItemsSuccess:^(NSArray *children) {
-        self.notes = children;
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-    }];
+    if (![self.item.type isEqualToString:@"attachment"]) {
+        [self.item fetchChildrenItemsSuccess:^(NSArray *children) {
+            self.notes = children;
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+        }];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -66,14 +67,12 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.destinationViewController isKindOfClass:[SZNNoteViewController class]])
-    {
+    if ([segue.destinationViewController isKindOfClass:[SZNNoteViewController class]]) {
         SZNNoteViewController *noteViewController = (SZNNoteViewController *)segue.destinationViewController;
         noteViewController.noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
         noteViewController.delegate = self;
     }
-    else if ([segue.destinationViewController isKindOfClass:[SZNAttachmentViewController class]])
-    {
+    else if ([segue.destinationViewController isKindOfClass:[SZNAttachmentViewController class]]) {
         ((SZNAttachmentViewController *)segue.destinationViewController).fileURLRequest = [self.item fileURLRequest];
     }
 }
@@ -87,8 +86,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section)
-    {
+    switch (section) {
         case SZNItemViewControllerGeneralSection:
             return 3;
         case SZNItemViewControllerContentSection:
@@ -109,12 +107,9 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-    switch (indexPath.section)
-    {
-        case SZNItemViewControllerGeneralSection:
-        {
-            switch (indexPath.row)
-            {
+    switch (indexPath.section) {
+        case SZNItemViewControllerGeneralSection: {
+            switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"Title";
                     cell.detailTextLabel.text = self.item.content[@"title"];
@@ -128,37 +123,34 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
                     cell.detailTextLabel.text = self.item.key;
                     break;
             }
-        }
             break;
-        case SZNItemViewControllerContentSection:
-        {
+        }
+        case SZNItemViewControllerContentSection: {
             NSString *key = [self.displayableItemContent allKeys][indexPath.row];
             cell.textLabel.text = key;
             cell.detailTextLabel.text = self.displayableItemContent[key];
-        }
             break;
-        case SZNItemViewControllerTagsSection:
-        {
+        }
+        case SZNItemViewControllerTagsSection: {
             NSSet *tags = [SZNItemDescriptor tagsForItem:self.item];
             NSArray *sortedTags = [tags sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
             SZNTag *tag = sortedTags[indexPath.row];
             cell.textLabel.text = nil;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
-        }
             break;
-        case SZNItemViewControllerNotesSection:
-        {
+        }
+        case SZNItemViewControllerNotesSection: {
             SZNItem *child = self.notes[indexPath.row];
             cell.textLabel.text = nil;
-            if ([child.type isEqualToString:@"note"])
-            {
+            if ([child.type isEqualToString:@"note"]) {
                 cell.detailTextLabel.text = @"📝 Note";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
-            else
+            else {
                 cell.detailTextLabel.text = child.content[@"title"];
-        }
+            }
             break;
+        }
     }
     
     return cell;
@@ -168,9 +160,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    if (indexPath.section == SZNItemViewControllerNotesSection)
-    {
+    if (indexPath.section == SZNItemViewControllerNotesSection) {
         SZNItem *child = self.notes[indexPath.row];
         if ([child.type isEqualToString:@"note"])
             [self performSegueWithIdentifier:@"SZNPushNoteSegue" sender:nil];

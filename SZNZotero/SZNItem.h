@@ -95,15 +95,15 @@
                            failure:(void (^)(NSError *))failure;
 
 /**
- Fetches all child items under this item.
+ Fetches all children items under this item.
  
  @param success A block object to be executed when the request operation finishes successfully. 
   This block has no return value and takes one argument: an array of `SZNItems` objects created from the response data of request.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchChildItemsSuccess:(void (^)(NSArray *))success
-                       failure:(void (^)(NSError *))failure;
+- (void)fetchChildrenItemsSuccess:(void (^)(NSArray *))success
+                          failure:(void (^)(NSError *))failure;
 
 /**
  Updates item with new content.
