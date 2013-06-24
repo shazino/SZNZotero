@@ -133,10 +133,13 @@
                                       path:(NSString *)path
                                 parameters:(NSDictionary *)parameters {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    if ([method isEqualToString:@"GET"])
-        requestParameters[@"key"] = self.accessToken.secret;
-    else
-        path = [path stringByAppendingFormat:@"?key=%@", self.accessToken.secret];
+    
+    if (self.accessToken.secret) {
+        if ([method isEqualToString:@"GET"])
+            requestParameters[@"key"] = self.accessToken.secret;
+        else
+            path = [path stringByAppendingFormat:@"?key=%@", self.accessToken.secret];
+    }
     
     NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:requestParameters];
     return request;
