@@ -30,8 +30,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 @implementation SZNItemViewController
 
-- (void)setItem:(SZNItem *)item
-{
+- (void)setItem:(SZNItem *)item {
     _item = item;
     self.displayableItemContent = [item.content dictionaryWithValuesForKeys:[[item.content keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
         return [obj isKindOfClass:[NSString class]] && ![obj isEqualToString:@""];
@@ -45,8 +44,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     }
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     if (![self.item.type isEqualToString:@"attachment"]) {
@@ -59,14 +57,12 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[SZNNoteViewController class]]) {
         SZNNoteViewController *noteViewController = (SZNNoteViewController *)segue.destinationViewController;
         noteViewController.noteItem = self.notes[self.tableView.indexPathForSelectedRow.row];
@@ -79,13 +75,11 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 4;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case SZNItemViewControllerGeneralSection:
             return 3;
@@ -100,8 +94,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"SZNDetailCell";
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -158,8 +151,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == SZNItemViewControllerNotesSection) {
         SZNItem *child = self.notes[indexPath.row];
         if ([child.type isEqualToString:@"note"])
@@ -169,8 +161,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 #pragma mark - Note view delegate
 
-- (void)noteViewController:(SZNNoteViewController *)noteViewController didSaveItem:(SZNItem *)item
-{
+- (void)noteViewController:(SZNNoteViewController *)noteViewController didSaveItem:(SZNItem *)item {
     NSMutableArray *notes = [NSMutableArray arrayWithArray:self.notes];
     [notes replaceObjectAtIndex:[notes indexOfObject:item] withObject:item];
     self.notes = notes;
@@ -180,8 +171,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 #pragma mark - Actions 
 
-- (IBAction)presentAttachment:(id)sender
-{
+- (IBAction)presentAttachment:(id)sender {
     [self performSegueWithIdentifier:@"SZNPushAttachmentSegue" sender:sender];
 }
 

@@ -16,15 +16,9 @@
 
 NSString * const SZNURLScheme = @"sznzoterodemo";
 
-@interface SZNAppDelegate ()
-
-@end
-
-
 @implementation SZNAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     NSString *clientKey = @"###";
@@ -32,7 +26,8 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
     
     SZNZoteroAPIClient *client = [[SZNZoteroAPIClient alloc] initWithKey:clientKey secret:clientSecret URLScheme:SZNURLScheme];
     
-    SZNLibrariesViewController *librariesViewController = (SZNLibrariesViewController *)((UINavigationController *)self.window.rootViewController).topViewController;
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    SZNLibrariesViewController *librariesViewController = (SZNLibrariesViewController *)navigationController.topViewController;
     librariesViewController.user = (SZNUser *)[SZNUser libraryWithIdentifier:client.userIdentifier client:client];
     
     return YES;
@@ -41,10 +36,8 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-    if ([[url scheme] isEqualToString:SZNURLScheme])
-    {
+         annotation:(id)annotation {
+    if ([[url scheme] isEqualToString:SZNURLScheme]) {
         NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification
                                                                      object:nil
                                                                    userInfo:@{kAFApplicationLaunchOptionsURLKey: url}];

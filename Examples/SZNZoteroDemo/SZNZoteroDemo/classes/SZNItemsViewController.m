@@ -32,19 +32,16 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 
 @implementation SZNItemsViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    if (self.parentCollection)
-    {
+    if (self.parentCollection) {
         self.title = self.parentCollection.content[@"name"];
         self.navigationItem.backBarButtonItem.title = self.title;
     }
-    else
-    {
+    else {
         if ([self.library isKindOfClass:[SZNGroup class]])
             self.title = self.library.content[@"name"];
         
@@ -57,15 +54,12 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     [self fetchItemsInUserLibrary];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[SZNItemViewController class]])
-    {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[SZNItemViewController class]]) {
         ((SZNItemViewController *)segue.destinationViewController).library = self.library;
         ((SZNItemViewController *)segue.destinationViewController).item    = self.items[self.tableView.indexPathForSelectedRow.row];
     }
-    else if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
-    {
+    else if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
         ((UINavigationController *)segue.destinationViewController).navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
         
         if ([((UINavigationController *)segue.destinationViewController).topViewController isKindOfClass:[SZNItemTypesViewController class]])
@@ -75,13 +69,11 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == SZNItemsViewControllerCollectionsSection)
         return [self.collections count];
     else if (section == SZNItemsViewControllerItemsSection)
@@ -90,29 +82,25 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
         return [self.tags count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"SZNItemCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == SZNItemsViewControllerCollectionsSection)
-    {
+    if (indexPath.section == SZNItemsViewControllerCollectionsSection) {
         SZNCollection *collection = self.collections[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"📂 %@", collection.content[@"name"]];
         cell.detailTextLabel.text = collection.identifier;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     }
-    else if (indexPath.section == SZNItemsViewControllerItemsSection)
-    {
+    else if (indexPath.section == SZNItemsViewControllerItemsSection) {
         SZNItem *item = self.items[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"📄 %@", item.content[@"title"]];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@", item.type, item.key];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     }
-    else
-    {
+    else {
         SZNTag *tag = self.tags[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"🔖 %@", tag.name];
         cell.detailTextLabel.text = nil;
@@ -125,21 +113,19 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == SZNItemsViewControllerCollectionsSection)
-    {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == SZNItemsViewControllerCollectionsSection) {
         SZNItemsViewController *itemsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SZNItemsViewController"];
         itemsViewController.parentCollection = self.collections[indexPath.row];
         itemsViewController.library = self.library;
         [self.navigationController pushViewController:itemsViewController animated:YES];
     }
-    else if (indexPath.section == SZNItemsViewControllerItemsSection)
+    else if (indexPath.section == SZNItemsViewControllerItemsSection) {
         [self performSegueWithIdentifier:@"SZNPushItemSegue" sender:nil];
+    }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == SZNItemsViewControllerCollectionsSection)
         return @"Collections";
     else if (section == SZNItemsViewControllerItemsSection)
@@ -148,19 +134,15 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
         return @"Tags";
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == SZNItemsViewControllerItemsSection)
         return YES;
     return NO;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        if (indexPath.section == SZNItemsViewControllerItemsSection)
-        {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (indexPath.section == SZNItemsViewControllerItemsSection) {
             SZNItem *item = self.items[indexPath.row];
             [item deleteSuccess:^{
                 NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
@@ -176,27 +158,23 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 
 #pragma mark - Actions
 
-- (IBAction)refresh:(id)sender
-{
+- (IBAction)refresh:(id)sender {
     [self fetchItemsInUserLibrary];
 }
 
-- (IBAction)addItem:(id)sender
-{
+- (IBAction)addItem:(id)sender {
     [self performSegueWithIdentifier:@"SZNShowAddItemSegue" sender:sender];
 }
 
 #pragma mark - Fetch
 
-- (void)fetchItemsInUserLibrary
-{
+- (void)fetchItemsInUserLibrary {
     void(^failure)(NSError *) = ^(NSError *error) {
         [self.refreshControl endRefreshing];
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     };
     
-    if (self.parentCollection)
-    {
+    if (self.parentCollection) {
         [self.parentCollection fetchTopItemsSuccess:^(NSArray *items) {
             self.items = items;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection]
@@ -216,8 +194,7 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
             } failure:failure];
         } failure:failure];
     }
-    else
-    {
+    else {
         [self.library fetchObjectsForResource:[SZNItem class] path:nil keys:nil specifier:@"top" success:^(NSArray *items) {
             self.items = items;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection]

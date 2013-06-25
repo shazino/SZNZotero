@@ -19,8 +19,7 @@
 
 @implementation SZNItemFieldsViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -36,25 +35,21 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.itemFields count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"SZNFieldCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     UILabel *cellLabel;
     UITextField *cellTextField;
-    for (UIView *subview in cell.contentView.subviews)
-    {
+    for (UIView *subview in cell.contentView.subviews) {
         if ([subview isKindOfClass:[UILabel class]])
             cellLabel = (UILabel *)subview;
         if ([subview isKindOfClass:[UITextField class]])
@@ -67,22 +62,14 @@
     return cell;
 }
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-}
-
 #pragma mark - Text field delegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(id)textField.superview.superview];
     NSMutableDictionary *field = [NSMutableDictionary dictionaryWithDictionary:self.itemFields[indexPath.row]];
     field[@"value"] = textField.text;
@@ -91,21 +78,18 @@
 
 #pragma mark - Alert view delegate
 
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
-{
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Actions
 
-- (IBAction)done:(id)sender
-{
+- (IBAction)done:(id)sender {
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     NSMutableDictionary *content = [NSMutableDictionary dictionary];
     content[@"itemType"] = self.itemType;
-    for (NSDictionary *field in self.itemFields)
-    {
+    for (NSDictionary *field in self.itemFields) {
         if (field[@"value"])
             content[field[@"field"]] = field[@"value"];
     }

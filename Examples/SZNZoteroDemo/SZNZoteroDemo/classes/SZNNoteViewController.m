@@ -15,8 +15,7 @@
 
 @implementation SZNNoteViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     NSString * HTMLString = [NSString stringWithFormat:@"<body contentEditable=\"true\" style=\"font-family:Helvetica;\">%@</body>", self.noteItem.content[@"note"]];
@@ -25,13 +24,11 @@
 
 #pragma mark - Actions
 
-- (NSString *)HTMLString
-{
+- (NSString *)HTMLString {
     return [self.webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 }
 
-- (IBAction)save:(id)sender
-{
+- (IBAction)save:(id)sender {
     self.navigationItem.rightBarButtonItem.enabled = NO;
     NSString *HTMLString = [self HTMLString];
     
