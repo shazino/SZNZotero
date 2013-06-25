@@ -113,8 +113,7 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
         [self.user.client authenticateWithLibraryAccess:YES notesAccess:YES writeAccess:YES groupAccessLevel:SZNZoteroAccessReadWrite success:^(AFOAuth1Token *token) {
             self.user.identifier = self.user.client.userIdentifier;
             [self saveSessionWithClient:self.user.client token:token.secret];
-            [self.tableView reloadData];
-            [self fetchGroupsInLibrary:self.user];
+            [self refreshData:nil];
         } failure:^(NSError *error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
         }];

@@ -22,6 +22,13 @@
     [self.webView loadRequest:self.fileURLRequest];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.webView.isLoading)
+        [self.webView stopLoading];
+}
+
 #pragma mark - Web view delegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
