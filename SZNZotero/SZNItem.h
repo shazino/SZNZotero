@@ -94,6 +94,25 @@
                            success:(void (^)(NSArray *))success
                            failure:(void (^)(NSError *))failure;
 
++ (void)fetchAttachmentItemTemplateWithClient:(SZNZoteroAPIClient *)client
+                                     linkMode:(NSString *)linkMode
+                                      success:(void (^)(NSDictionary *))success
+                                      failure:(void (^)(NSError *))failure;
+
+- (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
+                                 contentType:(NSString *)contentType
+                                     success:(void (^)(NSDictionary *))success
+                                     failure:(void (^)(NSError *))failure;
+
+- (void)uploadFileAtURL:(NSURL *)fileURL
+             withPrefix:(NSString *)prefix
+                 suffix:(NSString *)suffix
+                  toURL:(NSString *)toURL
+            contentType:(NSString *)contentType
+              uploadKey:(NSString *)uploadKey
+                success:(void (^)(void))success
+                failure:(void (^)(NSError *))failure;
+
 /**
  Fetches all children items under this item.
  

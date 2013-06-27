@@ -180,3 +180,10 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
                                escaped:(BOOL)escaped;
 
 @end
+
+
+@interface NSData(SZNMD5)
+
+- (NSString*)MD5;
+
+@end

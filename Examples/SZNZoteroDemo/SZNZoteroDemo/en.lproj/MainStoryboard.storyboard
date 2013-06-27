@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GI3-vi-SrQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GI3-vi-SrQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -96,11 +96,127 @@
                                 <action selector="cancel:" destination="nc2-8A-VmN" id="dJC-Is-Nb0"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="New Attachment" id="8mW-aK-dbd">
+                            <connections>
+                                <segue destination="Wjm-q1-leN" kind="push" id="bCi-Wx-OBo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lg9-uM-pfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2390" y="-637"/>
+        </scene>
+        <!--New Attachment View Controller - New Attachment-->
+        <scene sceneID="gKB-aE-cb7">
+            <objects>
+                <tableViewController id="Wjm-q1-leN" customClass="SZNNewAttachmentViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="DmQ-9f-l1m">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="AIG-GT-gex">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SZNFieldCell" id="Erl-Ao-ZTX">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2g-OG-ULv">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="2qN-b2-Lf9"/>
+                                                        <constraint firstAttribute="width" constant="75" id="qgi-4R-jUg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Field" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zon-UJ-g74">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="TQA-VV-xIn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Wjm-q1-leN" id="ucy-MR-kzo"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="zon-UJ-g74" firstAttribute="leading" secondItem="y2g-OG-ULv" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="7L6-GO-mi1"/>
+                                            <constraint firstItem="y2g-OG-ULv" firstAttribute="baseline" secondItem="zon-UJ-g74" secondAttribute="baseline" type="default" id="NMf-n7-Xaz"/>
+                                            <constraint firstItem="zon-UJ-g74" firstAttribute="centerY" secondItem="Erl-Ao-ZTX" secondAttribute="centerY" type="default" id="hG7-cP-gd4"/>
+                                            <constraint firstItem="y2g-OG-ULv" firstAttribute="centerY" secondItem="zon-UJ-g74" secondAttribute="centerY" type="default" id="jyn-4m-Tzo"/>
+                                            <constraint firstAttribute="trailing" secondItem="zon-UJ-g74" secondAttribute="trailing" constant="20" type="default" id="ohA-NR-dhH"/>
+                                            <constraint firstItem="y2g-OG-ULv" firstAttribute="leading" secondItem="Erl-Ao-ZTX" secondAttribute="leading" constant="20" type="user" id="q0h-FZ-hDb"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SZNFieldCell" id="hiE-FZ-8fX">
+                                        <rect key="frame" x="0.0" y="55" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Content" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbB-iY-rpM">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="46R-XD-SB8"/>
+                                                        <constraint firstAttribute="height" constant="21" id="gBV-FT-M9f"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Field" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQI-IV-hj3">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="G1C-7q-CCe"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Wjm-q1-leN" id="avy-NA-Oda"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="UbB-iY-rpM" firstAttribute="leading" secondItem="hiE-FZ-8fX" secondAttribute="leading" constant="20" type="user" id="09t-EX-tjz"/>
+                                            <constraint firstItem="UbB-iY-rpM" firstAttribute="baseline" secondItem="vQI-IV-hj3" secondAttribute="baseline" type="default" id="68d-qz-WFd"/>
+                                            <constraint firstAttribute="trailing" secondItem="vQI-IV-hj3" secondAttribute="trailing" constant="20" type="default" id="Po1-YP-cNQ"/>
+                                            <constraint firstItem="vQI-IV-hj3" firstAttribute="leading" secondItem="UbB-iY-rpM" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="czy-7Q-5Wb"/>
+                                            <constraint firstItem="vQI-IV-hj3" firstAttribute="centerY" secondItem="hiE-FZ-8fX" secondAttribute="centerY" type="default" id="iml-oG-cpq"/>
+                                            <constraint firstItem="UbB-iY-rpM" firstAttribute="centerY" secondItem="vQI-IV-hj3" secondAttribute="centerY" type="default" id="rxN-ic-aSn"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Wjm-q1-leN" id="hCb-Ld-lyC"/>
+                            <outlet property="delegate" destination="Wjm-q1-leN" id="igK-3H-Fgh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Attachment" id="ByL-XA-sLa">
+                        <barButtonItem key="rightBarButtonItem" title="Upload" style="done" id="K4S-tA-DCy">
+                            <connections>
+                                <action selector="uploadAttachment:" destination="Wjm-q1-leN" id="j2F-7k-OKV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextField" destination="vQI-IV-hj3" id="Lsd-DK-1zi"/>
+                        <outlet property="titleTextField" destination="zon-UJ-g74" id="gwG-44-svu"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oif-US-WjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2830" y="-1274"/>
         </scene>
         <!--Item Fields View Controller - Item Fields-->
         <scene sceneID="cZO-BQ-axi">
@@ -360,6 +476,63 @@
             <point key="canvasLocation" x="1897" y="-637"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SZNAttachmentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNAttachmentViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SZNItemFieldsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemFieldsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+            </relationships>
+        </class>
+        <class className="SZNItemTypesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemTypesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+            </relationships>
+        </class>
+        <class className="SZNItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="presentAttachment:"/>
+            </relationships>
+        </class>
+        <class className="SZNItemsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addItem:"/>
+                <relationship kind="action" name="refresh:"/>
+            </relationships>
+        </class>
+        <class className="SZNLibrariesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNLibrariesViewController.h"/>
+        </class>
+        <class className="SZNNewAttachmentViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNNewAttachmentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="uploadAttachment:"/>
+                <relationship kind="outlet" name="contentTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SZNNoteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SZNNoteViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

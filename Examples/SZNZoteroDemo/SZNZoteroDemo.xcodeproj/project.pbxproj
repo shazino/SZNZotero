@@ -22,6 +22,7 @@
 		14B64C26172540B300655592 /* SZNNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B64C25172540B300655592 /* SZNNoteViewController.m */; };
 		14B744C1172673980031B2A2 /* SZNItemTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B744C0172673980031B2A2 /* SZNItemTypesViewController.m */; };
 		14B744C417267E670031B2A2 /* SZNItemFieldsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B744C317267E670031B2A2 /* SZNItemFieldsViewController.m */; };
+		14BE8A451779D5F0004CE16B /* SZNNewAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE8A441779D5F0004CE16B /* SZNNewAttachmentViewController.m */; };
 		14D68469172170F1008804E2 /* SZNItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D68468172170F1008804E2 /* SZNItemViewController.m */; };
 		14FA643F174104E700AEEE50 /* SZNAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FA643E174104E700AEEE50 /* SZNAttachmentViewController.m */; };
 		27ADE14AD120442183CD9113 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FEC7A8F06B4C2AB019B963 /* libPods.a */; };
@@ -52,6 +53,8 @@
 		14B744C0172673980031B2A2 /* SZNItemTypesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNItemTypesViewController.m; path = SZNZoteroDemo/classes/SZNItemTypesViewController.m; sourceTree = SOURCE_ROOT; };
 		14B744C217267E670031B2A2 /* SZNItemFieldsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNItemFieldsViewController.h; path = SZNZoteroDemo/classes/SZNItemFieldsViewController.h; sourceTree = SOURCE_ROOT; };
 		14B744C317267E670031B2A2 /* SZNItemFieldsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNItemFieldsViewController.m; path = SZNZoteroDemo/classes/SZNItemFieldsViewController.m; sourceTree = SOURCE_ROOT; };
+		14BE8A431779D5F0004CE16B /* SZNNewAttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNNewAttachmentViewController.h; path = SZNZoteroDemo/classes/SZNNewAttachmentViewController.h; sourceTree = SOURCE_ROOT; };
+		14BE8A441779D5F0004CE16B /* SZNNewAttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNNewAttachmentViewController.m; path = SZNZoteroDemo/classes/SZNNewAttachmentViewController.m; sourceTree = SOURCE_ROOT; };
 		14D68467172170F1008804E2 /* SZNItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNItemViewController.h; path = SZNZoteroDemo/classes/SZNItemViewController.h; sourceTree = SOURCE_ROOT; };
 		14D68468172170F1008804E2 /* SZNItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNItemViewController.m; path = SZNZoteroDemo/classes/SZNItemViewController.m; sourceTree = SOURCE_ROOT; };
 		14FA643D174104E700AEEE50 /* SZNAttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNAttachmentViewController.h; path = SZNZoteroDemo/classes/SZNAttachmentViewController.h; sourceTree = SOURCE_ROOT; };
@@ -123,6 +126,8 @@
 				14B744C317267E670031B2A2 /* SZNItemFieldsViewController.m */,
 				14FA643D174104E700AEEE50 /* SZNAttachmentViewController.h */,
 				14FA643E174104E700AEEE50 /* SZNAttachmentViewController.m */,
+				14BE8A431779D5F0004CE16B /* SZNNewAttachmentViewController.h */,
+				14BE8A441779D5F0004CE16B /* SZNNewAttachmentViewController.m */,
 				14AF54F5171DAC3100BA4CBE /* MainStoryboard.storyboard */,
 				14A83C9016F21E7D009D8F75 /* Supporting Files */,
 			);
@@ -238,6 +243,7 @@
 				14B744C417267E670031B2A2 /* SZNItemFieldsViewController.m in Sources */,
 				14FA643F174104E700AEEE50 /* SZNAttachmentViewController.m in Sources */,
 				14AD3189174BA0FB0036897A /* SZNLibrariesViewController.m in Sources */,
+				14BE8A451779D5F0004CE16B /* SZNNewAttachmentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

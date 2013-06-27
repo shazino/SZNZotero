@@ -25,6 +25,7 @@
 #import <AFNetworking.h>
 #import <AFOAuth1Client.h>
 #import <TBXML.h>
+#import <CommonCrypto/CommonDigest.h>
 #import "GTMNSString+HTML.h"
 
 @interface AFOAuth1Client ()
@@ -138,7 +139,7 @@
         if ([method isEqualToString:@"GET"])
             requestParameters[@"key"] = self.accessToken.secret;
         else
-            path = [path stringByAppendingFormat:@"?key=%@", self.accessToken.secret];
+            path = [path stringByAppendingFormat:@"%@key=%@", [path rangeOfString:@"?"].location == NSNotFound ? @"?" : @"&", self.accessToken.secret];
     }
     
     NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:requestParameters];
@@ -181,7 +182,10 @@
       parameters:(NSDictionary *)parameters
          success:(void (^)(id))success
          failure:(void (^)(NSError *))failure {
-    NSURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
+    if ([path rangeOfString:@"md5="].location != NSNotFound || [path rangeOfString:@"upload="].location != NSNotFound)
+        [request setValue:@"*" forHTTPHeaderField:@"If-None-Match"];
+    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
@@ -292,11 +296,27 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 + (NSString *)textForChildElementNamed:(NSString *)childElementName
                          parentElement:(TBXMLElement *)parentElement
                                escaped:(BOOL)escaped {
+    if (!parentElement)
+        return nil;
     TBXMLElement *element = [TBXML childElementNamed:childElementName parentElement:parentElement];
     if (!element)
         return nil;
     NSString *text = [TBXML textForElement:element];
     return (escaped) ? [text gtm_stringByUnescapingFromHTML] : text;
+}
+
+@end
+
+@implementation NSData(SZNMD5)
+
+- (NSString*)MD5 {
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(self.bytes, self.length, md5Buffer);
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x",md5Buffer[i]];
+    
+    return output;
 }
 
 @end

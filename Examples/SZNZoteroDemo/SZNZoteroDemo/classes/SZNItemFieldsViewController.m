@@ -26,7 +26,7 @@
     
     [SZNItem fetchValidFieldsWithClient:self.library.client forType:self.itemType success:^(NSArray *fields) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
-        self.itemFields = [NSMutableArray arrayWithArray:fields];
+        self.itemFields = [fields mutableCopy];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);

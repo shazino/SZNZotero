@@ -83,7 +83,9 @@
                              failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
                          }
                          else if (success) {
-                             success(nil);
+                             SZNItem *item = (SZNItem *)[self objectFromXMLElement:nil inLibrary:library];
+                             item.key = [successResponse valueForKey:@"0"];
+                             success(item);
                          }
                      }
                      failure:failure];
@@ -114,6 +116,71 @@
                     success(responseObject);
             }
             failure:failure];
+}
+
++ (void)fetchAttachmentItemTemplateWithClient:(SZNZoteroAPIClient *)client
+                                     linkMode:(NSString *)linkMode
+                                      success:(void (^)(NSDictionary *))success
+                                      failure:(void (^)(NSError *))failure {
+    [client getPath:@"/items/new"
+         parameters:@{@"itemType": @"attachment", @"linkMode": linkMode}
+            success:success
+            failure:failure];
+}
+
+- (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
+                                 contentType:(NSString *)contentType
+                                      success:(void (^)(NSDictionary *))success
+                                      failure:(void (^)(NSError *))failure
+{
+    NSString *fileName = [fileURL lastPathComponent];
+    NSData *fileData = [NSData dataWithContentsOfURL:fileURL];
+    NSString *md5 = [fileData MD5];
+    NSNumber *fileSizeInBytes = @([fileData length]);
+    NSNumber *mtimeInMilliseconds = @([NSDate timeIntervalSinceReferenceDate] *1000);
+    
+    NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
+    [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%@&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], [mtimeInMilliseconds stringValue], contentType]
+                       parameters:nil
+                         success:^(id responseObject) {
+                             if (success)
+                                 success(responseObject);
+                         }
+                         failure:failure];
+}
+
+- (void)uploadFileAtURL:(NSURL *)fileURL
+             withPrefix:(NSString *)prefix
+                 suffix:(NSString *)suffix
+                  toURL:(NSString *)toURL
+            contentType:(NSString *)contentType
+              uploadKey:(NSString *)uploadKey
+                success:(void (^)(void))success
+                failure:(void (^)(NSError *))failure
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:toURL]];
+    request.HTTPMethod = @"POST";
+    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[prefix dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithContentsOfURL:fileURL]];
+    [body appendData:[suffix dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
+        [self.library.client postPath:[path stringByAppendingFormat:@"?upload=%@", uploadKey]
+                           parameters:nil
+                              success:^(id response) {
+                                  if (success)
+                                      success();
+                              } failure:failure];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure)
+            failure(error);
+    }];
+    [operation start];
 }
 
 - (void)fetchChildrenItemsSuccess:(void (^)(NSArray *))success

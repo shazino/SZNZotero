@@ -10,12 +10,14 @@
 
 #import <SZNZotero.h>
 #import "SZNItemFieldsViewController.h"
+#import "SZNNewAttachmentViewController.h"
 
 @interface SZNItemTypesViewController ()
 
 @property (strong, nonatomic) NSArray *itemTypes;
 
 @end
+
 
 @implementation SZNItemTypesViewController
 
@@ -35,6 +37,10 @@
         SZNItemFieldsViewController *itemFieldsViewController = (SZNItemFieldsViewController *)segue.destinationViewController;
         itemFieldsViewController.library = self.library;
         itemFieldsViewController.itemType = self.itemTypes[self.tableView.indexPathForSelectedRow.row][@"itemType"];
+    }
+    else if ([segue.destinationViewController isKindOfClass:[SZNNewAttachmentViewController class]]) {
+        SZNNewAttachmentViewController *newAttachmentViewController = (SZNNewAttachmentViewController *)segue.destinationViewController;
+        newAttachmentViewController.library = self.library;
     }
 }
 
