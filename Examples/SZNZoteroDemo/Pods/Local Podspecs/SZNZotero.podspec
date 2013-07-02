@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.osx.deployment_target = '10.7'
 
-  s.dependency 'AFOAuth1Client', '0.2.0'
+  s.dependency 'AFOAuth1Client', '0.2.1'
   s.dependency 'TBXML', '1.5'
 
   s.subspec 'google-toolbox-mac' do |gtm|

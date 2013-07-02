@@ -73,8 +73,8 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
-                        failure:(void (^)(NSError *))failure;
+- (void)authenticateSuccess:(void (^)(AFOAuth1Token *))success
+                    failure:(void (^)(NSError *))failure;
 
 /**
  Authenticates the client with the specified access level parameters.
@@ -92,6 +92,7 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
                           notesAccess:(BOOL)notesAccess
                           writeAccess:(BOOL)writeAccess
                      groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel
+             webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
                               success:(void (^)(AFOAuth1Token *))success
                               failure:(void (^)(NSError *))failure;
 

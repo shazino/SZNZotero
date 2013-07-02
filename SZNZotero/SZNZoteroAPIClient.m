@@ -35,12 +35,22 @@
 
 @interface SZNZoteroAPIClient ()
 
+@property (strong, nonatomic) id applicationLaunchObserver;
 @property (nonatomic, strong) NSString *URLScheme;
 
 - (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
                     responseObject:(id)responseObject
                            success:(void (^)(id))success
                            failure:(void (^)(NSError *))failure;
+- (void)authorizeUsingOAuthWithRequestTokenPath:(NSString *)requestTokenPath
+                          userAuthorizationPath:(NSString *)userAuthorizationPath
+                                    callbackURL:(NSURL *)callbackURL
+                                accessTokenPath:(NSString *)accessTokenPath
+                                   accessMethod:(NSString *)accessMethod
+                                          scope:(NSString *)scope
+                       webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
+                                        success:(void (^)(AFOAuth1Token *accessToken))success
+                                        failure:(void (^)(NSError *error))failure;
 
 @end
 
@@ -61,12 +71,13 @@
     return self;
 }
 
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
-                        failure:(void (^)(NSError *))failure {
+- (void)authenticateSuccess:(void (^)(AFOAuth1Token *))success
+                    failure:(void (^)(NSError *))failure {
     [self authenticateWithLibraryAccess:YES
                             notesAccess:NO
                             writeAccess:NO
                        groupAccessLevel:SZNZoteroAccessNone
+               webAuthorizationCallback:nil
                                 success:success
                                 failure:failure];
 }
@@ -75,6 +86,7 @@
                           notesAccess:(BOOL)notesAccess
                           writeAccess:(BOOL)writeAccess
                      groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel
+             webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
                               success:(void (^)(AFOAuth1Token *))success
                               failure:(void (^)(NSError *))failure {
     NSString *userAuthorizationPath = [NSString stringWithFormat:@"//www.zotero.org/oauth/authorize?library_access=%d&notes_access=%d&write_access=%d&all_groups=%@",
@@ -88,7 +100,8 @@
                                   accessTokenPath:@"//www.zotero.org/oauth/access"
                                      accessMethod:@"GET"
                                             scope:@""
-                                          success:^(AFOAuth1Token *accessToken, id responseObject) {
+                         webAuthorizationCallback:webAuthorizationCallback
+                                          success:^(AFOAuth1Token *accessToken) {
                                               if (success)
                                                   success(accessToken);
                                           }
@@ -98,6 +111,57 @@
                                               if (failure)
                                                   failure(authError);
                                           }];
+}
+
+- (void)authorizeUsingOAuthWithRequestTokenPath:(NSString *)requestTokenPath
+                          userAuthorizationPath:(NSString *)userAuthorizationPath
+                                    callbackURL:(NSURL *)callbackURL
+                                accessTokenPath:(NSString *)accessTokenPath
+                                   accessMethod:(NSString *)accessMethod
+                                          scope:(NSString *)scope
+                       webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
+                                        success:(void (^)(AFOAuth1Token *accessToken))success
+                                        failure:(void (^)(NSError *error))failure
+{
+    [self acquireOAuthRequestTokenWithPath:requestTokenPath callbackURL:callbackURL accessMethod:(NSString *)accessMethod scope:scope success:^(AFOAuth1Token *requestToken, id responseObject) {
+        __block AFOAuth1Token *currentRequestToken = requestToken;
+        if (self.applicationLaunchObserver)
+            [[NSNotificationCenter defaultCenter] removeObserver:self.applicationLaunchObserver];
+        self.applicationLaunchObserver = [[NSNotificationCenter defaultCenter] addObserverForName:kAFApplicationLaunchedWithURLNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+            NSURL *url = [[notification userInfo] valueForKey:kAFApplicationLaunchOptionsURLKey];
+            
+            currentRequestToken.verifier = [AFParametersFromQueryString([url query]) valueForKey:@"oauth_verifier"];
+            
+            [self acquireOAuthAccessTokenWithPath:accessTokenPath requestToken:currentRequestToken accessMethod:accessMethod success:^(AFOAuth1Token * accessToken, id responseObject) {
+                self.accessToken = accessToken;
+                
+                if (success) {
+                    success(accessToken);
+                }
+            } failure:^(NSError *error) {
+                if (failure) {
+                    failure(error);
+                }
+            }];
+        }];
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:requestToken.key forKey:@"oauth_token"];
+        NSURL *requestURL = [[self requestWithMethod:@"GET" path:[NSString stringWithFormat:@"%@&oauth_token=%@", userAuthorizationPath, requestToken.key] parameters:nil] URL];
+        
+        if (webAuthorizationCallback)
+            webAuthorizationCallback(requestURL);
+        else
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+            [[UIApplication sharedApplication] openURL:requestURL];
+#else
+        [[NSWorkspace sharedWorkspace] openURL:requestURL];
+#endif
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 
 - (BOOL)isLoggedIn {

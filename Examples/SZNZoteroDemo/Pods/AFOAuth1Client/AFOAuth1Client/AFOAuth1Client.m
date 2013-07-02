@@ -199,7 +199,7 @@ static inline NSString * AFHMACSHA1Signature(NSURLRequest *request, NSString *co
     [parameters setValue:kAFOAuth1Version forKey:@"oauth_version"];
     [parameters setValue:NSStringFromAFOAuthSignatureMethod(self.signatureMethod) forKey:@"oauth_signature_method"];
     [parameters setValue:self.key forKey:@"oauth_consumer_key"];
-    [parameters setValue:[[NSNumber numberWithInteger:floorf([[NSDate date] timeIntervalSince1970])] stringValue] forKey:@"oauth_timestamp"];
+    [parameters setValue:[[NSNumber numberWithInteger:floor([[NSDate date] timeIntervalSince1970])] stringValue] forKey:@"oauth_timestamp"];
     [parameters setValue:AFNounce() forKey:@"oauth_nonce"];
 
     if (self.realm) {
@@ -282,7 +282,7 @@ static inline NSString * AFHMACSHA1Signature(NSURLRequest *request, NSString *co
             currentRequestToken.verifier = [AFParametersFromQueryString([url query]) valueForKey:@"oauth_verifier"];
 
             [self acquireOAuthAccessTokenWithPath:accessTokenPath requestToken:currentRequestToken accessMethod:accessMethod success:^(AFOAuth1Token * accessToken, id responseObject) {
-                
+                self.applicationLaunchNotificationObserver = nil;
                 if (accessToken) {
                     self.accessToken = accessToken;
                     
@@ -295,6 +295,7 @@ static inline NSString * AFHMACSHA1Signature(NSURLRequest *request, NSString *co
                     }
                 }
             } failure:^(NSError *error) {
+                self.applicationLaunchNotificationObserver = nil;
                 if (failure) {
                     failure(error);
                 }
@@ -468,7 +469,6 @@ static inline NSString * AFHMACSHA1Signature(NSURLRequest *request, NSString *co
 @synthesize verifier = _verifier;
 @synthesize expiration = _expiration;
 @synthesize renewable = _renewable;
-@dynamic expired;
 
 - (id)initWithQueryString:(NSString *)queryString {
     if (!queryString || [queryString length] == 0) {
@@ -515,6 +515,10 @@ static inline NSString * AFHMACSHA1Signature(NSURLRequest *request, NSString *co
     self.renewable = canBeRenewed;
     
     return self;
+}
+
+- (BOOL)isExpired{
+    return [self.expiration compare:[NSDate date]] == NSOrderedDescending;
 }
 
 #pragma mark - NSCoding

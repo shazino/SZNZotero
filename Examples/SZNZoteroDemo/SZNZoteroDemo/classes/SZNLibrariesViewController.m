@@ -110,7 +110,12 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStyleBordered target:self action:@selector(signOut:)];
     }
     else {
-        [self.user.client authenticateWithLibraryAccess:YES notesAccess:YES writeAccess:YES groupAccessLevel:SZNZoteroAccessReadWrite success:^(AFOAuth1Token *token) {
+        [self.user.client authenticateWithLibraryAccess:YES
+                                            notesAccess:YES
+                                            writeAccess:YES
+                                       groupAccessLevel:SZNZoteroAccessReadWrite
+                               webAuthorizationCallback:nil
+                                                success:^(AFOAuth1Token *token) {
             self.user.identifier = self.user.client.userIdentifier;
             [self saveSessionWithClient:self.user.client token:token.secret];
             [self refreshData:nil];
