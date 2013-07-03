@@ -71,6 +71,12 @@
     return self;
 }
 
+- (void)resetObserver
+{
+    if (self.applicationLaunchObserver)
+        [[NSNotificationCenter defaultCenter] removeObserver:self.applicationLaunchObserver];
+}
+
 - (void)authenticateSuccess:(void (^)(AFOAuth1Token *))success
                     failure:(void (^)(NSError *))failure {
     [self authenticateWithLibraryAccess:YES

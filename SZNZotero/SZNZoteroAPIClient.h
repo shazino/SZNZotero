@@ -171,6 +171,8 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
            success:(void (^)())success
            failure:(void (^)(NSError *))failure;
 
+- (void)resetObserver;
+
 @end
 
 
