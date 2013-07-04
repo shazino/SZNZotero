@@ -142,7 +142,7 @@
 - (void)updateItem:(id<SZNItemProtocol>)updatedItem
            success:(void (^)(id<SZNItemProtocol>))success
            failure:(void (^)(NSError *))failure {
-    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedItem.content];
+    NSMutableDictionary *mutableParameters = [updatedItem.content mutableCopy];
     mutableParameters[@"itemVersion"] = updatedItem.version;
     mutableParameters[@"itemKey"]     = updatedItem.key;
     mutableParameters[@"itemType"]    = updatedItem.type;
@@ -160,7 +160,7 @@
 - (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection
                  success:(void (^)(id<SZNCollectionProtocol>))success
                  failure:(void (^)(NSError *))failure {
-    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:updatedCollection.content];
+    NSMutableDictionary *mutableParameters = [updatedCollection.content mutableCopy];
     mutableParameters[@"itemVersion"] = updatedCollection.version;
     mutableParameters[@"itemKey"]     = updatedCollection.key;
     [self.client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key]

@@ -25,12 +25,15 @@
 
 #import "SZNZoteroAPIClient.h"
 #import <TBXML.h>
+#import <ISO8601DateFormatter.h>
 
 @implementation SZNObject
 
+@synthesize creationDate;
 @synthesize content;
 @synthesize deleted;
 @synthesize key;
+@synthesize modificationDate;
 @synthesize synced;
 @synthesize version;
 
@@ -52,11 +55,17 @@
                           inLibrary:(SZNLibrary *)library {
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    ISO8601DateFormatter *dateFormatter = [[ISO8601DateFormatter alloc] init];
     
     SZNObject *object = [[self class] new];
-    object.key     = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
-    object.version = [numberFormatter numberFromString:
-                      [TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO]];
+    object.key = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
+    
+    NSString *versionString          = [TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO];
+    NSString *creationDateString     = [TBXML textForChildElementNamed:@"published" parentElement:XMLElement escaped:NO];
+    NSString *modificationDateString = [TBXML textForChildElementNamed:@"updated" parentElement:XMLElement escaped:NO];
+    object.version          = [numberFormatter numberFromString:versionString];
+    object.creationDate     = [dateFormatter dateFromString:creationDateString];
+    object.modificationDate = [dateFormatter dateFromString:modificationDateString];
     object.library = library;
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];

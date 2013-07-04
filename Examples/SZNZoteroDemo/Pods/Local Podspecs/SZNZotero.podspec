@@ -15,8 +15,9 @@ Pod::Spec.new do |s|
 
   s.osx.deployment_target = '10.7'
 
-  s.dependency 'AFOAuth1Client', '0.2.1'
-  s.dependency 'TBXML', '1.5'
+  s.dependency 'AFOAuth1Client', '~> 0.2.0'
+  s.dependency 'TBXML', '~> 1.5'
+  s.dependency 'ISO8601DateFormatter', '~> 0.6'
 
   s.subspec 'google-toolbox-mac' do |gtm|
     gtm.source_files = 'SZNZotero/GTMDefines.h', 'SZNZotero/GTMNSString+HTML.{h,m}'

@@ -71,6 +71,11 @@
 @protocol SZNObjectProtocol <NSObject>
 
 /**
+ The object creation date.
+ */
+@property (copy, nonatomic) NSDate *creationDate;
+
+/**
  The item content.
  */
 @property (strong, nonatomic) NSDictionary *content;
@@ -78,22 +83,27 @@
 /**
  The object deleted status.
  */
-@property (nonatomic, strong) NSNumber *deleted;
+@property (strong, nonatomic) NSNumber *deleted;
 
 /**
  The object key.
  */
-@property (nonatomic, copy) NSString *key;
+@property (copy, nonatomic) NSString *key;
+
+/**
+ The object last modification date.
+ */
+@property (copy, nonatomic) NSDate *modificationDate;
 
 /**
  The object synced status.
  */
-@property (nonatomic, strong) NSNumber *synced;
+@property (strong, nonatomic) NSNumber *synced;
 
 /**
  The object version.
  */
-@property (nonatomic, strong) NSNumber *version;
+@property (strong, nonatomic) NSNumber *version;
 
 @end
 
