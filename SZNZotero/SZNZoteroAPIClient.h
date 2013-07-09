@@ -131,6 +131,7 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
+ @param headers The HTTP header parameters for the request URL.
  @param success A block object to be executed when the request operation finishes successfully. 
   This block has no return value and takes one argument: the object created from the response data of request.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
@@ -138,6 +139,7 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  */
 - (void)postPath:(NSString *)path
       parameters:(NSDictionary *)parameters
+         headers:(NSDictionary *)headers
          success:(void (^)(id))success
          failure:(void (^)(NSError *))failure;
 

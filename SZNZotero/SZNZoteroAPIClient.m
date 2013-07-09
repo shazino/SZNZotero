@@ -250,11 +250,13 @@
 
 - (void)postPath:(NSString *)path
       parameters:(NSDictionary *)parameters
+         headers:(NSDictionary *)headers
          success:(void (^)(id))success
          failure:(void (^)(NSError *))failure {
     NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
-    if ([path rangeOfString:@"md5="].location != NSNotFound || [path rangeOfString:@"upload="].location != NSNotFound)
-        [request setValue:@"*" forHTTPHeaderField:@"If-None-Match"];
+    [headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [request setValue:obj forHTTPHeaderField:key];
+    }];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {

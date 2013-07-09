@@ -74,6 +74,7 @@
                     failure:(void (^)(NSError *))failure {
     [library.client postPath:[library pathForResource:[SZNItem class]]
                   parameters:@{@"items": @[content]}
+                     headers:nil
                      success:^(NSDictionary *responseObject) {
                          NSDictionary *successResponse = responseObject[@"success"];
                          NSDictionary *failedResponse  = responseObject[@"failed"];
@@ -138,10 +139,12 @@
     NSString *md5 = [fileData MD5];
     NSNumber *fileSizeInBytes = @([fileData length]);
     NSNumber *mtimeInMilliseconds = @([NSDate timeIntervalSinceReferenceDate] *1000);
+    NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
     
     NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
     [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%@&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], [mtimeInMilliseconds stringValue], contentType]
                        parameters:nil
+                          headers:headers
                          success:^(id responseObject) {
                              if (success)
                                  success(responseObject);
@@ -170,8 +173,10 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
+        NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : nil;
         [self.library.client postPath:[path stringByAppendingFormat:@"?upload=%@", uploadKey]
                            parameters:nil
+                              headers:headers
                               success:^(id response) {
                                   if (success)
                                       success();

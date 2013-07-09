@@ -132,7 +132,7 @@
 - (void)fetchDeletedDataWithSuccess:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success
                             failure:(void (^)(NSError *))failure {
     [self.client getPath:[self deletedDataPath]
-              parameters:@{@"newer": self.version}
+              parameters:@{@"newer": self.version ?: @"0"}
                  success:^(NSDictionary *deletedData) {
                      if (success)
                          success(deletedData[@"items"], deletedData[@"collections"]);
