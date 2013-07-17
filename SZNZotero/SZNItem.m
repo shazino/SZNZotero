@@ -119,6 +119,17 @@
             failure:failure];
 }
 
++ (void)fetchTemplateWithClient:(SZNZoteroAPIClient *)client
+                        forType:(NSString *)itemType
+                        success:(void (^)(NSDictionary *))success
+                        failure:(void (^)(NSError *))failure
+{
+    [client getPath:@"/items/new"
+         parameters:@{@"itemType": itemType}
+            success:success
+            failure:failure];
+}
+
 + (void)fetchAttachmentItemTemplateWithClient:(SZNZoteroAPIClient *)client
                                      linkMode:(NSString *)linkMode
                                       success:(void (^)(NSDictionary *))success

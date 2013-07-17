@@ -99,6 +99,11 @@
                                       success:(void (^)(NSDictionary *))success
                                       failure:(void (^)(NSError *))failure;
 
++ (void)fetchTemplateWithClient:(SZNZoteroAPIClient *)client
+                        forType:(NSString *)itemType
+                        success:(void (^)(NSDictionary *))success
+                        failure:(void (^)(NSError *))failure;
+
 - (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
                                  contentType:(NSString *)contentType
                                      success:(void (^)(NSDictionary *))success
