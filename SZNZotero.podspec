@@ -23,4 +23,19 @@ Pod::Spec.new do |s|
     gtm.source_files = 'SZNZotero/GTMDefines.h', 'SZNZotero/GTMNSString+HTML.{h,m}'
     gtm.requires_arc = false
   end
+
+  s.prefix_header_contents = <<-EOS
+  #import <Availability.h>
+
+  #if __IPHONE_OS_VERSION_MIN_REQUIRED
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+    #import <Security/Security.h>
+  #else
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <CoreServices/CoreServices.h>
+    #import <Security/Security.h>
+  #endif
+EOS
+
 end
