@@ -184,7 +184,7 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
-        NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : nil;
+        NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
         [self.library.client postPath:[path stringByAppendingFormat:@"?upload=%@", uploadKey]
                            parameters:nil
                               headers:headers
@@ -197,6 +197,25 @@
             failure(error);
     }];
     [operation start];
+}
+
+- (void)uploadFileAtURL:(NSURL *)fileURL
+            contentType:(NSString *)contentType
+                success:(void (^)(void))success
+                failure:(void (^)(NSError *))failure
+{
+    [self fetchUploadAuthorizationForFileAtURL:fileURL
+                                   contentType:contentType
+                                       success:^(NSDictionary *response) {
+                                           [self uploadFileAtURL:fileURL
+                                                      withPrefix:response[@"prefix"]
+                                                          suffix:response[@"suffix"]
+                                                           toURL:response[@"url"]
+                                                     contentType:response[@"contentType"]
+                                                       uploadKey:response[@"uploadKey"]
+                                                         success:success
+                                                         failure:failure];
+                                       } failure:failure];
 }
 
 - (void)fetchChildrenItemsSuccess:(void (^)(NSArray *))success

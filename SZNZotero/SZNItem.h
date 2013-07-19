@@ -118,6 +118,11 @@
                 success:(void (^)(void))success
                 failure:(void (^)(NSError *))failure;
 
+- (void)uploadFileAtURL:(NSURL *)fileURL
+            contentType:(NSString *)contentType
+                success:(void (^)(void))success
+                failure:(void (^)(NSError *))failure;
+
 /**
  Fetches all children items under this item.
  

@@ -64,8 +64,8 @@
     NSString *creationDateString     = [TBXML textForChildElementNamed:@"published" parentElement:XMLElement escaped:NO];
     NSString *modificationDateString = [TBXML textForChildElementNamed:@"updated" parentElement:XMLElement escaped:NO];
     object.version          = [numberFormatter numberFromString:versionString];
-    object.creationDate     = [dateFormatter dateFromString:creationDateString];
-    object.modificationDate = [dateFormatter dateFromString:modificationDateString];
+    object.creationDate     = (creationDateString) ? [dateFormatter dateFromString:creationDateString] : nil;
+    object.modificationDate = (modificationDateString) ? [dateFormatter dateFromString:modificationDateString] : nil;
     object.library = library;
     
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
