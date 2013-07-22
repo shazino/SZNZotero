@@ -45,13 +45,6 @@
 @end
 
 
-@interface SZNItem ()
-
-- (NSString *)path;
-
-@end
-
-
 @implementation SZNItem
 
 @synthesize type;
