@@ -116,5 +116,6 @@
 @property (strong, nonatomic) SZNLibrary *library;
 
 - (BOOL)isSynced;
+- (NSString *)path;
 
 @end

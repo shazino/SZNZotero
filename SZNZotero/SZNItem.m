@@ -284,9 +284,4 @@
     return @"items";
 }
 
-- (NSString *)path {
-    NSString *resourcePath = [self.library pathForResource:[SZNItem class]];
-    return [resourcePath stringByAppendingPathComponent:self.key];
-}
-
 @end

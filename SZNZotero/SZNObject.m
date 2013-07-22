@@ -24,6 +24,7 @@
 #import "SZNObject.h"
 
 #import "SZNZoteroAPIClient.h"
+#import "SZNLibrary.h"
 #import <TBXML.h>
 #import <ISO8601DateFormatter.h>
 
@@ -83,6 +84,11 @@
         [items addObject:[self objectFromXMLElement:XMLElement inLibrary:library]];
     }];
     return items;
+}
+
+- (NSString *)path {
+    NSString *resourcePath = [self.library pathForResource:[[self class] class]];
+    return [resourcePath stringByAppendingPathComponent:self.key];
 }
 
 @end
