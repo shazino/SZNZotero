@@ -78,7 +78,8 @@
               downloadedObjects:(NSMutableArray *)downloadedObjects
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure {
-    const NSUInteger batchLimit = 50;
+    // const NSUInteger batchMaxLimit = 50;
+    const NSUInteger batchLimit = 20;
     NSArray *batchOfKeys     = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
     NSDictionary *parameters = [batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"};
     if (!path) {
