@@ -42,6 +42,23 @@
 @property (copy, nonatomic) NSString *identifier;
 
 /**
+ Creates a new collection.
+ 
+ @param library The collection’s library.
+ @param name The collection name.
+ @param parentCollection The parent collection.
+ @param success A block object to be executed when the request operation finishes successfully.
+ This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
+ This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
++ (void)createCollectionInLibrary:(SZNLibrary *)library
+                             name:(NSString *)name
+                 parentCollection:(SZNCollection *)parentCollection
+                          success:(void (^)(SZNCollection *))success
+                          failure:(void (^)(NSError *))failure;
+
+/**
  Fetches all items in the collection.
  
  @param success A block object to be executed when the request operation finishes successfully.

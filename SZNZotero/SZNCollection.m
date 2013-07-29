@@ -40,6 +40,34 @@
     return collection;
 }
 
+#pragma mark - Create
+
++ (void)createCollectionInLibrary:(SZNLibrary *)library
+                             name:(NSString *)name
+                 parentCollection:(SZNCollection *)parentCollection
+                          success:(void (^)(SZNCollection *))success
+                          failure:(void (^)(NSError *))failure
+{
+    [library.client postPath:[library pathForResource:[SZNCollection class]]
+                  parameters:@{@"collections": @[@{@"name": name, @"parentCollection" : parentCollection.key ?: @""}]}
+                     headers:nil
+                     success:^(NSDictionary *responseObject) {
+                         NSDictionary *successResponse = responseObject[@"success"];
+                         NSDictionary *failedResponse  = responseObject[@"failed"];
+                         
+                         if ([failedResponse count] > 0 && failure) {
+                             NSDictionary *errorDictionary = failedResponse[[failedResponse allKeys][0]];
+                             failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
+                         }
+                         else if (success) {
+                             SZNCollection *collection = (SZNCollection *)[self objectFromXMLElement:nil inLibrary:library];
+                             collection.key = [successResponse valueForKey:@"0"];
+                             success(collection);
+                         }
+                     }
+                     failure:failure];
+}
+
 #pragma mark - Fetch
 
 - (void)fetchItemsSuccess:(void (^)(NSArray *))success
