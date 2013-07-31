@@ -61,6 +61,8 @@
 
 @property (strong, nonatomic) SZNZoteroAPIClient *client;
 
+@property (strong, nonatomic) void (^progressBlock)(NSUInteger itemsRead, NSUInteger totalItemsRead, NSUInteger totalItemsExpectedToRead);
+
 /**
  Creates a `SZNLibrary` and initializes its identifier and client properties.
  

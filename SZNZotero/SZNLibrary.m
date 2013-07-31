@@ -28,6 +28,9 @@
 #import "SZNObject.h"
 
 @interface SZNLibrary ()
+
+@property (assign, nonatomic) NSUInteger totalNumberOfItems;
+
 - (NSString *)deletedDataPath;
 
 - (void)fetchObjectsForResource:(Class <SZNResource>)resource
@@ -78,8 +81,8 @@
               downloadedObjects:(NSMutableArray *)downloadedObjects
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure {
-    // const NSUInteger batchMaxLimit = 50;
-    const NSUInteger batchLimit = 20;
+    const NSUInteger batchMaxLimit = 50;
+    const NSUInteger batchLimit = batchMaxLimit;
     NSArray *batchOfKeys     = [objectsKeys subarrayWithRange:NSMakeRange(0, MIN(batchLimit, [objectsKeys count]))];
     NSDictionary *parameters = [batchOfKeys count] > 0 ? @{@"content": @"json", [resource keyParameter]: [batchOfKeys componentsJoinedByString:@","]} : @{@"content": @"json"};
     if (!path) {
@@ -91,6 +94,9 @@
     [self.client getPath:path
               parameters:parameters
                  success:^(TBXML *XML) {
+                     if (self.progressBlock)
+                         self.progressBlock(batchOfKeys.count, self.totalNumberOfItems - objectsKeys.count, self.totalNumberOfItems);
+                     
                      NSArray *parsedObjects = [resource objectsFromXML:XML inLibrary:self];
                      for (id object in parsedObjects) {
                          if ([object isKindOfClass:[SZNLibrary class]])
@@ -121,6 +127,10 @@
                       specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure {
+    self.totalNumberOfItems = objectsKeys.count;
+    if (self.progressBlock)
+        self.progressBlock(0, self.totalNumberOfItems - objectsKeys.count, self.totalNumberOfItems);
+    
     [self fetchObjectsForResource:resource
                              path:path
                              keys:[NSMutableArray arrayWithArray:objectsKeys]
