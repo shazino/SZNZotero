@@ -91,6 +91,7 @@ NSDictionary *itemFields = ...;
 ## References
 
 - [Documentation](http://shazino.github.io/SZNZotero/)
+- [Changelog](https://github.com/shazino/SZNZotero/wiki/Changelog)
 - [Contribute](https://github.com/shazino/SZNZotero/blob/master/CONTRIBUTING.md)
 
 ## Requirements
