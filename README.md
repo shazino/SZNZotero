@@ -88,6 +88,11 @@ NSDictionary *itemFields = ...;
 }];
 ```
 
+## References
+
+- [Documentation](http://shazino.github.io/SZNZotero/)
+- [Contribute](https://github.com/shazino/SZNZotero/blob/master/CONTRIBUTING.md)
+
 ## Requirements
 
 SZNZotero requires Xcode 4.4 with either the iOS 5.0 or Mac OS X 10.7, as well as [AFNetworking](https://github.com/AFNetworking/AFNetworking), [AFOAuth1Client](https://github.com/AFNetworking/AFOAuth1Client), [TBXML](http://www.tbxml.co.uk/TBXML/TBXML_Free.html), and [ISO8601DateFormatter](https://bitbucket.org/boredzo/iso-8601-parser-unparser/). SZNZotero uses [ARC](https://developer.apple.com/library/ios/#releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html).
