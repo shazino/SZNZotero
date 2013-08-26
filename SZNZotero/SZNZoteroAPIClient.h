@@ -83,6 +83,8 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param notesAccess Whether the API should allow read access to personal library notes.
  @param writeAccess Whether the API should allow write access to personal library.
  @param groupAccessLevel The level of access the API should allow to all current and future groups.
+ @param webAuthorizationCallback A block object to be executed when the authentication process needs to prompt the user to provide its credentials.
+  This block has no return value and takes one argument: the `NSURL` object for the authentication webpage.
  @param success A block object to be executed when the authentication operations finish successfully. 
   This block has no return value and takes one argument: the newly-acquired OAuth token.
  @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. 
