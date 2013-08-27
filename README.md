@@ -5,7 +5,7 @@
 > _This is still in early stages of development, so proceed with caution when using this in a production application.
 > Any bug reports, feature requests, or general feedback at this point would be greatly appreciated._
 
-SZNZotero is a [Zotero API](http://www.zotero.org/support/dev/server_api/v2/start) client for iOS and Mac OS X. It’s built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking) to deal with network operations.
+SZNZotero is a [Zotero API](http://www.zotero.org/support/dev/server_api/v2/start) client for iOS and Mac OS X, built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking).
 
 ## Getting Started
 
