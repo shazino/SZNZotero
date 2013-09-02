@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-  s.name         = "SZNZotero"
-  s.version      = "1.0"
-  s.summary      = "Objective-C client for the Zotero API."
-  s.homepage     = "https://github.com/shazino/SZNZotero"
+  s.name         = 'SZNZotero'
+  s.version      = '0.1'
+  s.summary      = 'Objective-C client for the Zotero API.''
+  s.homepage     = 'https://github.com/shazino/SZNZotero'
   s.license      = 'MIT'
   s.author       = { 'shazino' => 'contact@shazino.com' }
-#  s.source       = { :git => "https://github.com/shazino/SZNZotero.git", :tag => '1.0' }
+  s.source       = { :git => 'https://github.com/shazino/SZNZotero.git', :tag => '0.1' }
 
   s.source_files = 'SZNZotero/SZN*'
   s.requires_arc = true
