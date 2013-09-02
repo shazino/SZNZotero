@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = 'SZNZotero'
   s.version      = '0.1'
-  s.summary      = 'Objective-C client for the Zotero API.''
+  s.summary      = 'Objective-C client for the Zotero API.'
   s.homepage     = 'https://github.com/shazino/SZNZotero'
   s.license      = 'MIT'
   s.author       = { 'shazino' => 'contact@shazino.com' }
