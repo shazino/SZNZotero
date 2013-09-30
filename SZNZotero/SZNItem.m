@@ -142,11 +142,12 @@
     NSData *fileData = [NSData dataWithContentsOfURL:fileURL];
     NSString *md5 = [fileData MD5];
     NSNumber *fileSizeInBytes = @([fileData length]);
-    NSNumber *mtimeInMilliseconds = @([NSDate timeIntervalSinceReferenceDate] *1000);
+    NSTimeInterval timeModified = [[NSDate date] timeIntervalSince1970];
+    long long mtimeInMilliseconds = (long long) trunc(timeModified * 1000.0f);
     NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
     
     NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
-    [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%@&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], [mtimeInMilliseconds stringValue], contentType]
+    [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%lld&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], mtimeInMilliseconds, contentType]
                        parameters:nil
                           headers:headers
                          success:^(id responseObject) {
