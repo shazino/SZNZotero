@@ -171,7 +171,7 @@
 }
 
 - (BOOL)isLoggedIn {
-    return (self.accessToken);
+    return (self.accessToken != nil);
 }
 
 - (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
@@ -192,10 +192,21 @@
     else
         parsedObject = [TBXML tbxmlWithXMLData:responseObject error:&error];
     
-    if (responseObject && error && failure)
-        failure(error);
-    else if (success)
-        success(parsedObject);
+    BOOL isSuccessful = YES;
+
+    if (error)
+        isSuccessful = NO;
+    if ([error.domain isEqualToString:D_TBXML_DOMAIN] && error.code == D_TBXML_DATA_NIL)
+        isSuccessful = YES;
+    
+    if (isSuccessful) {
+        if (success)
+            success(parsedObject);
+    }
+    else {
+        if (failure)
+            failure(error);
+    }
 }
 
 #pragma mark - AFHTTPClient
