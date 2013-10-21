@@ -135,7 +135,7 @@
 
 - (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
                                  contentType:(NSString *)contentType
-                                      success:(void (^)(NSDictionary *))success
+                                      success:(void (^)(NSDictionary *, NSString *))success
                                       failure:(void (^)(NSError *))failure
 {
     NSString *fileName = [fileURL lastPathComponent];
@@ -152,7 +152,7 @@
                           headers:headers
                          success:^(id responseObject) {
                              if (success)
-                                 success(responseObject);
+                                 success(responseObject, md5);
                          }
                          failure:failure];
 }
@@ -195,19 +195,22 @@
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
             contentType:(NSString *)contentType
-                success:(void (^)(void))success
-                failure:(void (^)(NSError *))failure
+                success:(void (^)(NSString *md5))success
+                failure:(void (^)(NSError *error))failure
 {
     [self fetchUploadAuthorizationForFileAtURL:fileURL
                                    contentType:contentType
-                                       success:^(NSDictionary *response) {
+                                       success:^(NSDictionary *response, NSString *md5) {
                                            [self uploadFileAtURL:fileURL
                                                       withPrefix:response[@"prefix"]
                                                           suffix:response[@"suffix"]
                                                            toURL:response[@"url"]
                                                      contentType:response[@"contentType"]
                                                        uploadKey:response[@"uploadKey"]
-                                                         success:success
+                                                         success:^() {
+                                                             if (success)
+                                                                 success(md5);
+                                                         }
                                                          failure:failure];
                                        } failure:failure];
 }

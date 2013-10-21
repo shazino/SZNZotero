@@ -106,7 +106,7 @@
 
 - (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
                                  contentType:(NSString *)contentType
-                                     success:(void (^)(NSDictionary *))success
+                                     success:(void (^)(NSDictionary *, NSString *))success
                                      failure:(void (^)(NSError *))failure;
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
@@ -120,7 +120,7 @@
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
             contentType:(NSString *)contentType
-                success:(void (^)(void))success
+                success:(void (^)(NSString *md5))success
                 failure:(void (^)(NSError *))failure;
 
 /**
