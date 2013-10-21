@@ -127,6 +127,14 @@
                       specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure {
+    
+    if (objectsKeys && objectsKeys.count == 0) {
+        if (success) {
+            success(@[]);
+        }
+        return;
+    }
+    
     self.totalNumberOfItems = objectsKeys.count;
     if (self.progressBlock)
         self.progressBlock(0, self.totalNumberOfItems - objectsKeys.count, self.totalNumberOfItems);
