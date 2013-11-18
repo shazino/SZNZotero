@@ -171,7 +171,7 @@
 }
 
 - (BOOL)isLoggedIn {
-    return (self.accessToken != nil);
+    return (self.accessToken);
 }
 
 - (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
@@ -192,21 +192,10 @@
     else
         parsedObject = [TBXML tbxmlWithXMLData:responseObject error:&error];
     
-    BOOL isSuccessful = YES;
-
-    if (error)
-        isSuccessful = NO;
-    if ([error.domain isEqualToString:D_TBXML_DOMAIN] && error.code == D_TBXML_DATA_NIL)
-        isSuccessful = YES;
-    
-    if (isSuccessful) {
-        if (success)
-            success(parsedObject);
-    }
-    else {
-        if (failure)
-            failure(error);
-    }
+    if (responseObject && error && failure)
+        failure(error);
+    else if (success)
+        success(parsedObject);
 }
 
 #pragma mark - AFHTTPClient
@@ -399,32 +388,6 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [output appendFormat:@"%02x",md5Buffer[i]];
     
-    return output;
-}
-
-@end
-
-
-@implementation NSString (SZNURLEncoding)
-
-- (NSString *)szn_URLEncodedString
-{
-    NSMutableString * output = [NSMutableString string];
-    const unsigned char * source = (const unsigned char *)[self UTF8String];
-    NSUInteger sourceLen = strlen((const char *)source);
-    for (int i = 0; i < sourceLen; ++i) {
-        const unsigned char thisChar = source[i];
-        if (thisChar == ' '){
-            [output appendString:@"+"];
-        } else if (thisChar == '.' || thisChar == '-' || thisChar == '_' || thisChar == '~' ||
-                   (thisChar >= 'a' && thisChar <= 'z') ||
-                   (thisChar >= 'A' && thisChar <= 'Z') ||
-                   (thisChar >= '0' && thisChar <= '9')) {
-            [output appendFormat:@"%c", thisChar];
-        } else {
-            [output appendFormat:@"%%%02X", thisChar];
-        }
-    }
     return output;
 }
 

@@ -80,13 +80,9 @@
 
 + (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library {
     NSMutableArray *items = [NSMutableArray array];
-    if (XML.rootXMLElement->firstChild) {
-        [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
-            SZNObject *object = [self objectFromXMLElement:XMLElement inLibrary:library];
-            if (object)
-                [items addObject:object];
-        }];
-    }
+    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
+        [items addObject:[self objectFromXMLElement:XMLElement inLibrary:library]];
+    }];
     return items;
 }
 

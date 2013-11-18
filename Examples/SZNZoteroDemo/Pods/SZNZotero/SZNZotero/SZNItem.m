@@ -135,24 +135,23 @@
 
 - (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
                                  contentType:(NSString *)contentType
-                                      success:(void (^)(NSDictionary *, NSString *))success
+                                      success:(void (^)(NSDictionary *))success
                                       failure:(void (^)(NSError *))failure
 {
-    NSString *fileName = [[fileURL lastPathComponent] szn_URLEncodedString];
+    NSString *fileName = [fileURL lastPathComponent];
     NSData *fileData = [NSData dataWithContentsOfURL:fileURL];
     NSString *md5 = [fileData MD5];
     NSNumber *fileSizeInBytes = @([fileData length]);
-    NSTimeInterval timeModified = [[NSDate date] timeIntervalSince1970];
-    long long mtimeInMilliseconds = (long long) trunc(timeModified * 1000.0f);
+    NSNumber *mtimeInMilliseconds = @([NSDate timeIntervalSinceReferenceDate] *1000);
     NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
     
     NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
-    [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%lld&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], mtimeInMilliseconds, contentType]
+    [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%@&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], [mtimeInMilliseconds stringValue], contentType]
                        parameters:nil
                           headers:headers
                          success:^(id responseObject) {
                              if (success)
-                                 success(responseObject, md5);
+                                 success(responseObject);
                          }
                          failure:failure];
 }
@@ -195,22 +194,19 @@
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
             contentType:(NSString *)contentType
-                success:(void (^)(NSString *md5))success
-                failure:(void (^)(NSError *error))failure
+                success:(void (^)(void))success
+                failure:(void (^)(NSError *))failure
 {
     [self fetchUploadAuthorizationForFileAtURL:fileURL
                                    contentType:contentType
-                                       success:^(NSDictionary *response, NSString *md5) {
+                                       success:^(NSDictionary *response) {
                                            [self uploadFileAtURL:fileURL
                                                       withPrefix:response[@"prefix"]
                                                           suffix:response[@"suffix"]
                                                            toURL:response[@"url"]
                                                      contentType:response[@"contentType"]
                                                        uploadKey:response[@"uploadKey"]
-                                                         success:^() {
-                                                             if (success)
-                                                                 success(md5);
-                                                         }
+                                                         success:success
                                                          failure:failure];
                                        } failure:failure];
 }

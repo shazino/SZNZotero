@@ -194,10 +194,3 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
 - (NSString*)MD5;
 
 @end
-
-
-@interface NSString (SZNURLEncoding)
-
-- (NSString *)szn_URLEncodedString;
-
-@end
