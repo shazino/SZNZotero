@@ -201,17 +201,23 @@
     [self fetchUploadAuthorizationForFileAtURL:fileURL
                                    contentType:contentType
                                        success:^(NSDictionary *response, NSString *md5) {
-                                           [self uploadFileAtURL:fileURL
-                                                      withPrefix:response[@"prefix"]
-                                                          suffix:response[@"suffix"]
-                                                           toURL:response[@"url"]
-                                                     contentType:response[@"contentType"]
-                                                       uploadKey:response[@"uploadKey"]
-                                                         success:^() {
-                                                             if (success)
-                                                                 success(md5);
-                                                         }
-                                                         failure:failure];
+                                           if (!response[@"url"]) {
+                                               if (failure)
+                                                   failure(nil);
+                                           }
+                                           else {
+                                               [self uploadFileAtURL:fileURL
+                                                          withPrefix:response[@"prefix"]
+                                                              suffix:response[@"suffix"]
+                                                               toURL:response[@"url"]
+                                                         contentType:response[@"contentType"]
+                                                           uploadKey:response[@"uploadKey"]
+                                                             success:^() {
+                                                                 if (success)
+                                                                     success(md5);
+                                                             }
+                                                             failure:failure];
+                                           }
                                        } failure:failure];
 }
 
