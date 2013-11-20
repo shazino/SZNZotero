@@ -93,8 +93,14 @@
     [client getPath:@"/itemTypes"
          parameters:nil
             success:^(id responseObject) {
-                if (success)
-                    success(responseObject);
+                if ([responseObject isKindOfClass:NSArray.class]) {
+                    if (success)
+                        success(responseObject);
+                }
+                else {
+                    if (failure)
+                        failure(nil);
+                }
             }
             failure:failure];
 }
@@ -106,8 +112,14 @@
     [client getPath:@"/itemTypeFields"
          parameters:@{@"itemType": itemType}
             success:^(id responseObject) {
-                if (success)
-                    success(responseObject);
+                if ([responseObject isKindOfClass:NSArray.class]) {
+                    if (success)
+                        success(responseObject);
+                }
+                else {
+                    if (failure)
+                        failure(nil);
+                }
             }
             failure:failure];
 }
