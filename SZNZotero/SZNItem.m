@@ -214,8 +214,14 @@
                                    contentType:contentType
                                        success:^(NSDictionary *response, NSString *md5) {
                                            if (!response[@"url"]) {
-                                               if (failure)
-                                                   failure(nil);
+                                               if (response[@"exists"]) {
+                                                   if (success)
+                                                       success(md5);
+                                               }
+                                               else {
+                                                   if (failure)
+                                                       failure(nil);
+                                               }
                                            }
                                            else {
                                                [self uploadFileAtURL:fileURL
