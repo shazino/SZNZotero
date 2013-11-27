@@ -147,26 +147,42 @@
 
 - (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
                                  contentType:(NSString *)contentType
-                                      success:(void (^)(NSDictionary *, NSString *))success
-                                      failure:(void (^)(NSError *))failure
+                                     success:(void (^)(NSDictionary *, NSString *))success
+                                     failure:(void (^)(NSError *))failure
 {
-    NSString *fileName = [[fileURL lastPathComponent] szn_URLEncodedString];
-    NSData *fileData = [NSData dataWithContentsOfURL:fileURL];
-    NSString *md5 = [fileData MD5];
-    NSNumber *fileSizeInBytes = @([fileData length]);
-    NSTimeInterval timeModified = [[NSDate date] timeIntervalSince1970];
+    NSString *fileName            = [fileURL.lastPathComponent szn_URLEncodedString];
+    NSData *fileData              = [NSData dataWithContentsOfURL:fileURL];
+    NSString *md5                 = [fileData MD5];
+    NSNumber *fileSizeInBytes     = @([fileData length]);
+    NSTimeInterval timeModified   = [[NSDate date] timeIntervalSince1970];
     long long mtimeInMilliseconds = (long long) trunc(timeModified * 1000.0f);
-    NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
+    NSDictionary *headers         = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
     
-    NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
-    [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%lld&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], mtimeInMilliseconds, contentType]
-                       parameters:nil
-                          headers:headers
-                         success:^(id responseObject) {
-                             if (success)
-                                 success(responseObject, md5);
-                         }
-                         failure:failure];
+    if (!md5 || !fileData) {
+        if (failure) {
+            NSDictionary *userInfo = @{
+                                       NSLocalizedDescriptionKey: NSLocalizedString(@"Cannot fetch upload authorization for file.", nil),
+                                       NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"No file data or MD5.", nil),
+                                       @"fileURL": fileURL ?: @""
+                                       };
+            NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+                                                 code:NSURLErrorFileDoesNotExist
+                                             userInfo:userInfo];
+            failure(error);
+        }
+    }
+    else {
+        NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
+        path = [path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%lld&contentType=%@", md5, fileName, fileSizeInBytes.stringValue, mtimeInMilliseconds, contentType];
+        [self.library.client postPath:path
+                           parameters:nil
+                              headers:headers
+                              success:^(id responseObject) {
+                                  if (success)
+                                      success(responseObject, md5);
+                              }
+                              failure:failure];
+    }
 }
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
