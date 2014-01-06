@@ -79,9 +79,16 @@
 }
 
 + (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library {
+    if (![XML isKindOfClass:TBXML.class])
+        return @[];
+
+    TBXMLElement *rootXMLElement = XML.rootXMLElement;
+    if (!rootXMLElement->firstChild)
+        return @[];
+
     NSMutableArray *items = [NSMutableArray array];
-    if (XML.rootXMLElement->firstChild) {
-        [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
+    if (rootXMLElement->firstChild) {
+        [TBXML iterateElementsForQuery:@"entry" fromElement:rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
             SZNObject *object = [self objectFromXMLElement:XMLElement inLibrary:library];
             if (object)
                 [items addObject:object];
