@@ -179,26 +179,28 @@
                            success:(void (^)(id))success
                            failure:(void (^)(NSError *))failure {
     // NSLog(@"%@", operation.responseString);
-    
+
     NSNumberFormatter *f = [NSNumberFormatter new];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    self.lastModifiedVersion = [f numberFromString:[operation.response allHeaderFields][@"Last-Modified-Version"]];
-    
+    self.lastModifiedVersion = [f numberFromString:operation.response.allHeaderFields[@"Last-Modified-Version"]];
+
     NSError *error;
     id parsedObject;
-    
-    if ([operation.response.MIMEType isEqualToString:@"application/json"])
+
+    if ([operation.response.MIMEType isEqualToString:@"application/json"]) {
         parsedObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-    else
+    }
+    else {
         parsedObject = [TBXML tbxmlWithXMLData:responseObject error:&error];
-    
+    }
+
     BOOL isSuccessful = YES;
 
     if (error)
         isSuccessful = NO;
     if ([error.domain isEqualToString:D_TBXML_DOMAIN] && error.code == D_TBXML_DATA_NIL)
         isSuccessful = YES;
-    
+
     if (isSuccessful) {
         if (success)
             success(parsedObject);
