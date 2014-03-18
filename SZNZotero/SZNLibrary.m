@@ -1,7 +1,7 @@
 //
 // SZNLibrary.m
 //
-// Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2013-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -94,8 +94,9 @@
     [self.client getPath:path
               parameters:parameters
                  success:^(TBXML *XML) {
-                     if (self.progressBlock)
+                     if (self.progressBlock) {
                          self.progressBlock(batchOfKeys.count, self.totalNumberOfItems - objectsKeys.count, self.totalNumberOfItems);
+                     }
                      
                      NSArray *parsedObjects = [resource objectsFromXML:XML inLibrary:self];
                      for (id object in parsedObjects) {
@@ -127,10 +128,19 @@
                       specifier:(NSString *)specifier
                         success:(void (^)(NSArray *))success
                         failure:(void (^)(NSError *))failure {
+
+    if (objectsKeys && objectsKeys.count == 0) {
+        if (success) {
+            success(@[]);
+        }
+        return;
+    }
+
     self.totalNumberOfItems = objectsKeys.count;
-    if (self.progressBlock)
+    if (self.progressBlock) {
         self.progressBlock(0, self.totalNumberOfItems - objectsKeys.count, self.totalNumberOfItems);
-    
+    }
+
     [self fetchObjectsForResource:resource
                              path:path
                              keys:[NSMutableArray arrayWithArray:objectsKeys]

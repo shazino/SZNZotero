@@ -1,7 +1,7 @@
 //
 // SZNItem.h
 //
-// Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2013-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -106,7 +106,7 @@
 
 - (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
                                  contentType:(NSString *)contentType
-                                     success:(void (^)(NSDictionary *))success
+                                     success:(void (^)(NSDictionary *, NSString *))success
                                      failure:(void (^)(NSError *))failure;
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
@@ -120,7 +120,7 @@
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
             contentType:(NSString *)contentType
-                success:(void (^)(void))success
+                success:(void (^)(NSString *md5))success
                 failure:(void (^)(NSError *))failure;
 
 /**

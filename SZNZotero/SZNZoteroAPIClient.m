@@ -1,7 +1,7 @@
 //
 // SZNZoteroAPIClient.m
 //
-// Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2013-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -171,7 +171,7 @@
 }
 
 - (BOOL)isLoggedIn {
-    return (self.accessToken);
+    return (self.accessToken != nil);
 }
 
 - (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
@@ -179,23 +179,36 @@
                            success:(void (^)(id))success
                            failure:(void (^)(NSError *))failure {
     // NSLog(@"%@", operation.responseString);
-    
+
     NSNumberFormatter *f = [NSNumberFormatter new];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    self.lastModifiedVersion = [f numberFromString:[operation.response allHeaderFields][@"Last-Modified-Version"]];
-    
+    self.lastModifiedVersion = [f numberFromString:operation.response.allHeaderFields[@"Last-Modified-Version"]];
+
     NSError *error;
     id parsedObject;
-    
-    if ([operation.response.MIMEType isEqualToString:@"application/json"])
+
+    if ([operation.response.MIMEType isEqualToString:@"application/json"]) {
         parsedObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-    else
+    }
+    else {
         parsedObject = [TBXML tbxmlWithXMLData:responseObject error:&error];
-    
-    if (responseObject && error && failure)
-        failure(error);
-    else if (success)
-        success(parsedObject);
+    }
+
+    BOOL isSuccessful = YES;
+
+    if (error)
+        isSuccessful = NO;
+    if ([error.domain isEqualToString:D_TBXML_DOMAIN] && error.code == D_TBXML_DATA_NIL)
+        isSuccessful = YES;
+
+    if (isSuccessful) {
+        if (success)
+            success(parsedObject);
+    }
+    else {
+        if (failure)
+            failure(error);
+    }
 }
 
 #pragma mark - AFHTTPClient
@@ -379,15 +392,42 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 @end
 
-@implementation NSData(SZNMD5)
+@implementation NSData (SZNMD5)
 
-- (NSString*)MD5 {
+- (NSString*)MD5
+{
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(self.bytes, self.length, md5Buffer);
+    CC_MD5(self.bytes, (CC_LONG)self.length, md5Buffer);
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x",md5Buffer[i]];
+        [output appendFormat:@"%02x", md5Buffer[i]];
     
+    return output;
+}
+
+@end
+
+
+@implementation NSString (SZNURLEncoding)
+
+- (NSString *)szn_URLEncodedString
+{
+    NSMutableString * output = [NSMutableString string];
+    const unsigned char * source = (const unsigned char *)[self UTF8String];
+    NSUInteger sourceLen = strlen((const char *)source);
+    for (int i = 0; i < sourceLen; ++i) {
+        const unsigned char thisChar = source[i];
+        if (thisChar == ' '){
+            [output appendString:@"+"];
+        } else if (thisChar == '.' || thisChar == '-' || thisChar == '_' || thisChar == '~' ||
+                   (thisChar >= 'a' && thisChar <= 'z') ||
+                   (thisChar >= 'A' && thisChar <= 'Z') ||
+                   (thisChar >= '0' && thisChar <= '9')) {
+            [output appendFormat:@"%c", thisChar];
+        } else {
+            [output appendFormat:@"%%%02X", thisChar];
+        }
+    }
     return output;
 }
 

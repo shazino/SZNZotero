@@ -3,7 +3,7 @@
 //  SZNZoteroDemo
 //
 //  Created by Vincent Tourraine on 6/25/13.
-//  Copyright (c) 2013 shazino. All rights reserved.
+//  Copyright (c) 2013-2014 shazino. All rights reserved.
 //
 
 #import "SZNNewAttachmentViewController.h"
@@ -41,7 +41,7 @@
                 NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[self.titleTextField.text stringByAppendingPathExtension:@"txt"]];
                 [self.contentTextField.text writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 
-                [newItem fetchUploadAuthorizationForFileAtURL:[NSURL fileURLWithPath:filePath] contentType:@"text/plain" success:^(NSDictionary *response) {
+                [newItem fetchUploadAuthorizationForFileAtURL:[NSURL fileURLWithPath:filePath] contentType:@"text/plain" success:^(NSDictionary *response, NSString *md5) {
                     
                     [newItem uploadFileAtURL:[NSURL fileURLWithPath:filePath]
                                   withPrefix:response[@"prefix"]

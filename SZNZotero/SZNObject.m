@@ -1,7 +1,7 @@
 //
 // SZNObject.m
 //
-// Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2013-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -57,32 +57,50 @@
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     ISO8601DateFormatter *dateFormatter = [[ISO8601DateFormatter alloc] init];
-    
+
     SZNObject *object = [[self class] new];
     object.key = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
-    
+
     NSString *versionString          = [TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO];
     NSString *creationDateString     = [TBXML textForChildElementNamed:@"published" parentElement:XMLElement escaped:NO];
     NSString *modificationDateString = [TBXML textForChildElementNamed:@"updated" parentElement:XMLElement escaped:NO];
     object.version          = [numberFormatter numberFromString:versionString];
-    object.creationDate     = (creationDateString) ? [dateFormatter dateFromString:creationDateString] : nil;
+    object.creationDate     = (creationDateString)     ? [dateFormatter dateFromString:creationDateString] : nil;
     object.modificationDate = (modificationDateString) ? [dateFormatter dateFromString:modificationDateString] : nil;
-    object.library = library;
-    
+    object.library          = library;
+
     NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
-    if (JSONContent)
+    if (JSONContent) {
         object.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]
                                                          options:kNilOptions
                                                            error:nil];
-    
+    }
+
     return object;
 }
 
 + (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library {
+    if (![XML isKindOfClass:TBXML.class]) {
+        return @[];
+    }
+
+    TBXMLElement *rootXMLElement = XML.rootXMLElement;
+    if (!rootXMLElement || !rootXMLElement->firstChild) {
+        // With regular Objective-C properties the first condition would be
+        // superfluous, but it is necessary here because we’re dealing with
+        // struct pointers.
+        return @[];
+    }
+
     NSMutableArray *items = [NSMutableArray array];
-    [TBXML iterateElementsForQuery:@"entry" fromElement:XML.rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
-        [items addObject:[self objectFromXMLElement:XMLElement inLibrary:library]];
-    }];
+    if (rootXMLElement->firstChild) {
+        [TBXML iterateElementsForQuery:@"entry" fromElement:rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
+            SZNObject *object = [self objectFromXMLElement:XMLElement inLibrary:library];
+            if (object) {
+                [items addObject:object];
+            }
+        }];
+    }
     return items;
 }
 

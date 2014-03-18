@@ -1,9 +1,4 @@
-#include "Pods-AFNetworking.xcconfig"
-#include "Pods-AFOAuth1Client.xcconfig"
-#include "Pods-ISO8601DateFormatter.xcconfig"
-#include "Pods-SZNZotero.xcconfig"
-#include "Pods-TBXML.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 ${PODS_TBXML_GCC_PREPROCESSOR_DEFINITIONS}
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) ARC_ENABLED
 HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/AFOAuth1Client" "${PODS_ROOT}/Headers/ISO8601DateFormatter" "${PODS_ROOT}/Headers/SZNZotero" "${PODS_ROOT}/Headers/TBXML"
-OTHER_LDFLAGS = -ObjC ${PODS_AFNETWORKING_OTHER_LDFLAGS} ${PODS_AFOAUTH_CLIENT_OTHER_LDFLAGS} ${PODS_SZNZOTERO_OTHER_LDFLAGS} ${PODS_TBXML_OTHER_LDFLAGS}
+OTHER_LDFLAGS = -ObjC -lz -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration
 PODS_ROOT = ${SRCROOT}/Pods

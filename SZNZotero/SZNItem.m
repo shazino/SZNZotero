@@ -1,7 +1,7 @@
 //
 // SZNItem.m
 //
-// Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2013-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -93,8 +93,14 @@
     [client getPath:@"/itemTypes"
          parameters:nil
             success:^(id responseObject) {
-                if (success)
-                    success(responseObject);
+                if ([responseObject isKindOfClass:NSArray.class]) {
+                    if (success)
+                        success(responseObject);
+                }
+                else {
+                    if (failure)
+                        failure(nil);
+                }
             }
             failure:failure];
 }
@@ -106,8 +112,14 @@
     [client getPath:@"/itemTypeFields"
          parameters:@{@"itemType": itemType}
             success:^(id responseObject) {
-                if (success)
-                    success(responseObject);
+                if ([responseObject isKindOfClass:NSArray.class]) {
+                    if (success)
+                        success(responseObject);
+                }
+                else {
+                    if (failure)
+                        failure(nil);
+                }
             }
             failure:failure];
 }
@@ -135,25 +147,42 @@
 
 - (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
                                  contentType:(NSString *)contentType
-                                      success:(void (^)(NSDictionary *))success
-                                      failure:(void (^)(NSError *))failure
+                                     success:(void (^)(NSDictionary *, NSString *))success
+                                     failure:(void (^)(NSError *))failure
 {
-    NSString *fileName = [fileURL lastPathComponent];
-    NSData *fileData = [NSData dataWithContentsOfURL:fileURL];
-    NSString *md5 = [fileData MD5];
-    NSNumber *fileSizeInBytes = @([fileData length]);
-    NSNumber *mtimeInMilliseconds = @([NSDate timeIntervalSinceReferenceDate] *1000);
-    NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
+    NSString *fileName            = [fileURL.lastPathComponent szn_URLEncodedString];
+    NSData *fileData              = [NSData dataWithContentsOfURL:fileURL];
+    NSString *md5                 = [fileData MD5];
+    NSNumber *fileSizeInBytes     = @([fileData length]);
+    NSTimeInterval timeModified   = [[NSDate date] timeIntervalSince1970];
+    long long mtimeInMilliseconds = (long long) trunc(timeModified * 1000.0f);
+    NSDictionary *headers         = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
     
-    NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
-    [self.library.client postPath:[path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%@&contentType=%@", md5, fileName, [fileSizeInBytes stringValue], [mtimeInMilliseconds stringValue], contentType]
-                       parameters:nil
-                          headers:headers
-                         success:^(id responseObject) {
-                             if (success)
-                                 success(responseObject);
-                         }
-                         failure:failure];
+    if (!md5 || !fileData) {
+        if (failure) {
+            NSDictionary *userInfo = @{
+                                       NSLocalizedDescriptionKey: NSLocalizedString(@"Cannot fetch upload authorization for file.", nil),
+                                       NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"No file data or MD5.", nil),
+                                       @"fileURL": fileURL ?: @""
+                                       };
+            NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+                                                 code:NSURLErrorFileDoesNotExist
+                                             userInfo:userInfo];
+            failure(error);
+        }
+    }
+    else {
+        NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
+        path = [path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%lld&contentType=%@", md5, fileName, fileSizeInBytes.stringValue, mtimeInMilliseconds, contentType];
+        [self.library.client postPath:path
+                           parameters:nil
+                              headers:headers
+                              success:^(id responseObject) {
+                                  if (success)
+                                      success(responseObject, md5);
+                              }
+                              failure:failure];
+    }
 }
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
@@ -194,20 +223,35 @@
 
 - (void)uploadFileAtURL:(NSURL *)fileURL
             contentType:(NSString *)contentType
-                success:(void (^)(void))success
-                failure:(void (^)(NSError *))failure
+                success:(void (^)(NSString *md5))success
+                failure:(void (^)(NSError *error))failure
 {
     [self fetchUploadAuthorizationForFileAtURL:fileURL
                                    contentType:contentType
-                                       success:^(NSDictionary *response) {
-                                           [self uploadFileAtURL:fileURL
-                                                      withPrefix:response[@"prefix"]
-                                                          suffix:response[@"suffix"]
-                                                           toURL:response[@"url"]
-                                                     contentType:response[@"contentType"]
-                                                       uploadKey:response[@"uploadKey"]
-                                                         success:success
-                                                         failure:failure];
+                                       success:^(NSDictionary *response, NSString *md5) {
+                                           if (!response[@"url"]) {
+                                               if (response[@"exists"]) {
+                                                   if (success)
+                                                       success(md5);
+                                               }
+                                               else {
+                                                   if (failure)
+                                                       failure(nil);
+                                               }
+                                           }
+                                           else {
+                                               [self uploadFileAtURL:fileURL
+                                                          withPrefix:response[@"prefix"]
+                                                              suffix:response[@"suffix"]
+                                                               toURL:response[@"url"]
+                                                         contentType:response[@"contentType"]
+                                                           uploadKey:response[@"uploadKey"]
+                                                             success:^() {
+                                                                 if (success)
+                                                                     success(md5);
+                                                             }
+                                                             failure:failure];
+                                           }
                                        } failure:failure];
 }
 
