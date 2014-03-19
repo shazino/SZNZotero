@@ -16,7 +16,7 @@
 #define COCOAPODS_POD_AVAILABLE_AFOAuth1Client
 #define COCOAPODS_VERSION_MAJOR_AFOAuth1Client 0
 #define COCOAPODS_VERSION_MINOR_AFOAuth1Client 3
-#define COCOAPODS_VERSION_PATCH_AFOAuth1Client 2
+#define COCOAPODS_VERSION_PATCH_AFOAuth1Client 3
 
 // ISO8601DateFormatter
 #define COCOAPODS_POD_AVAILABLE_ISO8601DateFormatter
@@ -27,13 +27,13 @@
 // SZNZotero
 #define COCOAPODS_POD_AVAILABLE_SZNZotero
 #define COCOAPODS_VERSION_MAJOR_SZNZotero 0
-#define COCOAPODS_VERSION_MINOR_SZNZotero 1
+#define COCOAPODS_VERSION_MINOR_SZNZotero 2
 #define COCOAPODS_VERSION_PATCH_SZNZotero 0
 
 // SZNZotero/google-toolbox-mac
 #define COCOAPODS_POD_AVAILABLE_SZNZotero_google_toolbox_mac
 #define COCOAPODS_VERSION_MAJOR_SZNZotero_google_toolbox_mac 0
-#define COCOAPODS_VERSION_MINOR_SZNZotero_google_toolbox_mac 1
+#define COCOAPODS_VERSION_MINOR_SZNZotero_google_toolbox_mac 2
 #define COCOAPODS_VERSION_PATCH_SZNZotero_google_toolbox_mac 0
 
 // TBXML
