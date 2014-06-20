@@ -164,9 +164,17 @@
            success:(void (^)(id<SZNItemProtocol>))success
            failure:(void (^)(NSError *))failure {
     NSMutableDictionary *mutableParameters = [updatedItem.content mutableCopy];
-    mutableParameters[@"itemVersion"] = updatedItem.version;
-    mutableParameters[@"itemKey"]     = updatedItem.key;
-    mutableParameters[@"itemType"]    = updatedItem.type;
+
+    if (updatedItem.version) {
+        mutableParameters[@"itemVersion"] = updatedItem.version;
+    }
+    if (updatedItem.key) {
+        mutableParameters[@"itemKey"] = updatedItem.key;
+    }
+    if (updatedItem.type) {
+        mutableParameters[@"itemType"] = updatedItem.type;
+    }
+
     [self.client patchPath:[[self pathForResource:[SZNItem class]] stringByAppendingPathComponent:updatedItem.key]
                 parameters:mutableParameters
                    success:^(id responseObject) {
@@ -182,8 +190,14 @@
                  success:(void (^)(id<SZNCollectionProtocol>))success
                  failure:(void (^)(NSError *))failure {
     NSMutableDictionary *mutableParameters = [updatedCollection.content mutableCopy];
-    mutableParameters[@"itemVersion"] = updatedCollection.version;
-    mutableParameters[@"itemKey"]     = updatedCollection.key;
+
+    if (updatedCollection.version) {
+        mutableParameters[@"itemVersion"] = updatedCollection.version;
+    }
+    if (updatedCollection.key) {
+        mutableParameters[@"itemKey"] = updatedCollection.key;
+    }
+
     [self.client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key]
                 parameters:mutableParameters
                    success:^(id responseObject) {
@@ -200,12 +214,11 @@
                          success:(void (^)())success
                          failure:(void (^)(NSError *))failure {
     // TODO: use batch for 50+ objects
-    if ([objectsKeys count] >= 50)
-    {
+    if (objectsKeys.count >= 50) {
         NSLog(@"%s", __PRETTY_FUNCTION__);
         NSLog(@"[!] Warning: cannot delete more than 50 objects");
     }
-    
+
     [self.client deletePath:[self pathForResource:resource]
                  parameters:@{[resource keyParameter]: [objectsKeys componentsJoinedByString:@","]}
                     success:success
