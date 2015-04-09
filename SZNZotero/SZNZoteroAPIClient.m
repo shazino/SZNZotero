@@ -61,21 +61,21 @@
            secret:(NSString *)secret
         URLScheme:(NSString *)URLScheme {
     self = [super initWithBaseURL:[NSURL URLWithString:@"https://api.zotero.org"] key:key secret:secret];
-    
+
     if (self) {
         self.URLScheme = URLScheme;
         self.parameterEncoding = AFJSONParameterEncoding;
         [self setDefaultHeader:@"Zotero-API-Version" value:@"2"];
         [self setDefaultHeader:@"Connection" value:@"close"];
     }
-    
+
     return self;
 }
 
-- (void)resetObserver
-{
-    if (self.applicationLaunchObserver)
+- (void)resetObserver {
+    if (self.applicationLaunchObserver) {
         [[NSNotificationCenter defaultCenter] removeObserver:self.applicationLaunchObserver];
+    }
 }
 
 - (void)authenticateSuccess:(void (^)(AFOAuth1Token *))success
@@ -100,7 +100,7 @@
                                        libraryAccess, notesAccess, writeAccess,
                                        (groupAccessLevel == SZNZoteroAccessReadWrite) ? @"write" : (groupAccessLevel == SZNZoteroAccessRead) ? @"read" : @"none"];
     NSURL *callbackURL = [NSURL URLWithString:[self.URLScheme stringByAppendingString:@"://"]];
-    
+
     [self authorizeUsingOAuthWithRequestTokenPath:@"//www.zotero.org/oauth/request"
                             userAuthorizationPath:userAuthorizationPath
                                       callbackURL:callbackURL
@@ -128,20 +128,21 @@
                                           scope:(NSString *)scope
                        webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
                                         success:(void (^)(AFOAuth1Token *accessToken))success
-                                        failure:(void (^)(NSError *error))failure
-{
+                                        failure:(void (^)(NSError *error))failure {
     [self acquireOAuthRequestTokenWithPath:requestTokenPath callbackURL:callbackURL accessMethod:(NSString *)accessMethod scope:scope success:^(AFOAuth1Token *requestToken, id responseObject) {
         __block AFOAuth1Token *currentRequestToken = requestToken;
-        if (self.applicationLaunchObserver)
+        if (self.applicationLaunchObserver) {
             [[NSNotificationCenter defaultCenter] removeObserver:self.applicationLaunchObserver];
+        }
+
         self.applicationLaunchObserver = [[NSNotificationCenter defaultCenter] addObserverForName:kAFApplicationLaunchedWithURLNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
             NSURL *url = [[notification userInfo] valueForKey:kAFApplicationLaunchOptionsURLKey];
-            
+
             currentRequestToken.verifier = [AFParametersFromQueryString([url query]) valueForKey:@"oauth_verifier"];
-            
+
             [self acquireOAuthAccessTokenWithPath:accessTokenPath requestToken:currentRequestToken accessMethod:accessMethod success:^(AFOAuth1Token * accessToken, id responseObject) {
                 self.accessToken = accessToken;
-                
+
                 if (success) {
                     success(accessToken);
                 }
@@ -151,19 +152,21 @@
                 }
             }];
         }];
-        
+
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setValue:requestToken.key forKey:@"oauth_token"];
         NSURL *requestURL = [[self requestWithMethod:@"GET" path:[NSString stringWithFormat:@"%@&oauth_token=%@", userAuthorizationPath, requestToken.key] parameters:nil] URL];
-        
-        if (webAuthorizationCallback)
+
+        if (webAuthorizationCallback) {
             webAuthorizationCallback(requestURL);
-        else
+        }
+        else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
             [[UIApplication sharedApplication] openURL:requestURL];
 #else
-        [[NSWorkspace sharedWorkspace] openURL:requestURL];
+            [[NSWorkspace sharedWorkspace] openURL:requestURL];
 #endif
+        }
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
@@ -197,18 +200,23 @@
 
     BOOL isSuccessful = YES;
 
-    if (error)
+    if (error) {
         isSuccessful = NO;
-    if ([error.domain isEqualToString:D_TBXML_DOMAIN] && error.code == D_TBXML_DATA_NIL)
+    }
+
+    if ([error.domain isEqualToString:D_TBXML_DOMAIN] && error.code == D_TBXML_DATA_NIL) {
         isSuccessful = YES;
+    }
 
     if (isSuccessful) {
-        if (success)
+        if (success) {
             success(parsedObject);
+        }
     }
     else {
-        if (failure)
+        if (failure) {
             failure(error);
+        }
     }
 }
 
@@ -218,14 +226,16 @@
                                       path:(NSString *)path
                                 parameters:(NSDictionary *)parameters {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    
+
     if (self.accessToken.secret) {
-        if ([method isEqualToString:@"GET"])
+        if ([method isEqualToString:@"GET"]) {
             requestParameters[@"key"] = self.accessToken.secret;
-        else
+        }
+        else {
             path = [path stringByAppendingFormat:@"%@key=%@", [path rangeOfString:@"?"].location == NSNotFound ? @"?" : @"&", self.accessToken.secret];
+        }
     }
-    
+
     NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:requestParameters];
     return request;
 }
@@ -243,7 +253,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) failure(error);
     }];
-    
+
     [operation start];
 }
 
@@ -258,7 +268,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) failure(error);
     }];
-    
+
     [operation start];
 }
 
@@ -271,14 +281,14 @@
     [headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [request setValue:obj forHTTPHeaderField:key];
     }];
-    
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) failure(error);
     }];
-    
+
     [operation start];
 }
 
@@ -293,7 +303,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) failure(error);
     }];
-    
+
     [operation start];
 }
 
@@ -310,7 +320,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) failure(error);
     }];
-    
+
     [operation start];
 }
 
@@ -322,13 +332,13 @@
                                 success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
                                 failure:(void (^)(NSError *error))failure {
     self.accessToken = requestToken;
-    
+
     NSMutableDictionary *parameters = [[self OAuthParameters] mutableCopy];
     [parameters setValue:requestToken.key forKey:@"oauth_token"];
     [parameters setValue:requestToken.verifier forKey:@"oauth_verifier"];
-    
+
     NSMutableURLRequest *request = [self requestWithMethod:accessMethod path:path parameters:parameters];
-    
+
     AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request
                                                                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                                           if (success) {
@@ -354,23 +364,23 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
         NSScanner *parameterScanner = [[NSScanner alloc] initWithString:queryString];
         NSString *name = nil;
         NSString *value = nil;
-        
+
         while (![parameterScanner isAtEnd]) {
             name = nil;
             [parameterScanner scanUpToString:@"=" intoString:&name];
             [parameterScanner scanString:@"=" intoString:NULL];
-            
+
             value = nil;
             [parameterScanner scanUpToString:@"&" intoString:&value];
             [parameterScanner scanString:@"&" intoString:NULL];
-            
+
             if (name && value) {
                 [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
                               forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             }
         }
     }
-    
+
     return parameters;
 }
 
@@ -382,27 +392,32 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 + (NSString *)textForChildElementNamed:(NSString *)childElementName
                          parentElement:(TBXMLElement *)parentElement
                                escaped:(BOOL)escaped {
-    if (!parentElement)
+    if (!parentElement) {
         return nil;
+    }
+
     TBXMLElement *element = [TBXML childElementNamed:childElementName parentElement:parentElement];
-    if (!element)
+    if (!element) {
         return nil;
+    }
+
     NSString *text = [TBXML textForElement:element];
     return (escaped) ? [text gtm_stringByUnescapingFromHTML] : text;
 }
 
 @end
 
+
 @implementation NSData (SZNMD5)
 
-- (NSString*)MD5
-{
+- (NSString*)MD5 {
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     CC_MD5(self.bytes, (CC_LONG)self.length, md5Buffer);
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [output appendFormat:@"%02x", md5Buffer[i]];
-    
+    }
+
     return output;
 }
 
@@ -411,8 +426,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 @implementation NSString (SZNURLEncoding)
 
-- (NSString *)szn_URLEncodedString
-{
+- (NSString *)szn_URLEncodedString {
     NSMutableString * output = [NSMutableString string];
     const unsigned char * source = (const unsigned char *)[self UTF8String];
     NSUInteger sourceLen = strlen((const char *)source);
@@ -429,6 +443,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
             [output appendFormat:@"%%%02X", thisChar];
         }
     }
+
     return output;
 }
 
