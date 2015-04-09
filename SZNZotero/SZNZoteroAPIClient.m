@@ -38,6 +38,9 @@
 @property (strong, nonatomic) id applicationLaunchObserver;
 @property (nonatomic, strong) NSString *URLScheme;
 
+@property (nonatomic, assign) BOOL isRetryingRequest;
+
+
 - (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
                     responseObject:(id)responseObject
                            success:(void (^)(id))success
@@ -248,10 +251,19 @@
         failure:(void (^)(NSError *))failure {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.isRetryingRequest = NO;
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) failure(error);
+        if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
+            self.isRetryingRequest = YES;
+            [self getPath:path parameters:parameters success:success failure:failure];
+        }
+        else if (failure) {
+            self.isRetryingRequest = NO;
+            failure(error);
+        }
     }];
 
     [operation start];
@@ -263,10 +275,19 @@
         failure:(void (^)(NSError *))failure {
     NSURLRequest *request = [self requestWithMethod:@"PUT" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.isRetryingRequest = NO;
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) failure(error);
+        if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
+            self.isRetryingRequest = YES;
+            [self putPath:path parameters:parameters success:success failure:failure];
+        }
+        else if (failure) {
+            self.isRetryingRequest = NO;
+            failure(error);
+        }
     }];
 
     [operation start];
@@ -284,9 +305,17 @@
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.isRetryingRequest = NO;
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) failure(error);
+        if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
+            self.isRetryingRequest = YES;
+            [self postPath:path parameters:parameters headers:headers success:success failure:failure];
+        }
+        else if (failure) {
+            self.isRetryingRequest = NO;
+            failure(error);
+        }
     }];
 
     [operation start];
@@ -299,9 +328,17 @@
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.isRetryingRequest = NO;
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) failure(error);
+        if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
+            self.isRetryingRequest = YES;
+            [self patchPath:path parameters:parameters success:success failure:failure];
+        }
+        else if (failure) {
+            self.isRetryingRequest = NO;
+            failure(error);
+        }
     }];
 
     [operation start];
@@ -314,11 +351,22 @@
     NSNumber *itemVersion = parameters[@"itemVersion"];
     NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
     [request setValue:[itemVersion stringValue] forHTTPHeaderField:@"If-Unmodified-Since-Version"];
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (success) success();
+        self.isRetryingRequest = NO;
+        if (success) {
+            success();
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) failure(error);
+        if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
+            self.isRetryingRequest = YES;
+            [self deletePath:path parameters:parameters success:success failure:failure];
+        }
+        else if (failure) {
+            self.isRetryingRequest = NO;
+            failure(error);
+        }
     }];
 
     [operation start];
