@@ -69,7 +69,6 @@
         self.URLScheme = URLScheme;
         self.parameterEncoding = AFJSONParameterEncoding;
         [self setDefaultHeader:@"Zotero-API-Version" value:@"2"];
-        [self setDefaultHeader:@"Connection" value:@"close"];
     }
 
     return self;
