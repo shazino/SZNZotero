@@ -192,21 +192,22 @@
     NSMutableDictionary *mutableParameters = [updatedCollection.content mutableCopy];
 
     if (updatedCollection.version) {
-        mutableParameters[@"itemVersion"] = updatedCollection.version;
+        mutableParameters[@"collectionVersion"] = updatedCollection.version;
     }
     if (updatedCollection.key) {
-        mutableParameters[@"itemKey"] = updatedCollection.key;
+        mutableParameters[@"collectionKey"] = updatedCollection.key;
     }
 
-    [self.client patchPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key]
-                parameters:mutableParameters
-                   success:^(id responseObject) {
-                       updatedCollection.synced  = @YES;
-                       updatedCollection.version = self.client.lastModifiedVersion;
-                       if (success)
-                           success(updatedCollection);
-                   }
-                   failure:failure];
+    [self.client putPath:[[self pathForResource:[SZNCollection class]] stringByAppendingPathComponent:updatedCollection.key]
+              parameters:mutableParameters
+                 success:^(id responseObject) {
+                     updatedCollection.synced  = @YES;
+                     updatedCollection.version = self.client.lastModifiedVersion;
+                     if (success) {
+                         success(updatedCollection);
+                     }
+                 }
+                 failure:failure];
 }
 
 - (void)deleteObjectsForResource:(Class <SZNResource>)resource
