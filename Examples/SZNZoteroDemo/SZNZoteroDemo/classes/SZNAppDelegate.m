@@ -21,7 +21,7 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
-    NSString *clientKey = @"###";
+    NSString *clientKey    = @"###";
     NSString *clientSecret = @"###";
     
     SZNZoteroAPIClient *client = [[SZNZoteroAPIClient alloc] initWithKey:clientKey secret:clientSecret URLScheme:SZNURLScheme];

@@ -1,14 +1,14 @@
 PODS:
   - AFNetworking (1.3.3)
-  - AFOAuth1Client (0.3.2):
+  - AFOAuth1Client (0.3.3):
     - AFNetworking (~> 1.3)
   - ISO8601DateFormatter (0.7)
-  - SZNZotero (0.1):
+  - SZNZotero (0.2):
     - AFOAuth1Client (~> 0.3.0)
     - ISO8601DateFormatter (~> 0.7)
     - SZNZotero/google-toolbox-mac
     - TBXML (~> 1.5)
-  - SZNZotero/google-toolbox-mac (0.1):
+  - SZNZotero/google-toolbox-mac (0.2):
     - AFOAuth1Client (~> 0.3.0)
     - ISO8601DateFormatter (~> 0.7)
     - TBXML (~> 1.5)
@@ -22,10 +22,10 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
-  AFOAuth1Client: 3157e4dfe9bd8f32059820fad4c5d5c05b98cc5d
+  AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
+  AFOAuth1Client: 8b06e54087732068e19c4efcd7bed5d74bc9538a
   ISO8601DateFormatter: 00944e437ea647f4244454ce8809d313861d08de
-  SZNZotero: 7842a4017c42cc14e509f4e5bb4e2e3c0cd65567
+  SZNZotero: d0caecfc5827bc639e8bf263f7b545cce4ddec4a
   TBXML: 0511ac325d83e59d3aefa4bc8cd6cbeff07a8d9e
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.29.0

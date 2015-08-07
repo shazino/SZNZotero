@@ -45,6 +45,13 @@
 @end
 
 
+@interface SZNItem ()
+
+@property (nonatomic, assign) BOOL isRetryingRequest;
+
+@end
+
+
 @implementation SZNItem
 
 @synthesize type;
@@ -192,8 +199,7 @@
             contentType:(NSString *)contentType
               uploadKey:(NSString *)uploadKey
                 success:(void (^)(void))success
-                failure:(void (^)(NSError *))failure
-{
+                failure:(void (^)(NSError *))failure {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:toURL]];
     request.HTTPMethod = @"POST";
     [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
@@ -202,22 +208,34 @@
     [body appendData:[NSData dataWithContentsOfURL:fileURL]];
     [body appendData:[suffix dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPBody:body];
-    
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
-        NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
-        [self.library.client postPath:[path stringByAppendingFormat:@"?upload=%@", uploadKey]
-                           parameters:nil
-                              headers:headers
-                              success:^(id response) {
-                                  if (success)
-                                      success();
-                              } failure:failure];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
-            failure(error);
-    }];
+    [operation
+     setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+         self.isRetryingRequest = NO;
+
+         NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
+         NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
+         [self.library.client postPath:[path stringByAppendingFormat:@"?upload=%@", uploadKey]
+                            parameters:nil
+                               headers:headers
+                               success:^(id response) {
+                                   if (success) {
+                                       success();
+                                   }
+                               } failure:failure];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
+             self.isRetryingRequest = YES;
+             [self uploadFileAtURL:fileURL withPrefix:prefix suffix:suffix toURL:toURL contentType:contentType uploadKey:uploadKey success:success failure:failure];
+         }
+         else if (failure) {
+             self.isRetryingRequest = NO;
+             failure(error);
+         }
+     }];
+
     [operation start];
 }
 
@@ -226,33 +244,35 @@
                 success:(void (^)(NSString *md5))success
                 failure:(void (^)(NSError *error))failure
 {
-    [self fetchUploadAuthorizationForFileAtURL:fileURL
-                                   contentType:contentType
-                                       success:^(NSDictionary *response, NSString *md5) {
-                                           if (!response[@"url"]) {
-                                               if (response[@"exists"]) {
-                                                   if (success)
-                                                       success(md5);
-                                               }
-                                               else {
-                                                   if (failure)
-                                                       failure(nil);
-                                               }
-                                           }
-                                           else {
-                                               [self uploadFileAtURL:fileURL
-                                                          withPrefix:response[@"prefix"]
-                                                              suffix:response[@"suffix"]
-                                                               toURL:response[@"url"]
-                                                         contentType:response[@"contentType"]
-                                                           uploadKey:response[@"uploadKey"]
-                                                             success:^() {
-                                                                 if (success)
-                                                                     success(md5);
-                                                             }
-                                                             failure:failure];
-                                           }
-                                       } failure:failure];
+    [self
+     fetchUploadAuthorizationForFileAtURL:fileURL
+     contentType:contentType
+     success:^(NSDictionary *response, NSString *md5) {
+         if (!response[@"url"]) {
+             if (response[@"exists"]) {
+                 if (success)
+                     success(md5);
+             }
+             else {
+                 if (failure)
+                     failure(nil);
+             }
+         }
+         else {
+             [self uploadFileAtURL:fileURL
+                        withPrefix:response[@"prefix"]
+                            suffix:response[@"suffix"]
+                             toURL:response[@"url"]
+                       contentType:response[@"contentType"]
+                         uploadKey:response[@"uploadKey"]
+                           success:^() {
+                               if (success)
+                                   success(md5);
+                           }
+                           failure:failure];
+         }
+     }
+     failure:failure];
 }
 
 - (void)fetchChildrenItemsSuccess:(void (^)(NSArray *))success
