@@ -1,6 +1,6 @@
 // AFOAuth1Client.m
 //
-// Copyright (c) 2011 Mattt Thompson (http://mattt.me/)
+// Copyright (c) 2011-2014 AFNetworking (http://afnetworking.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,7 @@
 #import "AFOAuth1Client.h"
 #import "AFHTTPRequestOperation.h"
 
+#import <Security/Security.h>
 #import <CommonCrypto/CommonHMAC.h>
 
 typedef void (^AFServiceProviderRequestHandlerBlock)(NSURLRequest *request);
@@ -190,8 +191,6 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
 
     self.signatureMethod = AFHMACSHA1SignatureMethod;
 
-    self.oauthAccessMethod = @"GET";
-
     return self;
 }
 
@@ -327,6 +326,7 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
 
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         parameters[@"oauth_token"] = requestToken.key;
+
         NSMutableURLRequest *request = [super requestWithMethod:@"GET" path:userAuthorizationPath parameters:parameters];
         [request setHTTPShouldHandleCookies:NO];
 
@@ -355,13 +355,18 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
                                  failure:(void (^)(NSError *error))failure
 {
     NSMutableDictionary *parameters = [[self OAuthParameters] mutableCopy];
-    parameters[@"oauth_callback"] = [callbackURL absoluteString];
-    if (scope && !self.accessToken) {
+
+    if (callbackURL) {
+        parameters[@"oauth_callback"] = [callbackURL absoluteString];
+    } else {
+        parameters[@"oauth_callback"] = @"oob";
+    }
+
+    if (!self.accessToken && scope && ![scope isEqualToString:@""]) {
         parameters[@"scope"] = scope;
     }
 
     NSMutableURLRequest *request = [self requestWithMethod:accessMethod path:path parameters:parameters];
-    [request setHTTPBody:nil];
 
     AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
@@ -383,12 +388,14 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
                                 success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
                                 failure:(void (^)(NSError *error))failure
 {
-    if (requestToken.key && requestToken.verifier) {
+    if (requestToken.key) {
         self.accessToken = requestToken;
         
         NSMutableDictionary *parameters = [[self OAuthParameters] mutableCopy];
         parameters[@"oauth_token"] = requestToken.key;
-        parameters[@"oauth_verifier"] = requestToken.verifier;
+        if (requestToken.verifier) {
+            parameters[@"oauth_verifier"] = requestToken.verifier;
+        }
         
         NSMutableURLRequest *request = [self requestWithMethod:accessMethod path:path parameters:parameters];
         
@@ -477,7 +484,6 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
     self.signatureMethod = (AFOAuthSignatureMethod)[decoder decodeIntegerForKey:NSStringFromSelector(@selector(signatureMethod))];
     self.realm = [decoder decodeObjectForKey:NSStringFromSelector(@selector(realm))];
     self.accessToken = [decoder decodeObjectForKey:NSStringFromSelector(@selector(accessToken))];
-    self.oauthAccessMethod = [decoder decodeObjectForKey:NSStringFromSelector(@selector(oauthAccessMethod))];
 
     return self;
 }
@@ -490,7 +496,6 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
     [coder encodeInteger:self.signatureMethod forKey:NSStringFromSelector(@selector(signatureMethod))];
     [coder encodeObject:self.realm forKey:NSStringFromSelector(@selector(realm))];
     [coder encodeObject:self.accessToken forKey:NSStringFromSelector(@selector(accessToken))];
-    [coder encodeObject:self.oauthAccessMethod forKey:NSStringFromSelector(@selector(oauthAccessMethod))];
 }
 
 #pragma mark - NSCopying
@@ -500,7 +505,6 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
     copy.signatureMethod = self.signatureMethod;
     copy.realm = self.realm;
     copy.accessToken = self.accessToken;
-    copy.oauthAccessMethod = self.oauthAccessMethod;
 
     return copy;
 }
@@ -677,7 +681,7 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
     self.session = [decoder decodeObjectForKey:NSStringFromSelector(@selector(session))];
     self.verifier = [decoder decodeObjectForKey:NSStringFromSelector(@selector(verifier))];
     self.expiration = [decoder decodeObjectForKey:NSStringFromSelector(@selector(expiration))];
-    self.renewable = [decoder decodeBoolForKey:NSStringFromSelector(@selector(renewable))];
+    self.renewable = [decoder decodeBoolForKey:NSStringFromSelector(@selector(canBeRenewed))];
     self.userInfo = [decoder decodeObjectForKey:NSStringFromSelector(@selector(userInfo))];
 
     return self;
@@ -689,7 +693,7 @@ static NSDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *identifi
     [coder encodeObject:self.session forKey:NSStringFromSelector(@selector(session))];
     [coder encodeObject:self.verifier forKey:NSStringFromSelector(@selector(verifier))];
     [coder encodeObject:self.expiration forKey:NSStringFromSelector(@selector(expiration))];
-    [coder encodeBool:self.renewable forKey:NSStringFromSelector(@selector(renewable))];
+    [coder encodeBool:self.renewable forKey:NSStringFromSelector(@selector(canBeRenewed))];
     [coder encodeObject:self.userInfo forKey:NSStringFromSelector(@selector(userInfo))];
 }
 

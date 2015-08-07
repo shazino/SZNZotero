@@ -29,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13F25DE3A60EDA29CE46F0AD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		14A83C8616F21E7D009D8F75 /* SZNZoteroDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZNZoteroDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A83C8916F21E7D009D8F75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		14A83C8B16F21E7D009D8F75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,7 +60,7 @@
 		14D68468172170F1008804E2 /* SZNItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNItemViewController.m; path = SZNZoteroDemo/classes/SZNItemViewController.m; sourceTree = SOURCE_ROOT; };
 		14FA643D174104E700AEEE50 /* SZNAttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNAttachmentViewController.h; path = SZNZoteroDemo/classes/SZNAttachmentViewController.h; sourceTree = SOURCE_ROOT; };
 		14FA643E174104E700AEEE50 /* SZNAttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNAttachmentViewController.m; path = SZNZoteroDemo/classes/SZNAttachmentViewController.m; sourceTree = SOURCE_ROOT; };
-		92C44F002A254C92AC7FF550 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		4DDC027CC425943CDA275081 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A3FEC7A8F06B4C2AB019B963 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,7 +85,7 @@
 				14A83C8F16F21E7D009D8F75 /* SZNZoteroDemo */,
 				14A83C8816F21E7D009D8F75 /* Frameworks */,
 				14A83C8716F21E7D009D8F75 /* Products */,
-				92C44F002A254C92AC7FF550 /* Pods.xcconfig */,
+				5FEC8FB390A3998644CAE8E3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +148,15 @@
 				14AF54EC171DAC0A00BA4CBE /* SZNZoteroDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5FEC8FB390A3998644CAE8E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				13F25DE3A60EDA29CE46F0AD /* Pods.debug.xcconfig */,
+				4DDC027CC425943CDA275081 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +235,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -327,7 +337,7 @@
 		};
 		14A83CAA16F21E7D009D8F75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92C44F002A254C92AC7FF550 /* Pods.xcconfig */;
+			baseConfigurationReference = 13F25DE3A60EDA29CE46F0AD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZNZoteroDemo/SZNZoteroDemo-Prefix.pch";
@@ -341,7 +351,7 @@
 		};
 		14A83CAB16F21E7D009D8F75 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92C44F002A254C92AC7FF550 /* Pods.xcconfig */;
+			baseConfigurationReference = 4DDC027CC425943CDA275081 /* Pods.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZNZoteroDemo/SZNZoteroDemo-Prefix.pch";

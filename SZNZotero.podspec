@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.osx.deployment_target = "10.7"
 
-  s.dependency "AFOAuth1Client", "~> 0.3.0"
+  s.dependency "AFOAuth1Client", "1.0"
   s.dependency "TBXML", "~> 1.5"
   s.dependency "ISO8601DateFormatter", "~> 0.7"
 

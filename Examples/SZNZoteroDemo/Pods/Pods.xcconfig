@@ -1,5 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) ARC_ENABLED
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/AFOAuth1Client" "${PODS_ROOT}/Headers/ISO8601DateFormatter" "${PODS_ROOT}/Headers/SZNZotero" "${PODS_ROOT}/Headers/TBXML"
-OTHER_CFLAGS = $(inherited) "-isystem${PODS_ROOT}/Headers" "-isystem${PODS_ROOT}/Headers/AFNetworking" "-isystem${PODS_ROOT}/Headers/AFOAuth1Client" "-isystem${PODS_ROOT}/Headers/ISO8601DateFormatter" "-isystem${PODS_ROOT}/Headers/SZNZotero" "-isystem${PODS_ROOT}/Headers/TBXML"
-OTHER_LDFLAGS = -ObjC -lz -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration
-PODS_ROOT = ${SRCROOT}/Pods
