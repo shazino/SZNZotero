@@ -1,6 +1,6 @@
 {
   "name": "SZNZotero",
-  "version": "0.3",
+  "version": "0.3.1",
   "summary": "Objective-C client for the Zotero API.",
   "homepage": "https://github.com/shazino/SZNZotero",
   "license": "MIT",
@@ -10,7 +10,7 @@
   "social_media_url": "https://twitter.com/shazino",
   "source": {
     "git": "https://github.com/shazino/SZNZotero.git",
-    "tag": "0.3"
+    "tag": "0.3.1"
   },
   "source_files": "SZNZotero/*",
   "requires_arc": true,

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141A7B441B78A01800204632 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 141A7B431B78A01800204632 /* AppDelegate.m */; };
+		141A7B461B78A01800204632 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 141A7B451B78A01800204632 /* main.m */; };
+		141A7B481B78A01800204632 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141A7B471B78A01800204632 /* Images.xcassets */; };
+		141A7B4B1B78A01800204632 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141A7B491B78A01800204632 /* MainMenu.xib */; };
 		14A83C8A16F21E7D009D8F75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8916F21E7D009D8F75 /* UIKit.framework */; };
 		14A83C8C16F21E7D009D8F75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8B16F21E7D009D8F75 /* Foundation.framework */; };
 		14A83C8E16F21E7D009D8F75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8D16F21E7D009D8F75 /* CoreGraphics.framework */; };
@@ -25,11 +29,19 @@
 		14BE8A451779D5F0004CE16B /* SZNNewAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE8A441779D5F0004CE16B /* SZNNewAttachmentViewController.m */; };
 		14D68469172170F1008804E2 /* SZNItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D68468172170F1008804E2 /* SZNItemViewController.m */; };
 		14FA643F174104E700AEEE50 /* SZNAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FA643E174104E700AEEE50 /* SZNAttachmentViewController.m */; };
-		27ADE14AD120442183CD9113 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FEC7A8F06B4C2AB019B963 /* libPods.a */; };
+		D3056363508109014BF4A0A5 /* libPods-SZNZoteroDemoOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 613731DD46D640A3F2036FD8 /* libPods-SZNZoteroDemoOSX.a */; };
+		D66B630B6B334B83B76564A4 /* libPods-SZNZoteroDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A6BCA7068FD9A005D6AC54 /* libPods-SZNZoteroDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13F25DE3A60EDA29CE46F0AD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		141A7B3E1B78A01800204632 /* SZNZoteroDemoOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZNZoteroDemoOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		141A7B411B78A01800204632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		141A7B421B78A01800204632 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		141A7B431B78A01800204632 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		141A7B451B78A01800204632 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		141A7B471B78A01800204632 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		141A7B4A1B78A01800204632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		14A83C8616F21E7D009D8F75 /* SZNZoteroDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZNZoteroDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A83C8916F21E7D009D8F75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		14A83C8B16F21E7D009D8F75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,11 +72,25 @@
 		14D68468172170F1008804E2 /* SZNItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNItemViewController.m; path = SZNZoteroDemo/classes/SZNItemViewController.m; sourceTree = SOURCE_ROOT; };
 		14FA643D174104E700AEEE50 /* SZNAttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNAttachmentViewController.h; path = SZNZoteroDemo/classes/SZNAttachmentViewController.h; sourceTree = SOURCE_ROOT; };
 		14FA643E174104E700AEEE50 /* SZNAttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNAttachmentViewController.m; path = SZNZoteroDemo/classes/SZNAttachmentViewController.m; sourceTree = SOURCE_ROOT; };
+		30413251229EAF4B48121C0D /* Pods-SZNZoteroDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SZNZoteroDemo/Pods-SZNZoteroDemo.release.xcconfig"; sourceTree = "<group>"; };
+		40401719B0ADB09E0EB380F1 /* Pods-SZNZoteroDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SZNZoteroDemo/Pods-SZNZoteroDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		47C6269B340848E523E41F40 /* Pods-SZNZoteroDemoOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SZNZoteroDemoOSX/Pods-SZNZoteroDemoOSX.release.xcconfig"; sourceTree = "<group>"; };
 		4DDC027CC425943CDA275081 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		613731DD46D640A3F2036FD8 /* libPods-SZNZoteroDemoOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75A6BCA7068FD9A005D6AC54 /* libPods-SZNZoteroDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3FEC7A8F06B4C2AB019B963 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B77CC9C0212400A69768FC7F /* Pods-SZNZoteroDemoOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SZNZoteroDemoOSX/Pods-SZNZoteroDemoOSX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		141A7B3B1B78A01800204632 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3056363508109014BF4A0A5 /* libPods-SZNZoteroDemoOSX.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14A83C8316F21E7D009D8F75 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,17 +98,39 @@
 				14A83C8A16F21E7D009D8F75 /* UIKit.framework in Frameworks */,
 				14A83C8C16F21E7D009D8F75 /* Foundation.framework in Frameworks */,
 				14A83C8E16F21E7D009D8F75 /* CoreGraphics.framework in Frameworks */,
-				27ADE14AD120442183CD9113 /* libPods.a in Frameworks */,
+				D66B630B6B334B83B76564A4 /* libPods-SZNZoteroDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141A7B3F1B78A01800204632 /* SZNZoteroDemoOSX */ = {
+			isa = PBXGroup;
+			children = (
+				141A7B421B78A01800204632 /* AppDelegate.h */,
+				141A7B431B78A01800204632 /* AppDelegate.m */,
+				141A7B471B78A01800204632 /* Images.xcassets */,
+				141A7B491B78A01800204632 /* MainMenu.xib */,
+				141A7B401B78A01800204632 /* Supporting Files */,
+			);
+			path = SZNZoteroDemoOSX;
+			sourceTree = "<group>";
+		};
+		141A7B401B78A01800204632 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				141A7B411B78A01800204632 /* Info.plist */,
+				141A7B451B78A01800204632 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		14A83C7D16F21E7D009D8F75 = {
 			isa = PBXGroup;
 			children = (
 				14A83C8F16F21E7D009D8F75 /* SZNZoteroDemo */,
+				141A7B3F1B78A01800204632 /* SZNZoteroDemoOSX */,
 				14A83C8816F21E7D009D8F75 /* Frameworks */,
 				14A83C8716F21E7D009D8F75 /* Products */,
 				5FEC8FB390A3998644CAE8E3 /* Pods */,
@@ -93,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				14A83C8616F21E7D009D8F75 /* SZNZoteroDemo.app */,
+				141A7B3E1B78A01800204632 /* SZNZoteroDemoOSX.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +153,8 @@
 				14A83C8B16F21E7D009D8F75 /* Foundation.framework */,
 				14A83C8D16F21E7D009D8F75 /* CoreGraphics.framework */,
 				A3FEC7A8F06B4C2AB019B963 /* libPods.a */,
+				75A6BCA7068FD9A005D6AC54 /* libPods-SZNZoteroDemo.a */,
+				613731DD46D640A3F2036FD8 /* libPods-SZNZoteroDemoOSX.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,6 +206,10 @@
 			children = (
 				13F25DE3A60EDA29CE46F0AD /* Pods.debug.xcconfig */,
 				4DDC027CC425943CDA275081 /* Pods.release.xcconfig */,
+				B77CC9C0212400A69768FC7F /* Pods-SZNZoteroDemoOSX.debug.xcconfig */,
+				47C6269B340848E523E41F40 /* Pods-SZNZoteroDemoOSX.release.xcconfig */,
+				40401719B0ADB09E0EB380F1 /* Pods-SZNZoteroDemo.debug.xcconfig */,
+				30413251229EAF4B48121C0D /* Pods-SZNZoteroDemo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -162,10 +217,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		141A7B3D1B78A01800204632 /* SZNZoteroDemoOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 141A7B5C1B78A01900204632 /* Build configuration list for PBXNativeTarget "SZNZoteroDemoOSX" */;
+			buildPhases = (
+				6510E275D5A5F57E21EFC3E1 /* Check Pods Manifest.lock */,
+				141A7B3A1B78A01800204632 /* Sources */,
+				141A7B3B1B78A01800204632 /* Frameworks */,
+				141A7B3C1B78A01800204632 /* Resources */,
+				C8A952F787E056023D8CB53A /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SZNZoteroDemoOSX;
+			productName = SZNZoteroDemoOSX;
+			productReference = 141A7B3E1B78A01800204632 /* SZNZoteroDemoOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
 		14A83C8516F21E7D009D8F75 /* SZNZoteroDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14A83CA916F21E7D009D8F75 /* Build configuration list for PBXNativeTarget "SZNZoteroDemo" */;
 			buildPhases = (
+				1AF2A748B41A3F9547D5E3CB /* Check Pods Manifest.lock */,
 				14A83C8216F21E7D009D8F75 /* Sources */,
 				14A83C8316F21E7D009D8F75 /* Frameworks */,
 				14A83C8416F21E7D009D8F75 /* Resources */,
@@ -189,6 +264,11 @@
 				CLASSPREFIX = SZN;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = shazino;
+				TargetAttributes = {
+					141A7B3D1B78A01800204632 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
 			};
 			buildConfigurationList = 14A83C8116F21E7D009D8F75 /* Build configuration list for PBXProject "SZNZoteroDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -196,6 +276,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 14A83C7D16F21E7D009D8F75;
 			productRefGroup = 14A83C8716F21E7D009D8F75 /* Products */;
@@ -203,11 +284,21 @@
 			projectRoot = "";
 			targets = (
 				14A83C8516F21E7D009D8F75 /* SZNZoteroDemo */,
+				141A7B3D1B78A01800204632 /* SZNZoteroDemoOSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		141A7B3C1B78A01800204632 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141A7B481B78A01800204632 /* Images.xcassets in Resources */,
+				141A7B4B1B78A01800204632 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14A83C8416F21E7D009D8F75 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,6 +314,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1AF2A748B41A3F9547D5E3CB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6510E275D5A5F57E21EFC3E1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		9D3B4F30E49340BCA2A30C99 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,11 +356,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SZNZoteroDemo/Pods-SZNZoteroDemo-resources.sh\"\n";
+		};
+		C8A952F787E056023D8CB53A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SZNZoteroDemoOSX/Pods-SZNZoteroDemoOSX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		141A7B3A1B78A01800204632 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141A7B461B78A01800204632 /* main.m in Sources */,
+				141A7B441B78A01800204632 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14A83C8216F21E7D009D8F75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -260,6 +405,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		141A7B491B78A01800204632 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				141A7B4A1B78A01800204632 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		14AF54F2171DAC1D00BA4CBE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -279,6 +432,70 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		141A7B581B78A01900204632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B77CC9C0212400A69768FC7F /* Pods-SZNZoteroDemoOSX.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = SZNZoteroDemoOSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		141A7B591B78A01900204632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47C6269B340848E523E41F40 /* Pods-SZNZoteroDemoOSX.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = SZNZoteroDemoOSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		14A83CA716F21E7D009D8F75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -337,7 +554,7 @@
 		};
 		14A83CAA16F21E7D009D8F75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13F25DE3A60EDA29CE46F0AD /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 40401719B0ADB09E0EB380F1 /* Pods-SZNZoteroDemo.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZNZoteroDemo/SZNZoteroDemo-Prefix.pch";
@@ -351,7 +568,7 @@
 		};
 		14A83CAB16F21E7D009D8F75 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DDC027CC425943CDA275081 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 30413251229EAF4B48121C0D /* Pods-SZNZoteroDemo.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZNZoteroDemo/SZNZoteroDemo-Prefix.pch";
@@ -366,6 +583,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		141A7B5C1B78A01900204632 /* Build configuration list for PBXNativeTarget "SZNZoteroDemoOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				141A7B581B78A01900204632 /* Debug */,
+				141A7B591B78A01900204632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		14A83C8116F21E7D009D8F75 /* Build configuration list for PBXProject "SZNZoteroDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

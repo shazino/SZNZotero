@@ -1,3 +1,10 @@
-platform :ios, '5.1'
 
-pod 'SZNZotero', :path => '../../'
+target 'SZNZoteroDemo', :exclusive => false do
+    platform :ios, '5.1'
+    pod 'SZNZotero', :path => '../../'
+end
+
+target 'SZNZoteroDemoOSX', :exclusive => false do
+    platform :osx, '10.8'
+    pod 'SZNZotero', :path => '../../'
+end

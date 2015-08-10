@@ -7,388 +7,653 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		012CB2F2617BA0793B928F652AF77C5B /* SZNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A297A849CD942764D646E91804C3029E /* SZNObject.h */; };
-		0674E900F71F5A81BC51090A4D490076 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D40C5252B0C491F50A3704D9E442B0 /* Pods-dummy.m */; };
-		09513AE00F32A2CB75F0BAFDCF2A3C53 /* TBXML+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 824DCAEFEC27D5E8DA9483E29C03423E /* TBXML+Compression.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		0C6B1835F3FA1D4250E8C52309F4433E /* TBXML-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E199FFD598F412002A52CFE49BD20AC /* TBXML-dummy.m */; };
-		0E063FCF5D140C6B3635A2C19AE60C1D /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 167F56F67DD0A81D60BE7200B3B0EB9F /* AFNetworking.h */; };
-		0ED63578B72A405ACEFE882CB8BC3304 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A08A1A9E13D4AFAD09041A880B9370EA /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		1246FD2C8705C25FE61C28F4E1C1048D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9501232B9E198748862D08A96781D46E /* Security.framework */; };
-		132D66106475F552F9DCEB3232E04919 /* SZNLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B6345DF9A0B3FC7095946CBB009A08F0 /* SZNLibrary.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		133F98AE767013B4539C7A24D1FDF52B /* SZNAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE1C7CCC05EF3434D875A7C0BC2989F /* SZNAuthor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		167327371C5AC371F9AC33AD90A57A8C /* SZNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 83715FC3BE176321569C3DC1990E4068 /* SZNItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		1760D6272F8B672FB162CDA7C7C6C883 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7AAEF6DC66D746C6A0BDA1234AF6D /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		19B31FFBCF7996CBB1D47854CF40868A /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B99B0F8819C44C4594E357C2D05032A3 /* AFURLConnectionOperation.h */; };
-		21628833CD056130735827885C502053 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83C84024589A7416121E36FC3E3EC5 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		26E9A07CF4FDBE9BEDA1162CCD041EB9 /* SZNCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E95845CDE883C5CB103D94B7E461E5D /* SZNCollection.h */; };
-		2B1BAA8AE5D0006130AB517E1DF4AFDC /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E4AAA416E5A923F5E57E98D4C18FBA0 /* AFHTTPClient.h */; };
-		2DBDCB22C8570202CE7F6D14A79F2C87 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49360684A615E1236FA979E487FBCC49 /* MobileCoreServices.framework */; };
-		30558CC38D5A5B54949B9CBB23F7C767 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEBD973F900F443FC5F260AF3019511 /* SystemConfiguration.framework */; };
-		3132E3D0248E5DC998EB7AC4A9DCFAF6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49360684A615E1236FA979E487FBCC49 /* MobileCoreServices.framework */; };
-		343DA28B5A66D342576BF28A3B0233AA /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AA7486E88871F155D5F59DA0AFA2E /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		349592F2CE209759529A6A0FE241E41F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEBD973F900F443FC5F260AF3019511 /* SystemConfiguration.framework */; };
-		35B32485428DB3A50F50D779FB0BA946 /* SZNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF0951CF47AFB7BBE5AFA7A22A0DBF6 /* SZNTag.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3798C1BE0E8B99802C3E428873CF73CB /* SZNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF1F3CEA56CDA003A4202F87A80957 /* SZNUser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		394EBCF988A255AA1C01343F14A370E3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C91A1A07D0C5BC48B966F92D1E237CE /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		451C14A4DD07F853FD8B065C551F58A3 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DF72EB8605E2909AF954B2FC667A8E1C /* AFNetworkActivityIndicatorManager.h */; };
-		4825455A71F49F68BD222F91AD5ED853 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */; };
-		486480ED0C237234338389CCDB388565 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B51BFF52077E5C92797C68CDDCC1B085 /* AFNetworking-dummy.m */; };
-		4E77BFCC433F7BA1D3DDE10306B2CD7F /* SZNCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BBB0E646ECED532ADDD966F13C0507 /* SZNCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4F1EE3E9A13DC12AB68DF7F359B53198 /* ISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 82688610754CE99DE3BF11B44D6F9B13 /* ISO8601DateFormatter.h */; };
-		4F44C7B8F9A81FF0AD5D9D54200796F7 /* SZNZotero-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E48921D9867E5FD94AFEDE1E89466983 /* SZNZotero-dummy.m */; };
-		500F16F8ED9A462ADC0C8CA854A19D0B /* SZNZoteroAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7552245F73FF2975DC196896D4C663E9 /* SZNZoteroAPIClient.h */; };
-		5206AC16BBCF14BFD14919C0DE1F00A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */; };
-		53E616D74A12C4AADB1687192DF6E847 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FB983AD7022FE77BDBF34F51FDC59A /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		5992755A1798877CCCDCB8008A1BC458 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */; };
-		59AC5D03BBC63A6327483D3306977974 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F5F5CBC5DC74CA4A9723F34B9E6FAD88 /* AFPropertyListRequestOperation.h */; };
-		5AB517B0EE823C37F666FD094A5BAFC9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9501232B9E198748862D08A96781D46E /* Security.framework */; };
-		5FF0DA92C44136CD1F9927F9FF9F1F30 /* SZNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D1AD75FCB8E74EF777B86E740B751D47 /* SZNItem.h */; };
-		6627D018A59E95F6497A555DA4ABB730 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC11754ADE75D30F8867A23D1B1830C /* CoreGraphics.framework */; };
-		662AC7F0725C738368E4843711632273 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3BC626F3CE73B5E1A042C64BD68C74 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6735873167C86A7DE79EA95D68DF4E79 /* TBXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A2A93B4F8E53D867747FAC75827EA2C /* TBXML.h */; };
-		676621628EBEA25AA6A869253D9BCB3A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 13893AB53E7140F5F447CD2919541883 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		6BC732DC6E0B61501DDED78C44AE283C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC11754ADE75D30F8867A23D1B1830C /* CoreGraphics.framework */; };
-		6C8952D0DCB49D11D3B9B628273EA01A /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 29AF7C230B5A5F2965EE45966CB2A643 /* AFXMLRequestOperation.h */; };
-		6F4C4576F507740A453D8A3339AE0CFF /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F8A349E6E9806F47B0CCF37D87E3E692 /* AFHTTPRequestOperation.h */; };
-		7211D57B93CBE91E710B9AC9B1B17FDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */; };
-		76A9DC43BC8450CE82AE5ECAC7E3B7F7 /* AFOAuth1Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC42F2053A2988B8DCF5874681A4E31 /* AFOAuth1Client-dummy.m */; };
-		78D1087591E8942B1744EB38AEE2BAEC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9501232B9E198748862D08A96781D46E /* Security.framework */; };
-		8548A744981D92C03B00C048906F9793 /* AFOAuth1Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B733E25E1D954012A4013AE317AE4FB /* AFOAuth1Client.h */; };
-		89D52658C8EA0023210C4DE5DF3FB3CF /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C458BFAD96A7F8701AEEA9A24726D72 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		89E65F3FEAEDD9BF79545FD76833B0C3 /* SZNZoteroAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D16912BDFBE656DFE60815C75D7EEF70 /* SZNZoteroAPIClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9D07BC9B6FB71AD55A6907463999DA47 /* AFOAuth1Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D64A2A72038DD04D6499EC06CB9570 /* AFOAuth1Client.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9E090981B17C88F30C44004355F8AC0C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B687785C5C8BA8509C18EBC145D8ADF /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9F3DC253F2BA6B3157D384BAF410626A /* SZNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 136F6C0033F4D0213BAD7F5AB5FED217 /* SZNObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9FCCF1B783C7C6A64BF7A4C00830AE6F /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D5E68C303B4E39B32FEDC9E88FCC3ABC /* AFJSONRequestOperation.h */; };
-		A34E8799FBF5430691129487F18C68D2 /* GTMNSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 7873E6D3A6B2D068C9EA743AE15E5912 /* GTMNSString+HTML.h */; };
-		A77BFEF2FBE795FF522329668B9A1941 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = E204F2C1C59D9E46662F9CA830D6C492 /* TBXML+HTTP.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A8D96F711769A51D4D948626AFF6A944 /* TBXML+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D36D60A9A5C532232B16079C1438113 /* TBXML+HTTP.h */; };
-		AED049A9F0F0F1BFE9B065524DA7F692 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A8C174A7CE409CA20352B438374049 /* AFImageRequestOperation.h */; };
-		C1891DEEDEC6F86484047F429A211AFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */; };
-		C42DCF547192176717A1E3DDFAD727FA /* TBXML+Compression.h in Headers */ = {isa = PBXBuildFile; fileRef = B602EA45AB57659B527ED93FEFE1C84D /* TBXML+Compression.h */; };
-		C81CB928411EBCD4C71CDD0C5B6E2267 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C8055026E35451AD615D619BB2403 /* TBXML.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CD3FED251E7AD910DB9B4C3F6893588C /* SZNGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 865D2951F938ABD89F042537FF9CF82F /* SZNGroup.h */; };
-		D27C654A47B897757F3FE346FF1A1FF1 /* SZNUser.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A378C6AB1427D4DF3C10F6786E1DD0 /* SZNUser.h */; };
-		E15DFD0065D7E90A64BC5309BE97B165 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A1F10BCFD68FA9E4F16B733AAA81871 /* UIImageView+AFNetworking.h */; };
-		E577269F9DD506789C40F5F4241B7A95 /* SZNZotero.h in Headers */ = {isa = PBXBuildFile; fileRef = 79948EB4D41EE39CD4B7251C9B5B925B /* SZNZotero.h */; };
-		EB70E4F93E72E42FD61DE2B75F258BFA /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6529A9BE5AC683A516B567AFBD0EE8FC /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F0B165276B6BB366E52BB59B623F6259 /* SZNAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8905AB9A5697CD8CB8C4B4B2F36FC5 /* SZNAuthor.h */; };
-		F3535E3F488F5BAA2EF05F9F07E46551 /* SZNLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = C0394FB51654BB424650A4133B6AF70E /* SZNLibrary.h */; };
-		F4FDEA96D4D8C14445E2472376044411 /* SZNGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 3547E964D0C3A70D830D3FEB7D59B9A0 /* SZNGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F9D0870E7393B4AFC12BA04E7C926696 /* SZNTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 97A6CCB68DD50C1EDCFC2C046C8F507F /* SZNTag.h */; };
-		FABF61283570C35D181DB366E2DCBEEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */; };
-		FD9445C281ADA8628EBDEEF7D4956EED /* ISO8601DateFormatter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A30B98BD62D65830EC68DF99F7A4FF17 /* ISO8601DateFormatter-dummy.m */; };
+		04AC92F8F5ED8DCC6CBC6ED11E710DAC /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC0D056F3939269E298BC9A3854309F /* AFImageRequestOperation.h */; };
+		0643A33E2F769C95E327346CBA1EB458 /* SZNTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EE353147DD3CF7699EE3638C0372BEA /* SZNTag.h */; };
+		06ECA05343F3E475FDFA40E3B34A144C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFA74261B64C434B230D3557BC08405 /* Security.framework */; };
+		07CA6B6F8A428FA8C8DAC4A3ABF96561 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C54BEFF5554BEBE81CAF52DD7B47794 /* TBXML+HTTP.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		08754B0CF9216E42913852D4A5B231D2 /* SZNCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFA095E978CDA5FD0F5D4CEA5A1F426 /* SZNCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0AA4133F0D2D74D042A48B03AF487F04 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED6FEC9BEBD6A6644473788C275859F /* AFPropertyListRequestOperation.h */; };
+		0AA9E8AE7A2B0FA6BE10A22C22F95056 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7128A345F02B614900C9686786C48960 /* CoreGraphics.framework */; };
+		0C0091ADC85B5790A34A9847CC7E3609 /* Pods-SZNZoteroDemo-SZNZotero-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB18E5C55CC80493E4BC4B6456732B /* Pods-SZNZoteroDemo-SZNZotero-dummy.m */; };
+		0C05BCB6D448CEB57AF382641AA724DC /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FCCEB2F9995BAD8631D7F186BBA74B2E /* AFXMLRequestOperation.h */; };
+		0E862DA16AF2744F32A1CDE227F9F4D5 /* GTMNSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC0DD84E710AC6AEB39F7B13927F109 /* GTMNSString+HTML.h */; };
+		10D2D3BF9A4C4E019B348C9763DAA293 /* SZNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F55E17D2EF165D1BE69D93751209CD /* SZNObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		14AF2DBAB10F5AE7E28BB24EEB5D4DA4 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC6B21211267CE3763DD35BC0261F /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		170FAA78C16C474356EB3A1CF96CF305 /* Pods-SZNZoteroDemoOSX-SZNZotero-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7BC60D36C42B5A54273E50E5F7A66A /* Pods-SZNZoteroDemoOSX-SZNZotero-dummy.m */; };
+		185C11BE5FE60B12A018A79710C9D20F /* SZNZotero.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1D9D4C437A8A89FD25DC7E7795CFDC /* SZNZotero.h */; };
+		1A755799D49DFD768BEB029A6D253754 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDF6077123E426F2A7521695CE55C2 /* TBXML.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1AAC375C9968F7436FC4AE462AF1FF6E /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC6B21211267CE3763DD35BC0261F /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1D51C19FF76CD85328EB6CA559B9ED78 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F080C877F5D5825F9723CE024B10D5FE /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1E02A02DAFBE1364EF271CF105E2B7B3 /* SZNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5667DC3EBFA09B3FBC1A6449468F4403 /* SZNUser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		201FC29EFE3E04FEB9406557047EB87A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778537E26B4F4E41D042FD150C2E9DB9 /* SystemConfiguration.framework */; };
+		2260C8B8844E18116A95F4BA85B5FBA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */; };
+		226FADF318A4CB4455AE79EF82109B06 /* SZNGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B862E0A79B9EB1A400F81D0865EFED3 /* SZNGroup.h */; };
+		245F9CF9DBFDACA9BF515D3C6547DC00 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F01F77106219244841682F5B0ABC24A8 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		24D105F8C444F05B13654C12DFD28827 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C54BEFF5554BEBE81CAF52DD7B47794 /* TBXML+HTTP.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		25BEB690EB29092B47B8081E49BA2330 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A6082ADF1E7F21128F16574E7317F46 /* Security.framework */; };
+		2610AFA4DDBEAC15D992B20F068F0508 /* SZNAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = E29C89A169A11BC19C63A188977ED476 /* SZNAuthor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2780B7819BF27330968C0C20F8F7EC17 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7128A345F02B614900C9686786C48960 /* CoreGraphics.framework */; };
+		27F8A543754D4E15AA8470BE13EA888D /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9C463C3409FB2A1D7BA01E22624964 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2C3D39B13C914E790CE5AA353C90DDF2 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC0D056F3939269E298BC9A3854309F /* AFImageRequestOperation.h */; };
+		2C8EDF1448C01BB07E5B11706AAD4261 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4859C5F52F889BF0A091BEB95D47E92D /* SystemConfiguration.framework */; };
+		2CB17A6782E913CB0A5E14EAB23C04E2 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 48FA8DAD585285052553B91751D4CD89 /* AFJSONRequestOperation.h */; };
+		2D9B5373F10D95CC266573AF387BF1CA /* SZNGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB23BB97B27777546BD4BAF4D0EC71B /* SZNGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2FC1199564F7E07831E398DCC00BB6C1 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F7B1629DCA87428B97A02C87C24434 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		349CAD26D3C5635F096F921A42270688 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */; };
+		351F18584941A5EF7CAC3EC5F4BE318D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4243B89C80574FFF04ED55963FF2CD /* MobileCoreServices.framework */; };
+		363C68FE4244C2EA1A16EAED945C6CA4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B7467EA7FEE1028C36D2EF888031D6 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3A5D9758FCEF4B94F7A654CFF0377450 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F080C877F5D5825F9723CE024B10D5FE /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3C32260F252D451208AE750E75C5B7FA /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F451FDD63BC5ECB4AA24C431841FD468 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-dummy.m */; };
+		3D0E42C3F81A91522BFC9CC7DD706618 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392EB8504E295E940DBB37908CF36BCB /* CoreServices.framework */; };
+		3D6BD99A297374D2F3DDECDD96FD1C9B /* Pods-SZNZoteroDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8CCCD745E25B37C323190741CC60E /* Pods-SZNZoteroDemo-dummy.m */; };
+		3E2E473C1164D8E3E089074AEDFCAA79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */; };
+		3F981DDC3BC0AED063C2957C1DF20798 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D12CEB0E1342702EF6D4E43A5FC462F1 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		40DE39A16CDC555FC6A23408721EDBB4 /* SZNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 41054D8293F382F351A2F12EB27BB52E /* SZNItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		419526B37A92CF97ED14CCBA588FDB0A /* SZNZoteroAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB219C9883CA259A1D91EF6F962C622 /* SZNZoteroAPIClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		43087B9B10F749D7634C85C24D46431A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A6082ADF1E7F21128F16574E7317F46 /* Security.framework */; };
+		45A6FA962C33A7013EEF7E4670F36CDE /* SZNCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFA095E978CDA5FD0F5D4CEA5A1F426 /* SZNCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		45C289969E7EE268D208F3FCBF589FEF /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F17CD312C768E80544D4007B558C2F47 /* AFNetworkActivityIndicatorManager.h */; };
+		476F93957229FD716A85599BBE446092 /* SZNZoteroAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB219C9883CA259A1D91EF6F962C622 /* SZNZoteroAPIClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4D9C819C392C612EA32804C6D31732BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */; };
+		4FBCDE617DB54231C461E53CBE41BF1A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFA74261B64C434B230D3557BC08405 /* Security.framework */; };
+		576814E34E9EA84F7883624374D6F721 /* SZNTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EE353147DD3CF7699EE3638C0372BEA /* SZNTag.h */; };
+		59B3F066A95622AABDE171D425A2D878 /* ISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = D5F73BA0C55FBE0BDDA752ED68234881 /* ISO8601DateFormatter.h */; };
+		5A0ADA900A0F3C562705F39F358E6A7C /* SZNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5667DC3EBFA09B3FBC1A6449468F4403 /* SZNUser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5A713626D55F74E4617EF7967B3F2325 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */; };
+		5F012111F97E68C81FCC7B126BFCFBA3 /* SZNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 23509F2A83DEA19BA484322AC3965D9E /* SZNItem.h */; };
+		6250D553DCE0674E762B2544686A9339 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2384F497ABAA7BF9BB3B6933BAB67 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		62C3E712B9C39941F0D4AC9010EE4780 /* SZNZotero.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1D9D4C437A8A89FD25DC7E7795CFDC /* SZNZotero.h */; };
+		6723727EC34908799202622865046AD8 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9C463C3409FB2A1D7BA01E22624964 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		68BF207AB67886C70E3E116B3E568270 /* SZNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AEF41F978D7C495F30F267A21BFAEE2 /* SZNObject.h */; };
+		68E3F56AA1EACB418165478809A530A8 /* SZNGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B862E0A79B9EB1A400F81D0865EFED3 /* SZNGroup.h */; };
+		6A454074626887CD65893C1D5284C745 /* Pods-SZNZoteroDemoOSX-TBXML-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F861B9314C349780B3BB55DF536CA /* Pods-SZNZoteroDemoOSX-TBXML-dummy.m */; };
+		6AEFF2C711199D6E35617E6EE5D711F4 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 48FA8DAD585285052553B91751D4CD89 /* AFJSONRequestOperation.h */; };
+		6B499E67E6F4EDB3E93739ED9AFFD232 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */; };
+		6BFD1F6C686D612B7480E98E4AD7A46C /* TBXML+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5BFDA334353C124DF1194E560A997B /* TBXML+Compression.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6E6865E8DE506EA3FD479985059FFEC6 /* Pods-SZNZoteroDemo-TBXML-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93038076A451F73C3A15F8F47F267E96 /* Pods-SZNZoteroDemo-TBXML-dummy.m */; };
+		6FC89C4CAB58453D0435C8A5E0433A6B /* AFOAuth1Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8795AD4BCFCD1F41334F329C78CD90 /* AFOAuth1Client.h */; };
+		78DB12DEC3E7267232A81330632095D5 /* SZNUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FEB7A96703B1CBA7E4912EAE46A70B5 /* SZNUser.h */; };
+		79F3384D67D31A39C34584C5DBA23044 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BECECF105664A10B386856D9B6595188 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-dummy.m */; };
+		7B3ADFFC1682AF2C39918D1009F50B4B /* TBXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 13139B6911C24C8A6CB5E8600A7C07B5 /* TBXML.h */; };
+		7CBFE1A94A01234CB4A24FB62F56F260 /* SZNGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB23BB97B27777546BD4BAF4D0EC71B /* SZNGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7FF23A8CF3E98CE76A4BDFEE9351F99A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D09C23251C8CB3A093315AED852CE /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		82843EC7FCF1B7DA7FFFAC7350AD396F /* Pods-SZNZoteroDemo-ISO8601DateFormatter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C281D5ABC5EA8E8BFAF9E63511C6788 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-dummy.m */; };
+		829FA132B6453D7CCB253C46C891F51D /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F17CD312C768E80544D4007B558C2F47 /* AFNetworkActivityIndicatorManager.h */; };
+		856FE67C3D34E932861553E4225D5D97 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D09C23251C8CB3A093315AED852CE /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		886E2F90F267BA93246458556BBFB0DD /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 52DDBF72666C441E2982246BA4145570 /* AFHTTPRequestOperation.h */; };
+		8D10A1507D19F7ED2B8FD99FE9711833 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */; };
+		8F0205DEA2C5A006C7B0CBF1E3BB72CB /* SZNAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0772C275E902C95421DE3E91484C8636 /* SZNAuthor.h */; };
+		9231EC4855D2C6967C55BDA89EA8FD93 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F7B1629DCA87428B97A02C87C24434 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		94619FEAAEE2E5D58D2F43F0A2F07135 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFA74261B64C434B230D3557BC08405 /* Security.framework */; };
+		955997B99C7E498AE0632BFCB3C3AFA7 /* Pods-SZNZoteroDemo-AFOAuth1Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A0034919C5D29F125ACE3490BE10019C /* Pods-SZNZoteroDemo-AFOAuth1Client-dummy.m */; };
+		955B2737C884E76507100FCD6F9C0132 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */; };
+		971C6009FA291E92F2B8269B4D46AC48 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5490CE11C77089AE5BF542AB84C3F /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		97D0DFA4A92AF87F5DC9096D0DF30685 /* TBXML+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5BFDA334353C124DF1194E560A997B /* TBXML+Compression.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A03550E0E2C1CF5C7C7A6C61F537EFC6 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FCCEB2F9995BAD8631D7F186BBA74B2E /* AFXMLRequestOperation.h */; };
+		A2917DD481930080ED6388FAF34C6D37 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 85D8E91F8772BB374B320E6995849554 /* AFNetworking.h */; };
+		A2C55B195E835DB5955AC97E0F78EFBA /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDF6077123E426F2A7521695CE55C2 /* TBXML.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A4256AD449B0531FF0AD0BDA39CAA73C /* AFOAuth1Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8795AD4BCFCD1F41334F329C78CD90 /* AFOAuth1Client.h */; };
+		A6FAD2ED59BD768C98804F12C20C2367 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 52DDBF72666C441E2982246BA4145570 /* AFHTTPRequestOperation.h */; };
+		A7778FA6345F24914038A996CB68F8A3 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A1707BFAD9D2807268259B092D44CC31 /* AFHTTPClient.h */; };
+		A921260070EF9E9A0C16853926257C74 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A1707BFAD9D2807268259B092D44CC31 /* AFHTTPClient.h */; };
+		AA462151C825949A1CAD8D82F95510BE /* SZNLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = FE85BC67E24F8DBB371A3F008BA14694 /* SZNLibrary.h */; };
+		AA9F44143C0E6B43A6676E40084B364B /* TBXML+Compression.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7C7005EC162D2C24CC2AD3D4EE59C5 /* TBXML+Compression.h */; };
+		AB19F69AE3A5EBC24A2D182FF457E085 /* Pods-SZNZoteroDemoOSX-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8003087A09312D1475D510BBEA007 /* Pods-SZNZoteroDemoOSX-AFNetworking-dummy.m */; };
+		AC500CAA0471376438C53A50E820C758 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE66D365C1B40491CFAA69219DC418 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		ACB104050EAA293C03ED3C4502DBC224 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D12CEB0E1342702EF6D4E43A5FC462F1 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AD53EBD59B16B853B936D98B8821015E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */; };
+		ADD24736EE5C2136853411E82D2CE50E /* GTMNSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC0DD84E710AC6AEB39F7B13927F109 /* GTMNSString+HTML.h */; };
+		AE65A1195C2398DB6DAF5542CBC5FEE7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B7467EA7FEE1028C36D2EF888031D6 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AFB1E11570DE166CDABCD4041718F38F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */; };
+		B0770A7A9B2EE70D3CBFA09F36419F1E /* TBXML+Compression.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A7C7005EC162D2C24CC2AD3D4EE59C5 /* TBXML+Compression.h */; };
+		B0CFCBC5CD0C7EC7D64D2BEF566626FF /* SZNAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0772C275E902C95421DE3E91484C8636 /* SZNAuthor.h */; };
+		B16C7437EDFB90A358ECE148869A5E6A /* SZNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 41054D8293F382F351A2F12EB27BB52E /* SZNItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B2BF964D1B0E5CB52D1111F34F76FBE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778537E26B4F4E41D042FD150C2E9DB9 /* SystemConfiguration.framework */; };
+		B362752C91E54EB12A735DC0287FD628 /* SZNUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FEB7A96703B1CBA7E4912EAE46A70B5 /* SZNUser.h */; };
+		B3F2B35A74609BB92407ABDD53F6D88E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392EB8504E295E940DBB37908CF36BCB /* CoreServices.framework */; };
+		B41927B530C685E7867C526556486957 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A1DF3FC174DBFE3A2594BAC485DC37 /* UIImageView+AFNetworking.h */; };
+		B50A11612A8C4CAAC164D88A819F2309 /* SZNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 23509F2A83DEA19BA484322AC3965D9E /* SZNItem.h */; };
+		B7C9C8FD628A06D22106E7A5A77FC961 /* SZNAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = E29C89A169A11BC19C63A188977ED476 /* SZNAuthor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BBA2CC0493A258E0D4EC7E26D044C292 /* SZNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = E231585F6995149355DCC011792DFC15 /* SZNTag.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BC88492EC187E3247700B6D9EACBD99B /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A1DF3FC174DBFE3A2594BAC485DC37 /* UIImageView+AFNetworking.h */; };
+		BD78F45DE6E0CD86E9AE323BB7BF8B76 /* SZNLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1370AC55AF22F4D20EE0C00772618CD0 /* SZNLibrary.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C017F14EE7B8E9F84654485D174980E5 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5490CE11C77089AE5BF542AB84C3F /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C49C87993114D2EE81C6B5673F4AFEE7 /* TBXML+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C7F8596D8626E412E1C83DBA3AADD36 /* TBXML+HTTP.h */; };
+		C8919D6813AF197674A1F79FE6A752B0 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 85D8E91F8772BB374B320E6995849554 /* AFNetworking.h */; };
+		C8BCED194E911D055DD198836B7FB6F4 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EBC10188EA7D5D7006F250DF81BAA6C /* AFURLConnectionOperation.h */; };
+		C93C888F84482A71AC6A73F2BA365D19 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4243B89C80574FFF04ED55963FF2CD /* MobileCoreServices.framework */; };
+		CA1D460F0BE5B4258EECF4B97DB1A9E6 /* SZNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F55E17D2EF165D1BE69D93751209CD /* SZNObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CD07C8B521B9603A971B1F0A3E5B6A8B /* Pods-SZNZoteroDemoOSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE8EB7D29E382D0342EEEA822E44BC /* Pods-SZNZoteroDemoOSX-dummy.m */; };
+		CD4468B04A3196B865A33B32FD1023E2 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EBC10188EA7D5D7006F250DF81BAA6C /* AFURLConnectionOperation.h */; };
+		CED90035793C957DF1C59DCFEEFF6E86 /* ISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = D5F73BA0C55FBE0BDDA752ED68234881 /* ISO8601DateFormatter.h */; };
+		D07641DBB6491D59A7577E9643D6B798 /* TBXML+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C7F8596D8626E412E1C83DBA3AADD36 /* TBXML+HTTP.h */; };
+		D148C9BD3F1B87349C6D0EE5C80A4E45 /* SZNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = E231585F6995149355DCC011792DFC15 /* SZNTag.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D23AA5575413D3787FB434435D168695 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */; };
+		D618DCFAAB85688E3FA7B14CF8A39B69 /* TBXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 13139B6911C24C8A6CB5E8600A7C07B5 /* TBXML.h */; };
+		E2315C7B7A010E3E0442DC03ACF4D68C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4859C5F52F889BF0A091BEB95D47E92D /* SystemConfiguration.framework */; };
+		E2D8D1C4DDEED032C973B2DB84F3B592 /* SZNLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = FE85BC67E24F8DBB371A3F008BA14694 /* SZNLibrary.h */; };
+		E559AAA338FAC4DC7B13B4F0B2B5318E /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AE66D365C1B40491CFAA69219DC418 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E6FC587BB9033E4B647A713D608B948C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */; };
+		E804FDC9641B01E8833B83A822757D52 /* AFOAuth1Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 51157BEA511E46117FD0ADAD5F906E8B /* AFOAuth1Client.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E92BFB9AB824C7C33123BCE4A2E1B17C /* SZNCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA27A5718C275A7EEE3F1FA430990E /* SZNCollection.h */; };
+		ED41F6AE0E406FAB56E6A25E69CEBE3E /* SZNCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA27A5718C275A7EEE3F1FA430990E /* SZNCollection.h */; };
+		EE6454942C7474AFC778F42A0F671ADB /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED6FEC9BEBD6A6644473788C275859F /* AFPropertyListRequestOperation.h */; };
+		F06704CA862FE0A8E04DAE698D721FA2 /* AFOAuth1Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 51157BEA511E46117FD0ADAD5F906E8B /* AFOAuth1Client.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F17B4C51201E9DD442FC93AC6C58D210 /* SZNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AEF41F978D7C495F30F267A21BFAEE2 /* SZNObject.h */; };
+		F64C7412F224A538E22E218A92094335 /* Pods-SZNZoteroDemo-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA63DB84626D084430830E3AF73C6B06 /* Pods-SZNZoteroDemo-AFNetworking-dummy.m */; };
+		F6B00A7929B26AB8344C139EE196AFFC /* SZNZoteroAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 42CD9738720F935134F16443DC4DD62B /* SZNZoteroAPIClient.h */; };
+		F7CC3CCA84CB65DA85C8F517E4EAC0E8 /* SZNLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1370AC55AF22F4D20EE0C00772618CD0 /* SZNLibrary.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FB3A8B8A20AC1B2F5C1050DD7DE3FFFB /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2384F497ABAA7BF9BB3B6933BAB67 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FF2EB548E6F44A483CEB07A473AC9201 /* SZNZoteroAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 42CD9738720F935134F16443DC4DD62B /* SZNZoteroAPIClient.h */; };
+		FFBE55A35470B59FAF0DCF3EC42ED731 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F01F77106219244841682F5B0ABC24A8 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0BBD010CBF6A28CE5E0D7B257D2C08CE /* PBXContainerItemProxy */ = {
+		08E0208A1F601409412D129C6E145037 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F5F025171F75DB567C4875174128DDD4;
-			remoteInfo = ISO8601DateFormatter;
+			remoteGlobalIDString = 44E6F3B6C6105CFD5548585D340C5E40;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-TBXML";
 		};
-		1AC25A6E28080496F0425B2DBF8F104F /* PBXContainerItemProxy */ = {
+		0B4FB5B7D85226A0C267E9F4AA515F68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4FD043AE8C11DF3194F96E358D541ABF;
-			remoteInfo = AFOAuth1Client;
+			remoteGlobalIDString = 2C5C55D4698B97A9E05DE5E905766591;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter";
 		};
-		43FFB70DC0E42FE8470D5B7D9AA95B99 /* PBXContainerItemProxy */ = {
+		142588E7855FAF0B5D9AA27870DE1225 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4FD043AE8C11DF3194F96E358D541ABF;
-			remoteInfo = AFOAuth1Client;
+			remoteGlobalIDString = 2D7BD7BDC88819B981DBE3103E6948F4;
+			remoteInfo = "Pods-SZNZoteroDemo-ISO8601DateFormatter";
 		};
-		5E35629E36E7B1577F33FDACF1F436CB /* PBXContainerItemProxy */ = {
+		1E6EB23E33EB011D00833A3BFA21E115 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B4490BFF62A6E8A019A79F2DAD36823B;
-			remoteInfo = SZNZotero;
+			remoteGlobalIDString = A8F40B51707B416762DEEE6FBA8E4773;
+			remoteInfo = "Pods-SZNZoteroDemo-AFNetworking";
 		};
-		90F5830090A43A5EB76BF3CC71AF0385 /* PBXContainerItemProxy */ = {
+		23404B9653EE04C843C257C4E75644A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2E9CBCABB0BBEDCB7AE1F47BA540AE13;
-			remoteInfo = TBXML;
+			remoteGlobalIDString = 2C5C55D4698B97A9E05DE5E905766591;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter";
 		};
-		B4F593144DB8257DB05647AE055700F3 /* PBXContainerItemProxy */ = {
+		2DDE5718DA96DBF3FC188F5DD48EC644 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2E9CBCABB0BBEDCB7AE1F47BA540AE13;
-			remoteInfo = TBXML;
+			remoteGlobalIDString = A8F40B51707B416762DEEE6FBA8E4773;
+			remoteInfo = "Pods-SZNZoteroDemo-AFNetworking";
 		};
-		BECAE00C9646B9E2C0B3FA9F908E8DA3 /* PBXContainerItemProxy */ = {
+		64C972742F406DD1C69A40B793121D41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F5F025171F75DB567C4875174128DDD4;
-			remoteInfo = ISO8601DateFormatter;
+			remoteGlobalIDString = 51875443612B47323FF724A6A22401E8;
+			remoteInfo = "Pods-SZNZoteroDemo-SZNZotero";
 		};
-		CFB7491D722BC7A8CAC54DA5304FAC0B /* PBXContainerItemProxy */ = {
+		656D567FD02F35F8AC724A76EB29CBDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 298259F59E16B080FBF3F9AF1C216C01;
-			remoteInfo = AFNetworking;
+			remoteGlobalIDString = 58A6CC43B87DC777D4388D045E172A13;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-AFNetworking";
 		};
-		E06AC218B44C1B98049971E36A21F054 /* PBXContainerItemProxy */ = {
+		6E7A2A749DF29E508A53A209469BDC35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 298259F59E16B080FBF3F9AF1C216C01;
-			remoteInfo = AFNetworking;
+			remoteGlobalIDString = 2D7BD7BDC88819B981DBE3103E6948F4;
+			remoteInfo = "Pods-SZNZoteroDemo-ISO8601DateFormatter";
+		};
+		98FDA9FEEC0DFB6173A88E8D6651439A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3CBC80B25A3CA5478C2C2CF08AA48EC;
+			remoteInfo = "Pods-SZNZoteroDemo-TBXML";
+		};
+		AE337B846770734F97AADB537473514C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CF402F9F356567425D6CE9E1094A357;
+			remoteInfo = "Pods-SZNZoteroDemo-AFOAuth1Client";
+		};
+		B005B59DB25DA7622B37353816191348 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58A6CC43B87DC777D4388D045E172A13;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-AFNetworking";
+		};
+		B88DFD657FDEA8E7E45788A78939D0CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CF402F9F356567425D6CE9E1094A357;
+			remoteInfo = "Pods-SZNZoteroDemo-AFOAuth1Client";
+		};
+		D150A1F779084FA627E71357256DA0D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9663AE1AAE526DDF3075A017996E0433;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-AFOAuth1Client";
+		};
+		E1A3DF84BCE88224B0D7D7E5B7E42B93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9663AE1AAE526DDF3075A017996E0433;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-AFOAuth1Client";
+		};
+		E8425ABE05A755B802029E5426C22A35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A30499073232B5243600B28AC651BF3F;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-SZNZotero";
+		};
+		F47EE47176881B492FF3D6556AE4FF0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3CBC80B25A3CA5478C2C2CF08AA48EC;
+			remoteInfo = "Pods-SZNZoteroDemo-TBXML";
+		};
+		FA78802C45ED87600FCF6C9D7579E26F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44E6F3B6C6105CFD5548585D340C5E40;
+			remoteInfo = "Pods-SZNZoteroDemoOSX-TBXML";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06E63595CAA5EFB94F1C2DCA88128338 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		0AE4C8430484E4D7ED85B0D1875D39CE /* libSZNZotero.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSZNZotero.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B687785C5C8BA8509C18EBC145D8ADF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		0F272314DE0064E8BCA7280E01F77841 /* SZNZotero.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SZNZotero.xcconfig; sourceTree = "<group>"; };
-		136F6C0033F4D0213BAD7F5AB5FED217 /* SZNObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNObject.m; sourceTree = "<group>"; };
-		13893AB53E7140F5F447CD2919541883 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		15A529C27057E4A57D259CBC6E6CE49C /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		167F56F67DD0A81D60BE7200B3B0EB9F /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
-		1D3BC626F3CE73B5E1A042C64BD68C74 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
-		1E95845CDE883C5CB103D94B7E461E5D /* SZNCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNCollection.h; sourceTree = "<group>"; };
-		2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		29AF7C230B5A5F2965EE45966CB2A643 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
-		2BC11754ADE75D30F8867A23D1B1830C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		3547E964D0C3A70D830D3FEB7D59B9A0 /* SZNGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNGroup.m; sourceTree = "<group>"; };
-		3CAF1F3CEA56CDA003A4202F87A80957 /* SZNUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNUser.m; sourceTree = "<group>"; };
-		405775CB34195F90E332F0FB48A3D90C /* SZNZotero-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SZNZotero-prefix.pch"; sourceTree = "<group>"; };
-		49360684A615E1236FA979E487FBCC49 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		49E9D094528EFE86A2FDF36A6468E7A3 /* ISO8601DateFormatter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ISO8601DateFormatter.xcconfig; sourceTree = "<group>"; };
-		4A1F10BCFD68FA9E4F16B733AAA81871 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		4B733E25E1D954012A4013AE317AE4FB /* AFOAuth1Client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFOAuth1Client.h; path = AFOAuth1Client/AFOAuth1Client.h; sourceTree = "<group>"; };
-		4C91A1A07D0C5BC48B966F92D1E237CE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		50D64A2A72038DD04D6499EC06CB9570 /* AFOAuth1Client.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFOAuth1Client.m; path = AFOAuth1Client/AFOAuth1Client.m; sourceTree = "<group>"; };
-		539AD3D441ED95F9CA17AD4B6A56079F /* SZNZotero-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SZNZotero-Private.xcconfig"; sourceTree = "<group>"; };
-		5B23A1116DBBCB8D80D0046A11CC3812 /* AFOAuth1Client-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "AFOAuth1Client-Private.xcconfig"; sourceTree = "<group>"; };
-		5E4AAA416E5A923F5E57E98D4C18FBA0 /* AFHTTPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
-		641AE05DD55E5E6AC1590CD7B4A18F97 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		6529A9BE5AC683A516B567AFBD0EE8FC /* AFHTTPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
-		6AAE08D3868B5A492A078BFDBA9CD325 /* libAFOAuth1Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFOAuth1Client.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CEBD973F900F443FC5F260AF3019511 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		6EE1C7CCC05EF3434D875A7C0BC2989F /* SZNAuthor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNAuthor.m; sourceTree = "<group>"; };
-		7552245F73FF2975DC196896D4C663E9 /* SZNZoteroAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZoteroAPIClient.h; sourceTree = "<group>"; };
-		7873E6D3A6B2D068C9EA743AE15E5912 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
-		79948EB4D41EE39CD4B7251C9B5B925B /* SZNZotero.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZotero.h; sourceTree = "<group>"; };
-		7BF68E384EE3BDE031E99CE4D0822D53 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
-		7E199FFD598F412002A52CFE49BD20AC /* TBXML-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TBXML-dummy.m"; sourceTree = "<group>"; };
-		824DCAEFEC27D5E8DA9483E29C03423E /* TBXML+Compression.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "TBXML+Compression.m"; path = "TBXML-Code/TBXML+Compression.m"; sourceTree = "<group>"; };
-		82688610754CE99DE3BF11B44D6F9B13 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
-		83715FC3BE176321569C3DC1990E4068 /* SZNItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItem.m; sourceTree = "<group>"; };
-		865D2951F938ABD89F042537FF9CF82F /* SZNGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNGroup.h; sourceTree = "<group>"; };
-		8A2A93B4F8E53D867747FAC75827EA2C /* TBXML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TBXML.h; path = "TBXML-Headers/TBXML.h"; sourceTree = "<group>"; };
-		8B44F2DE96B965D1E37050070169DA43 /* TBXML-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TBXML-Private.xcconfig"; sourceTree = "<group>"; };
-		8D36D60A9A5C532232B16079C1438113 /* TBXML+HTTP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TBXML+HTTP.h"; path = "TBXML-Headers/TBXML+HTTP.h"; sourceTree = "<group>"; };
-		8DC42F2053A2988B8DCF5874681A4E31 /* AFOAuth1Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFOAuth1Client-dummy.m"; sourceTree = "<group>"; };
-		9422C0E98CFC8E0556A7C0CD21253959 /* AFOAuth1Client-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFOAuth1Client-prefix.pch"; sourceTree = "<group>"; };
-		94B7AAEF6DC66D746C6A0BDA1234AF6D /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
-		9501232B9E198748862D08A96781D46E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		97A6CCB68DD50C1EDCFC2C046C8F507F /* SZNTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNTag.h; sourceTree = "<group>"; };
-		9A3EBFA7D5F28C46AA7C59B24200FF7A /* libISO8601DateFormatter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libISO8601DateFormatter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B5AA7486E88871F155D5F59DA0AFA2E /* GTMNSString+HTML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
-		9C458BFAD96A7F8701AEEA9A24726D72 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		9F8905AB9A5697CD8CB8C4B4B2F36FC5 /* SZNAuthor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNAuthor.h; sourceTree = "<group>"; };
-		A08A1A9E13D4AFAD09041A880B9370EA /* AFImageRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
-		A0A8C174A7CE409CA20352B438374049 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
-		A0D40C5252B0C491F50A3704D9E442B0 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		A297A849CD942764D646E91804C3029E /* SZNObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNObject.h; sourceTree = "<group>"; };
-		A30B98BD62D65830EC68DF99F7A4FF17 /* ISO8601DateFormatter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ISO8601DateFormatter-dummy.m"; sourceTree = "<group>"; };
-		A91D03EFCA5214004F26C584A54B3425 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEE882958BE27F5A571398E926E65F5A /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B51BFF52077E5C92797C68CDDCC1B085 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
-		B602EA45AB57659B527ED93FEFE1C84D /* TBXML+Compression.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TBXML+Compression.h"; path = "TBXML-Headers/TBXML+Compression.h"; sourceTree = "<group>"; };
-		B6345DF9A0B3FC7095946CBB009A08F0 /* SZNLibrary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNLibrary.m; sourceTree = "<group>"; };
-		B99B0F8819C44C4594E357C2D05032A3 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		BA3763C057559F57D817157D26A6A5AA /* TBXML.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TBXML.xcconfig; sourceTree = "<group>"; };
+		01D509C523592930A1DCF87338CAA606 /* libPods-SZNZoteroDemo-TBXML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo-TBXML.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03477F39C351B9B6734F2E87A8BBAF3E /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-AFOAuth1Client-Private.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-AFOAuth1Client/Pods-SZNZoteroDemoOSX-AFOAuth1Client-Private.xcconfig"; sourceTree = "<group>"; };
+		04BAC51CDDDFC504A190B89352D8C505 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-Private.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-ISO8601DateFormatter/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-Private.xcconfig"; sourceTree = "<group>"; };
+		0772C275E902C95421DE3E91484C8636 /* SZNAuthor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNAuthor.h; sourceTree = "<group>"; };
+		0811D1A9F4C74CCB59D5351BB95CF3A0 /* Pods-SZNZoteroDemo-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SZNZoteroDemo-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		081AC5E3ED18E368B70307B1C8BA366E /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-SZNZoteroDemoOSX-AFOAuth1Client-prefix.pch"; path = "../Pods-SZNZoteroDemoOSX-AFOAuth1Client/Pods-SZNZoteroDemoOSX-AFOAuth1Client-prefix.pch"; sourceTree = "<group>"; };
+		0DEBA3A99AF130E64732B1D09E3F50AB /* Pods-SZNZoteroDemoOSX-SZNZotero.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-SZNZotero.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-SZNZotero/Pods-SZNZoteroDemoOSX-SZNZotero.xcconfig"; sourceTree = "<group>"; };
+		0E01CB244DAB6B3F70948311AEBCA6B5 /* libPods-SZNZoteroDemo-ISO8601DateFormatter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo-ISO8601DateFormatter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13139B6911C24C8A6CB5E8600A7C07B5 /* TBXML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TBXML.h; path = "TBXML-Headers/TBXML.h"; sourceTree = "<group>"; };
+		1370AC55AF22F4D20EE0C00772618CD0 /* SZNLibrary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNLibrary.m; sourceTree = "<group>"; };
+		185B917A97C3286C0371229F75252E4A /* Pods-SZNZoteroDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SZNZoteroDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		1AB23BB97B27777546BD4BAF4D0EC71B /* SZNGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNGroup.m; sourceTree = "<group>"; };
+		1AB9408FEFBD88679360D7D6D1E5022E /* Pods-SZNZoteroDemo-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
+		1AEF41F978D7C495F30F267A21BFAEE2 /* SZNObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNObject.h; sourceTree = "<group>"; };
+		1C281D5ABC5EA8E8BFAF9E63511C6788 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemo-ISO8601DateFormatter-dummy.m"; sourceTree = "<group>"; };
+		1C7F8596D8626E412E1C83DBA3AADD36 /* TBXML+HTTP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TBXML+HTTP.h"; path = "TBXML-Headers/TBXML+HTTP.h"; sourceTree = "<group>"; };
+		1EBDF6077123E426F2A7521695CE55C2 /* TBXML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TBXML.m; path = "TBXML-Code/TBXML.m"; sourceTree = "<group>"; };
+		22A1DF3FC174DBFE3A2594BAC485DC37 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		23509F2A83DEA19BA484322AC3965D9E /* SZNItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItem.h; sourceTree = "<group>"; };
+		23973A7C697FC0E86BE677D6E2B02548 /* Pods-SZNZoteroDemo-SZNZotero-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SZNZoteroDemo-SZNZotero-prefix.pch"; sourceTree = "<group>"; };
+		2A6082ADF1E7F21128F16574E7317F46 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		2A7C7005EC162D2C24CC2AD3D4EE59C5 /* TBXML+Compression.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "TBXML+Compression.h"; path = "TBXML-Headers/TBXML+Compression.h"; sourceTree = "<group>"; };
+		2C54BEFF5554BEBE81CAF52DD7B47794 /* TBXML+HTTP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "TBXML+HTTP.m"; path = "TBXML-Code/TBXML+HTTP.m"; sourceTree = "<group>"; };
+		345BD77B917C99B04996DD810991B1D3 /* Pods-SZNZoteroDemo-AFOAuth1Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-AFOAuth1Client.xcconfig"; sourceTree = "<group>"; };
+		35A5894175B5585C468BA39E75838C1F /* Pods-SZNZoteroDemoOSX-SZNZotero-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-SZNZoteroDemoOSX-SZNZotero-prefix.pch"; path = "../Pods-SZNZoteroDemoOSX-SZNZotero/Pods-SZNZoteroDemoOSX-SZNZotero-prefix.pch"; sourceTree = "<group>"; };
+		392EB8504E295E940DBB37908CF36BCB /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		3A5A90BF3DCC61EC738B29520CB277F8 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SZNZoteroDemo-ISO8601DateFormatter-prefix.pch"; sourceTree = "<group>"; };
+		3B862E0A79B9EB1A400F81D0865EFED3 /* SZNGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNGroup.h; sourceTree = "<group>"; };
+		3DC0DD84E710AC6AEB39F7B13927F109 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		3E9D09C23251C8CB3A093315AED852CE /* AFHTTPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
+		3EFE8EB7D29E382D0342EEEA822E44BC /* Pods-SZNZoteroDemoOSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemoOSX-dummy.m"; sourceTree = "<group>"; };
+		41054D8293F382F351A2F12EB27BB52E /* SZNItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItem.m; sourceTree = "<group>"; };
+		42CD9738720F935134F16443DC4DD62B /* SZNZoteroAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZoteroAPIClient.h; sourceTree = "<group>"; };
+		4859C5F52F889BF0A091BEB95D47E92D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		48FA8DAD585285052553B91751D4CD89 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		4AFA74261B64C434B230D3557BC08405 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		4B492CAEE0CBCB484F261F8927404081 /* Pods-SZNZoteroDemoOSX-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-AFNetworking-Private.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-AFNetworking/Pods-SZNZoteroDemoOSX-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
+		4DCAF461FA2DD3097B82265CA3E1902A /* libPods-SZNZoteroDemoOSX-ISO8601DateFormatter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX-ISO8601DateFormatter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EBC10188EA7D5D7006F250DF81BAA6C /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		51157BEA511E46117FD0ADAD5F906E8B /* AFOAuth1Client.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFOAuth1Client.m; path = AFOAuth1Client/AFOAuth1Client.m; sourceTree = "<group>"; };
+		5296F0CC5A5E4ABA5F26BF36B7BC27CB /* Pods-SZNZoteroDemoOSX-TBXML.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-TBXML.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-TBXML/Pods-SZNZoteroDemoOSX-TBXML.xcconfig"; sourceTree = "<group>"; };
+		52DDBF72666C441E2982246BA4145570 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		53AA09F4004E272D7C3961FC810552D3 /* libPods-SZNZoteroDemoOSX-SZNZotero.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX-SZNZotero.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5667DC3EBFA09B3FBC1A6449468F4403 /* SZNUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNUser.m; sourceTree = "<group>"; };
+		57E6FCBA7857FAEFAAF8295EBB2A5901 /* Pods-SZNZoteroDemoOSX-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroDemoOSX-resources.sh"; sourceTree = "<group>"; };
+		5CB219C9883CA259A1D91EF6F962C622 /* SZNZoteroAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNZoteroAPIClient.m; sourceTree = "<group>"; };
+		5F4243B89C80574FFF04ED55963FF2CD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		61C4D48B99A391CAE548B0BDC511A6DF /* Pods-SZNZoteroDemo-TBXML-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-TBXML-Private.xcconfig"; sourceTree = "<group>"; };
+		62F2CA2F4D833BA2F455035568882CAD /* libPods-SZNZoteroDemo-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		669379C2E02226C0BC25E7F69F9F1699 /* libPods-SZNZoteroDemoOSX-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C1434D2EFF9D32A3179173B1CFC7D66 /* Pods-SZNZoteroDemoOSX-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-SZNZoteroDemoOSX-AFNetworking-prefix.pch"; path = "../Pods-SZNZoteroDemoOSX-AFNetworking/Pods-SZNZoteroDemoOSX-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		6C61A2D36230B69801555CC5A582140C /* Pods-SZNZoteroDemo-ISO8601DateFormatter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-ISO8601DateFormatter.xcconfig"; sourceTree = "<group>"; };
+		6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6D63218B88CEA7FC50DA57D4B2DD7235 /* Pods-SZNZoteroDemo-AFOAuth1Client-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SZNZoteroDemo-AFOAuth1Client-prefix.pch"; sourceTree = "<group>"; };
+		7128A345F02B614900C9686786C48960 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		778537E26B4F4E41D042FD150C2E9DB9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		79F55E17D2EF165D1BE69D93751209CD /* SZNObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNObject.m; sourceTree = "<group>"; };
+		7C525011B6C5BED6E652E481C2F64952 /* Pods-SZNZoteroDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SZNZoteroDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7EA0CBF5F535EC9AE03584482A57607F /* libPods-SZNZoteroDemoOSX-AFOAuth1Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX-AFOAuth1Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ED6FEC9BEBD6A6644473788C275859F /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		7EE353147DD3CF7699EE3638C0372BEA /* SZNTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNTag.h; sourceTree = "<group>"; };
+		8013684E87A4AAD928F8FEF7685DCCFB /* Pods-SZNZoteroDemoOSX-AFOAuth1Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-AFOAuth1Client.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-AFOAuth1Client/Pods-SZNZoteroDemoOSX-AFOAuth1Client.xcconfig"; sourceTree = "<group>"; };
+		8093786610F2E7696E9BD6F35091052B /* Pods-SZNZoteroDemoOSX-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SZNZoteroDemoOSX-acknowledgements.plist"; sourceTree = "<group>"; };
+		852351708BD76616EF448F1B67D3F3C9 /* Pods-SZNZoteroDemoOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemoOSX.debug.xcconfig"; sourceTree = "<group>"; };
+		856B1E6FFFA2C2C15B9001D9567F128B /* Pods-SZNZoteroDemoOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemoOSX.release.xcconfig"; sourceTree = "<group>"; };
+		85D8E91F8772BB374B320E6995849554 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		87C5490CE11C77089AE5BF542AB84C3F /* GTMNSString+HTML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		89E300051F22F4F1F8A6DC9A60FC0A26 /* Pods-SZNZoteroDemo-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-AFNetworking.xcconfig"; sourceTree = "<group>"; };
+		8F8795AD4BCFCD1F41334F329C78CD90 /* AFOAuth1Client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFOAuth1Client.h; path = AFOAuth1Client/AFOAuth1Client.h; sourceTree = "<group>"; };
+		8FEB7A96703B1CBA7E4912EAE46A70B5 /* SZNUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNUser.h; sourceTree = "<group>"; };
+		93038076A451F73C3A15F8F47F267E96 /* Pods-SZNZoteroDemo-TBXML-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemo-TBXML-dummy.m"; sourceTree = "<group>"; };
+		932C4892B6C56312AC2922B3F903DD31 /* Pods-SZNZoteroDemoOSX-TBXML-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-TBXML-Private.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-TBXML/Pods-SZNZoteroDemoOSX-TBXML-Private.xcconfig"; sourceTree = "<group>"; };
+		95C6348B20B78B3851389F23435D18DC /* libPods-SZNZoteroDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99F7B1629DCA87428B97A02C87C24434 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		9F9F861B9314C349780B3BB55DF536CA /* Pods-SZNZoteroDemoOSX-TBXML-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-SZNZoteroDemoOSX-TBXML-dummy.m"; path = "../Pods-SZNZoteroDemoOSX-TBXML/Pods-SZNZoteroDemoOSX-TBXML-dummy.m"; sourceTree = "<group>"; };
+		A0034919C5D29F125ACE3490BE10019C /* Pods-SZNZoteroDemo-AFOAuth1Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemo-AFOAuth1Client-dummy.m"; sourceTree = "<group>"; };
+		A0BB18E5C55CC80493E4BC4B6456732B /* Pods-SZNZoteroDemo-SZNZotero-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemo-SZNZotero-dummy.m"; sourceTree = "<group>"; };
+		A1707BFAD9D2807268259B092D44CC31 /* AFHTTPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
+		ABC0D056F3939269E298BC9A3854309F /* AFImageRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
+		AE21B77FA80C381BB08864EA6B953DCF /* libPods-SZNZoteroDemoOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEC8003087A09312D1475D510BBEA007 /* Pods-SZNZoteroDemoOSX-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-SZNZoteroDemoOSX-AFNetworking-dummy.m"; path = "../Pods-SZNZoteroDemoOSX-AFNetworking/Pods-SZNZoteroDemoOSX-AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		B38A567039CBA98CB881EF40BB77F9A1 /* Pods-SZNZoteroDemo-TBXML.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-TBXML.xcconfig"; sourceTree = "<group>"; };
+		B766C05381CA957D5DDC3A5785E67709 /* Pods-SZNZoteroDemoOSX-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SZNZoteroDemoOSX-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BA63DB84626D084430830E3AF73C6B06 /* Pods-SZNZoteroDemo-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemo-AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BF59BC15D23E1E1912C8F334E7236813 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		C0394FB51654BB424650A4133B6AF70E /* SZNLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNLibrary.h; sourceTree = "<group>"; };
-		C1680B3F36A42E415044627549931DD8 /* ISO8601DateFormatter-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ISO8601DateFormatter-Private.xcconfig"; sourceTree = "<group>"; };
-		C21C8055026E35451AD615D619BB2403 /* TBXML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TBXML.m; path = "TBXML-Code/TBXML.m"; sourceTree = "<group>"; };
-		C47ECD62605E6355C8AECD3647183AC9 /* TBXML-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TBXML-prefix.pch"; sourceTree = "<group>"; };
-		C7FDB5CA35E6AE1B42D50B2B2E2DE5B1 /* AFOAuth1Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFOAuth1Client.xcconfig; sourceTree = "<group>"; };
-		CEF0951CF47AFB7BBE5AFA7A22A0DBF6 /* SZNTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNTag.m; sourceTree = "<group>"; };
-		D16912BDFBE656DFE60815C75D7EEF70 /* SZNZoteroAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNZoteroAPIClient.m; sourceTree = "<group>"; };
-		D1AD75FCB8E74EF777B86E740B751D47 /* SZNItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItem.h; sourceTree = "<group>"; };
-		D274B18A3E73E7BB1DF4FFCDAAEB9164 /* AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
-		D5E68C303B4E39B32FEDC9E88FCC3ABC /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		D77EAFC1D1F74ED8FF2229CFF7028B6C /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
-		DB83C84024589A7416121E36FC3E3EC5 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		DF72EB8605E2909AF954B2FC667A8E1C /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		E204F2C1C59D9E46662F9CA830D6C492 /* TBXML+HTTP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "TBXML+HTTP.m"; path = "TBXML-Code/TBXML+HTTP.m"; sourceTree = "<group>"; };
-		E48921D9867E5FD94AFEDE1E89466983 /* SZNZotero-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SZNZotero-dummy.m"; sourceTree = "<group>"; };
-		E7425A3FBE7F21C0824238F576E44EC8 /* ISO8601DateFormatter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ISO8601DateFormatter-prefix.pch"; sourceTree = "<group>"; };
-		E7A378C6AB1427D4DF3C10F6786E1DD0 /* SZNUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNUser.h; sourceTree = "<group>"; };
-		F2FB983AD7022FE77BDBF34F51FDC59A /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		F5BBB0E646ECED532ADDD966F13C0507 /* SZNCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNCollection.m; sourceTree = "<group>"; };
-		F5F5CBC5DC74CA4A9723F34B9E6FAD88 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
-		F5F9EC6FA47F47F7D7131C6F5F335959 /* libTBXML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTBXML.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8A349E6E9806F47B0CCF37D87E3E692 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		FBEDD429AAE442113B2F19E34794F88B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		BB1D9D4C437A8A89FD25DC7E7795CFDC /* SZNZotero.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZotero.h; sourceTree = "<group>"; };
+		BDFA095E978CDA5FD0F5D4CEA5A1F426 /* SZNCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNCollection.m; sourceTree = "<group>"; };
+		BECECF105664A10B386856D9B6595188 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-SZNZoteroDemoOSX-AFOAuth1Client-dummy.m"; path = "../Pods-SZNZoteroDemoOSX-AFOAuth1Client/Pods-SZNZoteroDemoOSX-AFOAuth1Client-dummy.m"; sourceTree = "<group>"; };
+		C14BB08918853F60AEA3CD45E4ECD5BF /* Pods-SZNZoteroDemoOSX-SZNZotero-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-SZNZotero-Private.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-SZNZotero/Pods-SZNZoteroDemoOSX-SZNZotero-Private.xcconfig"; sourceTree = "<group>"; };
+		C1CE0590125D8CFA74B6EB0B90671E4B /* Pods-SZNZoteroDemo-SZNZotero-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-SZNZotero-Private.xcconfig"; sourceTree = "<group>"; };
+		C2AA5D1D9983466E826DCB70B559F55E /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-prefix.pch"; path = "../Pods-SZNZoteroDemoOSX-ISO8601DateFormatter/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-prefix.pch"; sourceTree = "<group>"; };
+		C34283065FF14555CDAB1AE9009D17FD /* libPods-SZNZoteroDemo-SZNZotero.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo-SZNZotero.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C39050689AE32A989E8A1734AACCCFF2 /* libPods-SZNZoteroDemoOSX-TBXML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX-TBXML.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4BA27A5718C275A7EEE3F1FA430990E /* SZNCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNCollection.h; sourceTree = "<group>"; };
+		CC5BFDA334353C124DF1194E560A997B /* TBXML+Compression.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "TBXML+Compression.m"; path = "TBXML-Code/TBXML+Compression.m"; sourceTree = "<group>"; };
+		CD9C463C3409FB2A1D7BA01E22624964 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		CE51BDF3953C83F11AEAC0820CC8DAF2 /* Pods-SZNZoteroDemoOSX-TBXML-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-SZNZoteroDemoOSX-TBXML-prefix.pch"; path = "../Pods-SZNZoteroDemoOSX-TBXML/Pods-SZNZoteroDemoOSX-TBXML-prefix.pch"; sourceTree = "<group>"; };
+		D0B7467EA7FEE1028C36D2EF888031D6 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		D12CEB0E1342702EF6D4E43A5FC462F1 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		D2D36110736FC000535C0B2886012CBF /* Pods-SZNZoteroDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroDemo-resources.sh"; sourceTree = "<group>"; };
+		D3B2384F497ABAA7BF9BB3B6933BAB67 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		D5F73BA0C55FBE0BDDA752ED68234881 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		D7946D853619D99DC7F54A12C0B4F3E9 /* Pods-SZNZoteroDemo-SZNZotero.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-SZNZotero.xcconfig"; sourceTree = "<group>"; };
+		D8AE66D365C1B40491CFAA69219DC418 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		DA87394A06764C5D3FE12FDD4E1D3CAF /* Pods-SZNZoteroDemo-AFOAuth1Client-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-AFOAuth1Client-Private.xcconfig"; sourceTree = "<group>"; };
+		DB6AC6B21211267CE3763DD35BC0261F /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		E0BAE28E970384BEF7679B687E2AA9AF /* Pods-SZNZoteroDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo.release.xcconfig"; sourceTree = "<group>"; };
+		E231585F6995149355DCC011792DFC15 /* SZNTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNTag.m; sourceTree = "<group>"; };
+		E29C89A169A11BC19C63A188977ED476 /* SZNAuthor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNAuthor.m; sourceTree = "<group>"; };
+		E89D582A058F36188C2F8DAAFB0C8189 /* libPods-SZNZoteroDemo-AFOAuth1Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo-AFOAuth1Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED8D9326311FF8DB1D88329D2BEEC10C /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-ISO8601DateFormatter/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter.xcconfig"; sourceTree = "<group>"; };
+		EDF8CCCD745E25B37C323190741CC60E /* Pods-SZNZoteroDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemo-dummy.m"; sourceTree = "<group>"; };
+		EF462C28A0A36B3E9343563E8404D554 /* Pods-SZNZoteroDemoOSX-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SZNZoteroDemoOSX-AFNetworking.xcconfig"; path = "../Pods-SZNZoteroDemoOSX-AFNetworking/Pods-SZNZoteroDemoOSX-AFNetworking.xcconfig"; sourceTree = "<group>"; };
+		F01F77106219244841682F5B0ABC24A8 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
+		F080C877F5D5825F9723CE024B10D5FE /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		F098FC593EBFDF58B380287CE571E29B /* Pods-SZNZoteroDemo-TBXML-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SZNZoteroDemo-TBXML-prefix.pch"; sourceTree = "<group>"; };
+		F17CD312C768E80544D4007B558C2F47 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		F37FC6541B47DC13A24AF3D5ADFB2ED2 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo-ISO8601DateFormatter-Private.xcconfig"; sourceTree = "<group>"; };
+		F451FDD63BC5ECB4AA24C431841FD468 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-dummy.m"; path = "../Pods-SZNZoteroDemoOSX-ISO8601DateFormatter/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-dummy.m"; sourceTree = "<group>"; };
+		FC7BC60D36C42B5A54273E50E5F7A66A /* Pods-SZNZoteroDemoOSX-SZNZotero-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-SZNZoteroDemoOSX-SZNZotero-dummy.m"; path = "../Pods-SZNZoteroDemoOSX-SZNZotero/Pods-SZNZoteroDemoOSX-SZNZotero-dummy.m"; sourceTree = "<group>"; };
+		FCCEB2F9995BAD8631D7F186BBA74B2E /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		FE85BC67E24F8DBB371A3F008BA14694 /* SZNLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNLibrary.h; sourceTree = "<group>"; };
+		FE9D2DB21B6233DC693D0F8FC2BF70EA /* Pods-SZNZoteroDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1B950CB8550BECADBC1CF8E2B7B82E3B /* Frameworks */ = {
+		0004CAD7A1EF1053718E985F7DEF654B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FABF61283570C35D181DB366E2DCBEEA /* Foundation.framework in Frameworks */,
+				3E2E473C1164D8E3E089074AEDFCAA79 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7C6B21686AF3BF4600346BEAA1E2DC9E /* Frameworks */ = {
+		034DB109082A07A20DFBA36C9612D649 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7211D57B93CBE91E710B9AC9B1B17FDF /* Foundation.framework in Frameworks */,
+				6B499E67E6F4EDB3E93739ED9AFFD232 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8FA550233964E78FA5C2B3B4724D2531 /* Frameworks */ = {
+		08A300DD192DDFEC5CFA34E22C2C0F94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4825455A71F49F68BD222F91AD5ED853 /* Foundation.framework in Frameworks */,
+				AFB1E11570DE166CDABCD4041718F38F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		939CC69A8DD0EF5EDA580709854C0A19 /* Frameworks */ = {
+		0CA1FC8A7F1905CC5EBD100FD63D7826 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6627D018A59E95F6497A555DA4ABB730 /* CoreGraphics.framework in Frameworks */,
-				C1891DEEDEC6F86484047F429A211AFD /* Foundation.framework in Frameworks */,
-				3132E3D0248E5DC998EB7AC4A9DCFAF6 /* MobileCoreServices.framework in Frameworks */,
-				5AB517B0EE823C37F666FD094A5BAFC9 /* Security.framework in Frameworks */,
-				349592F2CE209759529A6A0FE241E41F /* SystemConfiguration.framework in Frameworks */,
+				AD53EBD59B16B853B936D98B8821015E /* Cocoa.framework in Frameworks */,
+				B3F2B35A74609BB92407ABDD53F6D88E /* CoreServices.framework in Frameworks */,
+				25BEB690EB29092B47B8081E49BA2330 /* Security.framework in Frameworks */,
+				B2BF964D1B0E5CB52D1111F34F76FBE1 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B04C62AB382D201646BA6A36808BC502 /* Frameworks */ = {
+		44BC43CEAE50A90A21590460B3FFCA7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BC732DC6E0B61501DDED78C44AE283C /* CoreGraphics.framework in Frameworks */,
-				5206AC16BBCF14BFD14919C0DE1F00A5 /* Foundation.framework in Frameworks */,
-				2DBDCB22C8570202CE7F6D14A79F2C87 /* MobileCoreServices.framework in Frameworks */,
-				78D1087591E8942B1744EB38AEE2BAEC /* Security.framework in Frameworks */,
-				30558CC38D5A5B54949B9CBB23F7C767 /* SystemConfiguration.framework in Frameworks */,
+				5A713626D55F74E4617EF7967B3F2325 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B347FA7570ACD8C00D87EA82A594A74B /* Frameworks */ = {
+		6829E329E12514AED11D73E683306EF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5992755A1798877CCCDCB8008A1BC458 /* Foundation.framework in Frameworks */,
-				1246FD2C8705C25FE61C28F4E1C1048D /* Security.framework in Frameworks */,
+				2780B7819BF27330968C0C20F8F7EC17 /* CoreGraphics.framework in Frameworks */,
+				8D10A1507D19F7ED2B8FD99FE9711833 /* Foundation.framework in Frameworks */,
+				351F18584941A5EF7CAC3EC5F4BE318D /* MobileCoreServices.framework in Frameworks */,
+				4FBCDE617DB54231C461E53CBE41BF1A /* Security.framework in Frameworks */,
+				2C8EDF1448C01BB07E5B11706AAD4261 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7621B61A52FA762D22F79618A39DF384 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2260C8B8844E18116A95F4BA85B5FBA7 /* Foundation.framework in Frameworks */,
+				94619FEAAEE2E5D58D2F43F0A2F07135 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77AEC1C1DDDD80DC5D67BE6047A2FABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				955B2737C884E76507100FCD6F9C0132 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91CC2A33F5773F6D3D521DBC346A4164 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6FC587BB9033E4B647A713D608B948C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B88B2077A3B5516BEB9181FC4B54673C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AA9E8AE7A2B0FA6BE10A22C22F95056 /* CoreGraphics.framework in Frameworks */,
+				4D9C819C392C612EA32804C6D31732BB /* Foundation.framework in Frameworks */,
+				C93C888F84482A71AC6A73F2BA365D19 /* MobileCoreServices.framework in Frameworks */,
+				06ECA05343F3E475FDFA40E3B34A144C /* Security.framework in Frameworks */,
+				E2315C7B7A010E3E0442DC03ACF4D68C /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D980010956A6F91C172273BC6D78BC9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D23AA5575413D3787FB434435D168695 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7F7F967115BA03803221F7C900F4D4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349CAD26D3C5635F096F921A42270688 /* Cocoa.framework in Frameworks */,
+				3D0E42C3F81A91522BFC9CC7DD706618 /* CoreServices.framework in Frameworks */,
+				43087B9B10F749D7634C85C24D46431A /* Security.framework in Frameworks */,
+				201FC29EFE3E04FEB9406557047EB87A /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0BA0C1AAC93939513E282004C075457C /* SZNZotero */ = {
+		056D2BA71622D792C66EDF86EC873B79 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7873E6D3A6B2D068C9EA743AE15E5912 /* GTMNSString+HTML.h */,
-				9B5AA7486E88871F155D5F59DA0AFA2E /* GTMNSString+HTML.m */,
-				9F8905AB9A5697CD8CB8C4B4B2F36FC5 /* SZNAuthor.h */,
-				6EE1C7CCC05EF3434D875A7C0BC2989F /* SZNAuthor.m */,
-				1E95845CDE883C5CB103D94B7E461E5D /* SZNCollection.h */,
-				F5BBB0E646ECED532ADDD966F13C0507 /* SZNCollection.m */,
-				865D2951F938ABD89F042537FF9CF82F /* SZNGroup.h */,
-				3547E964D0C3A70D830D3FEB7D59B9A0 /* SZNGroup.m */,
-				D1AD75FCB8E74EF777B86E740B751D47 /* SZNItem.h */,
-				83715FC3BE176321569C3DC1990E4068 /* SZNItem.m */,
-				C0394FB51654BB424650A4133B6AF70E /* SZNLibrary.h */,
-				B6345DF9A0B3FC7095946CBB009A08F0 /* SZNLibrary.m */,
-				A297A849CD942764D646E91804C3029E /* SZNObject.h */,
-				136F6C0033F4D0213BAD7F5AB5FED217 /* SZNObject.m */,
-				97A6CCB68DD50C1EDCFC2C046C8F507F /* SZNTag.h */,
-				CEF0951CF47AFB7BBE5AFA7A22A0DBF6 /* SZNTag.m */,
-				E7A378C6AB1427D4DF3C10F6786E1DD0 /* SZNUser.h */,
-				3CAF1F3CEA56CDA003A4202F87A80957 /* SZNUser.m */,
-				79948EB4D41EE39CD4B7251C9B5B925B /* SZNZotero.h */,
-				7552245F73FF2975DC196896D4C663E9 /* SZNZoteroAPIClient.h */,
-				D16912BDFBE656DFE60815C75D7EEF70 /* SZNZoteroAPIClient.m */,
-			);
-			path = SZNZotero;
-			sourceTree = "<group>";
-		};
-		120AADE41A3C59EA760E218EE9090D42 /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				5E4AAA416E5A923F5E57E98D4C18FBA0 /* AFHTTPClient.h */,
-				6529A9BE5AC683A516B567AFBD0EE8FC /* AFHTTPClient.m */,
-				F8A349E6E9806F47B0CCF37D87E3E692 /* AFHTTPRequestOperation.h */,
-				0B687785C5C8BA8509C18EBC145D8ADF /* AFHTTPRequestOperation.m */,
-				A0A8C174A7CE409CA20352B438374049 /* AFImageRequestOperation.h */,
-				A08A1A9E13D4AFAD09041A880B9370EA /* AFImageRequestOperation.m */,
-				D5E68C303B4E39B32FEDC9E88FCC3ABC /* AFJSONRequestOperation.h */,
-				9C458BFAD96A7F8701AEEA9A24726D72 /* AFJSONRequestOperation.m */,
-				DF72EB8605E2909AF954B2FC667A8E1C /* AFNetworkActivityIndicatorManager.h */,
-				F2FB983AD7022FE77BDBF34F51FDC59A /* AFNetworkActivityIndicatorManager.m */,
-				167F56F67DD0A81D60BE7200B3B0EB9F /* AFNetworking.h */,
-				F5F5CBC5DC74CA4A9723F34B9E6FAD88 /* AFPropertyListRequestOperation.h */,
-				94B7AAEF6DC66D746C6A0BDA1234AF6D /* AFPropertyListRequestOperation.m */,
-				B99B0F8819C44C4594E357C2D05032A3 /* AFURLConnectionOperation.h */,
-				13893AB53E7140F5F447CD2919541883 /* AFURLConnectionOperation.m */,
-				29AF7C230B5A5F2965EE45966CB2A643 /* AFXMLRequestOperation.h */,
-				DB83C84024589A7416121E36FC3E3EC5 /* AFXMLRequestOperation.m */,
-				4A1F10BCFD68FA9E4F16B733AAA81871 /* UIImageView+AFNetworking.h */,
-				4C91A1A07D0C5BC48B966F92D1E237CE /* UIImageView+AFNetworking.m */,
-				D3CCF51A9176C4F4F8F5832C615D9785 /* Support Files */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D39F297F7432FCFAB7049A1566A95C1A /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		57219C8BC64E959365D305CF773EC16C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0F272314DE0064E8BCA7280E01F77841 /* SZNZotero.xcconfig */,
-				539AD3D441ED95F9CA17AD4B6A56079F /* SZNZotero-Private.xcconfig */,
-				E48921D9867E5FD94AFEDE1E89466983 /* SZNZotero-dummy.m */,
-				405775CB34195F90E332F0FB48A3D90C /* SZNZotero-prefix.pch */,
+				6C61A2D36230B69801555CC5A582140C /* Pods-SZNZoteroDemo-ISO8601DateFormatter.xcconfig */,
+				F37FC6541B47DC13A24AF3D5ADFB2ED2 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-Private.xcconfig */,
+				1C281D5ABC5EA8E8BFAF9E63511C6788 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-dummy.m */,
+				3A5A90BF3DCC61EC738B29520CB277F8 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-prefix.pch */,
+				ED8D9326311FF8DB1D88329D2BEEC10C /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter.xcconfig */,
+				04BAC51CDDDFC504A190B89352D8C505 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-Private.xcconfig */,
+				F451FDD63BC5ECB4AA24C431841FD468 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-dummy.m */,
+				C2AA5D1D9983466E826DCB70B559F55E /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "Examples/SZNZoteroDemo/Pods/Target Support Files/SZNZotero";
+			path = "../Target Support Files/Pods-SZNZoteroDemo-ISO8601DateFormatter";
+			sourceTree = "<group>";
+		};
+		230E86A8BD9B83601E52F747B7DB6E4D /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7128A345F02B614900C9686786C48960 /* CoreGraphics.framework */,
+				6D400AB25DAD324FB41A0C97A39BC072 /* Foundation.framework */,
+				5F4243B89C80574FFF04ED55963FF2CD /* MobileCoreServices.framework */,
+				4AFA74261B64C434B230D3557BC08405 /* Security.framework */,
+				4859C5F52F889BF0A091BEB95D47E92D /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		3194538CFFA451B311F1B3A85AEDAE67 /* Pods-SZNZoteroDemoOSX */ = {
+			isa = PBXGroup;
+			children = (
+				B766C05381CA957D5DDC3A5785E67709 /* Pods-SZNZoteroDemoOSX-acknowledgements.markdown */,
+				8093786610F2E7696E9BD6F35091052B /* Pods-SZNZoteroDemoOSX-acknowledgements.plist */,
+				3EFE8EB7D29E382D0342EEEA822E44BC /* Pods-SZNZoteroDemoOSX-dummy.m */,
+				57E6FCBA7857FAEFAAF8295EBB2A5901 /* Pods-SZNZoteroDemoOSX-resources.sh */,
+				852351708BD76616EF448F1B67D3F3C9 /* Pods-SZNZoteroDemoOSX.debug.xcconfig */,
+				856B1E6FFFA2C2C15B9001D9567F128B /* Pods-SZNZoteroDemoOSX.release.xcconfig */,
+			);
+			name = "Pods-SZNZoteroDemoOSX";
+			path = "Target Support Files/Pods-SZNZoteroDemoOSX";
+			sourceTree = "<group>";
+		};
+		4BA758EA044B117A7FC5BE9D2D98EB30 /* ISO8601DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				D5F73BA0C55FBE0BDDA752ED68234881 /* ISO8601DateFormatter.h */,
+				CD9C463C3409FB2A1D7BA01E22624964 /* ISO8601DateFormatter.m */,
+				056D2BA71622D792C66EDF86EC873B79 /* Support Files */,
+			);
+			path = ISO8601DateFormatter;
+			sourceTree = "<group>";
+		};
+		510D01ABAC3CC4EDA12AAE21EA965905 /* AFOAuth1Client */ = {
+			isa = PBXGroup;
+			children = (
+				8F8795AD4BCFCD1F41334F329C78CD90 /* AFOAuth1Client.h */,
+				51157BEA511E46117FD0ADAD5F906E8B /* AFOAuth1Client.m */,
+				645A07DA833D9DC5FDB36020DAA751FD /* Support Files */,
+			);
+			path = AFOAuth1Client;
+			sourceTree = "<group>";
+		};
+		5FE77AFBE70240C52D658B27BACFDE5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F74F9A7D3453616153A9A2C1226CB17F /* OS X */,
+				230E86A8BD9B83601E52F747B7DB6E4D /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		60061EE2B5F0BA3100CE89CED451B3E0 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7A4A96135466D905687DC47C38730D82 /* SZNZotero */,
+				CD4EDC2AA3ED992D1769268F5EDB9614 /* SZNZotero */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		7A4A96135466D905687DC47C38730D82 /* SZNZotero */ = {
+		63887DD0F9EB2B599974E249D05898A7 /* Pods-SZNZoteroDemo */ = {
 			isa = PBXGroup;
 			children = (
-				0BA0C1AAC93939513E282004C075457C /* SZNZotero */,
-				57219C8BC64E959365D305CF773EC16C /* Support Files */,
+				7C525011B6C5BED6E652E481C2F64952 /* Pods-SZNZoteroDemo-acknowledgements.markdown */,
+				185B917A97C3286C0371229F75252E4A /* Pods-SZNZoteroDemo-acknowledgements.plist */,
+				EDF8CCCD745E25B37C323190741CC60E /* Pods-SZNZoteroDemo-dummy.m */,
+				D2D36110736FC000535C0B2886012CBF /* Pods-SZNZoteroDemo-resources.sh */,
+				FE9D2DB21B6233DC693D0F8FC2BF70EA /* Pods-SZNZoteroDemo.debug.xcconfig */,
+				E0BAE28E970384BEF7679B687E2AA9AF /* Pods-SZNZoteroDemo.release.xcconfig */,
 			);
-			name = SZNZotero;
-			path = ../../..;
+			name = "Pods-SZNZoteroDemo";
+			path = "Target Support Files/Pods-SZNZoteroDemo";
+			sourceTree = "<group>";
+		};
+		645A07DA833D9DC5FDB36020DAA751FD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				345BD77B917C99B04996DD810991B1D3 /* Pods-SZNZoteroDemo-AFOAuth1Client.xcconfig */,
+				DA87394A06764C5D3FE12FDD4E1D3CAF /* Pods-SZNZoteroDemo-AFOAuth1Client-Private.xcconfig */,
+				A0034919C5D29F125ACE3490BE10019C /* Pods-SZNZoteroDemo-AFOAuth1Client-dummy.m */,
+				6D63218B88CEA7FC50DA57D4B2DD7235 /* Pods-SZNZoteroDemo-AFOAuth1Client-prefix.pch */,
+				8013684E87A4AAD928F8FEF7685DCCFB /* Pods-SZNZoteroDemoOSX-AFOAuth1Client.xcconfig */,
+				03477F39C351B9B6734F2E87A8BBAF3E /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-Private.xcconfig */,
+				BECECF105664A10B386856D9B6595188 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-dummy.m */,
+				081AC5E3ED18E368B70307B1C8BA366E /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-SZNZoteroDemo-AFOAuth1Client";
+			sourceTree = "<group>";
+		};
+		71B9E2C0177639558AABC24842E4DF4D /* SZNZotero */ = {
+			isa = PBXGroup;
+			children = (
+				3DC0DD84E710AC6AEB39F7B13927F109 /* GTMNSString+HTML.h */,
+				87C5490CE11C77089AE5BF542AB84C3F /* GTMNSString+HTML.m */,
+				0772C275E902C95421DE3E91484C8636 /* SZNAuthor.h */,
+				E29C89A169A11BC19C63A188977ED476 /* SZNAuthor.m */,
+				C4BA27A5718C275A7EEE3F1FA430990E /* SZNCollection.h */,
+				BDFA095E978CDA5FD0F5D4CEA5A1F426 /* SZNCollection.m */,
+				3B862E0A79B9EB1A400F81D0865EFED3 /* SZNGroup.h */,
+				1AB23BB97B27777546BD4BAF4D0EC71B /* SZNGroup.m */,
+				23509F2A83DEA19BA484322AC3965D9E /* SZNItem.h */,
+				41054D8293F382F351A2F12EB27BB52E /* SZNItem.m */,
+				FE85BC67E24F8DBB371A3F008BA14694 /* SZNLibrary.h */,
+				1370AC55AF22F4D20EE0C00772618CD0 /* SZNLibrary.m */,
+				1AEF41F978D7C495F30F267A21BFAEE2 /* SZNObject.h */,
+				79F55E17D2EF165D1BE69D93751209CD /* SZNObject.m */,
+				7EE353147DD3CF7699EE3638C0372BEA /* SZNTag.h */,
+				E231585F6995149355DCC011792DFC15 /* SZNTag.m */,
+				8FEB7A96703B1CBA7E4912EAE46A70B5 /* SZNUser.h */,
+				5667DC3EBFA09B3FBC1A6449468F4403 /* SZNUser.m */,
+				BB1D9D4C437A8A89FD25DC7E7795CFDC /* SZNZotero.h */,
+				42CD9738720F935134F16443DC4DD62B /* SZNZoteroAPIClient.h */,
+				5CB219C9883CA259A1D91EF6F962C622 /* SZNZoteroAPIClient.m */,
+			);
+			path = SZNZotero;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -396,328 +661,508 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				60061EE2B5F0BA3100CE89CED451B3E0 /* Development Pods */,
-				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
+				5FE77AFBE70240C52D658B27BACFDE5B /* Frameworks */,
 				91506F40EB8830043FE8C1220A828926 /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
-				D2411A5FE7F7A004607BED49990C37F4 /* Targets Support Files */,
+				D9913CED6FAC49829427DA19A537956B /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
 		91506F40EB8830043FE8C1220A828926 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				120AADE41A3C59EA760E218EE9090D42 /* AFNetworking */,
-				985DCF070FEA0FADD0BD03D09E555482 /* AFOAuth1Client */,
-				F984165AB8E4AA7CF5A3771F5A15A88F /* ISO8601DateFormatter */,
-				CC5FA980A943DB1C2E344C29FDCD26ED /* TBXML */,
+				A63C52F7B0D25229B129E143320719DA /* AFNetworking */,
+				510D01ABAC3CC4EDA12AAE21EA965905 /* AFOAuth1Client */,
+				4BA758EA044B117A7FC5BE9D2D98EB30 /* ISO8601DateFormatter */,
+				93C2008768509BA8E806866EF36E6450 /* TBXML */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		919A4657942AB29A5EAB085C77A672E6 /* Support Files */ = {
+		93C2008768509BA8E806866EF36E6450 /* TBXML */ = {
 			isa = PBXGroup;
 			children = (
-				BA3763C057559F57D817157D26A6A5AA /* TBXML.xcconfig */,
-				8B44F2DE96B965D1E37050070169DA43 /* TBXML-Private.xcconfig */,
-				7E199FFD598F412002A52CFE49BD20AC /* TBXML-dummy.m */,
-				C47ECD62605E6355C8AECD3647183AC9 /* TBXML-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/TBXML";
-			sourceTree = "<group>";
-		};
-		952EEBFAF8F7E620423C9F156F25A506 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				15A529C27057E4A57D259CBC6E6CE49C /* Pods-acknowledgements.markdown */,
-				BF59BC15D23E1E1912C8F334E7236813 /* Pods-acknowledgements.plist */,
-				A0D40C5252B0C491F50A3704D9E442B0 /* Pods-dummy.m */,
-				641AE05DD55E5E6AC1590CD7B4A18F97 /* Pods-resources.sh */,
-				FBEDD429AAE442113B2F19E34794F88B /* Pods.debug.xcconfig */,
-				06E63595CAA5EFB94F1C2DCA88128338 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			path = "Target Support Files/Pods";
-			sourceTree = "<group>";
-		};
-		985DCF070FEA0FADD0BD03D09E555482 /* AFOAuth1Client */ = {
-			isa = PBXGroup;
-			children = (
-				4B733E25E1D954012A4013AE317AE4FB /* AFOAuth1Client.h */,
-				50D64A2A72038DD04D6499EC06CB9570 /* AFOAuth1Client.m */,
-				A9FC6CD66EC1FD6A2D8BCC5B01AC4A1B /* Support Files */,
-			);
-			path = AFOAuth1Client;
-			sourceTree = "<group>";
-		};
-		A9FC6CD66EC1FD6A2D8BCC5B01AC4A1B /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C7FDB5CA35E6AE1B42D50B2B2E2DE5B1 /* AFOAuth1Client.xcconfig */,
-				5B23A1116DBBCB8D80D0046A11CC3812 /* AFOAuth1Client-Private.xcconfig */,
-				8DC42F2053A2988B8DCF5874681A4E31 /* AFOAuth1Client-dummy.m */,
-				9422C0E98CFC8E0556A7C0CD21253959 /* AFOAuth1Client-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AFOAuth1Client";
-			sourceTree = "<group>";
-		};
-		CC5FA980A943DB1C2E344C29FDCD26ED /* TBXML */ = {
-			isa = PBXGroup;
-			children = (
-				8A2A93B4F8E53D867747FAC75827EA2C /* TBXML.h */,
-				C21C8055026E35451AD615D619BB2403 /* TBXML.m */,
-				B602EA45AB57659B527ED93FEFE1C84D /* TBXML+Compression.h */,
-				824DCAEFEC27D5E8DA9483E29C03423E /* TBXML+Compression.m */,
-				8D36D60A9A5C532232B16079C1438113 /* TBXML+HTTP.h */,
-				E204F2C1C59D9E46662F9CA830D6C492 /* TBXML+HTTP.m */,
-				919A4657942AB29A5EAB085C77A672E6 /* Support Files */,
+				13139B6911C24C8A6CB5E8600A7C07B5 /* TBXML.h */,
+				1EBDF6077123E426F2A7521695CE55C2 /* TBXML.m */,
+				2A7C7005EC162D2C24CC2AD3D4EE59C5 /* TBXML+Compression.h */,
+				CC5BFDA334353C124DF1194E560A997B /* TBXML+Compression.m */,
+				1C7F8596D8626E412E1C83DBA3AADD36 /* TBXML+HTTP.h */,
+				2C54BEFF5554BEBE81CAF52DD7B47794 /* TBXML+HTTP.m */,
+				ADC35907D203B1699645980236DE788B /* Support Files */,
 			);
 			path = TBXML;
+			sourceTree = "<group>";
+		};
+		A63C52F7B0D25229B129E143320719DA /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				A1707BFAD9D2807268259B092D44CC31 /* AFHTTPClient.h */,
+				3E9D09C23251C8CB3A093315AED852CE /* AFHTTPClient.m */,
+				52DDBF72666C441E2982246BA4145570 /* AFHTTPRequestOperation.h */,
+				D3B2384F497ABAA7BF9BB3B6933BAB67 /* AFHTTPRequestOperation.m */,
+				ABC0D056F3939269E298BC9A3854309F /* AFImageRequestOperation.h */,
+				F01F77106219244841682F5B0ABC24A8 /* AFImageRequestOperation.m */,
+				48FA8DAD585285052553B91751D4CD89 /* AFJSONRequestOperation.h */,
+				DB6AC6B21211267CE3763DD35BC0261F /* AFJSONRequestOperation.m */,
+				F17CD312C768E80544D4007B558C2F47 /* AFNetworkActivityIndicatorManager.h */,
+				D12CEB0E1342702EF6D4E43A5FC462F1 /* AFNetworkActivityIndicatorManager.m */,
+				85D8E91F8772BB374B320E6995849554 /* AFNetworking.h */,
+				7ED6FEC9BEBD6A6644473788C275859F /* AFPropertyListRequestOperation.h */,
+				99F7B1629DCA87428B97A02C87C24434 /* AFPropertyListRequestOperation.m */,
+				4EBC10188EA7D5D7006F250DF81BAA6C /* AFURLConnectionOperation.h */,
+				D8AE66D365C1B40491CFAA69219DC418 /* AFURLConnectionOperation.m */,
+				FCCEB2F9995BAD8631D7F186BBA74B2E /* AFXMLRequestOperation.h */,
+				F080C877F5D5825F9723CE024B10D5FE /* AFXMLRequestOperation.m */,
+				22A1DF3FC174DBFE3A2594BAC485DC37 /* UIImageView+AFNetworking.h */,
+				D0B7467EA7FEE1028C36D2EF888031D6 /* UIImageView+AFNetworking.m */,
+				CA2C23193F2840F708D8A764AF02517A /* Support Files */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		ADC35907D203B1699645980236DE788B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B38A567039CBA98CB881EF40BB77F9A1 /* Pods-SZNZoteroDemo-TBXML.xcconfig */,
+				61C4D48B99A391CAE548B0BDC511A6DF /* Pods-SZNZoteroDemo-TBXML-Private.xcconfig */,
+				93038076A451F73C3A15F8F47F267E96 /* Pods-SZNZoteroDemo-TBXML-dummy.m */,
+				F098FC593EBFDF58B380287CE571E29B /* Pods-SZNZoteroDemo-TBXML-prefix.pch */,
+				5296F0CC5A5E4ABA5F26BF36B7BC27CB /* Pods-SZNZoteroDemoOSX-TBXML.xcconfig */,
+				932C4892B6C56312AC2922B3F903DD31 /* Pods-SZNZoteroDemoOSX-TBXML-Private.xcconfig */,
+				9F9F861B9314C349780B3BB55DF536CA /* Pods-SZNZoteroDemoOSX-TBXML-dummy.m */,
+				CE51BDF3953C83F11AEAC0820CC8DAF2 /* Pods-SZNZoteroDemoOSX-TBXML-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-SZNZoteroDemo-TBXML";
+			sourceTree = "<group>";
+		};
+		CA2C23193F2840F708D8A764AF02517A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				89E300051F22F4F1F8A6DC9A60FC0A26 /* Pods-SZNZoteroDemo-AFNetworking.xcconfig */,
+				1AB9408FEFBD88679360D7D6D1E5022E /* Pods-SZNZoteroDemo-AFNetworking-Private.xcconfig */,
+				BA63DB84626D084430830E3AF73C6B06 /* Pods-SZNZoteroDemo-AFNetworking-dummy.m */,
+				0811D1A9F4C74CCB59D5351BB95CF3A0 /* Pods-SZNZoteroDemo-AFNetworking-prefix.pch */,
+				EF462C28A0A36B3E9343563E8404D554 /* Pods-SZNZoteroDemoOSX-AFNetworking.xcconfig */,
+				4B492CAEE0CBCB484F261F8927404081 /* Pods-SZNZoteroDemoOSX-AFNetworking-Private.xcconfig */,
+				AEC8003087A09312D1475D510BBEA007 /* Pods-SZNZoteroDemoOSX-AFNetworking-dummy.m */,
+				6C1434D2EFF9D32A3179173B1CFC7D66 /* Pods-SZNZoteroDemoOSX-AFNetworking-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-SZNZoteroDemo-AFNetworking";
+			sourceTree = "<group>";
+		};
+		CBCBF895E2DF8A336907E015BAD70F51 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7946D853619D99DC7F54A12C0B4F3E9 /* Pods-SZNZoteroDemo-SZNZotero.xcconfig */,
+				C1CE0590125D8CFA74B6EB0B90671E4B /* Pods-SZNZoteroDemo-SZNZotero-Private.xcconfig */,
+				A0BB18E5C55CC80493E4BC4B6456732B /* Pods-SZNZoteroDemo-SZNZotero-dummy.m */,
+				23973A7C697FC0E86BE677D6E2B02548 /* Pods-SZNZoteroDemo-SZNZotero-prefix.pch */,
+				0DEBA3A99AF130E64732B1D09E3F50AB /* Pods-SZNZoteroDemoOSX-SZNZotero.xcconfig */,
+				C14BB08918853F60AEA3CD45E4ECD5BF /* Pods-SZNZoteroDemoOSX-SZNZotero-Private.xcconfig */,
+				FC7BC60D36C42B5A54273E50E5F7A66A /* Pods-SZNZoteroDemoOSX-SZNZotero-dummy.m */,
+				35A5894175B5585C468BA39E75838C1F /* Pods-SZNZoteroDemoOSX-SZNZotero-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "Examples/SZNZoteroDemo/Pods/Target Support Files/Pods-SZNZoteroDemo-SZNZotero";
 			sourceTree = "<group>";
 		};
 		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEE882958BE27F5A571398E926E65F5A /* libAFNetworking.a */,
-				6AAE08D3868B5A492A078BFDBA9CD325 /* libAFOAuth1Client.a */,
-				9A3EBFA7D5F28C46AA7C59B24200FF7A /* libISO8601DateFormatter.a */,
-				A91D03EFCA5214004F26C584A54B3425 /* libPods.a */,
-				0AE4C8430484E4D7ED85B0D1875D39CE /* libSZNZotero.a */,
-				F5F9EC6FA47F47F7D7131C6F5F335959 /* libTBXML.a */,
+				95C6348B20B78B3851389F23435D18DC /* libPods-SZNZoteroDemo.a */,
+				62F2CA2F4D833BA2F455035568882CAD /* libPods-SZNZoteroDemo-AFNetworking.a */,
+				E89D582A058F36188C2F8DAAFB0C8189 /* libPods-SZNZoteroDemo-AFOAuth1Client.a */,
+				0E01CB244DAB6B3F70948311AEBCA6B5 /* libPods-SZNZoteroDemo-ISO8601DateFormatter.a */,
+				C34283065FF14555CDAB1AE9009D17FD /* libPods-SZNZoteroDemo-SZNZotero.a */,
+				01D509C523592930A1DCF87338CAA606 /* libPods-SZNZoteroDemo-TBXML.a */,
+				AE21B77FA80C381BB08864EA6B953DCF /* libPods-SZNZoteroDemoOSX.a */,
+				669379C2E02226C0BC25E7F69F9F1699 /* libPods-SZNZoteroDemoOSX-AFNetworking.a */,
+				7EA0CBF5F535EC9AE03584482A57607F /* libPods-SZNZoteroDemoOSX-AFOAuth1Client.a */,
+				4DCAF461FA2DD3097B82265CA3E1902A /* libPods-SZNZoteroDemoOSX-ISO8601DateFormatter.a */,
+				53AA09F4004E272D7C3961FC810552D3 /* libPods-SZNZoteroDemoOSX-SZNZotero.a */,
+				C39050689AE32A989E8A1734AACCCFF2 /* libPods-SZNZoteroDemoOSX-TBXML.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D2411A5FE7F7A004607BED49990C37F4 /* Targets Support Files */ = {
+		CD4EDC2AA3ED992D1769268F5EDB9614 /* SZNZotero */ = {
 			isa = PBXGroup;
 			children = (
-				952EEBFAF8F7E620423C9F156F25A506 /* Pods */,
+				71B9E2C0177639558AABC24842E4DF4D /* SZNZotero */,
+				CBCBF895E2DF8A336907E015BAD70F51 /* Support Files */,
+			);
+			name = SZNZotero;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		D9913CED6FAC49829427DA19A537956B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				63887DD0F9EB2B599974E249D05898A7 /* Pods-SZNZoteroDemo */,
+				3194538CFFA451B311F1B3A85AEDAE67 /* Pods-SZNZoteroDemoOSX */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		D3649AA41F59D5FB86F3037082250ED2 /* Support Files */ = {
+		F74F9A7D3453616153A9A2C1226CB17F /* OS X */ = {
 			isa = PBXGroup;
 			children = (
-				49E9D094528EFE86A2FDF36A6468E7A3 /* ISO8601DateFormatter.xcconfig */,
-				C1680B3F36A42E415044627549931DD8 /* ISO8601DateFormatter-Private.xcconfig */,
-				A30B98BD62D65830EC68DF99F7A4FF17 /* ISO8601DateFormatter-dummy.m */,
-				E7425A3FBE7F21C0824238F576E44EC8 /* ISO8601DateFormatter-prefix.pch */,
+				89007B89C5E4A4AEA36D3D2C9AF26C14 /* Cocoa.framework */,
+				392EB8504E295E940DBB37908CF36BCB /* CoreServices.framework */,
+				2A6082ADF1E7F21128F16574E7317F46 /* Security.framework */,
+				778537E26B4F4E41D042FD150C2E9DB9 /* SystemConfiguration.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/ISO8601DateFormatter";
-			sourceTree = "<group>";
-		};
-		D39F297F7432FCFAB7049A1566A95C1A /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				2BC11754ADE75D30F8867A23D1B1830C /* CoreGraphics.framework */,
-				2506B3618EA80A5823DED2E9FFCA596F /* Foundation.framework */,
-				49360684A615E1236FA979E487FBCC49 /* MobileCoreServices.framework */,
-				9501232B9E198748862D08A96781D46E /* Security.framework */,
-				6CEBD973F900F443FC5F260AF3019511 /* SystemConfiguration.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		D3CCF51A9176C4F4F8F5832C615D9785 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7BF68E384EE3BDE031E99CE4D0822D53 /* AFNetworking.xcconfig */,
-				D274B18A3E73E7BB1DF4FFCDAAEB9164 /* AFNetworking-Private.xcconfig */,
-				B51BFF52077E5C92797C68CDDCC1B085 /* AFNetworking-dummy.m */,
-				D77EAFC1D1F74ED8FF2229CFF7028B6C /* AFNetworking-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AFNetworking";
-			sourceTree = "<group>";
-		};
-		F984165AB8E4AA7CF5A3771F5A15A88F /* ISO8601DateFormatter */ = {
-			isa = PBXGroup;
-			children = (
-				82688610754CE99DE3BF11B44D6F9B13 /* ISO8601DateFormatter.h */,
-				1D3BC626F3CE73B5E1A042C64BD68C74 /* ISO8601DateFormatter.m */,
-				D3649AA41F59D5FB86F3037082250ED2 /* Support Files */,
-			);
-			path = ISO8601DateFormatter;
+			name = "OS X";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		077DCB418877AC94F71A47D4394FA944 /* Headers */ = {
+		32BC4BB4DE8C70081530EF5B533702E8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B1BAA8AE5D0006130AB517E1DF4AFDC /* AFHTTPClient.h in Headers */,
-				6F4C4576F507740A453D8A3339AE0CFF /* AFHTTPRequestOperation.h in Headers */,
-				AED049A9F0F0F1BFE9B065524DA7F692 /* AFImageRequestOperation.h in Headers */,
-				9FCCF1B783C7C6A64BF7A4C00830AE6F /* AFJSONRequestOperation.h in Headers */,
-				451C14A4DD07F853FD8B065C551F58A3 /* AFNetworkActivityIndicatorManager.h in Headers */,
-				0E063FCF5D140C6B3635A2C19AE60C1D /* AFNetworking.h in Headers */,
-				59AC5D03BBC63A6327483D3306977974 /* AFPropertyListRequestOperation.h in Headers */,
-				19B31FFBCF7996CBB1D47854CF40868A /* AFURLConnectionOperation.h in Headers */,
-				6C8952D0DCB49D11D3B9B628273EA01A /* AFXMLRequestOperation.h in Headers */,
-				E15DFD0065D7E90A64BC5309BE97B165 /* UIImageView+AFNetworking.h in Headers */,
+				59B3F066A95622AABDE171D425A2D878 /* ISO8601DateFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		196628CCA6B7C743B63E5D0379C1CDB3 /* Headers */ = {
+		3B821260CB716B8D78BEA3C90F443717 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A34E8799FBF5430691129487F18C68D2 /* GTMNSString+HTML.h in Headers */,
-				F0B165276B6BB366E52BB59B623F6259 /* SZNAuthor.h in Headers */,
-				26E9A07CF4FDBE9BEDA1162CCD041EB9 /* SZNCollection.h in Headers */,
-				CD3FED251E7AD910DB9B4C3F6893588C /* SZNGroup.h in Headers */,
-				5FF0DA92C44136CD1F9927F9FF9F1F30 /* SZNItem.h in Headers */,
-				F3535E3F488F5BAA2EF05F9F07E46551 /* SZNLibrary.h in Headers */,
-				012CB2F2617BA0793B928F652AF77C5B /* SZNObject.h in Headers */,
-				F9D0870E7393B4AFC12BA04E7C926696 /* SZNTag.h in Headers */,
-				D27C654A47B897757F3FE346FF1A1FF1 /* SZNUser.h in Headers */,
-				E577269F9DD506789C40F5F4241B7A95 /* SZNZotero.h in Headers */,
-				500F16F8ED9A462ADC0C8CA854A19D0B /* SZNZoteroAPIClient.h in Headers */,
+				6FC89C4CAB58453D0435C8A5E0433A6B /* AFOAuth1Client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		338B98C1D9BD1328FCDF67306ED79E2C /* Headers */ = {
+		530E687CC80DEBDED0103ED2AD749D4A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F1EE3E9A13DC12AB68DF7F359B53198 /* ISO8601DateFormatter.h in Headers */,
+				A4256AD449B0531FF0AD0BDA39CAA73C /* AFOAuth1Client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7D956979AA2305321C0C6530B3614CA /* Headers */ = {
+		7B239C2B6AF8F3CEC5EB398BC14C769D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C42DCF547192176717A1E3DDFAD727FA /* TBXML+Compression.h in Headers */,
-				A8D96F711769A51D4D948626AFF6A944 /* TBXML+HTTP.h in Headers */,
-				6735873167C86A7DE79EA95D68DF4E79 /* TBXML.h in Headers */,
+				B0770A7A9B2EE70D3CBFA09F36419F1E /* TBXML+Compression.h in Headers */,
+				D07641DBB6491D59A7577E9643D6B798 /* TBXML+HTTP.h in Headers */,
+				D618DCFAAB85688E3FA7B14CF8A39B69 /* TBXML.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA8D5C4646C41455D6514EF4CE4FF682 /* Headers */ = {
+		A80DCD5B002CA6FC342EC51D80796346 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8548A744981D92C03B00C048906F9793 /* AFOAuth1Client.h in Headers */,
+				ADD24736EE5C2136853411E82D2CE50E /* GTMNSString+HTML.h in Headers */,
+				B0CFCBC5CD0C7EC7D64D2BEF566626FF /* SZNAuthor.h in Headers */,
+				ED41F6AE0E406FAB56E6A25E69CEBE3E /* SZNCollection.h in Headers */,
+				68E3F56AA1EACB418165478809A530A8 /* SZNGroup.h in Headers */,
+				B50A11612A8C4CAAC164D88A819F2309 /* SZNItem.h in Headers */,
+				E2D8D1C4DDEED032C973B2DB84F3B592 /* SZNLibrary.h in Headers */,
+				F17B4C51201E9DD442FC93AC6C58D210 /* SZNObject.h in Headers */,
+				0643A33E2F769C95E327346CBA1EB458 /* SZNTag.h in Headers */,
+				B362752C91E54EB12A735DC0287FD628 /* SZNUser.h in Headers */,
+				185C11BE5FE60B12A018A79710C9D20F /* SZNZotero.h in Headers */,
+				FF2EB548E6F44A483CEB07A473AC9201 /* SZNZoteroAPIClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C66C315DB364B712E97E3131ECDB0ECD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7778FA6345F24914038A996CB68F8A3 /* AFHTTPClient.h in Headers */,
+				A6FAD2ED59BD768C98804F12C20C2367 /* AFHTTPRequestOperation.h in Headers */,
+				04AC92F8F5ED8DCC6CBC6ED11E710DAC /* AFImageRequestOperation.h in Headers */,
+				2CB17A6782E913CB0A5E14EAB23C04E2 /* AFJSONRequestOperation.h in Headers */,
+				829FA132B6453D7CCB253C46C891F51D /* AFNetworkActivityIndicatorManager.h in Headers */,
+				C8919D6813AF197674A1F79FE6A752B0 /* AFNetworking.h in Headers */,
+				0AA4133F0D2D74D042A48B03AF487F04 /* AFPropertyListRequestOperation.h in Headers */,
+				CD4468B04A3196B865A33B32FD1023E2 /* AFURLConnectionOperation.h in Headers */,
+				A03550E0E2C1CF5C7C7A6C61F537EFC6 /* AFXMLRequestOperation.h in Headers */,
+				BC88492EC187E3247700B6D9EACBD99B /* UIImageView+AFNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA3CE8D5873A3363015FD068603FD36B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A921260070EF9E9A0C16853926257C74 /* AFHTTPClient.h in Headers */,
+				886E2F90F267BA93246458556BBFB0DD /* AFHTTPRequestOperation.h in Headers */,
+				2C3D39B13C914E790CE5AA353C90DDF2 /* AFImageRequestOperation.h in Headers */,
+				6AEFF2C711199D6E35617E6EE5D711F4 /* AFJSONRequestOperation.h in Headers */,
+				45C289969E7EE268D208F3FCBF589FEF /* AFNetworkActivityIndicatorManager.h in Headers */,
+				A2917DD481930080ED6388FAF34C6D37 /* AFNetworking.h in Headers */,
+				EE6454942C7474AFC778F42A0F671ADB /* AFPropertyListRequestOperation.h in Headers */,
+				C8BCED194E911D055DD198836B7FB6F4 /* AFURLConnectionOperation.h in Headers */,
+				0C05BCB6D448CEB57AF382641AA724DC /* AFXMLRequestOperation.h in Headers */,
+				B41927B530C685E7867C526556486957 /* UIImageView+AFNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E79AD3E62B46EBA84FC3D653A228995A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CED90035793C957DF1C59DCFEEFF6E86 /* ISO8601DateFormatter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB54520065EF959D949446BBFD5FA904 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA9F44143C0E6B43A6676E40084B364B /* TBXML+Compression.h in Headers */,
+				C49C87993114D2EE81C6B5673F4AFEE7 /* TBXML+HTTP.h in Headers */,
+				7B3ADFFC1682AF2C39918D1009F50B4B /* TBXML.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF16536BC36F6C6A3C2B8F0A1DF0924E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E862DA16AF2744F32A1CDE227F9F4D5 /* GTMNSString+HTML.h in Headers */,
+				8F0205DEA2C5A006C7B0CBF1E3BB72CB /* SZNAuthor.h in Headers */,
+				E92BFB9AB824C7C33123BCE4A2E1B17C /* SZNCollection.h in Headers */,
+				226FADF318A4CB4455AE79EF82109B06 /* SZNGroup.h in Headers */,
+				5F012111F97E68C81FCC7B126BFCFBA3 /* SZNItem.h in Headers */,
+				AA462151C825949A1CAD8D82F95510BE /* SZNLibrary.h in Headers */,
+				68BF207AB67886C70E3E116B3E568270 /* SZNObject.h in Headers */,
+				576814E34E9EA84F7883624374D6F721 /* SZNTag.h in Headers */,
+				78DB12DEC3E7267232A81330632095D5 /* SZNUser.h in Headers */,
+				62C3E712B9C39941F0D4AC9010EE4780 /* SZNZotero.h in Headers */,
+				F6B00A7929B26AB8344C139EE196AFFC /* SZNZoteroAPIClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1E257F3BD419211876EF451F4DA41A3C /* Pods */ = {
+		12FFD567BF780554D99869A075267C76 /* Pods-SZNZoteroDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F78DD8D409370B9666FA595E3A932E76 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = 0A924DF49FF71DF8AFF7BD4ED12EA0CC /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo" */;
 			buildPhases = (
-				EA1FA762AB027CAC173BEF2356E8E10C /* Sources */,
-				8FA550233964E78FA5C2B3B4724D2531 /* Frameworks */,
+				8D8EC05A7C4421EAE8AE0AA22E194089 /* Sources */,
+				08A300DD192DDFEC5CFA34E22C2C0F94 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BB3C0C01026F6F210C4E9F5C451198DB /* PBXTargetDependency */,
-				4B5DCF190BB5AB27F7F4ED8125FF887F /* PBXTargetDependency */,
-				59E1E386EF5F440D4D1256A820334F17 /* PBXTargetDependency */,
-				1A1D803194CF960DC98F0D6514A853B7 /* PBXTargetDependency */,
-				1231EC93843139CCA271350BDA9634F9 /* PBXTargetDependency */,
+				F78929AB0519BCB5A8C953CB527305FC /* PBXTargetDependency */,
+				2ADA6E9780FDD1239E94524BDA2375D7 /* PBXTargetDependency */,
+				ACD8497A039F5B180937BA4E7DD44658 /* PBXTargetDependency */,
+				A5CC960016931D35CAD5F53BD64A426F /* PBXTargetDependency */,
+				DDCE392879E561170202BD052218A7B7 /* PBXTargetDependency */,
 			);
-			name = Pods;
-			productName = Pods;
-			productReference = A91D03EFCA5214004F26C584A54B3425 /* libPods.a */;
+			name = "Pods-SZNZoteroDemo";
+			productName = "Pods-SZNZoteroDemo";
+			productReference = 95C6348B20B78B3851389F23435D18DC /* libPods-SZNZoteroDemo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		298259F59E16B080FBF3F9AF1C216C01 /* AFNetworking */ = {
+		2C5C55D4698B97A9E05DE5E905766591 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58392C636807C53B82E5D03485F9CC1E /* Build configuration list for PBXNativeTarget "AFNetworking" */;
+			buildConfigurationList = 2356618A8800830A558E5E9F6AF0023B /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter" */;
 			buildPhases = (
-				E38BE04C7FB7C34C1DD313E4F82F5E7E /* Sources */,
-				939CC69A8DD0EF5EDA580709854C0A19 /* Frameworks */,
-				077DCB418877AC94F71A47D4394FA944 /* Headers */,
+				5F9AED986699C70E2A7DCDDC98DE2B85 /* Sources */,
+				034DB109082A07A20DFBA36C9612D649 /* Frameworks */,
+				32BC4BB4DE8C70081530EF5B533702E8 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = AFNetworking;
-			productName = AFNetworking;
-			productReference = AEE882958BE27F5A571398E926E65F5A /* libAFNetworking.a */;
+			name = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter";
+			productName = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter";
+			productReference = 4DCAF461FA2DD3097B82265CA3E1902A /* libPods-SZNZoteroDemoOSX-ISO8601DateFormatter.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		2E9CBCABB0BBEDCB7AE1F47BA540AE13 /* TBXML */ = {
+		2D7BD7BDC88819B981DBE3103E6948F4 /* Pods-SZNZoteroDemo-ISO8601DateFormatter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D87AEFBA3C6FBDB785FFA6A4E0E9C81 /* Build configuration list for PBXNativeTarget "TBXML" */;
+			buildConfigurationList = 3E2D0C08397166A58F910A8A45CC3DA0 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-ISO8601DateFormatter" */;
 			buildPhases = (
-				E66CAF27467884912B80232AA4FC2395 /* Sources */,
-				7C6B21686AF3BF4600346BEAA1E2DC9E /* Frameworks */,
-				B7D956979AA2305321C0C6530B3614CA /* Headers */,
+				19572E21236D27B5389DA738AA75D197 /* Sources */,
+				0004CAD7A1EF1053718E985F7DEF654B /* Frameworks */,
+				E79AD3E62B46EBA84FC3D653A228995A /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TBXML;
-			productName = TBXML;
-			productReference = F5F9EC6FA47F47F7D7131C6F5F335959 /* libTBXML.a */;
+			name = "Pods-SZNZoteroDemo-ISO8601DateFormatter";
+			productName = "Pods-SZNZoteroDemo-ISO8601DateFormatter";
+			productReference = 0E01CB244DAB6B3F70948311AEBCA6B5 /* libPods-SZNZoteroDemo-ISO8601DateFormatter.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		4FD043AE8C11DF3194F96E358D541ABF /* AFOAuth1Client */ = {
+		44E6F3B6C6105CFD5548585D340C5E40 /* Pods-SZNZoteroDemoOSX-TBXML */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB38B5888D6B468D4A922F2D3533511F /* Build configuration list for PBXNativeTarget "AFOAuth1Client" */;
+			buildConfigurationList = F764B753F9BFEC6028B30282928855FF /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-TBXML" */;
 			buildPhases = (
-				F85642F35DFBCDDA4E739ECB50C62432 /* Sources */,
-				B04C62AB382D201646BA6A36808BC502 /* Frameworks */,
-				EA8D5C4646C41455D6514EF4CE4FF682 /* Headers */,
+				D1696068967707AFC318551CF363D9D1 /* Sources */,
+				91CC2A33F5773F6D3D521DBC346A4164 /* Frameworks */,
+				7B239C2B6AF8F3CEC5EB398BC14C769D /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A89DB659A562C7F2E7CC02D6834397C8 /* PBXTargetDependency */,
 			);
-			name = AFOAuth1Client;
-			productName = AFOAuth1Client;
-			productReference = 6AAE08D3868B5A492A078BFDBA9CD325 /* libAFOAuth1Client.a */;
+			name = "Pods-SZNZoteroDemoOSX-TBXML";
+			productName = "Pods-SZNZoteroDemoOSX-TBXML";
+			productReference = C39050689AE32A989E8A1734AACCCFF2 /* libPods-SZNZoteroDemoOSX-TBXML.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		B4490BFF62A6E8A019A79F2DAD36823B /* SZNZotero */ = {
+		51875443612B47323FF724A6A22401E8 /* Pods-SZNZoteroDemo-SZNZotero */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B822DD0B2B1319E7F0FDC0EB9862132 /* Build configuration list for PBXNativeTarget "SZNZotero" */;
+			buildConfigurationList = 96910CA00415B4F2C7E6798F442D00C5 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-SZNZotero" */;
 			buildPhases = (
-				557588CD52CD6CF67A69252BE42F89BB /* Sources */,
-				B347FA7570ACD8C00D87EA82A594A74B /* Frameworks */,
-				196628CCA6B7C743B63E5D0379C1CDB3 /* Headers */,
+				FFD02EC6B315146D91CE9330F6CF0FC7 /* Sources */,
+				7621B61A52FA762D22F79618A39DF384 /* Frameworks */,
+				EF16536BC36F6C6A3C2B8F0A1DF0924E /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C96825D6B6B41F94E6BF42CD4F237FF9 /* PBXTargetDependency */,
-				41EF716D1787B22E7A21FC536AD56ECC /* PBXTargetDependency */,
-				F6DD2F5946B02E7DE495AA95907E679B /* PBXTargetDependency */,
+				298705A460C5E15D7EC0C46D4EB84B76 /* PBXTargetDependency */,
+				82B03757E7B7280548C2F3724019627B /* PBXTargetDependency */,
+				43A075BE8439965637210807C24DB627 /* PBXTargetDependency */,
 			);
-			name = SZNZotero;
-			productName = SZNZotero;
-			productReference = 0AE4C8430484E4D7ED85B0D1875D39CE /* libSZNZotero.a */;
+			name = "Pods-SZNZoteroDemo-SZNZotero";
+			productName = "Pods-SZNZoteroDemo-SZNZotero";
+			productReference = C34283065FF14555CDAB1AE9009D17FD /* libPods-SZNZoteroDemo-SZNZotero.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F5F025171F75DB567C4875174128DDD4 /* ISO8601DateFormatter */ = {
+		58A6CC43B87DC777D4388D045E172A13 /* Pods-SZNZoteroDemoOSX-AFNetworking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5DAA6A663983CD502183F5F58A6F699 /* Build configuration list for PBXNativeTarget "ISO8601DateFormatter" */;
+			buildConfigurationList = E1BC209D4D3A4C4C45AE502D3953B3BB /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-AFNetworking" */;
 			buildPhases = (
-				1D763E17AB5D64EC713E7CB42EE3E625 /* Sources */,
-				1B950CB8550BECADBC1CF8E2B7B82E3B /* Frameworks */,
-				338B98C1D9BD1328FCDF67306ED79E2C /* Headers */,
+				420BA2E1CA3155D26E49C504D31B5D56 /* Sources */,
+				F7F7F967115BA03803221F7C900F4D4D /* Frameworks */,
+				DA3CE8D5873A3363015FD068603FD36B /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ISO8601DateFormatter;
-			productName = ISO8601DateFormatter;
-			productReference = 9A3EBFA7D5F28C46AA7C59B24200FF7A /* libISO8601DateFormatter.a */;
+			name = "Pods-SZNZoteroDemoOSX-AFNetworking";
+			productName = "Pods-SZNZoteroDemoOSX-AFNetworking";
+			productReference = 669379C2E02226C0BC25E7F69F9F1699 /* libPods-SZNZoteroDemoOSX-AFNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8CF402F9F356567425D6CE9E1094A357 /* Pods-SZNZoteroDemo-AFOAuth1Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2069070F12078D1F7725AB6050030D61 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-AFOAuth1Client" */;
+			buildPhases = (
+				4E3A674BE570CB9924993FA613C4CB0C /* Sources */,
+				B88B2077A3B5516BEB9181FC4B54673C /* Frameworks */,
+				3B821260CB716B8D78BEA3C90F443717 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1434C115FE0DA7D103565A51C4540D9 /* PBXTargetDependency */,
+			);
+			name = "Pods-SZNZoteroDemo-AFOAuth1Client";
+			productName = "Pods-SZNZoteroDemo-AFOAuth1Client";
+			productReference = E89D582A058F36188C2F8DAAFB0C8189 /* libPods-SZNZoteroDemo-AFOAuth1Client.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9663AE1AAE526DDF3075A017996E0433 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 480CF8002EF253EE1713EE3FEB89F069 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-AFOAuth1Client" */;
+			buildPhases = (
+				999E18B57F4F9EF02447889E958BBEFB /* Sources */,
+				0CA1FC8A7F1905CC5EBD100FD63D7826 /* Frameworks */,
+				530E687CC80DEBDED0103ED2AD749D4A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48A7B51B7E6E1F049BB25CA30FED7583 /* PBXTargetDependency */,
+			);
+			name = "Pods-SZNZoteroDemoOSX-AFOAuth1Client";
+			productName = "Pods-SZNZoteroDemoOSX-AFOAuth1Client";
+			productReference = 7EA0CBF5F535EC9AE03584482A57607F /* libPods-SZNZoteroDemoOSX-AFOAuth1Client.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A30499073232B5243600B28AC651BF3F /* Pods-SZNZoteroDemoOSX-SZNZotero */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C4BD6A555544FED393C85BEE513A214 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-SZNZotero" */;
+			buildPhases = (
+				05177C9BE32820A77F378A4833DAF357 /* Sources */,
+				D980010956A6F91C172273BC6D78BC9B /* Frameworks */,
+				A80DCD5B002CA6FC342EC51D80796346 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A29B88B0D5597DD699B42F822854E63 /* PBXTargetDependency */,
+				277DD33050633FB4E324B0A3E89C2ADF /* PBXTargetDependency */,
+				E7A52C209DC9AA71413F6EB3DFA26394 /* PBXTargetDependency */,
+			);
+			name = "Pods-SZNZoteroDemoOSX-SZNZotero";
+			productName = "Pods-SZNZoteroDemoOSX-SZNZotero";
+			productReference = 53AA09F4004E272D7C3961FC810552D3 /* libPods-SZNZoteroDemoOSX-SZNZotero.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A8F40B51707B416762DEEE6FBA8E4773 /* Pods-SZNZoteroDemo-AFNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE3854072C24DE9DED3B5D13132911A3 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-AFNetworking" */;
+			buildPhases = (
+				99D1B49B617EC2EB68B4D2FECDC0D4A5 /* Sources */,
+				6829E329E12514AED11D73E683306EF1 /* Frameworks */,
+				C66C315DB364B712E97E3131ECDB0ECD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SZNZoteroDemo-AFNetworking";
+			productName = "Pods-SZNZoteroDemo-AFNetworking";
+			productReference = 62F2CA2F4D833BA2F455035568882CAD /* libPods-SZNZoteroDemo-AFNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		CF8010EDA108D324C81C86DF2D96A206 /* Pods-SZNZoteroDemoOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EE19D58B558E44B9165885972CC657A /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX" */;
+			buildPhases = (
+				17589D6EEFA0E62E8A6CCA9DDD79802B /* Sources */,
+				44BC43CEAE50A90A21590460B3FFCA7C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D959ACCA300E5B9F3561ED8F3447AD9 /* PBXTargetDependency */,
+				F01EE56FA1E21A32FCE21A053ACDD8E5 /* PBXTargetDependency */,
+				635DAA0B1AEECD00444018FF86663F9F /* PBXTargetDependency */,
+				484855EDB83B728DBBC2B6E213204E6E /* PBXTargetDependency */,
+				B6F6AFE444255C5B9AEE7F827139E427 /* PBXTargetDependency */,
+			);
+			name = "Pods-SZNZoteroDemoOSX";
+			productName = "Pods-SZNZoteroDemoOSX";
+			productReference = AE21B77FA80C381BB08864EA6B953DCF /* libPods-SZNZoteroDemoOSX.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E3CBC80B25A3CA5478C2C2CF08AA48EC /* Pods-SZNZoteroDemo-TBXML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8514D2B248C6410D7BEB0294DBC9655E /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-TBXML" */;
+			buildPhases = (
+				7D88284688D4765398191AC9895EEDCE /* Sources */,
+				77AEC1C1DDDD80DC5D67BE6047A2FABC /* Frameworks */,
+				EB54520065EF959D949446BBFD5FA904 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SZNZoteroDemo-TBXML";
+			productName = "Pods-SZNZoteroDemo-TBXML";
+			productReference = 01D509C523592930A1DCF87338CAA606 /* libPods-SZNZoteroDemo-TBXML.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -741,189 +1186,320 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				298259F59E16B080FBF3F9AF1C216C01 /* AFNetworking */,
-				4FD043AE8C11DF3194F96E358D541ABF /* AFOAuth1Client */,
-				F5F025171F75DB567C4875174128DDD4 /* ISO8601DateFormatter */,
-				1E257F3BD419211876EF451F4DA41A3C /* Pods */,
-				B4490BFF62A6E8A019A79F2DAD36823B /* SZNZotero */,
-				2E9CBCABB0BBEDCB7AE1F47BA540AE13 /* TBXML */,
+				12FFD567BF780554D99869A075267C76 /* Pods-SZNZoteroDemo */,
+				A8F40B51707B416762DEEE6FBA8E4773 /* Pods-SZNZoteroDemo-AFNetworking */,
+				8CF402F9F356567425D6CE9E1094A357 /* Pods-SZNZoteroDemo-AFOAuth1Client */,
+				2D7BD7BDC88819B981DBE3103E6948F4 /* Pods-SZNZoteroDemo-ISO8601DateFormatter */,
+				51875443612B47323FF724A6A22401E8 /* Pods-SZNZoteroDemo-SZNZotero */,
+				E3CBC80B25A3CA5478C2C2CF08AA48EC /* Pods-SZNZoteroDemo-TBXML */,
+				CF8010EDA108D324C81C86DF2D96A206 /* Pods-SZNZoteroDemoOSX */,
+				58A6CC43B87DC777D4388D045E172A13 /* Pods-SZNZoteroDemoOSX-AFNetworking */,
+				9663AE1AAE526DDF3075A017996E0433 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client */,
+				2C5C55D4698B97A9E05DE5E905766591 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter */,
+				A30499073232B5243600B28AC651BF3F /* Pods-SZNZoteroDemoOSX-SZNZotero */,
+				44E6F3B6C6105CFD5548585D340C5E40 /* Pods-SZNZoteroDemoOSX-TBXML */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1D763E17AB5D64EC713E7CB42EE3E625 /* Sources */ = {
+		05177C9BE32820A77F378A4833DAF357 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD9445C281ADA8628EBDEEF7D4956EED /* ISO8601DateFormatter-dummy.m in Sources */,
-				662AC7F0725C738368E4843711632273 /* ISO8601DateFormatter.m in Sources */,
+				971C6009FA291E92F2B8269B4D46AC48 /* GTMNSString+HTML.m in Sources */,
+				170FAA78C16C474356EB3A1CF96CF305 /* Pods-SZNZoteroDemoOSX-SZNZotero-dummy.m in Sources */,
+				2610AFA4DDBEAC15D992B20F068F0508 /* SZNAuthor.m in Sources */,
+				45A6FA962C33A7013EEF7E4670F36CDE /* SZNCollection.m in Sources */,
+				7CBFE1A94A01234CB4A24FB62F56F260 /* SZNGroup.m in Sources */,
+				B16C7437EDFB90A358ECE148869A5E6A /* SZNItem.m in Sources */,
+				BD78F45DE6E0CD86E9AE323BB7BF8B76 /* SZNLibrary.m in Sources */,
+				CA1D460F0BE5B4258EECF4B97DB1A9E6 /* SZNObject.m in Sources */,
+				D148C9BD3F1B87349C6D0EE5C80A4E45 /* SZNTag.m in Sources */,
+				5A0ADA900A0F3C562705F39F358E6A7C /* SZNUser.m in Sources */,
+				419526B37A92CF97ED14CCBA588FDB0A /* SZNZoteroAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		557588CD52CD6CF67A69252BE42F89BB /* Sources */ = {
+		17589D6EEFA0E62E8A6CCA9DDD79802B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				343DA28B5A66D342576BF28A3B0233AA /* GTMNSString+HTML.m in Sources */,
-				133F98AE767013B4539C7A24D1FDF52B /* SZNAuthor.m in Sources */,
-				4E77BFCC433F7BA1D3DDE10306B2CD7F /* SZNCollection.m in Sources */,
-				F4FDEA96D4D8C14445E2472376044411 /* SZNGroup.m in Sources */,
-				167327371C5AC371F9AC33AD90A57A8C /* SZNItem.m in Sources */,
-				132D66106475F552F9DCEB3232E04919 /* SZNLibrary.m in Sources */,
-				9F3DC253F2BA6B3157D384BAF410626A /* SZNObject.m in Sources */,
-				35B32485428DB3A50F50D779FB0BA946 /* SZNTag.m in Sources */,
-				3798C1BE0E8B99802C3E428873CF73CB /* SZNUser.m in Sources */,
-				4F44C7B8F9A81FF0AD5D9D54200796F7 /* SZNZotero-dummy.m in Sources */,
-				89E65F3FEAEDD9BF79545FD76833B0C3 /* SZNZoteroAPIClient.m in Sources */,
+				CD07C8B521B9603A971B1F0A3E5B6A8B /* Pods-SZNZoteroDemoOSX-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E38BE04C7FB7C34C1DD313E4F82F5E7E /* Sources */ = {
+		19572E21236D27B5389DA738AA75D197 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB70E4F93E72E42FD61DE2B75F258BFA /* AFHTTPClient.m in Sources */,
-				9E090981B17C88F30C44004355F8AC0C /* AFHTTPRequestOperation.m in Sources */,
-				0ED63578B72A405ACEFE882CB8BC3304 /* AFImageRequestOperation.m in Sources */,
-				89D52658C8EA0023210C4DE5DF3FB3CF /* AFJSONRequestOperation.m in Sources */,
-				53E616D74A12C4AADB1687192DF6E847 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				486480ED0C237234338389CCDB388565 /* AFNetworking-dummy.m in Sources */,
-				1760D6272F8B672FB162CDA7C7C6C883 /* AFPropertyListRequestOperation.m in Sources */,
-				676621628EBEA25AA6A869253D9BCB3A /* AFURLConnectionOperation.m in Sources */,
-				21628833CD056130735827885C502053 /* AFXMLRequestOperation.m in Sources */,
-				394EBCF988A255AA1C01343F14A370E3 /* UIImageView+AFNetworking.m in Sources */,
+				27F8A543754D4E15AA8470BE13EA888D /* ISO8601DateFormatter.m in Sources */,
+				82843EC7FCF1B7DA7FFFAC7350AD396F /* Pods-SZNZoteroDemo-ISO8601DateFormatter-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E66CAF27467884912B80232AA4FC2395 /* Sources */ = {
+		420BA2E1CA3155D26E49C504D31B5D56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09513AE00F32A2CB75F0BAFDCF2A3C53 /* TBXML+Compression.m in Sources */,
-				A77BFEF2FBE795FF522329668B9A1941 /* TBXML+HTTP.m in Sources */,
-				0C6B1835F3FA1D4250E8C52309F4433E /* TBXML-dummy.m in Sources */,
-				C81CB928411EBCD4C71CDD0C5B6E2267 /* TBXML.m in Sources */,
+				856FE67C3D34E932861553E4225D5D97 /* AFHTTPClient.m in Sources */,
+				6250D553DCE0674E762B2544686A9339 /* AFHTTPRequestOperation.m in Sources */,
+				245F9CF9DBFDACA9BF515D3C6547DC00 /* AFImageRequestOperation.m in Sources */,
+				14AF2DBAB10F5AE7E28BB24EEB5D4DA4 /* AFJSONRequestOperation.m in Sources */,
+				3F981DDC3BC0AED063C2957C1DF20798 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				9231EC4855D2C6967C55BDA89EA8FD93 /* AFPropertyListRequestOperation.m in Sources */,
+				AC500CAA0471376438C53A50E820C758 /* AFURLConnectionOperation.m in Sources */,
+				3A5D9758FCEF4B94F7A654CFF0377450 /* AFXMLRequestOperation.m in Sources */,
+				AB19F69AE3A5EBC24A2D182FF457E085 /* Pods-SZNZoteroDemoOSX-AFNetworking-dummy.m in Sources */,
+				AE65A1195C2398DB6DAF5542CBC5FEE7 /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA1FA762AB027CAC173BEF2356E8E10C /* Sources */ = {
+		4E3A674BE570CB9924993FA613C4CB0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0674E900F71F5A81BC51090A4D490076 /* Pods-dummy.m in Sources */,
+				F06704CA862FE0A8E04DAE698D721FA2 /* AFOAuth1Client.m in Sources */,
+				955997B99C7E498AE0632BFCB3C3AFA7 /* Pods-SZNZoteroDemo-AFOAuth1Client-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F85642F35DFBCDDA4E739ECB50C62432 /* Sources */ = {
+		5F9AED986699C70E2A7DCDDC98DE2B85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76A9DC43BC8450CE82AE5ECAC7E3B7F7 /* AFOAuth1Client-dummy.m in Sources */,
-				9D07BC9B6FB71AD55A6907463999DA47 /* AFOAuth1Client.m in Sources */,
+				6723727EC34908799202622865046AD8 /* ISO8601DateFormatter.m in Sources */,
+				3C32260F252D451208AE750E75C5B7FA /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D88284688D4765398191AC9895EEDCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6865E8DE506EA3FD479985059FFEC6 /* Pods-SZNZoteroDemo-TBXML-dummy.m in Sources */,
+				6BFD1F6C686D612B7480E98E4AD7A46C /* TBXML+Compression.m in Sources */,
+				07CA6B6F8A428FA8C8DAC4A3ABF96561 /* TBXML+HTTP.m in Sources */,
+				A2C55B195E835DB5955AC97E0F78EFBA /* TBXML.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D8EC05A7C4421EAE8AE0AA22E194089 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D6BD99A297374D2F3DDECDD96FD1C9B /* Pods-SZNZoteroDemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		999E18B57F4F9EF02447889E958BBEFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E804FDC9641B01E8833B83A822757D52 /* AFOAuth1Client.m in Sources */,
+				79F3384D67D31A39C34584C5DBA23044 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99D1B49B617EC2EB68B4D2FECDC0D4A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF23A8CF3E98CE76A4BDFEE9351F99A /* AFHTTPClient.m in Sources */,
+				FB3A8B8A20AC1B2F5C1050DD7DE3FFFB /* AFHTTPRequestOperation.m in Sources */,
+				FFBE55A35470B59FAF0DCF3EC42ED731 /* AFImageRequestOperation.m in Sources */,
+				1AAC375C9968F7436FC4AE462AF1FF6E /* AFJSONRequestOperation.m in Sources */,
+				ACB104050EAA293C03ED3C4502DBC224 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				2FC1199564F7E07831E398DCC00BB6C1 /* AFPropertyListRequestOperation.m in Sources */,
+				E559AAA338FAC4DC7B13B4F0B2B5318E /* AFURLConnectionOperation.m in Sources */,
+				1D51C19FF76CD85328EB6CA559B9ED78 /* AFXMLRequestOperation.m in Sources */,
+				F64C7412F224A538E22E218A92094335 /* Pods-SZNZoteroDemo-AFNetworking-dummy.m in Sources */,
+				363C68FE4244C2EA1A16EAED945C6CA4 /* UIImageView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1696068967707AFC318551CF363D9D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A454074626887CD65893C1D5284C745 /* Pods-SZNZoteroDemoOSX-TBXML-dummy.m in Sources */,
+				97D0DFA4A92AF87F5DC9096D0DF30685 /* TBXML+Compression.m in Sources */,
+				24D105F8C444F05B13654C12DFD28827 /* TBXML+HTTP.m in Sources */,
+				1A755799D49DFD768BEB029A6D253754 /* TBXML.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFD02EC6B315146D91CE9330F6CF0FC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C017F14EE7B8E9F84654485D174980E5 /* GTMNSString+HTML.m in Sources */,
+				0C0091ADC85B5790A34A9847CC7E3609 /* Pods-SZNZoteroDemo-SZNZotero-dummy.m in Sources */,
+				B7C9C8FD628A06D22106E7A5A77FC961 /* SZNAuthor.m in Sources */,
+				08754B0CF9216E42913852D4A5B231D2 /* SZNCollection.m in Sources */,
+				2D9B5373F10D95CC266573AF387BF1CA /* SZNGroup.m in Sources */,
+				40DE39A16CDC555FC6A23408721EDBB4 /* SZNItem.m in Sources */,
+				F7CC3CCA84CB65DA85C8F517E4EAC0E8 /* SZNLibrary.m in Sources */,
+				10D2D3BF9A4C4E019B348C9763DAA293 /* SZNObject.m in Sources */,
+				BBA2CC0493A258E0D4EC7E26D044C292 /* SZNTag.m in Sources */,
+				1E02A02DAFBE1364EF271CF105E2B7B3 /* SZNUser.m in Sources */,
+				476F93957229FD716A85599BBE446092 /* SZNZoteroAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1231EC93843139CCA271350BDA9634F9 /* PBXTargetDependency */ = {
+		277DD33050633FB4E324B0A3E89C2ADF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TBXML;
-			target = 2E9CBCABB0BBEDCB7AE1F47BA540AE13 /* TBXML */;
-			targetProxy = B4F593144DB8257DB05647AE055700F3 /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter";
+			target = 2C5C55D4698B97A9E05DE5E905766591 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter */;
+			targetProxy = 0B4FB5B7D85226A0C267E9F4AA515F68 /* PBXContainerItemProxy */;
 		};
-		1A1D803194CF960DC98F0D6514A853B7 /* PBXTargetDependency */ = {
+		298705A460C5E15D7EC0C46D4EB84B76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SZNZotero;
-			target = B4490BFF62A6E8A019A79F2DAD36823B /* SZNZotero */;
-			targetProxy = 5E35629E36E7B1577F33FDACF1F436CB /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemo-AFOAuth1Client";
+			target = 8CF402F9F356567425D6CE9E1094A357 /* Pods-SZNZoteroDemo-AFOAuth1Client */;
+			targetProxy = AE337B846770734F97AADB537473514C /* PBXContainerItemProxy */;
 		};
-		41EF716D1787B22E7A21FC536AD56ECC /* PBXTargetDependency */ = {
+		2ADA6E9780FDD1239E94524BDA2375D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = ISO8601DateFormatter;
-			target = F5F025171F75DB567C4875174128DDD4 /* ISO8601DateFormatter */;
-			targetProxy = BECAE00C9646B9E2C0B3FA9F908E8DA3 /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemo-AFOAuth1Client";
+			target = 8CF402F9F356567425D6CE9E1094A357 /* Pods-SZNZoteroDemo-AFOAuth1Client */;
+			targetProxy = B88DFD657FDEA8E7E45788A78939D0CB /* PBXContainerItemProxy */;
 		};
-		4B5DCF190BB5AB27F7F4ED8125FF887F /* PBXTargetDependency */ = {
+		43A075BE8439965637210807C24DB627 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = AFOAuth1Client;
-			target = 4FD043AE8C11DF3194F96E358D541ABF /* AFOAuth1Client */;
-			targetProxy = 43FFB70DC0E42FE8470D5B7D9AA95B99 /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemo-TBXML";
+			target = E3CBC80B25A3CA5478C2C2CF08AA48EC /* Pods-SZNZoteroDemo-TBXML */;
+			targetProxy = F47EE47176881B492FF3D6556AE4FF0C /* PBXContainerItemProxy */;
 		};
-		59E1E386EF5F440D4D1256A820334F17 /* PBXTargetDependency */ = {
+		484855EDB83B728DBBC2B6E213204E6E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = ISO8601DateFormatter;
-			target = F5F025171F75DB567C4875174128DDD4 /* ISO8601DateFormatter */;
-			targetProxy = 0BBD010CBF6A28CE5E0D7B257D2C08CE /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemoOSX-SZNZotero";
+			target = A30499073232B5243600B28AC651BF3F /* Pods-SZNZoteroDemoOSX-SZNZotero */;
+			targetProxy = E8425ABE05A755B802029E5426C22A35 /* PBXContainerItemProxy */;
 		};
-		A89DB659A562C7F2E7CC02D6834397C8 /* PBXTargetDependency */ = {
+		48A7B51B7E6E1F049BB25CA30FED7583 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = AFNetworking;
-			target = 298259F59E16B080FBF3F9AF1C216C01 /* AFNetworking */;
-			targetProxy = CFB7491D722BC7A8CAC54DA5304FAC0B /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemoOSX-AFNetworking";
+			target = 58A6CC43B87DC777D4388D045E172A13 /* Pods-SZNZoteroDemoOSX-AFNetworking */;
+			targetProxy = 656D567FD02F35F8AC724A76EB29CBDC /* PBXContainerItemProxy */;
 		};
-		BB3C0C01026F6F210C4E9F5C451198DB /* PBXTargetDependency */ = {
+		5D959ACCA300E5B9F3561ED8F3447AD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = AFNetworking;
-			target = 298259F59E16B080FBF3F9AF1C216C01 /* AFNetworking */;
-			targetProxy = E06AC218B44C1B98049971E36A21F054 /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemoOSX-AFNetworking";
+			target = 58A6CC43B87DC777D4388D045E172A13 /* Pods-SZNZoteroDemoOSX-AFNetworking */;
+			targetProxy = B005B59DB25DA7622B37353816191348 /* PBXContainerItemProxy */;
 		};
-		C96825D6B6B41F94E6BF42CD4F237FF9 /* PBXTargetDependency */ = {
+		635DAA0B1AEECD00444018FF86663F9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = AFOAuth1Client;
-			target = 4FD043AE8C11DF3194F96E358D541ABF /* AFOAuth1Client */;
-			targetProxy = 1AC25A6E28080496F0425B2DBF8F104F /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter";
+			target = 2C5C55D4698B97A9E05DE5E905766591 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter */;
+			targetProxy = 23404B9653EE04C843C257C4E75644A8 /* PBXContainerItemProxy */;
 		};
-		F6DD2F5946B02E7DE495AA95907E679B /* PBXTargetDependency */ = {
+		82B03757E7B7280548C2F3724019627B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TBXML;
-			target = 2E9CBCABB0BBEDCB7AE1F47BA540AE13 /* TBXML */;
-			targetProxy = 90F5830090A43A5EB76BF3CC71AF0385 /* PBXContainerItemProxy */;
+			name = "Pods-SZNZoteroDemo-ISO8601DateFormatter";
+			target = 2D7BD7BDC88819B981DBE3103E6948F4 /* Pods-SZNZoteroDemo-ISO8601DateFormatter */;
+			targetProxy = 6E7A2A749DF29E508A53A209469BDC35 /* PBXContainerItemProxy */;
+		};
+		8A29B88B0D5597DD699B42F822854E63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemoOSX-AFOAuth1Client";
+			target = 9663AE1AAE526DDF3075A017996E0433 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client */;
+			targetProxy = D150A1F779084FA627E71357256DA0D2 /* PBXContainerItemProxy */;
+		};
+		A5CC960016931D35CAD5F53BD64A426F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemo-SZNZotero";
+			target = 51875443612B47323FF724A6A22401E8 /* Pods-SZNZoteroDemo-SZNZotero */;
+			targetProxy = 64C972742F406DD1C69A40B793121D41 /* PBXContainerItemProxy */;
+		};
+		ACD8497A039F5B180937BA4E7DD44658 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemo-ISO8601DateFormatter";
+			target = 2D7BD7BDC88819B981DBE3103E6948F4 /* Pods-SZNZoteroDemo-ISO8601DateFormatter */;
+			targetProxy = 142588E7855FAF0B5D9AA27870DE1225 /* PBXContainerItemProxy */;
+		};
+		B6F6AFE444255C5B9AEE7F827139E427 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemoOSX-TBXML";
+			target = 44E6F3B6C6105CFD5548585D340C5E40 /* Pods-SZNZoteroDemoOSX-TBXML */;
+			targetProxy = 08E0208A1F601409412D129C6E145037 /* PBXContainerItemProxy */;
+		};
+		C1434C115FE0DA7D103565A51C4540D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemo-AFNetworking";
+			target = A8F40B51707B416762DEEE6FBA8E4773 /* Pods-SZNZoteroDemo-AFNetworking */;
+			targetProxy = 1E6EB23E33EB011D00833A3BFA21E115 /* PBXContainerItemProxy */;
+		};
+		DDCE392879E561170202BD052218A7B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemo-TBXML";
+			target = E3CBC80B25A3CA5478C2C2CF08AA48EC /* Pods-SZNZoteroDemo-TBXML */;
+			targetProxy = 98FDA9FEEC0DFB6173A88E8D6651439A /* PBXContainerItemProxy */;
+		};
+		E7A52C209DC9AA71413F6EB3DFA26394 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemoOSX-TBXML";
+			target = 44E6F3B6C6105CFD5548585D340C5E40 /* Pods-SZNZoteroDemoOSX-TBXML */;
+			targetProxy = FA78802C45ED87600FCF6C9D7579E26F /* PBXContainerItemProxy */;
+		};
+		F01EE56FA1E21A32FCE21A053ACDD8E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemoOSX-AFOAuth1Client";
+			target = 9663AE1AAE526DDF3075A017996E0433 /* Pods-SZNZoteroDemoOSX-AFOAuth1Client */;
+			targetProxy = E1A3DF84BCE88224B0D7D7E5B7E42B93 /* PBXContainerItemProxy */;
+		};
+		F78929AB0519BCB5A8C953CB527305FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SZNZoteroDemo-AFNetworking";
+			target = A8F40B51707B416762DEEE6FBA8E4773 /* Pods-SZNZoteroDemo-AFNetworking */;
+			targetProxy = 2DDE5718DA96DBF3FC188F5DD48EC644 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		157BBDB4622D71A85759444CE8568B60 /* Release */ = {
+		0F39AD87DC36B18EF666AB458F14BBB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 932C4892B6C56312AC2922B3F903DD31 /* Pods-SZNZoteroDemoOSX-TBXML-Private.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-TBXML/Pods-SZNZoteroDemoOSX-TBXML-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		17285514E9F0EF26BE2683FF5D8AB474 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 932C4892B6C56312AC2922B3F903DD31 /* Pods-SZNZoteroDemoOSX-TBXML-Private.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-TBXML/Pods-SZNZoteroDemoOSX-TBXML-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		3083A86139741D7E7C142E3D24F8AFE0 /* Debug */ = {
+		18DE2C3A9E826C307D8539095CE3FB75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1680B3F36A42E415044627549931DD8 /* ISO8601DateFormatter-Private.xcconfig */;
+			baseConfigurationReference = F37FC6541B47DC13A24AF3D5ADFB2ED2 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ISO8601DateFormatter/ISO8601DateFormatter-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-ISO8601DateFormatter/Pods-SZNZoteroDemo-ISO8601DateFormatter-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -934,25 +1510,42 @@
 			};
 			name = Debug;
 		};
-		569D1EF8F670365EAC80882AB382FEBB /* Release */ = {
+		1BE1AF45BDF96F710E7B685155CA718A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B23A1116DBBCB8D80D0046A11CC3812 /* AFOAuth1Client-Private.xcconfig */;
+			baseConfigurationReference = C14BB08918853F60AEA3CD45E4ECD5BF /* Pods-SZNZoteroDemoOSX-SZNZotero-Private.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-SZNZotero/Pods-SZNZoteroDemoOSX-SZNZotero-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		301ECA0F7F10863F73CFB7C9AFE0A6E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61C4D48B99A391CAE548B0BDC511A6DF /* Pods-SZNZoteroDemo-TBXML-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AFOAuth1Client/AFOAuth1Client-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-TBXML/Pods-SZNZoteroDemo-TBXML-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
-		739A85126A1CC7F3C4B781F2A45D9702 /* Release */ = {
+		526F4A0FA650F560656EB75753630FA0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06E63595CAA5EFB94F1C2DCA88128338 /* Pods.release.xcconfig */;
+			baseConfigurationReference = E0BAE28E970384BEF7679B687E2AA9AF /* Pods-SZNZoteroDemo.release.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
@@ -966,119 +1559,7 @@
 			};
 			name = Release;
 		};
-		8148DCC091F569837F3C2288172C2BF3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B23A1116DBBCB8D80D0046A11CC3812 /* AFOAuth1Client-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AFOAuth1Client/AFOAuth1Client-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		8CF25BABC55C01A90982B169522A1E62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 539AD3D441ED95F9CA17AD4B6A56079F /* SZNZotero-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SZNZotero/SZNZotero-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		A5B3A89AB04290B65805403272F0E18E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBEDD429AAE442113B2F19E34794F88B /* Pods.debug.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		ADF7DF82524C90D11C8152DDD478E1CE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 539AD3D441ED95F9CA17AD4B6A56079F /* SZNZotero-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SZNZotero/SZNZotero-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		BED3F3095C2A6C41C95E4E0EC80705F5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B44F2DE96B965D1E37050070169DA43 /* TBXML-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TBXML/TBXML-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		C4ED65D4E949AE9BAA39AA8F54FDF0C4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1680B3F36A42E415044627549931DD8 /* ISO8601DateFormatter-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ISO8601DateFormatter/ISO8601DateFormatter-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		C91510B4FEA4337874456829285E05E1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D274B18A3E73E7BB1DF4FFCDAAEB9164 /* AFNetworking-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		DAACDD7F10AAFE52FC2A207476713B26 /* Debug */ = {
+		532854BF9B886FF45D6166B2F3B9C411 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1111,18 +1592,69 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		EA096E414E9C91B91620C461715651BF /* Debug */ = {
+		5967A2FB8D4CA76A2435E77D849D8E31 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B44F2DE96B965D1E37050070169DA43 /* TBXML-Private.xcconfig */;
+			baseConfigurationReference = 856B1E6FFFA2C2C15B9001D9567F128B /* Pods-SZNZoteroDemoOSX.release.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6A5ED962810CC884BE68C61600944CD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B492CAEE0CBCB484F261F8927404081 /* Pods-SZNZoteroDemoOSX-AFNetworking-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TBXML/TBXML-prefix.pch";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-AFNetworking/Pods-SZNZoteroDemoOSX-AFNetworking-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		75E240717C04EEE0CCE7729A2809EF1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03477F39C351B9B6734F2E87A8BBAF3E /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-AFOAuth1Client/Pods-SZNZoteroDemoOSX-AFOAuth1Client-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		776245CA14AE518D50C0B0E83A179B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AB9408FEFBD88679360D7D6D1E5022E /* Pods-SZNZoteroDemo-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-AFNetworking/Pods-SZNZoteroDemo-AFNetworking-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -1133,12 +1665,12 @@
 			};
 			name = Debug;
 		};
-		FD44A377B187714BA4ACC419AA87F013 /* Release */ = {
+		834211DCCD1BE5BF59891B3687F37D18 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D274B18A3E73E7BB1DF4FFCDAAEB9164 /* AFNetworking-Private.xcconfig */;
+			baseConfigurationReference = DA87394A06764C5D3FE12FDD4E1D3CAF /* Pods-SZNZoteroDemo-AFOAuth1Client-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-AFOAuth1Client/Pods-SZNZoteroDemo-AFOAuth1Client-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -1149,23 +1681,288 @@
 			};
 			name = Release;
 		};
+		84A0ECD6CC2A73A3B05354899C9CAE78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1CE0590125D8CFA74B6EB0B90671E4B /* Pods-SZNZoteroDemo-SZNZotero-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-SZNZotero/Pods-SZNZoteroDemo-SZNZotero-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8FB6CA931AEEDB67D693DE7605EFAED8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03477F39C351B9B6734F2E87A8BBAF3E /* Pods-SZNZoteroDemoOSX-AFOAuth1Client-Private.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-AFOAuth1Client/Pods-SZNZoteroDemoOSX-AFOAuth1Client-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		92DB018DA27A83AD387D6CFEAD3C758A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		94ECD0F7D865711073CD244BCCAC1FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA87394A06764C5D3FE12FDD4E1D3CAF /* Pods-SZNZoteroDemo-AFOAuth1Client-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-AFOAuth1Client/Pods-SZNZoteroDemo-AFOAuth1Client-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AE9C502D9F71A9F2D1A070684AD27B4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1CE0590125D8CFA74B6EB0B90671E4B /* Pods-SZNZoteroDemo-SZNZotero-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-SZNZotero/Pods-SZNZoteroDemo-SZNZotero-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C50A380F33AA6C2E1777558D3E70BE95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 852351708BD76616EF448F1B67D3F3C9 /* Pods-SZNZoteroDemoOSX.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D5DE3B5B28721E0E4F5C33CC0C4594C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B492CAEE0CBCB484F261F8927404081 /* Pods-SZNZoteroDemoOSX-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-AFNetworking/Pods-SZNZoteroDemoOSX-AFNetworking-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D6F4F7CC2D74D499ABA481161AB2A136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C14BB08918853F60AEA3CD45E4ECD5BF /* Pods-SZNZoteroDemoOSX-SZNZotero-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-SZNZotero/Pods-SZNZoteroDemoOSX-SZNZotero-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D86B3C218D8D1BB4FADB0B4C60E88DB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE9D2DB21B6233DC693D0F8FC2BF70EA /* Pods-SZNZoteroDemo.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E49DFE23DD49CFDDF34218A9EF633DEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04BAC51CDDDFC504A190B89352D8C505 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F1E6C64CDB2BFAA3B60D56DFEF22FE56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F37FC6541B47DC13A24AF3D5ADFB2ED2 /* Pods-SZNZoteroDemo-ISO8601DateFormatter-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-ISO8601DateFormatter/Pods-SZNZoteroDemo-ISO8601DateFormatter-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F252D148186D91F03100916E616C1643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AB9408FEFBD88679360D7D6D1E5022E /* Pods-SZNZoteroDemo-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-AFNetworking/Pods-SZNZoteroDemo-AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F586D26C9950849BCC5557097C07151B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61C4D48B99A391CAE548B0BDC511A6DF /* Pods-SZNZoteroDemo-TBXML-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemo-TBXML/Pods-SZNZoteroDemo-TBXML-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F653F0E2A0B26129DC1EAE1A13188D04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04BAC51CDDDFC504A190B89352D8C505 /* Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-Private.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter/Pods-SZNZoteroDemoOSX-ISO8601DateFormatter-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1B822DD0B2B1319E7F0FDC0EB9862132 /* Build configuration list for PBXNativeTarget "SZNZotero" */ = {
+		0A924DF49FF71DF8AFF7BD4ED12EA0CC /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8CF25BABC55C01A90982B169522A1E62 /* Debug */,
-				ADF7DF82524C90D11C8152DDD478E1CE /* Release */,
+				D86B3C218D8D1BB4FADB0B4C60E88DB1 /* Debug */,
+				526F4A0FA650F560656EB75753630FA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1D87AEFBA3C6FBDB785FFA6A4E0E9C81 /* Build configuration list for PBXNativeTarget "TBXML" */ = {
+		0EE19D58B558E44B9165885972CC657A /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EA096E414E9C91B91620C461715651BF /* Debug */,
-				BED3F3095C2A6C41C95E4E0EC80705F5 /* Release */,
+				C50A380F33AA6C2E1777558D3E70BE95 /* Debug */,
+				5967A2FB8D4CA76A2435E77D849D8E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2069070F12078D1F7725AB6050030D61 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-AFOAuth1Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94ECD0F7D865711073CD244BCCAC1FFA /* Debug */,
+				834211DCCD1BE5BF59891B3687F37D18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2356618A8800830A558E5E9F6AF0023B /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-ISO8601DateFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E49DFE23DD49CFDDF34218A9EF633DEF /* Debug */,
+				F653F0E2A0B26129DC1EAE1A13188D04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1173,44 +1970,80 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DAACDD7F10AAFE52FC2A207476713B26 /* Debug */,
-				157BBDB4622D71A85759444CE8568B60 /* Release */,
+				532854BF9B886FF45D6166B2F3B9C411 /* Debug */,
+				92DB018DA27A83AD387D6CFEAD3C758A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58392C636807C53B82E5D03485F9CC1E /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
+		3C4BD6A555544FED393C85BEE513A214 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-SZNZotero" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C91510B4FEA4337874456829285E05E1 /* Debug */,
-				FD44A377B187714BA4ACC419AA87F013 /* Release */,
+				D6F4F7CC2D74D499ABA481161AB2A136 /* Debug */,
+				1BE1AF45BDF96F710E7B685155CA718A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB38B5888D6B468D4A922F2D3533511F /* Build configuration list for PBXNativeTarget "AFOAuth1Client" */ = {
+		3E2D0C08397166A58F910A8A45CC3DA0 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-ISO8601DateFormatter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8148DCC091F569837F3C2288172C2BF3 /* Debug */,
-				569D1EF8F670365EAC80882AB382FEBB /* Release */,
+				18DE2C3A9E826C307D8539095CE3FB75 /* Debug */,
+				F1E6C64CDB2BFAA3B60D56DFEF22FE56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F5DAA6A663983CD502183F5F58A6F699 /* Build configuration list for PBXNativeTarget "ISO8601DateFormatter" */ = {
+		480CF8002EF253EE1713EE3FEB89F069 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-AFOAuth1Client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3083A86139741D7E7C142E3D24F8AFE0 /* Debug */,
-				C4ED65D4E949AE9BAA39AA8F54FDF0C4 /* Release */,
+				75E240717C04EEE0CCE7729A2809EF1B /* Debug */,
+				8FB6CA931AEEDB67D693DE7605EFAED8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F78DD8D409370B9666FA595E3A932E76 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		8514D2B248C6410D7BEB0294DBC9655E /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-TBXML" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A5B3A89AB04290B65805403272F0E18E /* Debug */,
-				739A85126A1CC7F3C4B781F2A45D9702 /* Release */,
+				301ECA0F7F10863F73CFB7C9AFE0A6E3 /* Debug */,
+				F586D26C9950849BCC5557097C07151B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96910CA00415B4F2C7E6798F442D00C5 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-SZNZotero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9C502D9F71A9F2D1A070684AD27B4E /* Debug */,
+				84A0ECD6CC2A73A3B05354899C9CAE78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE3854072C24DE9DED3B5D13132911A3 /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemo-AFNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				776245CA14AE518D50C0B0E83A179B1D /* Debug */,
+				F252D148186D91F03100916E616C1643 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1BC209D4D3A4C4C45AE502D3953B3BB /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-AFNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A5ED962810CC884BE68C61600944CD3 /* Debug */,
+				D5DE3B5B28721E0E4F5C33CC0C4594C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F764B753F9BFEC6028B30282928855FF /* Build configuration list for PBXNativeTarget "Pods-SZNZoteroDemoOSX-TBXML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F39AD87DC36B18EF666AB458F14BBB4 /* Debug */,
+				17285514E9F0EF26BE2683FF5D8AB474 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

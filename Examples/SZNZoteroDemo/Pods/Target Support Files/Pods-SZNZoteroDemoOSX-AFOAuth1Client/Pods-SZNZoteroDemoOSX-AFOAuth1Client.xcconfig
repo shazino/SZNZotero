@@ -1,0 +1,1 @@
+PODS_SZNZOTERODEMOOSX_AFOAUTH_CLIENT_OTHER_LDFLAGS = -framework "CoreServices" -framework "Security" -framework "SystemConfiguration"

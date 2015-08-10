@@ -1,0 +1,6 @@
+#include "Pods-SZNZoteroDemo-AFOAuth1Client.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/AFOAuth1Client" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFOAuth1Client" "${PODS_ROOT}/Headers/Public/ISO8601DateFormatter" "${PODS_ROOT}/Headers/Public/SZNZotero" "${PODS_ROOT}/Headers/Public/TBXML"
+OTHER_LDFLAGS = ${PODS_SZNZOTERODEMO_AFOAUTH_CLIENT_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

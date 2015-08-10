@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>9A9A9506-B18A-4041-85A0-B47EA02CC905</string>
+	<string>3F2545E6-381D-47D4-90C0-871CAF5FACFF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SZNZoteroDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>6CAD9E9E50EE94938E304CF0DE4EBA344FDE2AE3</key>
-		<string>ssh://github.com/shazino/SZNZotero.git</string>
+		<string>github.com:shazino/SZNZotero.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Examples/SZNZoteroDemo/SZNZoteroDemo.xcworkspace</string>
@@ -21,7 +21,7 @@
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/shazino/SZNZotero.git</string>
+	<string>github.com:shazino/SZNZotero.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
