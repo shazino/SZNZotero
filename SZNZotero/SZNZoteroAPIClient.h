@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "AFOAuth1Client.h"
-#import <TBXML.h>
+#import "TBXML.h"
 
 typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
     SZNZoteroAccessNone,

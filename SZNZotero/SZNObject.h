@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <TBXML.h>
+#import "TBXML.h"
 
 @class SZNObject, SZNLibrary;
 

@@ -23,7 +23,8 @@
 
 #import "SZNGroup.h"
 #import "SZNZoteroAPIClient.h"
-#import <TBXML.h>
+
+#import "TBXML.h"
 
 
 @implementation SZNGroup

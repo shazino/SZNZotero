@@ -24,7 +24,7 @@
 #import "SZNZoteroAPIClient.h"
 #import <AFNetworking.h>
 #import <AFOAuth1Client.h>
-#import <TBXML.h>
+#import "TBXML.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "GTMNSString+HTML.h"
 

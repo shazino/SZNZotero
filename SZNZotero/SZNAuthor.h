@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <TBXML.h>
+#import "TBXML.h"
 
 /**
  `SZNAuthor` is a Zotero author.

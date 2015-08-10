@@ -26,7 +26,7 @@
 #import "SZNTag.h"
 #import "SZNLibrary.h"
 #import "SZNZoteroAPIClient.h"
-#import <TBXML.h>
+#import "TBXML.h"
 
 
 @implementation SZNCollection

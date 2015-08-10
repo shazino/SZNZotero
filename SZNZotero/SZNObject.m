@@ -25,7 +25,8 @@
 
 #import "SZNZoteroAPIClient.h"
 #import "SZNLibrary.h"
-#import <TBXML.h>
+
+#import "TBXML.h"
 #import <ISO8601DateFormatter.h>
 
 @implementation SZNObject

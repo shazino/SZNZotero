@@ -24,7 +24,7 @@
 #import "SZNUser.h"
 
 #import <AFNetworking.h>
-#import <TBXML.h>
+#import "TBXML.h"
 #import "SZNZoteroAPIClient.h"
 
 @implementation SZNUser

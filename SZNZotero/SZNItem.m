@@ -24,7 +24,7 @@
 #import "SZNItem.h"
 
 #import <AFNetworking.h>
-#import <TBXML.h>
+#import "TBXML.h"
 #import <SZNZotero.h>
 
 @implementation SZNItemDescriptor

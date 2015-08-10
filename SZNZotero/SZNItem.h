@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "SZNObject.h"
-#import <TBXML.h>
+#import "TBXML.h"
 
 @class SZNZoteroAPIClient, SZNAuthor, SZNLibrary;
 
