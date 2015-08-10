@@ -2,7 +2,6 @@
 #import <UIKit/UIKit.h>
 #endif
 
-#import "Pods-environment.h"
 #import <Availability.h>
 
 #define _AFNETWORKING_PIN_SSL_CERTIFICATES_
