@@ -18,7 +18,7 @@ Here’s an example podfile that installs SZNZotero and all its dependencies.
 ```ruby
 platform :ios, '5.0'
 
-pod 'SZNZotero', '~> 0.3'
+pod 'SZNZotero', '~> 0.3.1'
 ```
 
 ### OAuth callback URL
