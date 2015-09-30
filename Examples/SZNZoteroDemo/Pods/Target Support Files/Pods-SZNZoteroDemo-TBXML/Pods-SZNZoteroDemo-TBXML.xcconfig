@@ -1,2 +1,5 @@
-PODS_SZNZOTERODEMO_TBXML_GCC_PREPROCESSOR_DEFINITIONS = $(inherited) ARC_ENABLED
-PODS_SZNZOTERODEMO_TBXML_OTHER_LDFLAGS = -l"z"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) ARC_ENABLED
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/TBXML" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFOAuth1Client" "${PODS_ROOT}/Headers/Public/ISO8601DateFormatter" "${PODS_ROOT}/Headers/Public/SZNZotero" "${PODS_ROOT}/Headers/Public/TBXML"
+OTHER_LDFLAGS = -l"z"
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

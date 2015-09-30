@@ -1,6 +1,6 @@
 
 target 'SZNZoteroDemo', :exclusive => false do
-    platform :ios, '5.1'
+    platform :ios, '6.0'
     pod 'SZNZotero', :path => '../../'
 end
 

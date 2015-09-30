@@ -1,6 +1,0 @@
-#include "Pods-SZNZoteroDemoOSX-TBXML.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 ${PODS_SZNZOTERODEMOOSX_TBXML_GCC_PREPROCESSOR_DEFINITIONS}
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/TBXML" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFOAuth1Client" "${PODS_ROOT}/Headers/Public/ISO8601DateFormatter" "${PODS_ROOT}/Headers/Public/SZNZotero" "${PODS_ROOT}/Headers/Public/TBXML"
-OTHER_LDFLAGS = ${PODS_SZNZOTERODEMOOSX_TBXML_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES
