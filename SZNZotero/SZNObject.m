@@ -27,7 +27,7 @@
 #import "SZNLibrary.h"
 
 #import "TBXML.h"
-#import <ISO8601DateFormatter.h>
+#import "ISO8601DateFormatter.h"
 
 @implementation SZNObject
 
