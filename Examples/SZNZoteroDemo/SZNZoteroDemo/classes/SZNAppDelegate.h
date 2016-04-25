@@ -6,7 +6,7 @@
 //  Copyright (c) 2013-2014 shazino. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface SZNAppDelegate : UIResponder <UIApplicationDelegate>
 

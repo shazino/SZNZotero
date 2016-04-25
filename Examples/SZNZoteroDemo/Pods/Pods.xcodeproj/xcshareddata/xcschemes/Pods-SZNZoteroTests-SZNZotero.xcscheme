@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "03671A1EBF8B74731055A7A1E62907ED"
-               BuildableName = "libPods-SZNZoteroDemo-SZNZotero.a"
-               BlueprintName = "Pods-SZNZoteroDemo-SZNZotero"
+               BlueprintIdentifier = "022FCCD1933DAE8ED9F001F890D8F6EF"
+               BuildableName = "libPods-SZNZoteroTests-SZNZotero.a"
+               BlueprintName = "Pods-SZNZoteroTests-SZNZotero"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03671A1EBF8B74731055A7A1E62907ED"
-            BuildableName = "libPods-SZNZoteroDemo-SZNZotero.a"
-            BlueprintName = "Pods-SZNZoteroDemo-SZNZotero"
+            BlueprintIdentifier = "022FCCD1933DAE8ED9F001F890D8F6EF"
+            BuildableName = "libPods-SZNZoteroTests-SZNZotero.a"
+            BlueprintName = "Pods-SZNZoteroTests-SZNZotero"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
