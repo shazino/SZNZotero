@@ -2,8 +2,11 @@
 
 **Objective-C client for the Zotero API.**
 
-> _This is still in early stages of development, so proceed with caution when using this in a production application.
-> Any bug reports, feature requests, or general feedback at this point would be greatly appreciated._
+![Platform](https://img.shields.io/cocoapods/p/SZNZotero.svg)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/SZNZotero.svg)](https://cocoapods.org/pods/SZNZotero)
+[![MIT license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shazino/SZNZotero/raw/master/LICENSE)
+
+> _Any bug reports, feature requests, or general feedback would be greatly appreciated._
 
 SZNZotero is a [Zotero API](http://www.zotero.org/support/dev/server_api/v2/start) client for iOS and Mac OS X, built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking).
 
