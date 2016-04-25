@@ -3,7 +3,7 @@
 //  SZNZoteroDemo
 //
 //  Created by Vincent Tourraine on 19/04/13.
-//  Copyright (c) 2013-2014 shazino. All rights reserved.
+//  Copyright (c) 2013-2016 shazino. All rights reserved.
 //
 
 @import UIKit;

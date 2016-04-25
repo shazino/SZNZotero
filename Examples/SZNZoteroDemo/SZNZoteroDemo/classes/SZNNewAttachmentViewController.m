@@ -3,7 +3,7 @@
 //  SZNZoteroDemo
 //
 //  Created by Vincent Tourraine on 6/25/13.
-//  Copyright (c) 2013-2014 shazino. All rights reserved.
+//  Copyright (c) 2013-2016 shazino. All rights reserved.
 //
 
 #import "SZNNewAttachmentViewController.h"
