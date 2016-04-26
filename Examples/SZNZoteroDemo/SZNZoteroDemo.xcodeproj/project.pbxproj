@@ -726,7 +726,7 @@
 			baseConfigurationReference = 40401719B0ADB09E0EB380F1 /* Pods-SZNZoteroDemo.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZNZoteroDemo/SZNZoteroDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/SZNZoteroDemo/SZNZoteroDemo-Info.plist";
