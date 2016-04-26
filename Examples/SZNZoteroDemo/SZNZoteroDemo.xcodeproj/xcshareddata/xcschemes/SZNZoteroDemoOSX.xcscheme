@@ -20,20 +20,6 @@
                ReferencedContainer = "container:SZNZoteroDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "141A7B4F1B78A01800204632"
-               BuildableName = "SZNZoteroDemoOSXTests.xctest"
-               BlueprintName = "SZNZoteroDemoOSXTests"
-               ReferencedContainer = "container:SZNZoteroDemo.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "141A7B4F1B78A01800204632"
-               BuildableName = "SZNZoteroDemoOSXTests.xctest"
-               BlueprintName = "SZNZoteroDemoOSXTests"
-               ReferencedContainer = "container:SZNZoteroDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
