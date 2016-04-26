@@ -1,4 +1,4 @@
 language: objective-c
 xcode_workspace: Examples/SZNZoteroDemo/SZNZoteroDemo.xcworkspace
-xcode_scheme: SZNZoteroDemo
+xcode_scheme: SZNZoteroDemoOSX
 osx_image: xcode7

@@ -1,17 +1,22 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 
-target 'SZNZoteroDemo', :exclusive => false do
+target 'SZNZoteroDemo' do
     platform :ios, '6.0'
     pod 'SZNZotero', :path => '../../'
 end
 
-target 'SZNZoteroTests', :exclusive => false do
+target 'SZNZoteroTests' do
     platform :ios, '6.0'
     pod 'SZNZotero', :path => '../../'
 end
 
-target 'SZNZoteroDemoOSX', :exclusive => false do
+target 'SZNZoteroDemoOSX' do
+    platform :osx, '10.8'
+    pod 'SZNZotero', :path => '../../'
+end
+
+target 'SZNZoteroTestsOSX' do
     platform :osx, '10.8'
     pod 'SZNZotero', :path => '../../'
 end

@@ -52,6 +52,16 @@
                ReferencedContainer = "container:SZNZoteroDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "148641361CCF704B00F42641"
+               BuildableName = "SZNZoteroTestsOSX.xctest"
+               BlueprintName = "SZNZoteroTestsOSX"
+               ReferencedContainer = "container:SZNZoteroDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
