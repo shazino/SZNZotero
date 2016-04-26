@@ -4,6 +4,7 @@
 
 ![Platform](https://img.shields.io/cocoapods/p/SZNZotero.svg)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/SZNZotero.svg)](https://cocoapods.org/pods/SZNZotero)
+[![CocoaPods documentation](https://img.shields.io/cocoapods/metrics/doc-percent/SZNZotero.svg)](http://cocoadocs.org/docsets/SZNZotero)
 [![MIT license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shazino/SZNZotero/raw/master/LICENSE)
 
 SZNZotero is a [Zotero API](http://www.zotero.org/support/dev/server_api/v2/start) client for iOS and Mac OS X, built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking).
