@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+@import Foundation;
 #import "SZNObject.h"
-#import "TBXML.h"
 
 @class SZNZoteroAPIClient, SZNLibrary;
 
@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, SZNTagType) {
     SZNTagCustom = 0,
     SZNTagShared = 1
 };
+
 
 /**
  `SZNTag` is a Zotero tag.
@@ -39,11 +40,22 @@ typedef NS_ENUM(NSInteger, SZNTagType) {
 /**
  The tag name.
  */
-@property (copy, nonatomic) NSString *name;
+@property (nonatomic, copy, nonnull) NSString *name;
 
 /**
  The tag type.
  */
-@property (assign, nonatomic) SZNTagType type;
+@property (nonatomic, assign) SZNTagType type;
+
+
+/**
+ Initializer.
+
+ @param name The name of the tag.
+ @param type The type of the tag.
+
+ @return The newly initialized tag instance.
+ */
+- (nonnull instancetype)initWithName:(nonnull NSString *)name type:(SZNTagType)type;
 
 @end

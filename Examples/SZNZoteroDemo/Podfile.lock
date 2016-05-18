@@ -5,9 +5,7 @@ PODS:
   - ISO8601DateFormatter (0.8)
   - SZNZotero (0.3.4):
     - AFOAuth1Client (~> 1.0.0)
-    - ISO8601DateFormatter (~> 0.7)
-    - TBXML (~> 1.5)
-  - TBXML (1.5)
+    - ISO8601DateFormatter (~> 0.8)
 
 DEPENDENCIES:
   - SZNZotero (from `../../`)
@@ -20,7 +18,8 @@ SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   AFOAuth1Client: 51d32174520b54d7e15a8b3dd618a9a5b87a6344
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
-  SZNZotero: 1f2ad0b1facb5512d5962fdf4ca7466dff381091
-  TBXML: 9f9dadb239f2f2af1dadb87fe43a0ce6e479379a
+  SZNZotero: 3edeb2da3dfd68674dcac0142b12a2fd28aa9c56
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: e1a8c40cf56f9b1b9e6cd30768375c589eba3d10
+
+COCOAPODS: 1.0.0

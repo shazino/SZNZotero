@@ -25,8 +25,6 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 @property (strong, nonatomic) NSArray *items;
 @property (strong, nonatomic) NSArray *tags;
 
-- (void)fetchItemsInUserLibrary;
-
 @end
 
 
@@ -34,23 +32,24 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+
     if (self.parentCollection) {
         self.title = self.parentCollection.content[@"name"];
         self.navigationItem.backBarButtonItem.title = self.title;
     }
     else {
-        if ([self.library isKindOfClass:[SZNGroup class]])
+        if ([self.library isKindOfClass:[SZNGroup class]]) {
             self.title = self.library.content[@"name"];
-        
+        }
+
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)], self.editButtonItem];
     }
-    
+
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    
+
     [self fetchItemsInUserLibrary];
 }
 
@@ -61,9 +60,10 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     }
     else if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
         ((UINavigationController *)segue.destinationViewController).navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
-        
-        if ([((UINavigationController *)segue.destinationViewController).topViewController isKindOfClass:[SZNItemTypesViewController class]])
+
+        if ([((UINavigationController *)segue.destinationViewController).topViewController isKindOfClass:[SZNItemTypesViewController class]]) {
             ((SZNItemTypesViewController *)((UINavigationController *)segue.destinationViewController).topViewController).library = self.library;
+        }
     }
 }
 
@@ -74,22 +74,25 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == SZNItemsViewControllerCollectionsSection)
+    if (section == SZNItemsViewControllerCollectionsSection) {
         return [self.collections count];
-    else if (section == SZNItemsViewControllerItemsSection)
+    }
+    else if (section == SZNItemsViewControllerItemsSection) {
         return [self.items count];
-    else
+    }
+    else {
         return [self.tags count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"SZNItemCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
     if (indexPath.section == SZNItemsViewControllerCollectionsSection) {
         SZNCollection *collection = self.collections[indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat:@"📂 %@", collection.content[@"name"]];
-        cell.detailTextLabel.text = collection.identifier;
+        cell.detailTextLabel.text = collection.key;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     }
@@ -107,7 +110,7 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType  = UITableViewCellAccessoryNone;
     }
-    
+
     return cell;
 }
 
@@ -126,17 +129,22 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == SZNItemsViewControllerCollectionsSection)
+    if (section == SZNItemsViewControllerCollectionsSection) {
         return @"Collections";
-    else if (section == SZNItemsViewControllerItemsSection)
+    }
+    else if (section == SZNItemsViewControllerItemsSection) {
         return @"Items";
-    else
+    }
+    else {
         return @"Tags";
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == SZNItemsViewControllerItemsSection)
+    if (indexPath.section == SZNItemsViewControllerItemsSection) {
         return YES;
+    }
+
     return NO;
 }
 
@@ -144,6 +152,7 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if (indexPath.section == SZNItemsViewControllerItemsSection) {
             SZNItem *item = self.items[indexPath.row];
+
             [item deleteSuccess:^{
                 NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
                 [items removeObject:item];
@@ -173,18 +182,18 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
         [self.refreshControl endRefreshing];
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     };
-    
+
     if (self.parentCollection) {
         [self.parentCollection fetchTopItemsSuccess:^(NSArray *items) {
             self.items = items;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
-            
+
             [self.parentCollection fetchSubcollectionsSuccess:^(NSArray *collections) {
                 self.collections = collections;
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection]
                               withRowAnimation:UITableViewRowAnimationAutomatic];
-                
+
                 [self.parentCollection fetchTagsSuccess:^(NSArray *tags) {
                     self.tags = tags;
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection]
@@ -199,12 +208,12 @@ typedef NS_ENUM(NSUInteger, SZNItemsViewControllerSections) {
             self.items = items;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerItemsSection]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
-            
+
             [self.library fetchObjectsForResource:[SZNCollection class] path:nil keys:nil specifier:@"top" success:^(NSArray *collections) {
                 self.collections = collections;
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerCollectionsSection]
                               withRowAnimation:UITableViewRowAnimationAutomatic];
-                
+
                 [self.library fetchObjectsForResource:[SZNTag class] path:nil keys:nil specifier:nil success:^(NSArray *tags) {
                     self.tags = tags;
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SZNItemsViewControllerTagsSection]

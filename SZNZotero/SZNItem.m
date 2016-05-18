@@ -24,21 +24,21 @@
 #import "SZNItem.h"
 
 #import "AFNetworking.h"
-#import "TBXML.h"
-#import <SZNZotero.h>
+#import "SZNZotero.h"
+#import "SZNTag.h"
+
 
 @implementation SZNItemDescriptor
 
-+ (NSSet *)tagsForItem:(id<SZNItemProtocol>)item {
++ (nonnull NSSet <SZNTag *> *)tagsForItem:(nonnull id<SZNItemProtocol>)item {
     NSMutableSet *tags = [NSMutableSet set];
-    
+
     for (NSDictionary *tagDictionary in item.content[@"tags"]) {
-        SZNTag *tag = [SZNTag new];
-        tag.name = tagDictionary[@"tag"];
-        tag.type = [tagDictionary[@"type"] integerValue];
+        SZNTag *tag = [[SZNTag alloc] initWithName:tagDictionary[@"tag"]
+                                              type:[tagDictionary[@"type"] integerValue]];
         [tags addObject:tag];
     }
-    
+
     return tags;
 }
 
@@ -59,11 +59,14 @@
 
 #pragma mark - Parse
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library {
-    SZNItem *item = (SZNItem *)[super objectFromXMLElement:XMLElement inLibrary:library];
-    item.type = item.content[@"itemType"];
-    return item;
+- (nullable instancetype)initWithJSONDictionary:(nonnull NSDictionary *)JSONDictionary inLibrary:(nonnull SZNLibrary *)library {
+    self = [super initWithJSONDictionary:JSONDictionary inLibrary:library];
+
+    if (self) {
+        self.type = self.content[@"itemType"];
+    }
+
+    return self;
 }
 
 #pragma mark - Create
@@ -72,63 +75,100 @@
                     content:(NSDictionary *)content
                     success:(void (^)(SZNItem *))success
                     failure:(void (^)(NSError *))failure {
-    [library.client postPath:[library pathForResource:[SZNItem class]]
-                  parameters:@{@"items": @[content]}
-                     headers:nil
-                     success:^(NSDictionary *responseObject) {
-                         NSDictionary *successResponse = responseObject[@"success"];
-                         NSDictionary *failedResponse  = responseObject[@"failed"];
-                         
-                         if ([failedResponse count] > 0 && failure) {
-                             NSDictionary *errorDictionary = failedResponse[[failedResponse allKeys][0]];
-                             failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
-                         }
-                         else if (success) {
-                             SZNItem *item = (SZNItem *)[self objectFromXMLElement:nil inLibrary:library];
-                             item.key = [successResponse valueForKey:@"0"];
-                             success(item);
-                         }
-                     }
-                     failure:failure];
+    [library.client
+     postPath:[library pathForResource:[SZNItem class]]
+     parameters:content
+     headers:nil
+     success:^(NSDictionary *responseObject) {
+         NSDictionary *successResponse = responseObject[@"success"];
+         NSDictionary *failedResponse  = responseObject[@"failed"];
+
+         if ([failedResponse count] > 0 && failure) {
+             NSDictionary *errorDictionary = failedResponse[[failedResponse allKeys][0]];
+             failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
+         }
+         else if (success) {
+             NSDictionary *dictionary = nil;
+             NSString *key = [successResponse valueForKey:@"0"];
+             if (key) {
+                 dictionary = @{@"key": key};
+             }
+             SZNItem *item = (SZNItem *)[[self alloc] initWithJSONDictionary:dictionary inLibrary:library];
+             success(item);
+         }
+     }
+     failure:failure];
 }
 
 #pragma mark - Fetch
 
-+ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client
-                     success:(void (^)(NSArray *))success
-                     failure:(void (^)(NSError *))failure {
-    [client getPath:@"/itemTypes"
-         parameters:nil
-            success:^(id responseObject) {
-                if ([responseObject isKindOfClass:NSArray.class]) {
-                    if (success)
-                        success(responseObject);
-                }
-                else {
-                    if (failure)
-                        failure(nil);
-                }
-            }
-            failure:failure];
++ (void)fetchTypesWithClient:(nonnull SZNZoteroAPIClient *)client
+                     success:(nullable void (^)(NSArray <SZNItemType *> * __nonnull))success
+                     failure:(nullable void (^)(NSError * __nullable error))failure {
+    [client
+     getPath:@"/itemTypes"
+     parameters:nil
+     success:^(id responseObject) {
+         if ([responseObject isKindOfClass:NSArray.class]) {
+             NSMutableArray *itemTypes = [[NSMutableArray alloc] initWithCapacity:[responseObject count]];
+
+             for (NSDictionary *rawItemType in responseObject) {
+                 if ([rawItemType isKindOfClass:[NSDictionary class]] == NO) {
+                     continue;
+                 }
+
+                 SZNItemType *itemType = [SZNItemType itemTypeWithResponseDictionary:rawItemType];
+                 if (itemType) {
+                     [itemTypes addObject:itemType];
+                 }
+             }
+
+             if (success) {
+                 success(itemTypes);
+             }
+         }
+         else {
+             if (failure) {
+                 failure(nil);
+             }
+         }
+     }
+     failure:failure];
 }
 
-+ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client
-                           forType:(NSString *)itemType
-                           success:(void (^)(NSArray *))success
-                           failure:(void (^)(NSError *))failure {
-    [client getPath:@"/itemTypeFields"
-         parameters:@{@"itemType": itemType}
-            success:^(id responseObject) {
-                if ([responseObject isKindOfClass:NSArray.class]) {
-                    if (success)
-                        success(responseObject);
-                }
-                else {
-                    if (failure)
-                        failure(nil);
-                }
-            }
-            failure:failure];
++ (void)fetchValidFieldsWithClient:(nonnull SZNZoteroAPIClient *)client
+                       forItemType:(nonnull SZNItemType *)itemType
+                           success:(nullable void (^)(NSArray <SZNItemField *> * __nonnull validFields))success
+                           failure:(nullable void (^)(NSError * __nullable error))failure {
+    [client
+     getPath:@"/itemTypeFields"
+     parameters:@{@"itemType": itemType.type}
+     success:^(id responseObject) {
+         if ([responseObject isKindOfClass:NSArray.class]) {
+             NSMutableArray *itemFields = [[NSMutableArray alloc] initWithCapacity:[responseObject count]];
+
+             for (NSDictionary *rawItemField in responseObject) {
+                 if ([rawItemField isKindOfClass:[NSDictionary class]] == NO) {
+                     continue;
+                 }
+
+                 SZNItemField *itemField = [SZNItemField itemFieldWithResponseDictionary:rawItemField];
+                 if (itemField) {
+                     [itemFields addObject:itemField];
+                 }
+             }
+
+             if (success) {
+                 success(itemFields);
+             }
+         }
+         else {
+             if (failure) {
+                 failure(nil);
+             }
+         }
+     }
+     failure:failure];
 }
 
 + (void)fetchTemplateWithClient:(SZNZoteroAPIClient *)client
@@ -179,16 +219,26 @@
         }
     }
     else {
+        NSDictionary *parameters = @{@"md5": md5,
+                                     @"filename": fileName,
+                                     @"filesize": fileSizeInBytes.stringValue,
+                                     @"mtime": [NSString stringWithFormat:@"%lld", mtimeInMilliseconds],
+                                     @"contentType": contentType};
+
         NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
-        path = [path stringByAppendingFormat:@"?md5=%@&filename=%@&filesize=%@&mtime=%lld&contentType=%@", md5, fileName, fileSizeInBytes.stringValue, mtimeInMilliseconds, contentType];
+        self.library.client.parameterEncoding = AFFormURLParameterEncoding;
+
         [self.library.client postPath:path
-                           parameters:nil
+                           parameters:parameters
                               headers:headers
                               success:^(id responseObject) {
-                                  if (success)
+                                  if (success) {
                                       success(responseObject, md5);
+                                  }
                               }
                               failure:failure];
+        
+        self.library.client.parameterEncoding = AFJSONParameterEncoding;
     }
 }
 
@@ -216,14 +266,18 @@
 
          NSString *path = [[self path] stringByAppendingPathComponent:@"file"];
          NSDictionary *headers = (self.content[@"md5"]) ? @{@"If-Match": self.content[@"md5"]} : @{@"If-None-Match": @"*"};
-         [self.library.client postPath:[path stringByAppendingFormat:@"?upload=%@", uploadKey]
-                            parameters:nil
+
+         self.library.client.parameterEncoding = AFFormURLParameterEncoding;
+         [self.library.client postPath:path
+                            parameters:@{@"upload": uploadKey}
                                headers:headers
                                success:^(id response) {
                                    if (success) {
                                        success();
                                    }
                                } failure:failure];
+
+         self.library.client.parameterEncoding = AFJSONParameterEncoding;
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
@@ -278,17 +332,29 @@
 - (void)fetchChildrenItemsSuccess:(void (^)(NSArray *))success
                           failure:(void (^)(NSError *))failure {
     if ([self.type isEqualToString:@"attachment"]) {
-        if (failure) failure(nil);
+        if (failure) {
+            failure(nil);
+        }
+        
+        return;
     }
-    else {
-        [self.library.client getPath:[[self path] stringByAppendingPathComponent:@"children"]
-                          parameters:@{@"content": @"json"}
-                             success:^(TBXML *XML) {
-                                 if (success)
-                                     success([SZNItem objectsFromXML:XML inLibrary:self.library]);
-                             }
-                             failure:failure];
-    }
+
+    [self.library.client
+     getPath:[[self path] stringByAppendingPathComponent:@"children"]
+     parameters:nil
+     success:^(id responseObject) {
+         if ([responseObject isKindOfClass:[NSArray class]] == NO) {
+             if (failure) {
+                 failure(nil);
+             }
+             return;
+         }
+
+         if (success) {
+             success([SZNItem objectsFromJSONArray:responseObject inLibrary:self.library]);
+         }
+     }
+     failure:failure];
 }
 
 - (NSURLRequest *)fileURLRequest {
@@ -303,7 +369,7 @@
                   failure:(void (^)(NSError *))failure {
     [self.library.client putPath:[self path]
                       parameters:newContent
-                         success:^(TBXML *XML) { if (success) success(self); }
+                         success:^(id responseObject) { if (success) success(self); }
                          failure:failure];
 }
 
@@ -316,7 +382,7 @@
     mutableParameters[@"itemType"]    = self.type;
     [self.library.client patchPath:[self path]
                         parameters:mutableParameters
-                           success:^(TBXML *XML) { if (success) success(self); }
+                           success:^(id responseObject) { if (success) success(self); }
                            failure:failure];
 }
 

@@ -24,20 +24,21 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 @property (strong, nonatomic) NSDictionary *displayableItemContent;
 @property (strong, nonatomic) NSArray *notes;
 
-- (IBAction)presentAttachment:(id)sender;
-
 @end
+
 
 @implementation SZNItemViewController
 
 - (void)setItem:(SZNItem *)item {
     _item = item;
-    self.displayableItemContent = [item.content dictionaryWithValuesForKeys:[[item.content keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
+
+    NSArray *keys = [[item.content keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
         return [obj isKindOfClass:[NSString class]] && ![obj isEqualToString:@""];
-    }] allObjects]];
-    
+    }] allObjects];
+    self.displayableItemContent = [item.content dictionaryWithValuesForKeys:keys];
+
     if ([item.type isEqualToString:@"attachment"]) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"View Attachment"
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"View Attachment", nil)
                                                                                   style:UIBarButtonItemStyleBordered
                                                                                  target:self
                                                                                  action:@selector(presentAttachment:)];
@@ -46,7 +47,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     if (![self.item.type isEqualToString:@"attachment"]) {
         [self.item fetchChildrenItemsSuccess:^(NSArray *children) {
             self.notes = children;
@@ -90,7 +91,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
         case SZNItemViewControllerNotesSection:
             return [self.notes count];
     }
-    
+
     return 0;
 }
 
@@ -99,7 +100,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryNone;
-    
+
     switch (indexPath.section) {
         case SZNItemViewControllerGeneralSection: {
             switch (indexPath.row) {
@@ -136,7 +137,7 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
             SZNItem *child = self.notes[indexPath.row];
             cell.textLabel.text = nil;
             if ([child.type isEqualToString:@"note"]) {
-                cell.detailTextLabel.text = @"📝 Note";
+                cell.detailTextLabel.text = NSLocalizedString(@"📝 Note", nil);
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             else {
@@ -154,8 +155,9 @@ typedef NS_ENUM(NSUInteger, SZNItemViewControllerSections) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == SZNItemViewControllerNotesSection) {
         SZNItem *child = self.notes[indexPath.row];
-        if ([child.type isEqualToString:@"note"])
+        if ([child.type isEqualToString:@"note"]) {
             [self performSegueWithIdentifier:@"SZNPushNoteSegue" sender:nil];
+        }
     }
 }
 

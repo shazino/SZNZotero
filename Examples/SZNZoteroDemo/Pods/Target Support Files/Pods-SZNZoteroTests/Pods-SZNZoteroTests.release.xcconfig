@@ -1,5 +1,8 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) ARC_ENABLED
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFOAuth1Client" "${PODS_ROOT}/Headers/Public/ISO8601DateFormatter" "${PODS_ROOT}/Headers/Public/SZNZotero" "${PODS_ROOT}/Headers/Public/TBXML"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/AFOAuth1Client" -isystem "${PODS_ROOT}/Headers/Public/ISO8601DateFormatter" -isystem "${PODS_ROOT}/Headers/Public/SZNZotero" -isystem "${PODS_ROOT}/Headers/Public/TBXML"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-SZNZoteroTests-AFNetworking" -l"Pods-SZNZoteroTests-AFOAuth1Client" -l"Pods-SZNZoteroTests-ISO8601DateFormatter" -l"Pods-SZNZoteroTests-SZNZotero" -l"Pods-SZNZoteroTests-TBXML" -l"z" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFOAuth1Client" "${PODS_ROOT}/Headers/Public/ISO8601DateFormatter" "${PODS_ROOT}/Headers/Public/SZNZotero"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking-iOS" "$PODS_CONFIGURATION_BUILD_DIR/AFOAuth1Client-iOS" "$PODS_CONFIGURATION_BUILD_DIR/ISO8601DateFormatter-iOS" "$PODS_CONFIGURATION_BUILD_DIR/SZNZotero-iOS"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/AFOAuth1Client" -isystem "${PODS_ROOT}/Headers/Public/ISO8601DateFormatter" -isystem "${PODS_ROOT}/Headers/Public/SZNZotero"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking-iOS" -l"AFOAuth1Client-iOS" -l"ISO8601DateFormatter-iOS" -l"SZNZotero-iOS" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

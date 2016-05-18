@@ -14,7 +14,7 @@
 
 @interface SZNItemTypesViewController ()
 
-@property (strong, nonatomic) NSArray *itemTypes;
+@property (nonatomic, strong, nullable) NSArray <SZNItemType *> *itemTypes;
 
 @end
 
@@ -23,8 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [SZNItem fetchTypesWithClient:self.library.client success:^(NSArray *types) {
+
+    [SZNItem fetchTypesWithClient:self.library.client success:^(NSArray <SZNItemType * > *types) {
         self.itemTypes = types;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
@@ -36,7 +36,7 @@
     if ([segue.destinationViewController isKindOfClass:[SZNItemFieldsViewController class]]) {
         SZNItemFieldsViewController *itemFieldsViewController = (SZNItemFieldsViewController *)segue.destinationViewController;
         itemFieldsViewController.library = self.library;
-        itemFieldsViewController.itemType = self.itemTypes[self.tableView.indexPathForSelectedRow.row][@"itemType"];
+        itemFieldsViewController.itemType = self.itemTypes[self.tableView.indexPathForSelectedRow.row];
     }
     else if ([segue.destinationViewController isKindOfClass:[SZNNewAttachmentViewController class]]) {
         SZNNewAttachmentViewController *newAttachmentViewController = (SZNNewAttachmentViewController *)segue.destinationViewController;
@@ -46,10 +46,6 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.itemTypes count];
 }
@@ -57,7 +53,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"SZNTypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = self.itemTypes[indexPath.row][@"localized"];
+    cell.textLabel.text = self.itemTypes[indexPath.row].localizedName;
     return cell;
 }
 

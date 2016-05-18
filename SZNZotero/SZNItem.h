@@ -21,10 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+@import Foundation;
 #import "SZNObject.h"
-#import "TBXML.h"
 
-@class SZNZoteroAPIClient, SZNAuthor, SZNLibrary;
+@class SZNZoteroAPIClient, SZNLibrary, SZNTag, SZNItemType, SZNItemField;
 
 /**
  The `SZNItemProtocol` protocol defines the properties an item representation.
@@ -34,14 +34,14 @@
 /**
  The item type.
  */
-@property (copy, nonatomic) NSString *type;
+@property (nonatomic, copy, nullable) NSString *type;
 
 @end
 
 
 @interface SZNItemDescriptor : NSObject
 
-+ (NSSet *)tagsForItem:(id<SZNItemProtocol>)item;
++ (nonnull NSSet <SZNTag *> *)tagsForItem:(nonnull id<SZNItemProtocol>)item;
 
 @end
 
@@ -61,10 +61,10 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)createItemInLibrary:(SZNLibrary *)library
-                    content:(NSDictionary *)content
-                    success:(void (^)(SZNItem *))success
-                    failure:(void (^)(NSError *))failure;
++ (void)createItemInLibrary:(nonnull SZNLibrary *)library
+                    content:(nonnull NSDictionary *)content
+                    success:(nullable void (^)(SZNItem * __nonnull newItem))success
+                    failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Fetches all item types.
@@ -75,9 +75,9 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchTypesWithClient:(SZNZoteroAPIClient *)client
-                     success:(void (^)(NSArray *))success
-                     failure:(void (^)(NSError *))failure;
++ (void)fetchTypesWithClient:(nonnull SZNZoteroAPIClient *)client
+                     success:(nullable void (^)(NSArray <SZNItemType *> * __nonnull))success
+                     failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Fetches all valid fields for an item type.
@@ -89,39 +89,39 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchValidFieldsWithClient:(SZNZoteroAPIClient *)client
-                           forType:(NSString *)itemType
-                           success:(void (^)(NSArray *))success
-                           failure:(void (^)(NSError *))failure;
++ (void)fetchValidFieldsWithClient:(nonnull SZNZoteroAPIClient *)client
+                       forItemType:(nonnull SZNItemType *)itemType
+                           success:(nullable void (^)(NSArray <SZNItemField *> * __nonnull validFields))success
+                           failure:(nullable void (^)(NSError * __nullable error))failure;
 
-+ (void)fetchAttachmentItemTemplateWithClient:(SZNZoteroAPIClient *)client
-                                     linkMode:(NSString *)linkMode
-                                      success:(void (^)(NSDictionary *))success
-                                      failure:(void (^)(NSError *))failure;
++ (void)fetchAttachmentItemTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
+                                     linkMode:(nonnull NSString *)linkMode
+                                      success:(nullable void (^)(NSDictionary * __nonnull responseObject))success
+                                      failure:(nullable void (^)(NSError * __nullable error))failure;
 
-+ (void)fetchTemplateWithClient:(SZNZoteroAPIClient *)client
-                        forType:(NSString *)itemType
-                        success:(void (^)(NSDictionary *))success
-                        failure:(void (^)(NSError *))failure;
++ (void)fetchTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
+                        forType:(nonnull NSString *)itemType
+                        success:(nullable void (^)(NSDictionary * __nonnull responseObject))success
+                        failure:(nullable void (^)(NSError * __nullable error))failure;
 
-- (void)fetchUploadAuthorizationForFileAtURL:(NSURL *)fileURL
-                                 contentType:(NSString *)contentType
-                                     success:(void (^)(NSDictionary *, NSString *))success
-                                     failure:(void (^)(NSError *))failure;
+- (void)fetchUploadAuthorizationForFileAtURL:(nonnull NSURL *)fileURL
+                                 contentType:(nonnull NSString *)contentType
+                                     success:(nullable void (^)(NSDictionary *__nonnull responseObject, NSString * __nonnull responseMD5))success
+                                     failure:(nullable void (^)(NSError * __nullable error))failure;
 
-- (void)uploadFileAtURL:(NSURL *)fileURL
-             withPrefix:(NSString *)prefix
-                 suffix:(NSString *)suffix
-                  toURL:(NSString *)toURL
-            contentType:(NSString *)contentType
-              uploadKey:(NSString *)uploadKey
-                success:(void (^)(void))success
-                failure:(void (^)(NSError *))failure;
+- (void)uploadFileAtURL:(nonnull NSURL *)fileURL
+             withPrefix:(nonnull NSString *)prefix
+                 suffix:(nonnull NSString *)suffix
+                  toURL:(nonnull NSString *)toURL
+            contentType:(nonnull NSString *)contentType
+              uploadKey:(nonnull NSString *)uploadKey
+                success:(nullable void (^)(void))success
+                failure:(nullable void (^)(NSError * __nullable error))failure;
 
-- (void)uploadFileAtURL:(NSURL *)fileURL
-            contentType:(NSString *)contentType
-                success:(void (^)(NSString *md5))success
-                failure:(void (^)(NSError *))failure;
+- (void)uploadFileAtURL:(nonnull NSURL *)fileURL
+            contentType:(nonnull NSString *)contentType
+                success:(nullable void (^)(NSString * __nonnull md5))success
+                failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Fetches all children items under this item.
@@ -131,8 +131,8 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchChildrenItemsSuccess:(void (^)(NSArray *))success
-                          failure:(void (^)(NSError *))failure;
+- (void)fetchChildrenItemsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                          failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Updates item with new content.
@@ -143,9 +143,9 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)updateWithContent:(NSDictionary *)newContent
-                  success:(void (^)(SZNItem *))success
-                  failure:(void (^)(NSError *))failure;
+- (void)updateWithContent:(nonnull NSDictionary *)newContent
+                  success:(nullable void (^)(SZNItem * __nonnull))success
+                  failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Updates item with partial new content.
@@ -156,9 +156,9 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)updateWithPartialContent:(NSDictionary *)partialContent
-                         success:(void (^)(SZNItem *))success
-                         failure:(void (^)(NSError *))failure;
+- (void)updateWithPartialContent:(nonnull NSDictionary *)partialContent
+                         success:(nullable void (^)(SZNItem * __nonnull))success
+                         failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Deletes item.
@@ -168,14 +168,15 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure;
+- (void)deleteSuccess:(nullable void (^)())success
+              failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  The file URL request for attachment items.
  
  @return A `NSURLRequest` object.
  */
-- (NSURLRequest *)fileURLRequest;
+- (nullable NSURLRequest *)fileURLRequest;
 
 @end
 

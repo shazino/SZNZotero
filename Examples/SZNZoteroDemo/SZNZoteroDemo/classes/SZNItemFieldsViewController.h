@@ -8,13 +8,14 @@
 
 @import UIKit;
 
-@class SZNLibrary;
+@class SZNLibrary, SZNItemType;
+
 
 @interface SZNItemFieldsViewController : UITableViewController
 
-@property (strong, nonatomic) SZNLibrary *library;
-@property (copy, nonatomic) NSString *itemType;
+@property (nonatomic, strong, nullable) SZNLibrary *library;
+@property (nonatomic, strong, nullable) SZNItemType *itemType;
 
-- (IBAction)done:(id)sender;
+- (IBAction)done:(nullable id)sender;
 
 @end

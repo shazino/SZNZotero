@@ -24,9 +24,8 @@
 #import "SZNZoteroAPIClient.h"
 #import "AFNetworking.h"
 #import "AFOAuth1Client.h"
-#import "TBXML.h"
 #import <CommonCrypto/CommonDigest.h>
-#import "GTMNSString+HTML.h"
+
 
 @interface AFOAuth1Client ()
 - (NSDictionary *)OAuthParameters;
@@ -35,40 +34,28 @@
 
 @interface SZNZoteroAPIClient ()
 
-@property (strong, nonatomic) id applicationLaunchObserver;
-@property (nonatomic, strong) NSString *URLScheme;
-
+@property (nonatomic, copy) NSString *URLScheme;
+@property (nonatomic, strong) id applicationLaunchObserver;
+@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
 @property (nonatomic, assign) BOOL isRetryingRequest;
-
-
-- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
-                    responseObject:(id)responseObject
-                           success:(void (^)(id))success
-                           failure:(void (^)(NSError *))failure;
-- (void)authorizeUsingOAuthWithRequestTokenPath:(NSString *)requestTokenPath
-                          userAuthorizationPath:(NSString *)userAuthorizationPath
-                                    callbackURL:(NSURL *)callbackURL
-                                accessTokenPath:(NSString *)accessTokenPath
-                                   accessMethod:(NSString *)accessMethod
-                                          scope:(NSString *)scope
-                       webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
-                                        success:(void (^)(AFOAuth1Token *accessToken))success
-                                        failure:(void (^)(NSError *error))failure;
 
 @end
 
 
 @implementation SZNZoteroAPIClient
 
-- (id)initWithKey:(NSString *)key
-           secret:(NSString *)secret
-        URLScheme:(NSString *)URLScheme {
+- (nonnull instancetype)initWithKey:(nonnull NSString *)key
+                             secret:(nonnull NSString *)secret
+                          URLScheme:(nonnull NSString *)URLScheme {
     self = [super initWithBaseURL:[NSURL URLWithString:@"https://api.zotero.org"] key:key secret:secret];
 
     if (self) {
         self.URLScheme = URLScheme;
         self.parameterEncoding = AFJSONParameterEncoding;
-        [self setDefaultHeader:@"Zotero-API-Version" value:@"2"];
+        [self setDefaultHeader:@"Zotero-API-Version" value:@"3"];
+
+        self.numberFormatter = [NSNumberFormatter new];
+        [self.numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     }
 
     return self;
@@ -111,14 +98,16 @@
                                             scope:@""
                          webAuthorizationCallback:webAuthorizationCallback
                                           success:^(AFOAuth1Token *accessToken) {
-                                              if (success)
+                                              if (success) {
                                                   success(accessToken);
+                                              }
                                           }
                                           failure:^(NSError *authError) {
                                               [self.operationQueue cancelAllOperations];
                                               self.accessToken = nil;
-                                              if (failure)
+                                              if (failure) {
                                                   failure(authError);
+                                              }
                                           }];
 }
 
@@ -176,81 +165,67 @@
     }];
 }
 
+- (NSString *)authorizationHeaderForMethod:(NSString *)method
+                                      path:(NSString *)path
+                                parameters:(NSDictionary *)parameters {
+    return [NSString stringWithFormat:@"Bearer %@", self.accessToken.key];
+}
+
 - (BOOL)isLoggedIn {
     return (self.accessToken != nil);
 }
 
-- (void)parseResponseWithOperation:(AFHTTPRequestOperation *)operation
-                    responseObject:(id)responseObject
-                           success:(void (^)(id))success
-                           failure:(void (^)(NSError *))failure {
-    // NSLog(@"%@", operation.responseString);
-
-    NSNumberFormatter *f = [NSNumberFormatter new];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    self.lastModifiedVersion = [f numberFromString:operation.response.allHeaderFields[@"Last-Modified-Version"]];
-
-    NSError *error;
-    id parsedObject;
-
-    if ([operation.response.MIMEType isEqualToString:@"application/json"]) {
-        parsedObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
-    }
-    else {
-        parsedObject = [TBXML tbxmlWithXMLData:responseObject error:&error];
-    }
-
-    BOOL isSuccessful = YES;
-
-    if (error) {
-        isSuccessful = NO;
-    }
-
-    if ([error.domain isEqualToString:D_TBXML_DOMAIN] && error.code == D_TBXML_DATA_NIL) {
-        isSuccessful = YES;
-    }
-
-    if (isSuccessful) {
-        if (success) {
-            success(parsedObject);
-        }
-    }
-    else {
-        if (failure) {
-            failure(error);
-        }
-    }
-}
-
-#pragma mark - AFHTTPClient
+#pragma mark -
 
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
                                 parameters:(NSDictionary *)parameters {
-    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
 
-    if (self.accessToken.secret) {
-        if ([method isEqualToString:@"GET"]) {
-            requestParameters[@"key"] = self.accessToken.secret;
-        }
-        else {
-            path = [path stringByAppendingFormat:@"%@key=%@", [path rangeOfString:@"?"].location == NSNotFound ? @"?" : @"&", self.accessToken.secret];
-        }
+    // POST requests body for the Zotero API must have an array as the root object
+    // (isn’t possible with the default AFNetworking implementation)
+    if (parameters != nil && [method isEqualToString:@"POST"] && [path hasSuffix:@"/file"] == NO) {
+        [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:@[parameters] options:(NSJSONWritingOptions)0 error:nil]];
     }
 
-    NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:requestParameters];
     return request;
 }
 
+- (void)parseResponseWithOperation:(nullable AFHTTPRequestOperation *)operation
+                    responseObject:(nullable id)responseObject
+                           success:(nonnull void (^)(id __nullable responseObject))success
+                           failure:(nonnull void (^)(NSError * __nullable error))failure {
+    // NSLog(@"%@", operation.responseString);
+
+    id lastModifiedVersion = operation.response.allHeaderFields[@"Last-Modified-Version"];
+    if (lastModifiedVersion) {
+        self.lastModifiedVersion = [self.numberFormatter numberFromString:lastModifiedVersion];
+    }
+
+    NSError *error;
+    NSData *responseData = responseObject;
+    id parsedObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+
+    const BOOL isSuccessful = (parsedObject != nil || responseData.length == 0);
+
+    if (isSuccessful) {
+        success(parsedObject);
+    }
+    else {
+        failure(error);
+    }
+}
+
+
 #pragma mark - Methods
 
-- (void)getPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(id))success
-        failure:(void (^)(NSError *))failure {
+- (void)getPath:(nonnull NSString *)path
+     parameters:(nullable NSDictionary *)parameters
+        success:(nonnull void (^)(id __nullable responseObject))success
+        failure:(nonnull void (^)(NSError * __nullable error))failure {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.isRetryingRequest = NO;
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
@@ -259,7 +234,7 @@
             self.isRetryingRequest = YES;
             [self getPath:path parameters:parameters success:success failure:failure];
         }
-        else if (failure) {
+        else {
             self.isRetryingRequest = NO;
             failure(error);
         }
@@ -268,13 +243,13 @@
     [operation start];
 }
 
-- (void)putPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(id))success
-        failure:(void (^)(NSError *))failure {
+- (void)putPath:(nonnull NSString *)path
+     parameters:(nullable NSDictionary *)parameters
+        success:(nonnull void (^)(id __nullable responseObject))success
+        failure:(nonnull void (^)(NSError * __nullable error))failure {
     NSURLRequest *request = [self requestWithMethod:@"PUT" path:path parameters:parameters];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.isRetryingRequest = NO;
         [self parseResponseWithOperation:operation responseObject:responseObject success:success failure:failure];
@@ -283,7 +258,7 @@
             self.isRetryingRequest = YES;
             [self putPath:path parameters:parameters success:success failure:failure];
         }
-        else if (failure) {
+        else {
             self.isRetryingRequest = NO;
             failure(error);
         }
@@ -292,11 +267,11 @@
     [operation start];
 }
 
-- (void)postPath:(NSString *)path
-      parameters:(NSDictionary *)parameters
-         headers:(NSDictionary *)headers
-         success:(void (^)(id))success
-         failure:(void (^)(NSError *))failure {
+- (void)postPath:(nonnull NSString *)path
+      parameters:(nullable NSDictionary *)parameters
+         headers:(nullable NSDictionary *)headers
+         success:(nonnull void (^)(id __nullable responseObject))success
+         failure:(nonnull void (^)(NSError * __nullable error))failure {
     NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
     [headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [request setValue:obj forHTTPHeaderField:key];
@@ -311,7 +286,7 @@
             self.isRetryingRequest = YES;
             [self postPath:path parameters:parameters headers:headers success:success failure:failure];
         }
-        else if (failure) {
+        else {
             self.isRetryingRequest = NO;
             failure(error);
         }
@@ -320,11 +295,12 @@
     [operation start];
 }
 
-- (void)patchPath:(NSString *)path
-       parameters:(NSDictionary *)parameters
-          success:(void (^)(id))success
-          failure:(void (^)(NSError *))failure {
+- (void)patchPath:(nonnull NSString *)path
+       parameters:(nullable NSDictionary *)parameters
+          success:(nonnull void (^)(id __nullable responseObject))success
+          failure:(nonnull void (^)(NSError * __nullable error))failure {
     NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.isRetryingRequest = NO;
@@ -334,7 +310,7 @@
             self.isRetryingRequest = YES;
             [self patchPath:path parameters:parameters success:success failure:failure];
         }
-        else if (failure) {
+        else {
             self.isRetryingRequest = NO;
             failure(error);
         }
@@ -343,10 +319,10 @@
     [operation start];
 }
 
-- (void)deletePath:(NSString *)path
-        parameters:(NSDictionary *)parameters
-           success:(void (^)())success
-           failure:(void (^)(NSError *))failure {
+- (void)deletePath:(nonnull NSString *)path
+        parameters:(nullable NSDictionary *)parameters
+           success:(nonnull void (^)())success
+           failure:(nonnull void (^)(NSError * __nullable error))failure {
     NSNumber *itemVersion = parameters[@"itemVersion"];
     NSMutableURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
     [request setValue:[itemVersion stringValue] forHTTPHeaderField:@"If-Unmodified-Since-Version"];
@@ -354,15 +330,13 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.isRetryingRequest = NO;
-        if (success) {
-            success();
-        }
+        success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (error.code == NSURLErrorNetworkConnectionLost && !self.isRetryingRequest) {
             self.isRetryingRequest = YES;
             [self deletePath:path parameters:parameters success:success failure:failure];
         }
-        else if (failure) {
+        else {
             self.isRetryingRequest = NO;
             failure(error);
         }
@@ -434,33 +408,13 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 @end
 
 
-@implementation TBXML (TextForChild)
-
-+ (NSString *)textForChildElementNamed:(NSString *)childElementName
-                         parentElement:(TBXMLElement *)parentElement
-                               escaped:(BOOL)escaped {
-    if (!parentElement) {
-        return nil;
-    }
-
-    TBXMLElement *element = [TBXML childElementNamed:childElementName parentElement:parentElement];
-    if (!element) {
-        return nil;
-    }
-
-    NSString *text = [TBXML textForElement:element];
-    return (escaped) ? [text gtm_stringByUnescapingFromHTML] : text;
-}
-
-@end
-
-
 @implementation NSData (SZNMD5)
 
-- (NSString*)MD5 {
+- (nonnull NSString *)MD5 {
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     CC_MD5(self.bytes, (CC_LONG)self.length, md5Buffer);
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+
     for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [output appendFormat:@"%02x", md5Buffer[i]];
     }
@@ -473,20 +427,23 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 @implementation NSString (SZNURLEncoding)
 
-- (NSString *)szn_URLEncodedString {
-    NSMutableString * output = [NSMutableString string];
-    const unsigned char * source = (const unsigned char *)[self UTF8String];
+- (nonnull NSString *)szn_URLEncodedString {
+    NSMutableString *output = [NSMutableString string];
+    const unsigned char *source = (const unsigned char *)[self UTF8String];
     NSUInteger sourceLen = strlen((const char *)source);
+
     for (int i = 0; i < sourceLen; ++i) {
         const unsigned char thisChar = source[i];
         if (thisChar == ' '){
             [output appendString:@"+"];
-        } else if (thisChar == '.' || thisChar == '-' || thisChar == '_' || thisChar == '~' ||
+        }
+        else if (thisChar == '.' || thisChar == '-' || thisChar == '_' || thisChar == '~' ||
                    (thisChar >= 'a' && thisChar <= 'z') ||
                    (thisChar >= 'A' && thisChar <= 'Z') ||
                    (thisChar >= '0' && thisChar <= '9')) {
             [output appendFormat:@"%c", thisChar];
-        } else {
+        }
+        else {
             [output appendFormat:@"%%%02X", thisChar];
         }
     }

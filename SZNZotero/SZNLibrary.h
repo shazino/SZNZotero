@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+@import Foundation;
 #import "SZNObject.h"
 
 @class SZNZoteroAPIClient;
@@ -31,26 +32,6 @@
  */
 @protocol SZNLibraryProtocol <NSObject>
 
-/**
- The library identifier.
- */
-@property (copy, nonatomic) NSString *identifier;
-
-/**
- The library version.
- */
-@property (strong, nonatomic) NSNumber *version;
-
-/**
- The library last items version.
- */
-@property (strong, nonatomic) NSNumber *lastItemsVersion;
-
-/**
- The library last collections version.
- */
-@property (strong, nonatomic) NSNumber *lastCollectionsVersion;
-
 @end
 
 
@@ -59,9 +40,9 @@
  */
 @interface SZNLibrary : SZNObject <SZNLibraryProtocol>
 
-@property (strong, nonatomic) SZNZoteroAPIClient *client;
+@property (nonatomic, strong, nonnull) SZNZoteroAPIClient *client;
 
-@property (strong, nonatomic) void (^progressBlock)(NSUInteger itemsRead, NSUInteger totalItemsRead, NSUInteger totalItemsExpectedToRead);
+@property (nonatomic, strong, nullable) void (^progressBlock)(NSUInteger itemsRead, NSUInteger totalItemsRead, NSUInteger totalItemsExpectedToRead);
 
 /**
  Creates a `SZNLibrary` and initializes its identifier and client properties.
@@ -71,8 +52,8 @@
  
  @return The newly-initialized library.
  */
-+ (SZNLibrary *)libraryWithIdentifier:(NSString *)identifier
-                               client:(SZNZoteroAPIClient *)client;
+- (nonnull instancetype)initWithIdentifier:(nonnull NSString *)identifier
+                                    client:(nonnull SZNZoteroAPIClient *)client;
 
 /**
  Fetches resources versions.
@@ -84,10 +65,10 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchObjectsVersionsForResource:(Class <SZNResource>)resource
-                   newerThanLastVersion:(NSNumber *)lastVersion
-                                success:(void (^)(NSDictionary *))success
-                                failure:(void (^)(NSError *))failure;
+- (void)fetchObjectsVersionsForResource:(nonnull Class <SZNResource>)resource
+                   newerThanLastVersion:(nullable NSNumber *)lastVersion
+                                success:(nullable void (^)(NSDictionary * __nonnull))success
+                                failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Fetches a batch of resources.
@@ -101,12 +82,12 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchObjectsForResource:(Class <SZNResource>)resource
-                           path:(NSString *)path
-                           keys:(NSArray *)objectsKeys
-                      specifier:(NSString *)specifier
-                        success:(void (^)(NSArray *))success
-                        failure:(void (^)(NSError *))failure;
+- (void)fetchObjectsForResource:(nonnull Class <SZNResource>)resource
+                           path:(nullable NSString *)path
+                           keys:(nullable NSArray <NSString *> *)objectsKeys
+                      specifier:(nullable NSString *)specifier
+                        success:(nullable void (^)(NSArray * __nonnull))success
+                        failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Fetches deleted data.
@@ -116,8 +97,8 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchDeletedDataWithSuccess:(void (^)(NSArray *deletedItemsKeys, NSArray *deletedCollectionsKeys))success
-                            failure:(void (^)(NSError *))failure;
+- (void)fetchDeletedDataWithSuccess:(nullable void (^)(NSArray * __nonnull deletedItemsKeys, NSArray * __nonnull deletedCollectionsKeys))success
+                            failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Updates an item.
@@ -128,9 +109,9 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)updateItem:(id<SZNItemProtocol>)updatedItem
-           success:(void (^)(id<SZNItemProtocol>))success
-           failure:(void (^)(NSError *))failure;
+- (void)updateItem:(nonnull id <SZNItemProtocol>)updatedItem
+           success:(nullable void (^)(id <SZNItemProtocol> __nonnull))success
+           failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Updates a collection.
@@ -141,9 +122,9 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)updateCollection:(id<SZNCollectionProtocol>)updatedCollection
-                 success:(void (^)(id<SZNCollectionProtocol>))success
-                 failure:(void (^)(NSError *))failure;
+- (void)updateCollection:(nonnull id <SZNCollectionProtocol>)updatedCollection
+                 success:(nullable void (^)(id <SZNCollectionProtocol> __nonnull))success
+                 failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Deletes a batch of resources.
@@ -155,17 +136,17 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)deleteObjectsForResource:(Class <SZNResource>)resource
-                            keys:(NSArray *)objectsKeys
-                         success:(void (^)())success
-                         failure:(void (^)(NSError *))failure;
+- (void)deleteObjectsForResource:(nonnull Class <SZNResource>)resource
+                            keys:(nonnull NSArray <NSString *> *)objectsKeys
+                         success:(nullable void (^)())success
+                         failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  The path prefix for resources in the library.
  
  @return The path prefix.
  */
-- (NSString *)pathPrefix;
+- (nonnull NSString *)pathPrefix;
 
 /**
  The path for a resource.
@@ -174,6 +155,6 @@
  
  @return The resource path.
  */
-- (NSString *)pathForResource:(Class <SZNResource>)resource;
+- (nonnull NSString *)pathForResource:(nonnull Class <SZNResource>)resource;
 
 @end

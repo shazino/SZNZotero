@@ -21,8 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+@import Foundation;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+@import UIKit;
+#endif
 #import "AFOAuth1Client.h"
-#import "TBXML.h"
 
 typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
     SZNZoteroAccessNone,
@@ -38,32 +41,32 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
 /**
  The Altmetric identifier for the current user.
  */
-@property (nonatomic, copy) NSString *userIdentifier;
+@property (nonatomic, copy, nullable) NSString *userIdentifier;
 
 /**
  The Altmetric username for the current user.
  */
-@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy, nullable) NSString *username;
 
 /**
  Whether the client is currently logged in.
  */
 @property (readonly, nonatomic, getter = isLoggedIn) BOOL loggedIn;
 
-@property (nonatomic, strong) NSNumber *lastModifiedVersion;
+@property (nonatomic, copy, nullable) NSNumber *lastModifiedVersion;
 
 /**
  Initializes an `SZNZoteroAPIClient` object with the specified API key, secret, and URL scheme.
- 
+
  @param key The API key.
  @param secret The API secret.
  @param URLScheme The URL scheme.
- 
- @return The newly-initialized client
+
+ @return The newly-initialized client.
  */
-- (id)initWithKey:(NSString *)key
-           secret:(NSString *)secret
-        URLScheme:(NSString *)URLScheme;
+- (nonnull instancetype)initWithKey:(nonnull NSString *)key
+                             secret:(nonnull NSString *)secret
+                          URLScheme:(nonnull NSString *)URLScheme;
 
 /**
  Authenticates the client with default access level parameters.
@@ -73,8 +76,8 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param failure A block object to be executed when the authentication operations finish unsuccessfully, or that finish successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)authenticateSuccess:(void (^)(AFOAuth1Token *))success
-                    failure:(void (^)(NSError *))failure;
+- (void)authenticateSuccess:(nonnull void (^)(AFOAuth1Token * __nullable token))success
+                    failure:(nonnull void (^)(NSError * __nullable error))failure;
 
 /**
  Authenticates the client with the specified access level parameters.
@@ -94,9 +97,9 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
                           notesAccess:(BOOL)notesAccess
                           writeAccess:(BOOL)writeAccess
                      groupAccessLevel:(SZNZoteroAccessLevel)groupAccessLevel
-             webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
-                              success:(void (^)(AFOAuth1Token *))success
-                              failure:(void (^)(NSError *))failure;
+             webAuthorizationCallback:(nullable void (^)(NSURL * __nonnull authenticationURL))webAuthorizationCallback
+                              success:(nonnull void (^)(AFOAuth1Token * __nullable token))success
+                              failure:(nonnull void (^)(NSError * __nullable error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.
@@ -108,10 +111,10 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)getPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(id))success
-        failure:(void (^)(NSError *))failure;
+- (void)getPath:(nonnull NSString *)path
+     parameters:(nullable NSDictionary *)parameters
+        success:(nonnull void (^)(id __nullable responseObject))success
+        failure:(nonnull void (^)(NSError * __nullable error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `PUT` request, and enqueues it to the HTTP client’s operation queue.
@@ -123,10 +126,10 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)putPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(id))success
-        failure:(void (^)(NSError *))failure;
+- (void)putPath:(nonnull NSString *)path
+     parameters:(nullable NSDictionary *)parameters
+        success:(nonnull void (^)(id __nullable responseObject))success
+        failure:(nonnull void (^)(NSError * __nullable error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `POST` request, and enqueues it to the HTTP client’s operation queue.
@@ -139,11 +142,11 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)postPath:(NSString *)path
-      parameters:(NSDictionary *)parameters
-         headers:(NSDictionary *)headers
-         success:(void (^)(id))success
-         failure:(void (^)(NSError *))failure;
+- (void)postPath:(nonnull NSString *)path
+      parameters:(nullable NSDictionary *)parameters
+         headers:(nullable NSDictionary *)headers
+         success:(nonnull void (^)(id __nullable responseObject))success
+         failure:(nonnull void (^)(NSError * __nullable error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `PATCH` request, and enqueues it to the HTTP client’s operation queue.
@@ -155,10 +158,10 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)patchPath:(NSString *)path
-       parameters:(NSDictionary *)parameters
-          success:(void (^)(id))success
-          failure:(void (^)(NSError *))failure;
+- (void)patchPath:(nonnull NSString *)path
+       parameters:(nullable NSDictionary *)parameters
+          success:(nonnull void (^)(id __nullable responseObject))success
+          failure:(nonnull void (^)(NSError * __nullable error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `DELETE` request, and enqueues it to the HTTP client’s operation queue.
@@ -170,34 +173,25 @@ typedef NS_ENUM(NSUInteger, SZNZoteroAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)deletePath:(NSString *)path
-        parameters:(NSDictionary *)parameters
-           success:(void (^)())success
-           failure:(void (^)(NSError *))failure;
+- (void)deletePath:(nonnull NSString *)path
+        parameters:(nullable NSDictionary *)parameters
+           success:(nonnull void (^)())success
+           failure:(nonnull void (^)(NSError * __nullable error))failure;
 
 - (void)resetObserver;
 
 @end
 
 
-@interface TBXML (TextForChild)
-
-+ (NSString *)textForChildElementNamed:(NSString *)childElementName
-                         parentElement:(TBXMLElement *)parentElement
-                               escaped:(BOOL)escaped;
-
-@end
-
-
 @interface NSData(SZNMD5)
 
-- (NSString*)MD5;
+- (nonnull NSString *)MD5;
 
 @end
 
 
 @interface NSString (SZNURLEncoding)
 
-- (NSString *)szn_URLEncodedString;
+- (nonnull NSString *)szn_URLEncodedString;
 
 @end

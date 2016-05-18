@@ -28,12 +28,26 @@
 
 @implementation SZNTag
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library {
-    SZNTag *tag = (SZNTag *)[super objectFromXMLElement:XMLElement inLibrary:library];
-    tag.type = [tag.content[@"type"] integerValue];
-    tag.name = tag.content[@"tag"];
-    return tag;
+- (nonnull instancetype)initWithName:(nonnull NSString *)name type:(SZNTagType)type {
+    self = [super init];
+
+    if (self) {
+        self.name = name;
+        self.type = type;
+    }
+
+    return self;
+}
+
+- (nullable instancetype)initWithJSONDictionary:(nonnull NSDictionary *)JSONDictionary inLibrary:(nonnull SZNLibrary *)library {
+    self = [super initWithJSONDictionary:JSONDictionary inLibrary:library];
+
+    if (self) {
+        self.type = [JSONDictionary[@"meta"][@"type"] integerValue];
+        self.name = JSONDictionary[@"tag"];
+    }
+
+    return self;
 }
 
 + (NSString *)pathComponent {

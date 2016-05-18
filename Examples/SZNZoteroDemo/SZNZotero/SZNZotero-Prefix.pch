@@ -1,0 +1,21 @@
+//
+//  SZNZotero-Prefix.pch
+//  SZNZoteroDemo
+//
+//  Created by Vincent Tourraine on 5/13/16.
+//  Copyright © 2016 shazino. All rights reserved.
+//
+
+#ifndef SZNZotero_Prefix_pch
+#define SZNZotero_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+@import UIKit;
+@import Foundation;
+
+@import MobileCoreServices;
+@import SystemConfiguration;
+
+#endif /* SZNZotero_Prefix_pch */

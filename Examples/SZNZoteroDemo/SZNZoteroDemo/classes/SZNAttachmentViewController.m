@@ -9,24 +9,24 @@
 #import "SZNAttachmentViewController.h"
 #import <AFNetworking.h>
 
-@interface SZNAttachmentViewController () <UIWebViewDelegate>
-
-@end
 
 @implementation SZNAttachmentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.webView.delegate = self;
-    [self.webView loadRequest:self.fileURLRequest];
+
+    NSURLRequest *URLRequest = self.fileURLRequest;
+    [self.webView loadRequest:URLRequest];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    if (self.webView.isLoading)
+
+    if (self.webView.isLoading) {
         [self.webView stopLoading];
+    }
 }
 
 #pragma mark - Web view delegate

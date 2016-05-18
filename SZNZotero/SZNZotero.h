@@ -22,16 +22,18 @@
 // THE SOFTWARE.
 
 #ifndef SZNZoteroDemo_SZNZotero_h
-    #define SZNZoteroDemo_SZNZotero_h
+#define SZNZoteroDemo_SZNZotero_h
 
-    #import "SZNZoteroAPIClient.h"
+#import "SZNZoteroAPIClient.h"
 
-    #import "SZNAuthor.h"
-    #import "SZNCollection.h"
-    #import "SZNGroup.h"
-    #import "SZNItem.h"
-    #import "SZNLibrary.h"
-    #import "SZNObject.h"
-    #import "SZNTag.h"
-    #import "SZNUser.h"
+#import "SZNCollection.h"
+#import "SZNGroup.h"
+#import "SZNItem.h"
+#import "SZNItemType.h"
+#import "SZNItemField.h"
+#import "SZNLibrary.h"
+#import "SZNObject.h"
+#import "SZNTag.h"
+#import "SZNUser.h"
+
 #endif

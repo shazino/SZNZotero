@@ -8,9 +8,10 @@
 
 @import UIKit;
 
-@interface SZNAttachmentViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) NSURLRequest *fileURLRequest;
+@interface SZNAttachmentViewController : UIViewController <UIWebViewDelegate>
+
+@property (nonatomic, weak, nullable) IBOutlet UIWebView *webView;
+@property (nonatomic, strong, nullable) NSURLRequest *fileURLRequest;
 
 @end

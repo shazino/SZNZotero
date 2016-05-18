@@ -11,14 +11,13 @@ Pod::Spec.new do |s|
   s.source_files     = "SZNZotero/*"
   s.requires_arc     = true
 
-  s.ios.deployment_target = "6.0"
+  s.ios.deployment_target = "7.0"
   s.ios.frameworks        = "Security"
 
   s.osx.deployment_target = "10.7"
 
   s.dependency "AFOAuth1Client", "~> 1.0.0"
-  s.dependency "TBXML", "~> 1.5"
-  s.dependency "ISO8601DateFormatter", "~> 0.7"
+  s.dependency "ISO8601DateFormatter", "~> 0.8"
 
   s.prefix_header_contents = <<-EOS
   #import <Availability.h>

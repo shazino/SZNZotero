@@ -24,24 +24,17 @@
 #import "SZNGroup.h"
 #import "SZNZoteroAPIClient.h"
 
-#import "TBXML.h"
-
 
 @implementation SZNGroup
 
-+ (NSString *)pathComponent {
+#pragma mark - Path
+
++ (nonnull NSString *)pathComponent {
     return @"groups";
 }
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library {
-    SZNGroup *group = (SZNGroup *)[super objectFromXMLElement:XMLElement inLibrary:library];
-    group.identifier = [TBXML textForChildElementNamed:@"zapi:groupID" parentElement:XMLElement escaped:NO];
-    return group;
-}
-
-- (NSString *)pathPrefix {
-    return [@"/groups" stringByAppendingPathComponent:self.identifier];
+- (nonnull  NSString *)pathPrefix {
+    return [@"/groups" stringByAppendingPathComponent:self.key];
 }
 
 @end

@@ -20,16 +20,17 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
+
     NSString *clientKey    = @"###";
     NSString *clientSecret = @"###";
-    
+
     SZNZoteroAPIClient *client = [[SZNZoteroAPIClient alloc] initWithKey:clientKey secret:clientSecret URLScheme:SZNURLScheme];
-    
+
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     SZNLibrariesViewController *librariesViewController = (SZNLibrariesViewController *)navigationController.topViewController;
-    librariesViewController.user = (SZNUser *)[SZNUser libraryWithIdentifier:client.userIdentifier client:client];
-    
+    NSString *userIdentifier = client.userIdentifier;
+    librariesViewController.user = (SZNUser *)[[SZNUser alloc] initWithIdentifier:userIdentifier client:client];
+
     return YES;
 }
 
@@ -43,7 +44,7 @@ NSString * const SZNURLScheme = @"sznzoterodemo";
                                                                    userInfo:@{kAFApplicationLaunchOptionsURLKey: url}];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
-    
+
     return YES;
 }
 

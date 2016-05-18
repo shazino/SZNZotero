@@ -12,7 +12,8 @@
 
 @interface SZNItemFieldsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
-@property (strong, nonatomic) NSMutableArray *itemFields;
+@property (nonatomic, strong, nullable) NSArray <SZNItemField *> *itemFields;
+@property (nonatomic, strong, nullable) NSMutableArray <NSString *> *itemValues;
 
 @end
 
@@ -21,12 +22,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    [SZNItem fetchValidFieldsWithClient:self.library.client forType:self.itemType success:^(NSArray *fields) {
+
+    SZNItemType *itemType = self.itemType;
+    SZNZoteroAPIClient *client = self.library.client;
+
+    [SZNItem fetchValidFieldsWithClient:client forItemType:itemType success:^(NSArray <SZNItemField *> *fields) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
-        self.itemFields = [fields mutableCopy];
+        self.itemFields = fields;
+        self.itemValues = [NSMutableArray arrayWithCapacity:self.itemFields.count];
+        for (NSUInteger index = 0; index < self.itemFields.count; index++) {
+            [self.itemValues addObject:@""];
+        }
+
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
@@ -34,10 +43,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.itemFields count];
@@ -50,15 +55,19 @@
     UILabel *cellLabel;
     UITextField *cellTextField;
     for (UIView *subview in cell.contentView.subviews) {
-        if ([subview isKindOfClass:[UILabel class]])
+        if ([subview isKindOfClass:[UILabel class]]) {
             cellLabel = (UILabel *)subview;
-        if ([subview isKindOfClass:[UITextField class]])
+        }
+
+        if ([subview isKindOfClass:[UITextField class]]) {
             cellTextField = (UITextField *)subview;
+        }
     }
-    
-    cellLabel.text = self.itemFields[indexPath.row][@"localized"];
-    cellTextField.text = self.itemFields[indexPath.row][@"value"];
-    
+
+    cellLabel.text = self.itemFields[indexPath.row].localizedName;
+    NSString *value = self.itemValues[indexPath.row];
+    cellTextField.text = value;
+
     return cell;
 }
 
@@ -71,9 +80,8 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(id)textField.superview.superview];
-    NSMutableDictionary *field = [NSMutableDictionary dictionaryWithDictionary:self.itemFields[indexPath.row]];
-    field[@"value"] = textField.text;
-    [self.itemFields replaceObjectAtIndex:indexPath.row withObject:field];
+    NSString *newValue = textField.text ?: @"";
+    [self.itemValues replaceObjectAtIndex:indexPath.row withObject:newValue];
 }
 
 #pragma mark - Alert view delegate
@@ -86,19 +94,23 @@
 
 - (IBAction)done:(id)sender {
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    
+
     NSMutableDictionary *content = [NSMutableDictionary dictionary];
-    content[@"itemType"] = self.itemType;
-    for (NSDictionary *field in self.itemFields) {
-        if (field[@"value"])
-            content[field[@"field"]] = field[@"value"];
-    }
-    
-    [SZNItem createItemInLibrary:self.library content:content success:^(id newItem) {
-        [[[UIAlertView alloc] initWithTitle:@"New Item Created"
+    content[@"itemType"] = self.itemType.type;
+
+    [self.itemFields enumerateObjectsUsingBlock:^(SZNItemField * _Nonnull field, NSUInteger index, BOOL * _Nonnull stop) {
+        NSString *value = self.itemValues[index];
+        if ([value isEqualToString:@""] == NO) {
+            content[field.field] = value;
+        }
+    }];
+
+    SZNLibrary *library = self.library;
+    [SZNItem createItemInLibrary:library content:content success:^(id newItem) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New Item Created", nil)
                                     message:nil
                                    delegate:self
-                          cancelButtonTitle:@"OK"
+                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
                           otherButtonTitles:nil] show];
     } failure:^(NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);

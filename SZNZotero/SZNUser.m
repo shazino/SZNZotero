@@ -24,13 +24,13 @@
 #import "SZNUser.h"
 
 #import "AFNetworking.h"
-#import "TBXML.h"
 #import "SZNZoteroAPIClient.h"
+
 
 @implementation SZNUser
 
 - (NSString *)pathPrefix {
-    return [@"/users" stringByAppendingPathComponent:self.identifier];
+    return [@"/users" stringByAppendingPathComponent:self.key];
 }
 
 @end

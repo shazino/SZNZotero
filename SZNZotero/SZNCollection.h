@@ -21,8 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+@import Foundation;
 #import "SZNObject.h"
-#import "TBXML.h"
+
 
 @class SZNZoteroAPIClient, SZNLibrary;
 
@@ -37,11 +38,6 @@
 @interface SZNCollection : SZNObject <SZNCollectionProtocol>
 
 /**
- The collection identifier.
- */
-@property (copy, nonatomic) NSString *identifier;
-
-/**
  Creates a new collection.
  
  @param library The collection’s library.
@@ -52,11 +48,11 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)createCollectionInLibrary:(SZNLibrary *)library
-                             name:(NSString *)name
-                 parentCollection:(SZNCollection *)parentCollection
-                          success:(void (^)(SZNCollection *))success
-                          failure:(void (^)(NSError *))failure;
++ (void)createCollectionInLibrary:(nonnull SZNLibrary *)library
+                             name:(nonnull NSString *)name
+                 parentCollection:(nullable SZNCollection *)parentCollection
+                          success:(nullable void (^)(SZNCollection * __nonnull))success
+                          failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Fetches all items in the collection.
@@ -67,8 +63,8 @@
   or that finishes successfully, but encountered an error while parsing the response data.
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchItemsSuccess:(void (^)(NSArray *))success
-                  failure:(void (^)(NSError *))failure;
+- (void)fetchItemsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                  failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Fetches all top-level items in the collection.
@@ -79,8 +75,8 @@
   or that finishes successfully, but encountered an error while parsing the response data.
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchTopItemsSuccess:(void (^)(NSArray *))success
-                     failure:(void (^)(NSError *))failure;
+- (void)fetchTopItemsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                     failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Fetches all subcollections within the collection.
@@ -91,8 +87,8 @@
   or that finishes successfully, but encountered an error while parsing the response data.
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchSubcollectionsSuccess:(void (^)(NSArray *))success
-                           failure:(void (^)(NSError *))failure;
+- (void)fetchSubcollectionsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                           failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Fetches all tags within the collection.
@@ -103,7 +99,7 @@
   or that finishes successfully, but encountered an error while parsing the response data.
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchTagsSuccess:(void (^)(NSArray *))success
-                 failure:(void (^)(NSError *))failure;
+- (void)fetchTagsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                 failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

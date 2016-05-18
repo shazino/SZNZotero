@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GI3-vi-SrQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GI3-vi-SrQ">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Items View Controller - Library-->
+        <!--Library-->
         <scene sceneID="Mko-kD-d3U">
             <objects>
                 <tableViewController storyboardIdentifier="SZNItemsViewController" id="xlx-rw-urG" customClass="SZNItemsViewController" sceneMemberID="viewController">
@@ -21,17 +21,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Item cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GMl-Ye-XUc">
-                                            <rect key="frame" x="15" y="2" width="71" height="22"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Item cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GMl-Ye-XUc">
+                                            <rect key="frame" x="15" y="5" width="61" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="72s-JU-wq8">
-                                            <rect key="frame" x="15" y="24" width="37" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="72s-JU-wq8">
+                                            <rect key="frame" x="15" y="25" width="31" height="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="1405" y="117"/>
         </scene>
-        <!--Item Types View Controller - Item Types-->
+        <!--Item Types-->
         <scene sceneID="Xrg-0E-Jsc">
             <objects>
                 <tableViewController id="nc2-8A-VmN" customClass="SZNItemTypesViewController" sceneMemberID="viewController">
@@ -74,11 +74,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U3n-cD-jvu">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U3n-cD-jvu">
                                             <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="2390" y="-637"/>
         </scene>
-        <!--New Attachment View Controller - New Attachment-->
+        <!--New Attachment-->
         <scene sceneID="gKB-aE-cb7">
             <objects>
                 <tableViewController id="Wjm-q1-leN" customClass="SZNNewAttachmentViewController" sceneMemberID="viewController">
@@ -133,7 +133,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="2qN-b2-Lf9"/>
                                                         <constraint firstAttribute="width" constant="75" id="qgi-4R-jUg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -172,7 +172,7 @@
                                                         <constraint firstAttribute="width" constant="75" id="46R-XD-SB8"/>
                                                         <constraint firstAttribute="height" constant="21" id="gBV-FT-M9f"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -222,7 +222,7 @@
             </objects>
             <point key="canvasLocation" x="2830" y="-1274"/>
         </scene>
-        <!--Item Fields View Controller - Item Fields-->
+        <!--Item Fields-->
         <scene sceneID="cZO-BQ-axi">
             <objects>
                 <tableViewController id="N45-Rx-UDm" customClass="SZNItemFieldsViewController" sceneMemberID="viewController">
@@ -232,7 +232,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SZNFieldCell" id="tr2-Ih-rmq">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tr2-Ih-rmq" id="0Y3-0Z-UUb">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -244,7 +244,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="Qnf-Qg-yTH"/>
                                                 <constraint firstAttribute="width" constant="75" id="XA2-DB-hn7"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -288,7 +288,7 @@
             </objects>
             <point key="canvasLocation" x="2830" y="-637"/>
         </scene>
-        <!--Attachment View Controller - Attachment-->
+        <!--Attachment-->
         <scene sceneID="vtP-vj-hWi">
             <objects>
                 <viewController id="TPV-VT-yNN" customClass="SZNAttachmentViewController" sceneMemberID="viewController">
@@ -322,7 +322,7 @@
             </objects>
             <point key="canvasLocation" x="2773" y="348"/>
         </scene>
-        <!--Item View Controller - Item-->
+        <!--Item-->
         <scene sceneID="UJP-Gn-aUA">
             <objects>
                 <tableViewController id="WtG-73-6x0" customClass="SZNItemViewController" sceneMemberID="viewController">
@@ -332,25 +332,25 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SZNDetailCell" textLabel="G8C-HC-ZeI" detailTextLabel="alw-DW-ago" style="IBUITableViewCellStyleValue2" id="hWH-xD-kUp">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWH-xD-kUp" id="Nlh-PK-tC0">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G8C-HC-ZeI">
-                                            <rect key="frame" x="15" y="16" width="91" height="15"/>
+                                            <rect key="frame" x="15" y="14" width="91" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                            <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="alw-DW-ago">
-                                            <rect key="frame" x="112" y="13" width="41" height="18"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="alw-DW-ago">
+                                            <rect key="frame" x="112" y="14" width="33" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -372,7 +372,7 @@
             </objects>
             <point key="canvasLocation" x="1897" y="117"/>
         </scene>
-        <!--Note View Controller - Note-->
+        <!--Note-->
         <scene sceneID="8tN-H3-9OI">
             <objects>
                 <viewController id="Ms1-iO-B3k" customClass="SZNNoteViewController" sceneMemberID="viewController">
@@ -412,7 +412,7 @@
             </objects>
             <point key="canvasLocation" x="2390" y="117"/>
         </scene>
-        <!--Libraries View Controller - Libraries-->
+        <!--Libraries-->
         <scene sceneID="2en-6D-coe">
             <objects>
                 <tableViewController id="4dN-0r-giD" customClass="SZNLibrariesViewController" sceneMemberID="viewController">
@@ -422,17 +422,17 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SZNLibraryCell" textLabel="vYo-zE-2Ni" style="IBUITableViewCellStyleDefault" id="jxs-aa-OAl">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jxs-aa-OAl" id="831-hj-Fcc">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vYo-zE-2Ni">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vYo-zE-2Ni">
                                             <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -489,10 +489,10 @@
             <point key="canvasLocation" x="1897" y="-637"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.73333334922790527" green="0.15294118225574493" blue="0.16862745583057404" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" red="0.73333334922790527" green="0.15294118225574493" blue="0.16862745583057404" alpha="1" colorSpace="deviceRGB"/>
 </document>

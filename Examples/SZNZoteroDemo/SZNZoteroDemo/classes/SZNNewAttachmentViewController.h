@@ -10,13 +10,14 @@
 
 @class SZNLibrary;
 
-@interface SZNNewAttachmentViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
-@property (weak, nonatomic) IBOutlet UITextField *contentTextField;
+@interface SZNNewAttachmentViewController : UITableViewController <UITextFieldDelegate>
 
-@property (strong, nonatomic) SZNLibrary *library;
+@property (nonatomic, weak, nullable) IBOutlet UITextField *titleTextField;
+@property (nonatomic, weak, nullable) IBOutlet UITextField *contentTextField;
 
-- (IBAction)uploadAttachment:(id)sender;
+@property (nonatomic, strong, nullable) SZNLibrary *library;
+
+- (IBAction)uploadAttachment:(nullable id)sender;
 
 @end

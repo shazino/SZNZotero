@@ -21,8 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import "TBXML.h"
+@import Foundation;
+
 
 @class SZNObject, SZNLibrary;
 
@@ -34,33 +34,32 @@
 /**
  The path component for the resource.
  */
-+ (NSString *)pathComponent;
++ (nonnull NSString *)pathComponent;
 
 /**
  The key parameter for the resource.
  */
-+ (NSString *)keyParameter;
++ (nonnull NSString *)keyParameter;
 
 /**
- Parses objects from an API XML response.
- 
- @param XML A `TBXML` representation of the API response.
+ Parses objects from an API JSON response array.
+
+ @param JSONArray A representation of the JSON API response.
  @param library The `SZNLibrary` where the objects belong.
- 
+
  @return An array of newly-created objects.
  */
-+ (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library;
++ (nullable NSArray *)objectsFromJSONArray:(nullable NSArray *)JSONArray inLibrary:(nonnull SZNLibrary *)library;
 
 /**
- Parses an object from an API XML element.
- 
- @param XMLElement A `TBXMLElement` representation of the API response.
+ Parses an object from an API JSON response dictionary.
+
+ @param JSONDictionary A representation of the JSON API response.
  @param library The `SZNLibrary` where the objects belong.
- 
+
  @return A `SZNObject` object.
  */
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library;
+- (nullable instancetype)initWithJSONDictionary:(nonnull NSDictionary *)JSONDictionary inLibrary:(nonnull SZNLibrary *)library;
 
 @end
 
@@ -73,37 +72,37 @@
 /**
  The object creation date.
  */
-@property (copy, nonatomic) NSDate *creationDate;
+@property (nonatomic, copy, nonnull) NSDate *creationDate;
 
 /**
  The item content.
  */
-@property (strong, nonatomic) NSDictionary *content;
+@property (nonatomic, strong, nullable) NSDictionary *content;
 
 /**
  The object deleted status.
  */
-@property (strong, nonatomic) NSNumber *deleted;
+@property (nonatomic, copy, nullable) NSNumber *deleted;
 
 /**
  The object key.
  */
-@property (copy, nonatomic) NSString *key;
+@property (nonatomic, copy, nonnull) NSString *key;
 
 /**
  The object last modification date.
  */
-@property (copy, nonatomic) NSDate *modificationDate;
+@property (nonatomic, copy, nonnull) NSDate *modificationDate;
 
 /**
  The object synced status.
  */
-@property (strong, nonatomic) NSNumber *synced;
+@property (nonatomic, copy, nullable) NSNumber *synced;
 
 /**
  The object version.
  */
-@property (strong, nonatomic) NSNumber *version;
+@property (nonatomic, copy, nonnull) NSNumber *version;
 
 @end
 
@@ -113,9 +112,11 @@
  */
 @interface SZNObject : NSObject <SZNObjectProtocol, SZNResource>
 
-@property (strong, nonatomic) SZNLibrary *library;
+@property (nonatomic, strong, nullable) SZNLibrary *library;
 
 - (BOOL)isSynced;
-- (NSString *)path;
+- (nonnull NSString *)path;
+
+- (nullable instancetype)initWithJSONDictionary:(nonnull NSDictionary *)JSONDictionary inLibrary:(nonnull SZNLibrary *)library;
 
 @end

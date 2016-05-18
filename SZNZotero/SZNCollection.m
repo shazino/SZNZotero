@@ -22,75 +22,75 @@
 // THE SOFTWARE.
 
 #import "SZNCollection.h"
+
 #import "SZNItem.h"
 #import "SZNTag.h"
 #import "SZNLibrary.h"
 #import "SZNZoteroAPIClient.h"
-#import "TBXML.h"
 
 
 @implementation SZNCollection
 
-#pragma mark - Parse
-
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library {
-    SZNCollection *collection = (SZNCollection *)[super objectFromXMLElement:XMLElement inLibrary:library];
-    collection.identifier = [TBXML textForChildElementNamed:@"id" parentElement:XMLElement escaped:NO];
-    return collection;
-}
-
 #pragma mark - Create
 
-+ (void)createCollectionInLibrary:(SZNLibrary *)library
-                             name:(NSString *)name
-                 parentCollection:(SZNCollection *)parentCollection
-                          success:(void (^)(SZNCollection *))success
-                          failure:(void (^)(NSError *))failure
-{
-    [library.client postPath:[library pathForResource:[SZNCollection class]]
-                  parameters:@{@"collections": @[@{@"name": name, @"parentCollection" : parentCollection.key ?: @""}]}
-                     headers:nil
-                     success:^(NSDictionary *responseObject) {
-                         NSDictionary *successResponse = responseObject[@"success"];
-                         NSDictionary *failedResponse  = responseObject[@"failed"];
-                         
-                         if ([failedResponse count] > 0 && failure) {
-                             NSDictionary *errorDictionary = failedResponse[[failedResponse allKeys][0]];
-                             failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
-                         }
-                         else if (success) {
-                             SZNCollection *collection = (SZNCollection *)[self objectFromXMLElement:nil inLibrary:library];
-                             collection.key = [successResponse valueForKey:@"0"];
-                             success(collection);
-                         }
-                     }
-                     failure:failure];
++ (void)createCollectionInLibrary:(nonnull SZNLibrary *)library
+                             name:(nonnull NSString *)name
+                 parentCollection:(nullable SZNCollection *)parentCollection
+                          success:(nullable void (^)(SZNCollection * __nonnull))success
+                          failure:(nullable void (^)(NSError * __nullable))failure {
+    NSString *path = [library pathForResource:[SZNCollection class]];
+    NSDictionary *parameters = @{@"name": name, @"parentCollection" : parentCollection.key ?: @""};
+
+    [library.client
+     postPath:path
+     parameters:parameters
+     headers:nil
+     success:^(NSDictionary *responseObject) {
+         NSDictionary *successfulResponse = responseObject[@"successful"];
+         id successfulResponse0 = [successfulResponse valueForKey:@"0"];
+
+         if (successfulResponse0 != nil && [successfulResponse0 isKindOfClass:[NSDictionary class]]) {
+             if (success) {
+                 SZNCollection *collection = (SZNCollection *)[[self alloc] initWithJSONDictionary:successfulResponse0 inLibrary:library];
+                 success(collection);
+             }
+         }
+         else {
+             if (failure) {
+                 NSDictionary *failedResponse  = responseObject[@"failed"];
+                 NSDictionary *errorDictionary = [failedResponse valueForKey:@"0"];
+                 failure([NSError errorWithDomain:@"nil" code:0 userInfo:errorDictionary]);
+             }
+         }
+     }
+     failure:failure];
 }
 
 #pragma mark - Fetch
 
-- (void)fetchItemsSuccess:(void (^)(NSArray *))success
-                  failure:(void (^)(NSError *))failure {
+- (void)fetchItemsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                  failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     NSString *path = [NSString stringWithFormat:@"%@/%@/items", resourcePath, self.key];
     [self.library fetchObjectsForResource:[SZNItem class] path:path keys:nil specifier:nil success:success failure:failure];
 }
 
-- (void)fetchTopItemsSuccess:(void (^)(NSArray *))success
-                     failure:(void (^)(NSError *))failure {
+- (void)fetchTopItemsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                     failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     NSString *path = [NSString stringWithFormat:@"%@/%@/items/top", resourcePath, self.key];
     [self.library fetchObjectsForResource:[SZNItem class] path:path keys:nil specifier:nil success:success failure:failure];
 }
 
-- (void)fetchSubcollectionsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+- (void)fetchSubcollectionsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                           failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     NSString *path = [NSString stringWithFormat:@"%@/%@/collections", resourcePath, self.key];
     [self.library fetchObjectsForResource:[SZNCollection class] path:path keys:nil specifier:nil success:success failure:failure];
 }
 
-- (void)fetchTagsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+- (void)fetchTagsSuccess:(nullable void (^)(NSArray * __nonnull))success
+                 failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *resourcePath = [self.library pathForResource:[SZNCollection class]];
     NSString *path = [NSString stringWithFormat:@"%@/%@/tags", resourcePath, self.key];
     [self.library fetchObjectsForResource:[SZNTag class] path:path keys:nil specifier:nil success:success failure:failure];
@@ -98,11 +98,11 @@
 
 #pragma mark - Path
 
-+ (NSString *)keyParameter {
++ (nonnull NSString *)keyParameter {
     return @"collectionKey";
 }
 
-+ (NSString *)pathComponent {
++ (nonnull NSString *)pathComponent {
     return @"collections";
 }
 

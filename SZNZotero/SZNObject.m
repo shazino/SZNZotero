@@ -26,8 +26,8 @@
 #import "SZNZoteroAPIClient.h"
 #import "SZNLibrary.h"
 
-#import "TBXML.h"
 #import "ISO8601DateFormatter.h"
+
 
 @implementation SZNObject
 
@@ -45,63 +45,53 @@
 
 #pragma mark - Resource
 
-+ (NSString *)pathComponent {
-    return nil;
++ (nonnull NSString *)pathComponent {
+    NSAssert(NO, @"should be subclassed");
+    return @"";
 }
 
-+ (NSString *)keyParameter {
-    return nil;
++ (nonnull NSString *)keyParameter {
+    NSAssert(NO, @"should be subclassed");
+    return @"";
 }
 
-+ (SZNObject *)objectFromXMLElement:(TBXMLElement *)XMLElement
-                          inLibrary:(SZNLibrary *)library {
-    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    ISO8601DateFormatter *dateFormatter = [[ISO8601DateFormatter alloc] init];
+- (nullable instancetype)initWithJSONDictionary:(nonnull NSDictionary *)JSONDictionary inLibrary:(nonnull SZNLibrary *)library {
+    self = [super init];
 
-    SZNObject *object = [[self class] new];
-    object.key = [TBXML textForChildElementNamed:@"zapi:key" parentElement:XMLElement escaped:NO];
+    if (self) {
+        ISO8601DateFormatter *dateFormatter = [[ISO8601DateFormatter alloc] init];
+        self.key = JSONDictionary[@"key"];
+        self.version = JSONDictionary[@"version"];
 
-    NSString *versionString          = [TBXML textForChildElementNamed:@"zapi:version" parentElement:XMLElement escaped:NO];
-    NSString *creationDateString     = [TBXML textForChildElementNamed:@"published" parentElement:XMLElement escaped:NO];
-    NSString *modificationDateString = [TBXML textForChildElementNamed:@"updated" parentElement:XMLElement escaped:NO];
-    object.version          = [numberFormatter numberFromString:versionString];
-    object.creationDate     = (creationDateString)     ? [dateFormatter dateFromString:creationDateString] : nil;
-    object.modificationDate = (modificationDateString) ? [dateFormatter dateFromString:modificationDateString] : nil;
-    object.library          = library;
+        NSString *creationDateString = JSONDictionary[@"meta"][@"created"];
+        self.creationDate = (creationDateString) ? [dateFormatter dateFromString:creationDateString] : nil;
+        NSString *modificationDateString = JSONDictionary[@"meta"][@"lastModified"];
+        self.modificationDate = (modificationDateString) ? [dateFormatter dateFromString:modificationDateString] : nil;
 
-    NSString *JSONContent = [TBXML textForChildElementNamed:@"content" parentElement:XMLElement escaped:NO];
-    if (JSONContent) {
-        object.content = [NSJSONSerialization JSONObjectWithData:[JSONContent dataUsingEncoding:NSUTF8StringEncoding]
-                                                         options:kNilOptions
-                                                           error:nil];
+        self.library = library;
+        self.content = JSONDictionary[@"data"];
     }
-
-    return object;
+    
+    return self;
 }
 
-+ (NSArray *)objectsFromXML:(TBXML *)XML inLibrary:(SZNLibrary *)library {
-    if (![XML isKindOfClass:TBXML.class]) {
-        return @[];
-    }
-
-    TBXMLElement *rootXMLElement = XML.rootXMLElement;
-    if (!rootXMLElement || !rootXMLElement->firstChild) {
-        // With regular Objective-C properties the first condition would be
-        // superfluous, but it is necessary here because we’re dealing with
-        // struct pointers.
-        return @[];
++ (nullable NSArray *)objectsFromJSONArray:(nullable NSArray *)JSONArray inLibrary:(nonnull SZNLibrary *)library {
+    if (JSONArray == nil) {
+        return nil;
     }
 
     NSMutableArray *items = [NSMutableArray array];
-    if (rootXMLElement->firstChild) {
-        [TBXML iterateElementsForQuery:@"entry" fromElement:rootXMLElement withBlock:^(TBXMLElement *XMLElement) {
-            SZNObject *object = [self objectFromXMLElement:XMLElement inLibrary:library];
-            if (object) {
-                [items addObject:object];
-            }
-        }];
+    for (NSDictionary *JSONDictionary in JSONArray) {
+        if ([JSONDictionary isKindOfClass:[NSDictionary class]] == NO) {
+            continue;
+        }
+
+        SZNObject *object = [[self alloc] initWithJSONDictionary:JSONDictionary inLibrary:library];
+        if (object) {
+            [items addObject:object];
+        }
     }
+
     return items;
 }
 

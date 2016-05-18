@@ -7,8 +7,12 @@
 //
 
 #import "SZNLibrariesViewController.h"
+
 #import <SZNZotero.h>
 #import "SZNItemsViewController.h"
+
+@import SafariServices;
+
 
 NS_ENUM(NSUInteger, SZNLibrariesSections) {
     SZNMyLibrarySection = 0,
@@ -45,10 +49,12 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[SZNItemsViewController class]]) {
         SZNItemsViewController *itemsViewController = (SZNItemsViewController *)segue.destinationViewController;
-        if (self.tableView.indexPathForSelectedRow.section == SZNMyLibrarySection)
+        if (self.tableView.indexPathForSelectedRow.section == SZNMyLibrarySection) {
             itemsViewController.library = self.user;
-        else
+        }
+        else {
             itemsViewController.library = self.groups[self.tableView.indexPathForSelectedRow.row];
+        }
     }
 }
 
@@ -73,12 +79,12 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
     NSString *userIdentifier = [defaults stringForKey:SZNSessionUserIdentifierKey];
     NSString *username = [defaults stringForKey:SZNSessionUsernameKey];
     NSString *token = [defaults stringForKey:SZNSessionTokenKey];
-    
+
     if (userIdentifier && username && token) {
         self.user.client.accessToken    = [[AFOAuth1Token alloc] initWithQueryString:[NSString stringWithFormat:@"oauth_token=%@&oauth_token_secret=%@", token, token]];
         self.user.client.userIdentifier = userIdentifier;
         self.user.client.username       = username;
-        self.user.identifier = userIdentifier;
+        self.user.key = userIdentifier;
         return YES;
     }
     else {
@@ -90,15 +96,14 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
 
 - (void)signOut:(id)sender {
     [self resetSession];
-    
+
     self.user.client.accessToken    = nil;
     self.user.client.userIdentifier = nil;
     self.user.client.username       = nil;
-    self.user.identifier = nil;
     self.groups = nil;
-    
+
     self.navigationItem.rightBarButtonItem = nil;
-    
+
     [self.tableView reloadData];
     [self refreshData:sender];
 }
@@ -107,21 +112,24 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
     if (self.user.client.isLoggedIn || [self restoreSession]) {
         [self.tableView reloadData];
         [self fetchGroupsInLibrary:self.user];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStyleBordered target:self action:@selector(signOut:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign Out", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(signOut:)];
     }
     else {
-        [self.user.client authenticateWithLibraryAccess:YES
-                                            notesAccess:YES
-                                            writeAccess:YES
-                                       groupAccessLevel:SZNZoteroAccessReadWrite
-                               webAuthorizationCallback:nil
-                                                success:^(AFOAuth1Token *token) {
-            self.user.identifier = self.user.client.userIdentifier;
-            [self saveSessionWithClient:self.user.client token:token.secret];
-            [self refreshData:nil];
-        } failure:^(NSError *error) {
-            NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
-        }];
+        [self.user.client
+         authenticateWithLibraryAccess:YES
+         notesAccess:YES
+         writeAccess:YES
+         groupAccessLevel:SZNZoteroAccessReadWrite
+         webAuthorizationCallback:nil
+         success:^(AFOAuth1Token *token) {
+             NSString *userIdentifier = self.user.client.userIdentifier;
+             self.user.key = userIdentifier;
+             [self saveSessionWithClient:self.user.client token:token.secret];
+
+             [self refreshData:nil];
+         } failure:^(NSError *error) {
+             NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+         }];
     }
 }
 
@@ -129,8 +137,9 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
 
 - (void)fetchGroupsInLibrary:(SZNLibrary *)library {
     [self.user fetchObjectsForResource:[SZNGroup class] path:nil keys:nil specifier:nil success:^(NSArray *groups) {
-        for (SZNGroup *group in groups)
+        for (SZNGroup *group in groups) {
             group.client = self.user.client;
+        }
         self.groups = groups;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
@@ -173,7 +182,7 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
     static NSString *CellIdentifier = @"SZNLibraryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     SZNGroup *group;
-    
+
     switch (indexPath.section) {
         case SZNMyLibrarySection:
             cell.textLabel.text = @"📦 My Library";
@@ -183,7 +192,7 @@ NSString *const SZNSessionTokenKey          = @"SZNSessionTokenKey";
             cell.textLabel.text = [NSString stringWithFormat:@"👥 %@", group.content[@"name"]];
             break;
     }
-    
+
     return cell;
 }
 
