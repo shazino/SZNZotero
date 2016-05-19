@@ -1,5 +1,5 @@
 //
-// SZNItemField.m
+// SZNCreatorType.m
 //
 // Copyright (c) 2013-2016 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,65 +21,68 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "SZNItemField.h"
+#import "SZNCreatorType.h"
 
 #import "SZNZoteroAPIClient.h"
 #import "SZNItemType.h"
 
 
-@implementation SZNItemField
+@implementation SZNCreatorType
 
 #pragma mark - Initializer
 
-- (nonnull instancetype)initWithField:(nonnull NSString *)field
-                        localizedName:(nonnull NSString *)localizedName {
+- (nonnull instancetype)initWithType:(nonnull NSString *)type
+                       localizedName:(nonnull NSString *)localizedName {
     self = [super init];
 
     if (self) {
-        self.field = field;
+        self.type = type;
         self.localizedName = localizedName;
     }
 
     return self;
 }
 
-+ (nullable instancetype)itemFieldWithResponseDictionary:(nonnull NSDictionary *)responseDictionary {
-    NSString *field = responseDictionary[@"field"];
++ (nullable instancetype)creatorTypeWithResponseDictionary:(nonnull NSDictionary *)responseDictionary {
+    NSString *creatorType = responseDictionary[@"creatorType"];
     NSString *localized = responseDictionary[@"localized"];
 
-    if (field == nil || localized == nil) {
+    if (creatorType == nil || localized == nil) {
         return nil;
     }
 
-    return [[self alloc] initWithField:field localizedName:localized];
+    return [[self alloc] initWithType:creatorType localizedName:localized];
 }
 
-+ (nonnull NSArray <SZNItemField *> *)itemFieldsWithResponseArray:(nonnull NSArray *)responseArray {
-    NSMutableArray *itemFields = [[NSMutableArray alloc] initWithCapacity:[responseArray count]];
++ (nonnull NSArray <SZNCreatorType *> *)creatorTypesWithResponseArray:(nonnull NSArray *)responseArray {
+    NSMutableArray *creatorTypes = [[NSMutableArray alloc] initWithCapacity:[responseArray count]];
 
-    for (NSDictionary *rawItemField in responseArray) {
-        if ([rawItemField isKindOfClass:[NSDictionary class]] == NO) {
+    for (NSDictionary *rawCreatorType in responseArray) {
+        if ([rawCreatorType isKindOfClass:[NSDictionary class]] == NO) {
             continue;
         }
 
-        SZNItemField *itemField = [SZNItemField itemFieldWithResponseDictionary:rawItemField];
-        if (itemField) {
-            [itemFields addObject:itemField];
+        SZNCreatorType *creatorType = [SZNCreatorType creatorTypeWithResponseDictionary:rawCreatorType];
+        if (creatorType) {
+            [creatorTypes addObject:creatorType];
         }
     }
 
-    return itemFields;
+    return creatorTypes;
 }
 
 #pragma mark - Fetch
 
-+ (void)fetchValidFieldsWithClient:(nonnull SZNZoteroAPIClient *)client
-                       forItemType:(nonnull SZNItemType *)itemType
-                           success:(nonnull void (^)(NSArray <SZNItemField *> * __nonnull validFields))success
-                           failure:(nullable void (^)(NSError * __nullable error))failure {
++ (void)fetchValidCreatorTypesWithClient:(nonnull SZNZoteroAPIClient *)client
+                             forItemType:(nonnull SZNItemType *)itemType
+                                 success:(nonnull void (^)(NSArray <SZNCreatorType *> * __nonnull validCreatorTypes))success
+                                 failure:(nullable void (^)(NSError * __nullable error))failure {
+    NSString *path = @"/itemTypeCreatorTypes";
+    NSDictionary *parameters = @{@"itemType": itemType.type};
+
     [client
-     getPath:@"/itemTypeFields"
-     parameters:@{@"itemType": itemType.type}
+     getPath:path
+     parameters:parameters
      success:^(id responseObject) {
          if ([responseObject isKindOfClass:NSArray.class] == NO) {
              if (failure) {
@@ -89,10 +92,9 @@
              return;
          }
 
-         NSArray *itemFields = [self itemFieldsWithResponseArray:responseObject];
-         success(itemFields);
-     }
-     failure:failure];
+         NSArray *creatorTypes = [self creatorTypesWithResponseArray:responseObject];
+         success(creatorTypes);
+    } failure:failure];
 }
 
 @end

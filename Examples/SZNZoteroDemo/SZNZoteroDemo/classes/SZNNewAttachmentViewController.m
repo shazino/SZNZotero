@@ -34,7 +34,7 @@
     };
 
     SZNLibrary *library = self.library;
-    [SZNItem fetchAttachmentItemTemplateWithClient:library.client linkMode:@"imported_file" success:^(NSDictionary *fields) {
+    [SZNItemType fetchNewAttachmentTemplateWithClient:library.client linkMode:SZNAttachmentLinkModeImportedFile success:^(NSDictionary *fields) {
         NSMutableDictionary *itemFields = [fields mutableCopy];
         itemFields[@"title"] = self.titleTextField.text;
         [itemFields removeObjectForKey:@"contentType"];
@@ -42,8 +42,8 @@
         [itemFields removeObjectForKey:@"filename"];
         [itemFields removeObjectForKey:@"md5"];
         [itemFields removeObjectForKey:@"mtime"];
-        [SZNItem createItemInLibrary:library content:itemFields success:^(SZNItem *newItem) {
 
+        [SZNItem createItemInLibrary:library content:itemFields success:^(SZNItem *newItem) {
             NSString *title = [self.titleTextField.text stringByAppendingPathExtension:@"txt"];
             NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:title];
             [self.contentTextField.text writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];

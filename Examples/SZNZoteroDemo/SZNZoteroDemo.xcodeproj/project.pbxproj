@@ -55,7 +55,9 @@
 		145153E11CE62CF100FED5B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8916F21E7D009D8F75 /* UIKit.framework */; };
 		147DF2BA1CEC99E2001BD3C5 /* SZNItemType.h in Headers */ = {isa = PBXBuildFile; fileRef = 147DF2B81CEC99E2001BD3C5 /* SZNItemType.h */; };
 		147DF2BB1CEC99E2001BD3C5 /* SZNItemType.m in Sources */ = {isa = PBXBuildFile; fileRef = 147DF2B91CEC99E2001BD3C5 /* SZNItemType.m */; };
-		1486413A1CCF704B00F42641 /* SZNZoteroTestsOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 148641391CCF704B00F42641 /* SZNZoteroTestsOSX.m */; };
+		14A6720E1CEDCA49007B1ED9 /* SZNCreatorType.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A6720C1CEDCA49007B1ED9 /* SZNCreatorType.h */; };
+		14A6720F1CEDCA49007B1ED9 /* SZNCreatorType.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A6720D1CEDCA49007B1ED9 /* SZNCreatorType.m */; };
+		14A672101CEDCD8F007B1ED9 /* SZNZoteroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F362AF1CCE706B00E88E51 /* SZNZoteroTests.m */; };
 		14A83C8A16F21E7D009D8F75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8916F21E7D009D8F75 /* UIKit.framework */; };
 		14A83C8C16F21E7D009D8F75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8B16F21E7D009D8F75 /* Foundation.framework */; };
 		14A83C8E16F21E7D009D8F75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A83C8D16F21E7D009D8F75 /* CoreGraphics.framework */; };
@@ -161,8 +163,8 @@
 		147DF2B81CEC99E2001BD3C5 /* SZNItemType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNItemType.h; path = ../../../SZNZotero/SZNItemType.h; sourceTree = "<group>"; };
 		147DF2B91CEC99E2001BD3C5 /* SZNItemType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNItemType.m; path = ../../../SZNZotero/SZNItemType.m; sourceTree = "<group>"; };
 		148641371CCF704B00F42641 /* SZNZoteroTestsOSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SZNZoteroTestsOSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		148641391CCF704B00F42641 /* SZNZoteroTestsOSX.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZNZoteroTestsOSX.m; sourceTree = "<group>"; };
-		1486413B1CCF704B00F42641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14A6720C1CEDCA49007B1ED9 /* SZNCreatorType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNCreatorType.h; path = ../../../SZNZotero/SZNCreatorType.h; sourceTree = "<group>"; };
+		14A6720D1CEDCA49007B1ED9 /* SZNCreatorType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNCreatorType.m; path = ../../../SZNZotero/SZNCreatorType.m; sourceTree = "<group>"; };
 		14A83C8616F21E7D009D8F75 /* SZNZoteroDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZNZoteroDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A83C8916F21E7D009D8F75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		14A83C8B16F21E7D009D8F75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -259,7 +261,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		141A7B3F1B78A01800204632 /* SZNZoteroDemoOSX */ = {
+		141A7B3F1B78A01800204632 /* SZNZotero Demo OS X */ = {
 			isa = PBXGroup;
 			children = (
 				141A7B421B78A01800204632 /* AppDelegate.h */,
@@ -268,6 +270,7 @@
 				141A7B491B78A01800204632 /* MainMenu.xib */,
 				141A7B401B78A01800204632 /* Supporting Files */,
 			);
+			name = "SZNZotero Demo OS X";
 			path = SZNZoteroDemoOSX;
 			sourceTree = "<group>";
 		};
@@ -293,6 +296,8 @@
 				147DF2B91CEC99E2001BD3C5 /* SZNItemType.m */,
 				14C3860E1CECA50F007A54C2 /* SZNItemField.h */,
 				14C3860F1CECA50F007A54C2 /* SZNItemField.m */,
+				14A6720C1CEDCA49007B1ED9 /* SZNCreatorType.h */,
+				14A6720D1CEDCA49007B1ED9 /* SZNCreatorType.m */,
 				145153861CE62BBE00FED5B7 /* SZNLibrary.h */,
 				145153871CE62BBE00FED5B7 /* SZNLibrary.m */,
 				145153881CE62BBE00FED5B7 /* SZNObject.h */,
@@ -383,22 +388,12 @@
 			path = Pods/ISO8601DateFormatter;
 			sourceTree = SOURCE_ROOT;
 		};
-		148641381CCF704B00F42641 /* SZNZoteroTestsOSX */ = {
-			isa = PBXGroup;
-			children = (
-				148641391CCF704B00F42641 /* SZNZoteroTestsOSX.m */,
-				1486413B1CCF704B00F42641 /* Info.plist */,
-			);
-			path = SZNZoteroTestsOSX;
-			sourceTree = "<group>";
-		};
 		14A83C7D16F21E7D009D8F75 = {
 			isa = PBXGroup;
 			children = (
-				14A83C8F16F21E7D009D8F75 /* SZNZoteroDemo */,
-				14F362AE1CCE706B00E88E51 /* SZNZoteroTests */,
-				141A7B3F1B78A01800204632 /* SZNZoteroDemoOSX */,
-				148641381CCF704B00F42641 /* SZNZoteroTestsOSX */,
+				14A83C8F16F21E7D009D8F75 /* SZNZotero Demo */,
+				141A7B3F1B78A01800204632 /* SZNZotero Demo OS X */,
+				14F362AE1CCE706B00E88E51 /* SZNZotero Tests */,
 				145153741CE62B7300FED5B7 /* SZNZotero */,
 				14A83C8816F21E7D009D8F75 /* Frameworks */,
 				14A83C8716F21E7D009D8F75 /* Products */,
@@ -432,7 +427,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		14A83C8F16F21E7D009D8F75 /* SZNZoteroDemo */ = {
+		14A83C8F16F21E7D009D8F75 /* SZNZotero Demo */ = {
 			isa = PBXGroup;
 			children = (
 				14AF54F8171DAC3C00BA4CBE /* SZNAppDelegate.h */,
@@ -456,7 +451,7 @@
 				14AF54F5171DAC3100BA4CBE /* MainStoryboard.storyboard */,
 				14A83C9016F21E7D009D8F75 /* Supporting Files */,
 			);
-			name = SZNZoteroDemo;
+			name = "SZNZotero Demo";
 			path = SZNZoteroSDKDemo;
 			sourceTree = "<group>";
 		};
@@ -474,12 +469,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		14F362AE1CCE706B00E88E51 /* SZNZoteroTests */ = {
+		14F362AE1CCE706B00E88E51 /* SZNZotero Tests */ = {
 			isa = PBXGroup;
 			children = (
 				14F362AF1CCE706B00E88E51 /* SZNZoteroTests.m */,
 				14F362B11CCE706B00E88E51 /* Info.plist */,
 			);
+			name = "SZNZotero Tests";
 			path = SZNZoteroTests;
 			sourceTree = "<group>";
 		};
@@ -506,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				145153971CE62BBE00FED5B7 /* SZNLibrary.h in Headers */,
+				14A6720E1CEDCA49007B1ED9 /* SZNCreatorType.h in Headers */,
 				145153C41CE62BFD00FED5B7 /* AFHTTPClient.h in Headers */,
 				1451539D1CE62BBE00FED5B7 /* SZNUser.h in Headers */,
 				145153CE1CE62BFD00FED5B7 /* AFNetworking.h in Headers */,
@@ -943,6 +940,7 @@
 				145153CD1CE62BFD00FED5B7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				145153DA1CE62BFD00FED5B7 /* AFOAuth1Client.m in Sources */,
 				14C386111CECA50F007A54C2 /* SZNItemField.m in Sources */,
+				14A6720F1CEDCA49007B1ED9 /* SZNCreatorType.m in Sources */,
 				145153941CE62BBE00FED5B7 /* SZNGroup.m in Sources */,
 				145153A11CE62BBE00FED5B7 /* SZNZoteroAPIClient.m in Sources */,
 				145153981CE62BBE00FED5B7 /* SZNLibrary.m in Sources */,
@@ -953,7 +951,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1486413A1CCF704B00F42641 /* SZNZoteroTestsOSX.m in Sources */,
+				14A672101CEDCD8F007B1ED9 /* SZNZoteroTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1190,7 +1188,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = SZNZoteroTestsOSX/Info.plist;
+				INFOPLIST_FILE = SZNZoteroTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1224,7 +1222,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = SZNZoteroTestsOSX/Info.plist;
+				INFOPLIST_FILE = SZNZoteroTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;

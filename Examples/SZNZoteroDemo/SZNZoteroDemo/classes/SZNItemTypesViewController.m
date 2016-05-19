@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [SZNItem fetchTypesWithClient:self.library.client success:^(NSArray <SZNItemType * > *types) {
+    [SZNItemType fetchTypesWithClient:self.library.client success:^(NSArray <SZNItemType * > *types) {
         self.itemTypes = types;
         [self.tableView reloadData];
     } failure:^(NSError *error) {

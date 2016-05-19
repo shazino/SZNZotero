@@ -8,101 +8,105 @@
 
 /* Begin PBXBuildFile section */
 		002542313C62F16E62F4CF15A1509BA0 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C210AC63831A1600A4A87917329ABD3 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0082D8B56CDEAFE99F44180A18883F52 /* SZNGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 33D22DE5ACAFE7762F4325E94BFDDD30 /* SZNGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		016FD41051974F84E6CAC4E0C0A341C4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE513D0199B544CB4EAD5E4E76EA448 /* Security.framework */; };
-		02E1D22CC4A8BECEC61470CB0A46A372 /* SZNLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DDBE2FFDA04E8116E171691A65AA737 /* SZNLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0414C6FFC1BAFE470E8A719E1D53E74E /* SZNCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C049339E505293BAABFA37C4104BE5C /* SZNCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		059751D7C7CC231317A121AF88E1DEC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E409C2877E8C778B1DB650430529379 /* Foundation.framework */; };
 		0597BBC7E8ED103CB284DD611A60FDEA /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F940F367E32E8A88FB2C790B1D7FAC9 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		064265C0F5C45419A9AAD2E8AC12162D /* SZNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B41CBB1BB48BD5D946D675ECA07B8F79 /* SZNObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		098A2B6FF8F6F439FA8BD7CF03DF9F24 /* SZNZoteroAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C8D6D33BEAE46E9C676980F0104B0D /* SZNZoteroAPIClient.m */; };
 		0C1886CBFC8F84E88BF42BBB46A81E08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A5E9867C5737B464F2098BD6539C0 /* SystemConfiguration.framework */; };
 		0C5D33C850DB978A6E64A419CDAB3EFB /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EBE29223343FB8EB43EFEF74BA6E7845 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0CDCED3965F2DE341ABC7448B272F7F2 /* SZNItemField.h in Headers */ = {isa = PBXBuildFile; fileRef = 942E600D2D143CCD19CB24C1F591022A /* SZNItemField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		132D2D3AF60F94DCDD3B6AA61D623395 /* SZNZotero-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B86D077E6FC538BBED8E54E8568B897 /* SZNZotero-iOS-dummy.m */; };
 		14D2C2D64C7C82BC39ED12C189AC3A5B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16572C566E464D7BBD9F4EC7C5F44082 /* Security.framework */; };
 		15077539D2611F0F35376280F6B09AAB /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F940F367E32E8A88FB2C790B1D7FAC9 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		17C4A0EA20334A31ADE90DE148155FAD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E72159517FA8AB64F0117649245B3A /* CoreGraphics.framework */; };
-		17D647B050B8F8DA5625540AFC155628 /* SZNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E2307E78C5090262A28F89BD3EE17B /* SZNTag.m */; };
-		18C35BEE798FB5F7AEBFDCAA01AE7BFF /* SZNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D4A64A6B804E4B537AD0D3F8D3746D /* SZNItem.m */; };
 		198F9F5ACAD772D7D24FE59B7D5D0495 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3493726B53280F7414406467C24080DF /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		19AB2AB1C327C3C88F483BB1DF4D0FFA /* SZNItemField.h in Headers */ = {isa = PBXBuildFile; fileRef = EDDA648AD7625DF8AF6B6A2B7DB9A195 /* SZNItemField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		19DEE4CE039016737A2C23448B287C93 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FB8B5806C8BFDC7E81E1486CC5D4057 /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		19FF3ED8A1A1EB887AAE7B6A434DEE12 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD187F10FA015AEE5E45F855925A9CD2 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1A08E92BCAEF8764D524464EEC299AF9 /* SZNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CC0BBD6C2E0B7BEAB6B59AA884891EBC /* SZNObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1A804F5EEC43615CC1414CCF6438DF8C /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EBE29223343FB8EB43EFEF74BA6E7845 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C896BAFB899026F0926C280C8F9CEE7 /* SZNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BDD00154D856A937F4C76069654EA /* SZNItem.m */; };
 		1DDC14DD9D88FFE17ACAD2AB3A6EAA86 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453FE4A3036A8F3289A0257AE8767863 /* CoreServices.framework */; };
-		1EC1C2B0D1C3096E22B6301C34702317 /* SZNZoteroAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22AB4BA6B59D8E60C389C59142F941 /* SZNZoteroAPIClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		23BAE2A8ECA90D4EC18007A0AD000939 /* SZNZotero-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D34D7BA94847526CD9200AD0750FA66 /* SZNZotero-OSX-dummy.m */; };
+		23299D35A77CA7CB5EA5F0A9C8409977 /* SZNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8EB9C48A0C6B50DB0190317708B /* SZNTag.m */; };
 		240AFB8951AB7DB3671C6D57AD1A5123 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F05B8A714BCCB6F839AF74DAB86CA1A8 /* AFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		253A01CC915879FA413B1C1F14E1AFD6 /* SZNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BDD00154D856A937F4C76069654EA /* SZNItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		269FEBF0E07019909CF63AE525423C57 /* SZNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CC0BBD6C2E0B7BEAB6B59AA884891EBC /* SZNObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A218CAF3F55270F9113B14D6220D6C7 /* SZNItemType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE713B247D1745BED8FF9AFEB2C187B /* SZNItemType.m */; };
+		2B6CBF1DC9BC9D2E2FBC45E953126FFA /* SZNCreatorType.h in Headers */ = {isa = PBXBuildFile; fileRef = 10EE1799657E782E2F974AD65D15E0A5 /* SZNCreatorType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2EB1693F6FD035B1669C635196EC6EEF /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F6F5F9637B602A1E1455BD207CF691A4 /* AFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32A64084E024228E7016394100BB7710 /* SZNGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = B4411AFBBBADFC36034A165D5FEC2339 /* SZNGroup.m */; };
-		3385FA17F787C570C22807D059F1C9AD /* SZNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 91003B23F1E353A09986F48082881C16 /* SZNUser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2F8755FE583835EB187D2948E233B720 /* SZNCreatorType.h in Headers */ = {isa = PBXBuildFile; fileRef = 10EE1799657E782E2F974AD65D15E0A5 /* SZNCreatorType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3376C29EA7A3A86764FB7204E3C37A9B /* SZNLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = E847624838441EE447FB49C74A5073DB /* SZNLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37C1EF0BFFC5A5B21A332E76B763BC05 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A8FE0E453F54D9B1498F2A8F0B6B4C4B /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3802FFFF93E60772881C7FA6B5243006 /* SZNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 01463FD2B3290BA8571B0A3C397128C4 /* SZNItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38ED66052818B1BAD9D567E04E265DF1 /* AFOAuth1Client-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 32327AC81F5B2D66001A9365327C3EEE /* AFOAuth1Client-iOS-dummy.m */; };
-		3B080DC252C707496E331E9FB212EDAF /* SZNGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3465C21BEDC26DC370B1B2DCD40EE4 /* SZNGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4062E046D53DC33BA897C6D686C540F8 /* AFNetworking-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 524DB1B9A40617C24159917AEE701781 /* AFNetworking-iOS-dummy.m */; };
-		4122C7EFD18C1B05AD7DEF098D9DD848 /* SZNCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3369DFAE2A74430F9E870C631DE5A5 /* SZNCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		436AB561E1E4E36EB50A4772BAD546C1 /* SZNItemField.h in Headers */ = {isa = PBXBuildFile; fileRef = EDDA648AD7625DF8AF6B6A2B7DB9A195 /* SZNItemField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		460D3878AB0BA6DD8F6C85166038663C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E409C2877E8C778B1DB650430529379 /* Foundation.framework */; };
-		47F089D895F2C30513A2FBFB58AAF5F8 /* SZNCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3369DFAE2A74430F9E870C631DE5A5 /* SZNCollection.m */; };
 		4970B4A845F7D891C6D302E28EB6A998 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C1E48AA1EBFDB35683CE452F3DB40D /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4BECCC36126A05DFF959A92086AA953B /* SZNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 193266D189AEC0CCFD55FA4D3BDCF7BC /* SZNItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E234BF7F5CDE7F2EE5E198B8ED2BFE1 /* SZNZotero.h in Headers */ = {isa = PBXBuildFile; fileRef = EB6FC4BC7930AA801DC10BDA110EAC46 /* SZNZotero.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F6785A883CC7B2CF91B7410175BA815 /* SZNCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 930789A33782F0407B9805C9D80C14DC /* SZNCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5189BA9507F06DBFFA6F8905EAD53DBF /* SZNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA951C65A9A1CDD861DE54F74B2B359 /* SZNUser.m */; };
 		52262B2CB1141B08F5BA9EEA8D54C824 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD187F10FA015AEE5E45F855925A9CD2 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		52726454754DF291E98FA2DA9E1CC022 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF509CB555DD1FE7980C64D56E205A7 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		57055607FA25102BF392C40BC9203DCF /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FB8B5806C8BFDC7E81E1486CC5D4057 /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		57AF1EEACAD0B749DEFF3D11E67CE372 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854DB84C7130DB52F0DDEB09EDF896F3 /* Cocoa.framework */; };
+		57C7C22BD0177771F3BD7A2AB67F8DCD /* SZNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA951C65A9A1CDD861DE54F74B2B359 /* SZNUser.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		594C1F5B29B2BBC3C4512A427DE95682 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF509CB555DD1FE7980C64D56E205A7 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5A257DB806328AF8627BF0EEEB66CDBE /* SZNLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1166F557E577C5D7981AD10C713AC7 /* SZNLibrary.m */; };
+		5C920EC098956E783BB1AB27796D48DC /* SZNZotero-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E90620524D2BAEC50770CE868B6ABE9 /* SZNZotero-iOS-dummy.m */; };
 		5D2B89C2B53F0EB5A05612CDE1DFD68B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854DB84C7130DB52F0DDEB09EDF896F3 /* Cocoa.framework */; };
+		5EC257598E906C0A5F0A06C61FA2480D /* SZNCreatorType.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C0825007906F04A8848791E19049A /* SZNCreatorType.m */; };
+		5F26E854984D9D8E8E46C03D29CAB4B0 /* SZNLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1166F557E577C5D7981AD10C713AC7 /* SZNLibrary.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		615427B6E2E08B695271CBB74B3225D6 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 275EA4FAE65B1DCFE0BF07BE9A48D5D5 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		65AA23FBF66AB272D9F788267C7D393D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302299DE630E88CF2374857C02C5067 /* SystemConfiguration.framework */; };
-		65EECD5F8774F5CBDDA2EF2249466FAF /* SZNLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = F055BDB83D234478670E50EB45D55F74 /* SZNLibrary.m */; };
 		66FE7089082D98EF91F65D861EF6319F /* Pods-SZNZoteroDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C0E09C915C64894CB9707F39AEE166 /* Pods-SZNZoteroDemo-dummy.m */; };
-		682F2CC3D696217BC456F9291135D9A0 /* SZNUser.h in Headers */ = {isa = PBXBuildFile; fileRef = E0D08CE0283EAF6EC175CC6E7A4E1519 /* SZNUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69303F1620CA908A6F1ADEA42280CB56 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F05B8A714BCCB6F839AF74DAB86CA1A8 /* AFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6A4A251F92AE003DDCB0BF7D345E9C61 /* SZNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D57EF4CDFFDD1003546F0AFB58EBDA /* SZNObject.m */; };
-		6A871A921448B23C6CE08DD83E4A3093 /* SZNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 193266D189AEC0CCFD55FA4D3BDCF7BC /* SZNItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B1394FE99D098353E33D973D0EE712F /* ISO8601DateFormatter-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E16B4C4130808A2C6B67D65D21147B95 /* ISO8601DateFormatter-OSX-dummy.m */; };
 		6DAD144B3DB2FAD6A7A1E26D9207E7A8 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C210AC63831A1600A4A87917329ABD3 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6EAA6EA900A68B6BCAD8B132E2E41C18 /* SZNZotero.h in Headers */ = {isa = PBXBuildFile; fileRef = EB6FC4BC7930AA801DC10BDA110EAC46 /* SZNZotero.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ECF84A90975C0B6CF34F6FAA769B196 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5326FDE336F26BF33906365685BA19B0 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		70101B08D949758C6BF49045DD4302B1 /* SZNZoteroAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22AB4BA6B59D8E60C389C59142F941 /* SZNZoteroAPIClient.m */; };
-		71493C19B4008CA88CE0856121A77D52 /* SZNItemField.h in Headers */ = {isa = PBXBuildFile; fileRef = 942E600D2D143CCD19CB24C1F591022A /* SZNItemField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7386ABCB138D24A6D22A4200D8E23CFF /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F5628F1A25892951A70C185A293771B6 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		74E1B5C64FA60412E093E4B47B0D38FD /* SZNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D4A64A6B804E4B537AD0D3F8D3746D /* SZNItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		761CA0658A1F5E1286A10EB982048ADF /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C1E48AA1EBFDB35683CE452F3DB40D /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		76FFD5543A16CCF2C13AAABE9E30BC70 /* AFNetworking-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC1B0A4941CB94FA153435ECB320D08 /* AFNetworking-OSX-dummy.m */; };
-		77A5D21189887A5B0070429FD796A6B4 /* SZNGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3465C21BEDC26DC370B1B2DCD40EE4 /* SZNGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		781C2A7C4802A14A283F3D209DD61D4B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE513D0199B544CB4EAD5E4E76EA448 /* Security.framework */; };
-		7A2BFD854662C7F92FE5064542969580 /* SZNZotero.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AC224DFC04E052811729BD2A367B1CC /* SZNZotero.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A4639E919332AA1F253AC2D4555DBDE /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F5628F1A25892951A70C185A293771B6 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E00BF81936E457D529957B79188CABA /* SZNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D57EF4CDFFDD1003546F0AFB58EBDA /* SZNObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7E113A29C87A23EF898989F8E54C1C29 /* SZNItemType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE713B247D1745BED8FF9AFEB2C187B /* SZNItemType.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7E21826EF6C14BB9C55AF04FA466F146 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E936E1C0D5BD539FBB35D3C3845C5498 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		80C270AB0B896F7FFED4DE7784BEA7D5 /* SZNCreatorType.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C0825007906F04A8848791E19049A /* SZNCreatorType.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		80FADBC9ACA5969DDD5DD01F5ADF8955 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3493726B53280F7414406467C24080DF /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		811A663D762B4BDF844AC04BBA928DB1 /* ISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E3BF135B19BA6F2B78E17B1B2BC2C59 /* ISO8601DateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86C5FFAB67F8090A0C3B0E9B35A57ECF /* SZNTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBB6AA71CE0E8FB06C34D9F7E8CAAEF /* SZNTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		85F70C6FCA5BAFCB4DE66D1846647B75 /* SZNItemType.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB546867EB33141B380DFDAFD6D6DC3 /* SZNItemType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		878AE697828FFB0BEB9DC9AB124A824C /* Pods-SZNZoteroTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD08A8CD7CDF49E0744A8E25A2686E /* Pods-SZNZoteroTests-dummy.m */; };
 		87B1983303480C8D71BC5D86654CACDA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E72159517FA8AB64F0117649245B3A /* CoreGraphics.framework */; };
+		88705B2E9526AD159C5D966885BDA93B /* SZNLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = E847624838441EE447FB49C74A5073DB /* SZNLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89BEC3B8ED7639887890212F7671B857 /* AFOAuth1Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D472FA27C29CBFA7581A58F50DED1A3 /* AFOAuth1Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A31996E00374AB17E23C6DFF1E1E497 /* SZNZoteroAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BC80AE6E54E84E62218F5E05910AE8FC /* SZNZoteroAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AB8D9E17B81C67EC1BE793C1097DA66 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D732A72568A80BD5868CD8D804A32B /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8E331DB8051816CF2361C6CBA8D16BE6 /* SZNItemType.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EA519D35DC16B0DD62437570958292 /* SZNItemType.m */; };
+		8D1B8C481FE3682D8AF8FB89AFF58D2F /* SZNZoteroAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BC80AE6E54E84E62218F5E05910AE8FC /* SZNZoteroAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E9217C0BA2AC7612382982ABA45601E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854DB84C7130DB52F0DDEB09EDF896F3 /* Cocoa.framework */; };
 		8EBBEC295E3E52995A7A4C81F647E959 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854DB84C7130DB52F0DDEB09EDF896F3 /* Cocoa.framework */; };
 		920953F22073042A3A3623563D992C4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E409C2877E8C778B1DB650430529379 /* Foundation.framework */; };
-		925D1B63A9AE0166804E92F8B63989F1 /* SZNTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBB6AA71CE0E8FB06C34D9F7E8CAAEF /* SZNTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9936FABC0AA6496BAAE219FDCBA3A8EF /* SZNZotero.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AC224DFC04E052811729BD2A367B1CC /* SZNZotero.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		923A680690AA2E89E5D5D6A55CDFB126 /* SZNGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D919433BDCA7EBA1FCE8FEE1789BBC /* SZNGroup.m */; };
 		9CE8B97E0FB072E386B2E00D7BDB5074 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2506D2F5C381F1350F5AC958456C78F1 /* AFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9DAB10EF0AE7F03CB2F189A02DCD7211 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FAB5066B6C3363057728DABD780544B /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E1CA5074B7EE06D2B51D0E4C9BB79B8 /* SZNItemType.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB546867EB33141B380DFDAFD6D6DC3 /* SZNItemType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E84A88482CF6CD5D61CC025F933F8B5 /* SZNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 01463FD2B3290BA8571B0A3C397128C4 /* SZNItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9FADF4B79C8C6E35908B27320445F49A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453FE4A3036A8F3289A0257AE8767863 /* CoreServices.framework */; };
 		A51E9AE95C8DEA9D6281BF3903645E70 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F5658CC52C2AA2315632ED13FB6973 /* MobileCoreServices.framework */; };
+		A5D72A192BE6B417BD207C6914E033B4 /* SZNGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 33D22DE5ACAFE7762F4325E94BFDDD30 /* SZNGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A73DD8756BB41B4160CD42B981166421 /* ISO8601DateFormatter-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95507AF9B9AE73FC0D0CE0A4BE492E23 /* ISO8601DateFormatter-iOS-dummy.m */; };
-		AA83FB22125BA2351A13C6068586C40A /* SZNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E2307E78C5090262A28F89BD3EE17B /* SZNTag.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AA25720BEA9148F03DC257F61449AEB3 /* SZNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9659C2F3199A9EA77968562464095FA /* SZNObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AB3E0E24BE42798C22868F5C99B941C1 /* SZNZotero-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A68A10EAB6594A314A80A992C8017F0 /* SZNZotero-OSX-dummy.m */; };
+		AC2BA0C296353AE842F9120A552FF706 /* SZNTag.h in Headers */ = {isa = PBXBuildFile; fileRef = E4146F70639161CA8DF39118DEF03425 /* SZNTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ACE831E6BC20506234F0485DBA5FA9B7 /* SZNCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4C0FC38B76659AF6356812398AA89D /* SZNCollection.m */; };
 		B0CD7A980EFF8732EE5947636F2BFC24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E409C2877E8C778B1DB650430529379 /* Foundation.framework */; };
-		B351404AE8ABD1C73CE85E9B2E256C40 /* SZNZoteroAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DCBE86F75CCAA8A140BA47F1A94B65A /* SZNZoteroAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B44B8D0D8FC2091A45BFCB7341E0B852 /* SZNZoteroAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DCBE86F75CCAA8A140BA47F1A94B65A /* SZNZoteroAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B5676A849EA6824C3B9307EF332E0242 /* SZNItemField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC71D6F28880981406F7AE1A246F7D2 /* SZNItemField.m */; };
+		B37056C197FF917E95865779F7FDCDFD /* SZNZoteroAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C8D6D33BEAE46E9C676980F0104B0D /* SZNZoteroAPIClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B5BAFCFCF34BDF0AA140A8FF1C26D281 /* SZNUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 38FC844328A81A78DE21EA8DD15BC78B /* SZNUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B77DD9BB3AED62A58C0E6872F9D487A1 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5204DFC8AA98B2AE3C19872F033BC8F1 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B90970B9547E78F1EABB426E8644F144 /* ISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E3BF135B19BA6F2B78E17B1B2BC2C59 /* ISO8601DateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA4C3263B229139310B3E86458847233 /* SZNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 91003B23F1E353A09986F48082881C16 /* SZNUser.m */; };
-		BC3797A932F3C56401C815BD84B0415C /* SZNItemType.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EA519D35DC16B0DD62437570958292 /* SZNItemType.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		BD56F1AFCE374EE5C0A087E6559A6B5F /* SZNItemType.h in Headers */ = {isa = PBXBuildFile; fileRef = AB9B3F9571D3D5816E6CCFEC874AC8CB /* SZNItemType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDE748191B77D4301E8290C78B8E6CB9 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 275EA4FAE65B1DCFE0BF07BE9A48D5D5 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		BE51440C4FCDD36E6A85512E881FDC16 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A8FE0E453F54D9B1498F2A8F0B6B4C4B /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C34B3BEF76AE98DE70D37866AE19D863 /* Pods-SZNZoteroDemoOSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D4AD6B664A00FACB44122A282409AE /* Pods-SZNZoteroDemoOSX-dummy.m */; };
+		C3A1A6323E1B2A6B7D49A95888C3741A /* SZNItemField.m in Sources */ = {isa = PBXBuildFile; fileRef = 244EF703B485CCD8904F443B1152097B /* SZNItemField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C4302DFB3FD0C5FDC214B246B3BAA63C /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6A6AB472F2A8612AAE78924AF6550F4 /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C46D431AB7CA7B2EB4D90E7CCDE80CF3 /* AFOAuth1Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D472FA27C29CBFA7581A58F50DED1A3 /* AFOAuth1Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C52679108857A98723D7748A0822D5D6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A5E9867C5737B464F2098BD6539C0 /* SystemConfiguration.framework */; };
@@ -115,24 +119,24 @@
 		D27A48DA1313EE58AEF056F4D3A2A265 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F5658CC52C2AA2315632ED13FB6973 /* MobileCoreServices.framework */; };
 		D35E58C1CDEF896E89844BD6453DB71A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16572C566E464D7BBD9F4EC7C5F44082 /* Security.framework */; };
 		D3966A72AD2EFD7DA672C80F0CE4BE87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854DB84C7130DB52F0DDEB09EDF896F3 /* Cocoa.framework */; };
-		D83A762F45623C7330BAD126CFF3C856 /* SZNLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = F055BDB83D234478670E50EB45D55F74 /* SZNLibrary.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D611EDA8704FFA7840C594B63B918DA1 /* SZNCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 930789A33782F0407B9805C9D80C14DC /* SZNCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBE16763A35E3E3DC7158C4DC06EEC6C /* SZNItemField.m in Sources */ = {isa = PBXBuildFile; fileRef = 244EF703B485CCD8904F443B1152097B /* SZNItemField.m */; };
 		DCA55597AEA016B784EE6810474BA202 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302299DE630E88CF2374857C02C5067 /* SystemConfiguration.framework */; };
 		DDD811A1927AF2410B880A8A73A64543 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D732A72568A80BD5868CD8D804A32B /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E2D84B853D91F775BE28CDD00D21B499 /* SZNLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DDBE2FFDA04E8116E171691A65AA737 /* SZNLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF40CB01994490FD52C1034BA6504725 /* SZNTag.h in Headers */ = {isa = PBXBuildFile; fileRef = E4146F70639161CA8DF39118DEF03425 /* SZNTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3E128140436A5BDC71A12F345FC70E6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854DB84C7130DB52F0DDEB09EDF896F3 /* Cocoa.framework */; };
+		E4507E060B5D4FC4F1CFB6F54BD9AEE4 /* SZNGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D919433BDCA7EBA1FCE8FEE1789BBC /* SZNGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		E7410285616F2C39608196A8BBD0CCFB /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F6F5F9637B602A1E1455BD207CF691A4 /* AFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED434C080B11FC2603F23A81A079EF0E /* SZNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B41CBB1BB48BD5D946D675ECA07B8F79 /* SZNObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED3B988F1AFE5E7295C738477863A6AE /* SZNUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 38FC844328A81A78DE21EA8DD15BC78B /* SZNUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE47340D8117CF6D871AEAF9C3F6167D /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E936E1C0D5BD539FBB35D3C3845C5498 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		EE6BB130A1C130C6B81B1E6E767A3F8C /* Pods-SZNZoteroTestsOSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6587C58F92DA8336D832812F570FF7C2 /* Pods-SZNZoteroTestsOSX-dummy.m */; };
-		EEB1FD733DA9F0A498F6ACBC23635F91 /* SZNItemField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC71D6F28880981406F7AE1A246F7D2 /* SZNItemField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		EF1B54A7039B3F5F92427FE0D4B0F27D /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5204DFC8AA98B2AE3C19872F033BC8F1 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF85F2326050B944380827CAE0F3ADB1 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6A6AB472F2A8612AAE78924AF6550F4 /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F194716E221EC5BAFB935D01E9F54230 /* SZNUser.h in Headers */ = {isa = PBXBuildFile; fileRef = E0D08CE0283EAF6EC175CC6E7A4E1519 /* SZNUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F267017C9428CE834155696E963A5B96 /* SZNCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C049339E505293BAABFA37C4104BE5C /* SZNCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFD5B995F1061C652CB1381985768B4A /* SZNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9659C2F3199A9EA77968562464095FA /* SZNObject.m */; };
 		F36E2B560EA9ACA361ECCCF91094D3FC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5326FDE336F26BF33906365685BA19B0 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		F4C903B6D61397C3E1AE4AB7BB2F5EA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E409C2877E8C778B1DB650430529379 /* Foundation.framework */; };
-		F769D11B005FDDBED341CFB5E5F1052B /* SZNGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = B4411AFBBBADFC36034A165D5FEC2339 /* SZNGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F9DC3544BAA8DBDA36308BD56783E2D0 /* SZNItemType.h in Headers */ = {isa = PBXBuildFile; fileRef = AB9B3F9571D3D5816E6CCFEC874AC8CB /* SZNItemType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6107677095E6CB488885C71ECC74F22 /* SZNCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4C0FC38B76659AF6356812398AA89D /* SZNCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F98CC2A4F749D42F64B54E418AD08D0E /* SZNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CA8EB9C48A0C6B50DB0190317708B /* SZNTag.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		FF7F7E600D177E636F96220002410F0F /* AFOAuth1Client.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D69586CA46C9968E3BACBD202CB5A /* AFOAuth1Client.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
@@ -308,42 +312,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01463FD2B3290BA8571B0A3C397128C4 /* SZNItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItem.h; sourceTree = "<group>"; };
+		019BDD00154D856A937F4C76069654EA /* SZNItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItem.m; sourceTree = "<group>"; };
 		03F5D143E8E96377077A9C654A26884A /* Pods-SZNZoteroDemoOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemoOSX.debug.xcconfig"; sourceTree = "<group>"; };
 		06C0E09C915C64894CB9707F39AEE166 /* Pods-SZNZoteroDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemo-dummy.m"; sourceTree = "<group>"; };
 		06D0A51C7A291F2F46ABCDC9B485D8F5 /* Pods-SZNZoteroTestsOSX-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroTestsOSX-resources.sh"; sourceTree = "<group>"; };
-		0AC224DFC04E052811729BD2A367B1CC /* SZNZotero.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZotero.h; sourceTree = "<group>"; };
-		0BBB6AA71CE0E8FB06C34D9F7E8CAAEF /* SZNTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNTag.h; sourceTree = "<group>"; };
-		0D34D7BA94847526CD9200AD0750FA66 /* SZNZotero-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SZNZotero-OSX-dummy.m"; sourceTree = "<group>"; };
 		0E3BF135B19BA6F2B78E17B1B2BC2C59 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		10EE1799657E782E2F974AD65D15E0A5 /* SZNCreatorType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNCreatorType.h; sourceTree = "<group>"; };
 		1334CD3A55555FC4C1A66147587C988A /* AFNetworking-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "AFNetworking-OSX.xcconfig"; sourceTree = "<group>"; };
 		15B5BC805D038465A6CAD07F10A275FB /* libISO8601DateFormatter-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libISO8601DateFormatter-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16572C566E464D7BBD9F4EC7C5F44082 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		18E58DE76F2CDB4FA6A103130C23EAB3 /* Pods-SZNZoteroTestsOSX-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SZNZoteroTestsOSX-acknowledgements.plist"; sourceTree = "<group>"; };
-		193266D189AEC0CCFD55FA4D3BDCF7BC /* SZNItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItem.h; sourceTree = "<group>"; };
+		1CE713B247D1745BED8FF9AFEB2C187B /* SZNItemType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItemType.m; sourceTree = "<group>"; };
 		1E409C2877E8C778B1DB650430529379 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		1E4CD591F019524D0E7F611AC85275DA /* SZNZotero-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SZNZotero-OSX-prefix.pch"; sourceTree = "<group>"; };
-		1EC71D6F28880981406F7AE1A246F7D2 /* SZNItemField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItemField.m; sourceTree = "<group>"; };
+		1E90620524D2BAEC50770CE868B6ABE9 /* SZNZotero-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SZNZotero-iOS-dummy.m"; path = "../SZNZotero-iOS/SZNZotero-iOS-dummy.m"; sourceTree = "<group>"; };
 		23E72159517FA8AB64F0117649245B3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		244EF703B485CCD8904F443B1152097B /* SZNItemField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItemField.m; sourceTree = "<group>"; };
 		24C0591EBDD5383F517E83CAB1D2696C /* Pods-SZNZoteroDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroDemo-frameworks.sh"; sourceTree = "<group>"; };
 		2506D2F5C381F1350F5AC958456C78F1 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
 		25A28AC3C029E567A82334F56D08A0B8 /* libAFOAuth1Client-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libAFOAuth1Client-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		25EA519D35DC16B0DD62437570958292 /* SZNItemType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItemType.m; sourceTree = "<group>"; };
 		275EA4FAE65B1DCFE0BF07BE9A48D5D5 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
 		292FD870A9F4C9919E8E0D5F8E200899 /* Pods-SZNZoteroDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		2A0E478CD6D12A56A3C6E2AFC1F1C3FD /* ISO8601DateFormatter-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ISO8601DateFormatter-iOS.xcconfig"; path = "../ISO8601DateFormatter-iOS/ISO8601DateFormatter-iOS.xcconfig"; sourceTree = "<group>"; };
-		2D3369DFAE2A74430F9E870C631DE5A5 /* SZNCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNCollection.m; sourceTree = "<group>"; };
+		2C6CA8EB9C48A0C6B50DB0190317708B /* SZNTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNTag.m; sourceTree = "<group>"; };
 		2FE8C54293691AA453CD2EAA741D56A7 /* Pods-SZNZoteroDemoOSX-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SZNZoteroDemoOSX-acknowledgements.plist"; sourceTree = "<group>"; };
+		3224D2E65D7A8D0D3F764B3FBE81FD95 /* SZNZotero-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SZNZotero-iOS-prefix.pch"; path = "../SZNZotero-iOS/SZNZotero-iOS-prefix.pch"; sourceTree = "<group>"; };
 		32327AC81F5B2D66001A9365327C3EEE /* AFOAuth1Client-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AFOAuth1Client-iOS-dummy.m"; path = "../AFOAuth1Client-iOS/AFOAuth1Client-iOS-dummy.m"; sourceTree = "<group>"; };
 		32B17C7C0577E5EB5A8ED7801C89779D /* libPods-SZNZoteroTestsOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroTestsOSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3302299DE630E88CF2374857C02C5067 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		33D22DE5ACAFE7762F4325E94BFDDD30 /* SZNGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNGroup.h; sourceTree = "<group>"; };
 		3493726B53280F7414406467C24080DF /* AFHTTPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
+		38FC844328A81A78DE21EA8DD15BC78B /* SZNUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNUser.h; sourceTree = "<group>"; };
 		3F5723955671CA01190859432E75DA64 /* Pods-SZNZoteroTestsOSX-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SZNZoteroTestsOSX-acknowledgements.markdown"; sourceTree = "<group>"; };
+		41D919433BDCA7EBA1FCE8FEE1789BBC /* SZNGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNGroup.m; sourceTree = "<group>"; };
 		453FE4A3036A8F3289A0257AE8767863 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		4662B3D2B0409EA0B0955E03034CE538 /* AFOAuth1Client-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFOAuth1Client-OSX-prefix.pch"; sourceTree = "<group>"; };
 		47CAE5701FD2B0D2F59802698FE86314 /* Pods-SZNZoteroDemoOSX-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroDemoOSX-frameworks.sh"; sourceTree = "<group>"; };
 		480B31D14ED0DE8865AA86502A44DDB7 /* Pods-SZNZoteroTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4ABBC20A978F5CEFA6D1F66B8FE28911 /* libPods-SZNZoteroDemoOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemoOSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C049339E505293BAABFA37C4104BE5C /* SZNCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNCollection.h; sourceTree = "<group>"; };
 		4F940F367E32E8A88FB2C790B1D7FAC9 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		4FAB5066B6C3363057728DABD780544B /* AFHTTPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
 		5204DFC8AA98B2AE3C19872F033BC8F1 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -351,76 +357,76 @@
 		5326FDE336F26BF33906365685BA19B0 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		553079F71B85A6B88BFACA086E0676B1 /* Pods-SZNZoteroTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SZNZoteroTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		57C9686333F9EDA399AE7159B7B59CFD /* libAFNetworking-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libAFNetworking-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AA951C65A9A1CDD861DE54F74B2B359 /* SZNUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNUser.m; sourceTree = "<group>"; };
+		5EB546867EB33141B380DFDAFD6D6DC3 /* SZNItemType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItemType.h; sourceTree = "<group>"; };
 		5F0B374848DE5238B1E5445D31B4C6B0 /* ISO8601DateFormatter-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ISO8601DateFormatter-OSX-prefix.pch"; sourceTree = "<group>"; };
 		6587C58F92DA8336D832812F570FF7C2 /* Pods-SZNZoteroTestsOSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroTestsOSX-dummy.m"; sourceTree = "<group>"; };
 		66DF9792079C81F02DAF281630950E0A /* Pods-SZNZoteroTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroTests-frameworks.sh"; sourceTree = "<group>"; };
 		68D4AD6B664A00FACB44122A282409AE /* Pods-SZNZoteroDemoOSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroDemoOSX-dummy.m"; sourceTree = "<group>"; };
 		69C236420104CD35103F2FFA4DCBB58C /* Pods-SZNZoteroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A970CEBE19EF3F01FB5A241824CC0CC /* Pods-SZNZoteroDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroDemo-resources.sh"; sourceTree = "<group>"; };
-		6B86D077E6FC538BBED8E54E8568B897 /* SZNZotero-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SZNZotero-iOS-dummy.m"; path = "../SZNZotero-iOS/SZNZotero-iOS-dummy.m"; sourceTree = "<group>"; };
-		6DCBE86F75CCAA8A140BA47F1A94B65A /* SZNZoteroAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZoteroAPIClient.h; sourceTree = "<group>"; };
 		6FB8B5806C8BFDC7E81E1486CC5D4057 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		71C23933F965E3C095CC59D3B9E278BB /* Pods-SZNZoteroDemoOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemoOSX.release.xcconfig"; sourceTree = "<group>"; };
-		71E2307E78C5090262A28F89BD3EE17B /* SZNTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNTag.m; sourceTree = "<group>"; };
 		722A250D0EAE760E37A7B11C70153198 /* libAFOAuth1Client-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libAFOAuth1Client-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73C8D6D33BEAE46E9C676980F0104B0D /* SZNZoteroAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNZoteroAPIClient.m; sourceTree = "<group>"; };
+		7A68A10EAB6594A314A80A992C8017F0 /* SZNZotero-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SZNZotero-OSX-dummy.m"; sourceTree = "<group>"; };
 		7C210AC63831A1600A4A87917329ABD3 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		7C3465C21BEDC26DC370B1B2DCD40EE4 /* SZNGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNGroup.h; sourceTree = "<group>"; };
-		7DDBE2FFDA04E8116E171691A65AA737 /* SZNLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNLibrary.h; sourceTree = "<group>"; };
+		7E4C0FC38B76659AF6356812398AA89D /* SZNCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNCollection.m; sourceTree = "<group>"; };
 		824A5E9867C5737B464F2098BD6539C0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		854DB84C7130DB52F0DDEB09EDF896F3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		876EA7D0070B76C1E5BE5CBF1CB150EC /* SZNZotero-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SZNZotero-OSX.xcconfig"; sourceTree = "<group>"; };
 		8AC1B0A4941CB94FA153435ECB320D08 /* AFNetworking-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-OSX-dummy.m"; sourceTree = "<group>"; };
 		8BE996AE9C9361C539AE8D75F5343EDA /* AFNetworking-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "AFNetworking-iOS.xcconfig"; path = "../AFNetworking-iOS/AFNetworking-iOS.xcconfig"; sourceTree = "<group>"; };
 		8D097AE8044EC0A11E366955BD65C0D0 /* Pods-SZNZoteroDemoOSX-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SZNZoteroDemoOSX-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8D472FA27C29CBFA7581A58F50DED1A3 /* AFOAuth1Client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFOAuth1Client.h; path = AFOAuth1Client/AFOAuth1Client.h; sourceTree = "<group>"; };
 		8EDC913C21ADDAF950277141CA3EBA97 /* Pods-SZNZoteroDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroDemo.release.xcconfig"; sourceTree = "<group>"; };
-		91003B23F1E353A09986F48082881C16 /* SZNUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNUser.m; sourceTree = "<group>"; };
 		91C1E48AA1EBFDB35683CE452F3DB40D /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
 		9260DAEF47B7604623F1C64715E86F07 /* libSZNZotero-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSZNZotero-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		92D57EF4CDFFDD1003546F0AFB58EBDA /* SZNObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNObject.m; sourceTree = "<group>"; };
+		930789A33782F0407B9805C9D80C14DC /* SZNCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNCollection.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		942E600D2D143CCD19CB24C1F591022A /* SZNItemField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItemField.h; sourceTree = "<group>"; };
 		95507AF9B9AE73FC0D0CE0A4BE492E23 /* ISO8601DateFormatter-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ISO8601DateFormatter-iOS-dummy.m"; path = "../ISO8601DateFormatter-iOS/ISO8601DateFormatter-iOS-dummy.m"; sourceTree = "<group>"; };
 		95D732A72568A80BD5868CD8D804A32B /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		98C8C5253B0E97232A3E34DF06CA4E14 /* SZNZotero-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SZNZotero-iOS-prefix.pch"; path = "../SZNZotero-iOS/SZNZotero-iOS-prefix.pch"; sourceTree = "<group>"; };
 		98E1E5620AB8B10C6DEF45285C2F2572 /* AFOAuth1Client-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFOAuth1Client-iOS-prefix.pch"; path = "../AFOAuth1Client-iOS/AFOAuth1Client-iOS-prefix.pch"; sourceTree = "<group>"; };
+		98F1712F3B3F9F520756075A2FEC0292 /* SZNZotero-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SZNZotero-OSX-prefix.pch"; sourceTree = "<group>"; };
 		9AD5C9A2174643DA045721A6477CA164 /* ISO8601DateFormatter-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ISO8601DateFormatter-iOS-prefix.pch"; path = "../ISO8601DateFormatter-iOS/ISO8601DateFormatter-iOS-prefix.pch"; sourceTree = "<group>"; };
 		9DF051C2498911A6505B4CBA362BA3E3 /* Pods-SZNZoteroDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SZNZoteroDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		9FD9947B4D044DB3386C603EB82CB3F4 /* Pods-SZNZoteroTestsOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroTestsOSX.release.xcconfig"; sourceTree = "<group>"; };
-		A6600BB48916D1B71024530515200419 /* SZNZotero-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SZNZotero-iOS.xcconfig"; path = "../SZNZotero-iOS/SZNZotero-iOS.xcconfig"; sourceTree = "<group>"; };
 		A88947EB83080DD682098425CDC6679C /* Pods-SZNZoteroTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroTests-resources.sh"; sourceTree = "<group>"; };
-		A8D4A64A6B804E4B537AD0D3F8D3746D /* SZNItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNItem.m; sourceTree = "<group>"; };
 		A8FE0E453F54D9B1498F2A8F0B6B4C4B /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
 		AA6491AF38092E2444D556DEE123F034 /* Pods-SZNZoteroDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SZNZoteroDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		AB9B3F9571D3D5816E6CCFEC874AC8CB /* SZNItemType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItemType.h; sourceTree = "<group>"; };
+		AB501039A9A5433C558ADA3735907BCE /* SZNZotero-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SZNZotero-iOS.xcconfig"; path = "../SZNZotero-iOS/SZNZotero-iOS.xcconfig"; sourceTree = "<group>"; };
 		AFA07B546741AA46A14B42D9F4CE183A /* libPods-SZNZoteroDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F5658CC52C2AA2315632ED13FB6973 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		B41CBB1BB48BD5D946D675ECA07B8F79 /* SZNObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNObject.h; sourceTree = "<group>"; };
-		B4411AFBBBADFC36034A165D5FEC2339 /* SZNGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNGroup.m; sourceTree = "<group>"; };
 		B65FAA0E87044DD923A9434890F86BBD /* libISO8601DateFormatter-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libISO8601DateFormatter-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67D10E583BC4B6CD7E1133ECB552A96 /* AFNetworking-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFNetworking-iOS-prefix.pch"; path = "../AFNetworking-iOS/AFNetworking-iOS-prefix.pch"; sourceTree = "<group>"; };
+		BC80AE6E54E84E62218F5E05910AE8FC /* SZNZoteroAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZoteroAPIClient.h; sourceTree = "<group>"; };
 		C67DF151918CF3D7469484245A24DF0F /* Pods-SZNZoteroTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SZNZoteroTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C7B9AC13C6E79108707B4097DA288C74 /* ISO8601DateFormatter-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ISO8601DateFormatter-OSX.xcconfig"; sourceTree = "<group>"; };
 		CA86B96B1DD71F8B4142ED7AC062D016 /* AFNetworking-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-OSX-prefix.pch"; sourceTree = "<group>"; };
 		CB585B126C9B3077B813D6D65D9CFE36 /* libAFNetworking-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libAFNetworking-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD217CBE46FD6E72F0B3F8058BF33FC /* Pods-SZNZoteroTestsOSX-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroTestsOSX-frameworks.sh"; sourceTree = "<group>"; };
+		CC0BBD6C2E0B7BEAB6B59AA884891EBC /* SZNObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNObject.h; sourceTree = "<group>"; };
 		CEE513D0199B544CB4EAD5E4E76EA448 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		D15BBCE54B11AF441342C997970C5F14 /* Pods-SZNZoteroTestsOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SZNZoteroTestsOSX.debug.xcconfig"; sourceTree = "<group>"; };
 		D757F1D6F65DC0B08E9E5AC91BB48E92 /* libSZNZotero-OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSZNZotero-OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99F48BB12C8D923A41852835C199C80 /* AFOAuth1Client-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "AFOAuth1Client-OSX.xcconfig"; sourceTree = "<group>"; };
-		E0D08CE0283EAF6EC175CC6E7A4E1519 /* SZNUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNUser.h; sourceTree = "<group>"; };
 		E16B4C4130808A2C6B67D65D21147B95 /* ISO8601DateFormatter-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ISO8601DateFormatter-OSX-dummy.m"; sourceTree = "<group>"; };
 		E193D07B7185F23EC845A2AAB13F6451 /* AFOAuth1Client-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFOAuth1Client-OSX-dummy.m"; sourceTree = "<group>"; };
+		E4146F70639161CA8DF39118DEF03425 /* SZNTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNTag.h; sourceTree = "<group>"; };
 		E6A6AB472F2A8612AAE78924AF6550F4 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
 		E744EBC283B8FE7EE497EEF76C46AA2C /* libPods-SZNZoteroTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SZNZoteroTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DD08A8CD7CDF49E0744A8E25A2686E /* Pods-SZNZoteroTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SZNZoteroTests-dummy.m"; sourceTree = "<group>"; };
+		E847624838441EE447FB49C74A5073DB /* SZNLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNLibrary.h; sourceTree = "<group>"; };
+		E87C0825007906F04A8848791E19049A /* SZNCreatorType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNCreatorType.m; sourceTree = "<group>"; };
 		E936E1C0D5BD539FBB35D3C3845C5498 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		EA22AB4BA6B59D8E60C389C59142F941 /* SZNZoteroAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNZoteroAPIClient.m; sourceTree = "<group>"; };
+		E9659C2F3199A9EA77968562464095FA /* SZNObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNObject.m; sourceTree = "<group>"; };
+		EB6FC4BC7930AA801DC10BDA110EAC46 /* SZNZotero.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNZotero.h; sourceTree = "<group>"; };
 		EBE29223343FB8EB43EFEF74BA6E7845 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		EC1166F557E577C5D7981AD10C713AC7 /* SZNLibrary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNLibrary.m; sourceTree = "<group>"; };
 		ECF509CB555DD1FE7980C64D56E205A7 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		F055BDB83D234478670E50EB45D55F74 /* SZNLibrary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SZNLibrary.m; sourceTree = "<group>"; };
+		EDDA648AD7625DF8AF6B6A2B7DB9A195 /* SZNItemField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SZNItemField.h; sourceTree = "<group>"; };
 		F05B8A714BCCB6F839AF74DAB86CA1A8 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
 		F27AFEAF942FF6D26EE66D956049FE70 /* AFOAuth1Client-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "AFOAuth1Client-iOS.xcconfig"; path = "../AFOAuth1Client-iOS/AFOAuth1Client-iOS.xcconfig"; sourceTree = "<group>"; };
+		F311128BD76F5BD94E3FB30E474F8B2E /* SZNZotero-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SZNZotero-OSX.xcconfig"; sourceTree = "<group>"; };
 		F49D69586CA46C9968E3BACBD202CB5A /* AFOAuth1Client.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFOAuth1Client.m; path = AFOAuth1Client/AFOAuth1Client.m; sourceTree = "<group>"; };
 		F5628F1A25892951A70C185A293771B6 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		F64262A83A2C31D6056A0890B9749799 /* Pods-SZNZoteroDemoOSX-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SZNZoteroDemoOSX-resources.sh"; sourceTree = "<group>"; };
@@ -553,15 +559,15 @@
 			path = AFOAuth1Client;
 			sourceTree = "<group>";
 		};
-		0842DED5EF4EE51E82760CBD19B616D2 /* Support Files */ = {
+		08BEF04574FB0A40B29C2E7DCED1BCEE /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A6600BB48916D1B71024530515200419 /* SZNZotero-iOS.xcconfig */,
-				6B86D077E6FC538BBED8E54E8568B897 /* SZNZotero-iOS-dummy.m */,
-				98C8C5253B0E97232A3E34DF06CA4E14 /* SZNZotero-iOS-prefix.pch */,
-				876EA7D0070B76C1E5BE5CBF1CB150EC /* SZNZotero-OSX.xcconfig */,
-				0D34D7BA94847526CD9200AD0750FA66 /* SZNZotero-OSX-dummy.m */,
-				1E4CD591F019524D0E7F611AC85275DA /* SZNZotero-OSX-prefix.pch */,
+				AB501039A9A5433C558ADA3735907BCE /* SZNZotero-iOS.xcconfig */,
+				1E90620524D2BAEC50770CE868B6ABE9 /* SZNZotero-iOS-dummy.m */,
+				3224D2E65D7A8D0D3F764B3FBE81FD95 /* SZNZotero-iOS-prefix.pch */,
+				F311128BD76F5BD94E3FB30E474F8B2E /* SZNZotero-OSX.xcconfig */,
+				7A68A10EAB6594A314A80A992C8017F0 /* SZNZotero-OSX-dummy.m */,
+				98F1712F3B3F9F520756075A2FEC0292 /* SZNZotero-OSX-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "Examples/SZNZoteroDemo/Pods/Target Support Files/SZNZotero-OSX";
@@ -589,16 +595,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ISO8601DateFormatter-OSX";
-			sourceTree = "<group>";
-		};
-		302DCD5F51F0D641764D9379C80C9F64 /* SZNZotero */ = {
-			isa = PBXGroup;
-			children = (
-				0842DED5EF4EE51E82760CBD19B616D2 /* Support Files */,
-				9B41A6E609BBFD2E919FAD7C3E623103 /* SZNZotero */,
-			);
-			name = SZNZotero;
-			path = ../../..;
 			sourceTree = "<group>";
 		};
 		3D6F7C95D6640A201D6C0EA9C78CA890 /* Frameworks */ = {
@@ -666,7 +662,7 @@
 		60061EE2B5F0BA3100CE89CED451B3E0 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				302DCD5F51F0D641764D9379C80C9F64 /* SZNZotero */,
+				EF48DBDD19BD94F7DCFEEEA5D12A481F /* SZNZotero */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -682,6 +678,36 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		69C42CF8171BB9BDE38617C20C5E850E /* SZNZotero */ = {
+			isa = PBXGroup;
+			children = (
+				930789A33782F0407B9805C9D80C14DC /* SZNCollection.h */,
+				7E4C0FC38B76659AF6356812398AA89D /* SZNCollection.m */,
+				10EE1799657E782E2F974AD65D15E0A5 /* SZNCreatorType.h */,
+				E87C0825007906F04A8848791E19049A /* SZNCreatorType.m */,
+				33D22DE5ACAFE7762F4325E94BFDDD30 /* SZNGroup.h */,
+				41D919433BDCA7EBA1FCE8FEE1789BBC /* SZNGroup.m */,
+				01463FD2B3290BA8571B0A3C397128C4 /* SZNItem.h */,
+				019BDD00154D856A937F4C76069654EA /* SZNItem.m */,
+				EDDA648AD7625DF8AF6B6A2B7DB9A195 /* SZNItemField.h */,
+				244EF703B485CCD8904F443B1152097B /* SZNItemField.m */,
+				5EB546867EB33141B380DFDAFD6D6DC3 /* SZNItemType.h */,
+				1CE713B247D1745BED8FF9AFEB2C187B /* SZNItemType.m */,
+				E847624838441EE447FB49C74A5073DB /* SZNLibrary.h */,
+				EC1166F557E577C5D7981AD10C713AC7 /* SZNLibrary.m */,
+				CC0BBD6C2E0B7BEAB6B59AA884891EBC /* SZNObject.h */,
+				E9659C2F3199A9EA77968562464095FA /* SZNObject.m */,
+				E4146F70639161CA8DF39118DEF03425 /* SZNTag.h */,
+				2C6CA8EB9C48A0C6B50DB0190317708B /* SZNTag.m */,
+				38FC844328A81A78DE21EA8DD15BC78B /* SZNUser.h */,
+				5AA951C65A9A1CDD861DE54F74B2B359 /* SZNUser.m */,
+				EB6FC4BC7930AA801DC10BDA110EAC46 /* SZNZotero.h */,
+				BC80AE6E54E84E62218F5E05910AE8FC /* SZNZoteroAPIClient.h */,
+				73C8D6D33BEAE46E9C676980F0104B0D /* SZNZoteroAPIClient.m */,
+			);
+			path = SZNZotero;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -692,34 +718,6 @@
 				BF70768C82A92E6D7CB4FE9D766D57F2 /* Products */,
 				62F82D0ED9D47F35388298AF11C7AA53 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		9B41A6E609BBFD2E919FAD7C3E623103 /* SZNZotero */ = {
-			isa = PBXGroup;
-			children = (
-				4C049339E505293BAABFA37C4104BE5C /* SZNCollection.h */,
-				2D3369DFAE2A74430F9E870C631DE5A5 /* SZNCollection.m */,
-				7C3465C21BEDC26DC370B1B2DCD40EE4 /* SZNGroup.h */,
-				B4411AFBBBADFC36034A165D5FEC2339 /* SZNGroup.m */,
-				193266D189AEC0CCFD55FA4D3BDCF7BC /* SZNItem.h */,
-				A8D4A64A6B804E4B537AD0D3F8D3746D /* SZNItem.m */,
-				942E600D2D143CCD19CB24C1F591022A /* SZNItemField.h */,
-				1EC71D6F28880981406F7AE1A246F7D2 /* SZNItemField.m */,
-				AB9B3F9571D3D5816E6CCFEC874AC8CB /* SZNItemType.h */,
-				25EA519D35DC16B0DD62437570958292 /* SZNItemType.m */,
-				7DDBE2FFDA04E8116E171691A65AA737 /* SZNLibrary.h */,
-				F055BDB83D234478670E50EB45D55F74 /* SZNLibrary.m */,
-				B41CBB1BB48BD5D946D675ECA07B8F79 /* SZNObject.h */,
-				92D57EF4CDFFDD1003546F0AFB58EBDA /* SZNObject.m */,
-				0BBB6AA71CE0E8FB06C34D9F7E8CAAEF /* SZNTag.h */,
-				71E2307E78C5090262A28F89BD3EE17B /* SZNTag.m */,
-				E0D08CE0283EAF6EC175CC6E7A4E1519 /* SZNUser.h */,
-				91003B23F1E353A09986F48082881C16 /* SZNUser.m */,
-				0AC224DFC04E052811729BD2A367B1CC /* SZNZotero.h */,
-				6DCBE86F75CCAA8A140BA47F1A94B65A /* SZNZoteroAPIClient.h */,
-				EA22AB4BA6B59D8E60C389C59142F941 /* SZNZoteroAPIClient.m */,
-			);
-			path = SZNZotero;
 			sourceTree = "<group>";
 		};
 		A7FF12FF25AF0A65B928B328B0C0E5A0 /* Pods-SZNZoteroDemo */ = {
@@ -821,6 +819,16 @@
 			path = "Target Support Files/Pods-SZNZoteroTestsOSX";
 			sourceTree = "<group>";
 		};
+		EF48DBDD19BD94F7DCFEEEA5D12A481F /* SZNZotero */ = {
+			isa = PBXGroup;
+			children = (
+				08BEF04574FB0A40B29C2E7DCED1BCEE /* Support Files */,
+				69C42CF8171BB9BDE38617C20C5E850E /* SZNZotero */,
+			);
+			name = SZNZotero;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
 		F6D31D26DDD4DFA28D77BC621558C8FC /* Pods-SZNZoteroTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,24 +860,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BEC3B8ED7639887890212F7671B857 /* AFOAuth1Client.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		885564EDE281B09C6F5F1F4D798932DC /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0414C6FFC1BAFE470E8A719E1D53E74E /* SZNCollection.h in Headers */,
-				3B080DC252C707496E331E9FB212EDAF /* SZNGroup.h in Headers */,
-				6A871A921448B23C6CE08DD83E4A3093 /* SZNItem.h in Headers */,
-				71493C19B4008CA88CE0856121A77D52 /* SZNItemField.h in Headers */,
-				BD56F1AFCE374EE5C0A087E6559A6B5F /* SZNItemType.h in Headers */,
-				E2D84B853D91F775BE28CDD00D21B499 /* SZNLibrary.h in Headers */,
-				ED434C080B11FC2603F23A81A079EF0E /* SZNObject.h in Headers */,
-				86C5FFAB67F8090A0C3B0E9B35A57ECF /* SZNTag.h in Headers */,
-				F194716E221EC5BAFB935D01E9F54230 /* SZNUser.h in Headers */,
-				7A2BFD854662C7F92FE5064542969580 /* SZNZotero.h in Headers */,
-				B351404AE8ABD1C73CE85E9B2E256C40 /* SZNZoteroAPIClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,21 +905,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD7A5D899FA8313F95023BD68D382503 /* Headers */ = {
+		BFC556E480C8C7031C3DF2DED3B5BCFA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F267017C9428CE834155696E963A5B96 /* SZNCollection.h in Headers */,
-				77A5D21189887A5B0070429FD796A6B4 /* SZNGroup.h in Headers */,
-				4BECCC36126A05DFF959A92086AA953B /* SZNItem.h in Headers */,
-				0CDCED3965F2DE341ABC7448B272F7F2 /* SZNItemField.h in Headers */,
-				F9DC3544BAA8DBDA36308BD56783E2D0 /* SZNItemType.h in Headers */,
-				02E1D22CC4A8BECEC61470CB0A46A372 /* SZNLibrary.h in Headers */,
-				064265C0F5C45419A9AAD2E8AC12162D /* SZNObject.h in Headers */,
-				925D1B63A9AE0166804E92F8B63989F1 /* SZNTag.h in Headers */,
-				682F2CC3D696217BC456F9291135D9A0 /* SZNUser.h in Headers */,
-				9936FABC0AA6496BAAE219FDCBA3A8EF /* SZNZotero.h in Headers */,
-				B44B8D0D8FC2091A45BFCB7341E0B852 /* SZNZoteroAPIClient.h in Headers */,
+				D611EDA8704FFA7840C594B63B918DA1 /* SZNCollection.h in Headers */,
+				2F8755FE583835EB187D2948E233B720 /* SZNCreatorType.h in Headers */,
+				0082D8B56CDEAFE99F44180A18883F52 /* SZNGroup.h in Headers */,
+				3802FFFF93E60772881C7FA6B5243006 /* SZNItem.h in Headers */,
+				19AB2AB1C327C3C88F483BB1DF4D0FFA /* SZNItemField.h in Headers */,
+				9E1CA5074B7EE06D2B51D0E4C9BB79B8 /* SZNItemType.h in Headers */,
+				3376C29EA7A3A86764FB7204E3C37A9B /* SZNLibrary.h in Headers */,
+				1A08E92BCAEF8764D524464EEC299AF9 /* SZNObject.h in Headers */,
+				DF40CB01994490FD52C1034BA6504725 /* SZNTag.h in Headers */,
+				ED3B988F1AFE5E7295C738477863A6AE /* SZNUser.h in Headers */,
+				6EAA6EA900A68B6BCAD8B132E2E41C18 /* SZNZotero.h in Headers */,
+				8A31996E00374AB17E23C6DFF1E1E497 /* SZNZoteroAPIClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C221C08B1490DFAE34D8D83386BFEA60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F6785A883CC7B2CF91B7410175BA815 /* SZNCollection.h in Headers */,
+				2B6CBF1DC9BC9D2E2FBC45E953126FFA /* SZNCreatorType.h in Headers */,
+				A5D72A192BE6B417BD207C6914E033B4 /* SZNGroup.h in Headers */,
+				9E84A88482CF6CD5D61CC025F933F8B5 /* SZNItem.h in Headers */,
+				436AB561E1E4E36EB50A4772BAD546C1 /* SZNItemField.h in Headers */,
+				85F70C6FCA5BAFCB4DE66D1846647B75 /* SZNItemType.h in Headers */,
+				88705B2E9526AD159C5D966885BDA93B /* SZNLibrary.h in Headers */,
+				269FEBF0E07019909CF63AE525423C57 /* SZNObject.h in Headers */,
+				AC2BA0C296353AE842F9120A552FF706 /* SZNTag.h in Headers */,
+				B5BAFCFCF34BDF0AA140A8FF1C26D281 /* SZNUser.h in Headers */,
+				4E234BF7F5CDE7F2EE5E198B8ED2BFE1 /* SZNZotero.h in Headers */,
+				8D1B8C481FE3682D8AF8FB89AFF58D2F /* SZNZoteroAPIClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,9 +1030,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9145728BA3D16775BEBD01FA9FBD9BE8 /* Build configuration list for PBXNativeTarget "SZNZotero-OSX" */;
 			buildPhases = (
-				311FCBFA2DFAD117585E6C91C41CEAF1 /* Sources */,
+				00E89A32A9F8FF04410501C60E78E6B5 /* Sources */,
 				D335C7DFB67FD8B6BD946BAF7E78CE17 /* Frameworks */,
-				885564EDE281B09C6F5F1F4D798932DC /* Headers */,
+				C221C08B1490DFAE34D8D83386BFEA60 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -1058,9 +1068,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A0475A5E04E5EB7202F60974525AFE2 /* Build configuration list for PBXNativeTarget "SZNZotero-iOS" */;
 			buildPhases = (
-				8A633317F057EC1C709103A3DC366433 /* Sources */,
+				946C23ABA09DE52F30FD5372B7EFF8C8 /* Sources */,
 				32E1420470749CC7ECD43B2E11081D95 /* Frameworks */,
-				CD7A5D899FA8313F95023BD68D382503 /* Headers */,
+				BFC556E480C8C7031C3DF2DED3B5BCFA /* Headers */,
 			);
 			buildRules = (
 			);
@@ -1206,6 +1216,25 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00E89A32A9F8FF04410501C60E78E6B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6107677095E6CB488885C71ECC74F22 /* SZNCollection.m in Sources */,
+				80C270AB0B896F7FFED4DE7784BEA7D5 /* SZNCreatorType.m in Sources */,
+				E4507E060B5D4FC4F1CFB6F54BD9AEE4 /* SZNGroup.m in Sources */,
+				253A01CC915879FA413B1C1F14E1AFD6 /* SZNItem.m in Sources */,
+				C3A1A6323E1B2A6B7D49A95888C3741A /* SZNItemField.m in Sources */,
+				7E113A29C87A23EF898989F8E54C1C29 /* SZNItemType.m in Sources */,
+				5F26E854984D9D8E8E46C03D29CAB4B0 /* SZNLibrary.m in Sources */,
+				AA25720BEA9148F03DC257F61449AEB3 /* SZNObject.m in Sources */,
+				F98CC2A4F749D42F64B54E418AD08D0E /* SZNTag.m in Sources */,
+				57C7C22BD0177771F3BD7A2AB67F8DCD /* SZNUser.m in Sources */,
+				AB3E0E24BE42798C22868F5C99B941C1 /* SZNZotero-OSX-dummy.m in Sources */,
+				B37056C197FF917E95865779F7FDCDFD /* SZNZoteroAPIClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12F6D4742C416538D082AB1F71D7FB94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1238,24 +1267,6 @@
 				4970B4A845F7D891C6D302E28EB6A998 /* AFURLConnectionOperation.m in Sources */,
 				594C1F5B29B2BBC3C4512A427DE95682 /* AFXMLRequestOperation.m in Sources */,
 				7E21826EF6C14BB9C55AF04FA466F146 /* UIImageView+AFNetworking.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		311FCBFA2DFAD117585E6C91C41CEAF1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4122C7EFD18C1B05AD7DEF098D9DD848 /* SZNCollection.m in Sources */,
-				F769D11B005FDDBED341CFB5E5F1052B /* SZNGroup.m in Sources */,
-				74E1B5C64FA60412E093E4B47B0D38FD /* SZNItem.m in Sources */,
-				EEB1FD733DA9F0A498F6ACBC23635F91 /* SZNItemField.m in Sources */,
-				BC3797A932F3C56401C815BD84B0415C /* SZNItemType.m in Sources */,
-				D83A762F45623C7330BAD126CFF3C856 /* SZNLibrary.m in Sources */,
-				7E00BF81936E457D529957B79188CABA /* SZNObject.m in Sources */,
-				AA83FB22125BA2351A13C6068586C40A /* SZNTag.m in Sources */,
-				3385FA17F787C570C22807D059F1C9AD /* SZNUser.m in Sources */,
-				23BAE2A8ECA90D4EC18007A0AD000939 /* SZNZotero-OSX-dummy.m in Sources */,
-				1EC1C2B0D1C3096E22B6301C34702317 /* SZNZoteroAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1293,30 +1304,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A633317F057EC1C709103A3DC366433 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				47F089D895F2C30513A2FBFB58AAF5F8 /* SZNCollection.m in Sources */,
-				32A64084E024228E7016394100BB7710 /* SZNGroup.m in Sources */,
-				18C35BEE798FB5F7AEBFDCAA01AE7BFF /* SZNItem.m in Sources */,
-				B5676A849EA6824C3B9307EF332E0242 /* SZNItemField.m in Sources */,
-				8E331DB8051816CF2361C6CBA8D16BE6 /* SZNItemType.m in Sources */,
-				65EECD5F8774F5CBDDA2EF2249466FAF /* SZNLibrary.m in Sources */,
-				6A4A251F92AE003DDCB0BF7D345E9C61 /* SZNObject.m in Sources */,
-				17D647B050B8F8DA5625540AFC155628 /* SZNTag.m in Sources */,
-				BA4C3263B229139310B3E86458847233 /* SZNUser.m in Sources */,
-				132D2D3AF60F94DCDD3B6AA61D623395 /* SZNZotero-iOS-dummy.m in Sources */,
-				70101B08D949758C6BF49045DD4302B1 /* SZNZoteroAPIClient.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8EF0F6B16D637A23F3D412C9C925222F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6B1394FE99D098353E33D973D0EE712F /* ISO8601DateFormatter-OSX-dummy.m in Sources */,
 				0597BBC7E8ED103CB284DD611A60FDEA /* ISO8601DateFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946C23ABA09DE52F30FD5372B7EFF8C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACE831E6BC20506234F0485DBA5FA9B7 /* SZNCollection.m in Sources */,
+				5EC257598E906C0A5F0A06C61FA2480D /* SZNCreatorType.m in Sources */,
+				923A680690AA2E89E5D5D6A55CDFB126 /* SZNGroup.m in Sources */,
+				1C896BAFB899026F0926C280C8F9CEE7 /* SZNItem.m in Sources */,
+				DBE16763A35E3E3DC7158C4DC06EEC6C /* SZNItemField.m in Sources */,
+				2A218CAF3F55270F9113B14D6220D6C7 /* SZNItemType.m in Sources */,
+				5A257DB806328AF8627BF0EEEB66CDBE /* SZNLibrary.m in Sources */,
+				EFD5B995F1061C652CB1381985768B4A /* SZNObject.m in Sources */,
+				23299D35A77CA7CB5EA5F0A9C8409977 /* SZNTag.m in Sources */,
+				5189BA9507F06DBFFA6F8905EAD53DBF /* SZNUser.m in Sources */,
+				5C920EC098956E783BB1AB27796D48DC /* SZNZotero-iOS-dummy.m in Sources */,
+				098A2B6FF8F6F439FA8BD7CF03DF9F24 /* SZNZoteroAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1496,7 +1508,7 @@
 /* Begin XCBuildConfiguration section */
 		085B7F6D15FCF65F6299F1BE4D7B89B0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 876EA7D0070B76C1E5BE5CBF1CB150EC /* SZNZotero-OSX.xcconfig */;
+			baseConfigurationReference = F311128BD76F5BD94E3FB30E474F8B2E /* SZNZotero-OSX.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1767,7 +1779,7 @@
 		};
 		93DFC95336E701591C731B3A06A07D3B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6600BB48916D1B71024530515200419 /* SZNZotero-iOS.xcconfig */;
+			baseConfigurationReference = AB501039A9A5433C558ADA3735907BCE /* SZNZotero-iOS.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1960,7 +1972,7 @@
 		};
 		DE970BB736B6098380AA162DC8E1E214 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 876EA7D0070B76C1E5BE5CBF1CB150EC /* SZNZotero-OSX.xcconfig */;
+			baseConfigurationReference = F311128BD76F5BD94E3FB30E474F8B2E /* SZNZotero-OSX.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2023,7 +2035,7 @@
 		};
 		F9B99FC5602989873FD83556ACA19C65 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6600BB48916D1B71024530515200419 /* SZNZotero-iOS.xcconfig */;
+			baseConfigurationReference = AB501039A9A5433C558ADA3735907BCE /* SZNZotero-iOS.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;

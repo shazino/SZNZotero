@@ -1,5 +1,5 @@
 //
-// SZNItemType.h
+// SZNCreatorType.h
 //
 // Copyright (c) 2013-2016 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -23,25 +23,15 @@
 
 @import Foundation;
 
-@class SZNZoteroAPIClient;
-
-/**
- The link mode for attachement items.
- */
-typedef NS_ENUM(NSUInteger, SZNAttachmentLinkMode) {
-    SZNAttachmentLinkModeImportedFile,
-    SZNAttachmentLinkModeImportedURL,
-    SZNAttachmentLinkModeLinkedFile,
-    SZNAttachmentLinkModeLinkedURL
-};
+@class SZNZoteroAPIClient, SZNItemType;
 
 
 /**
- The item type describes the format of an item.
+ The creator type describes the role for item creators.
 
  API documentation: https://www.zotero.org/support/dev/web_api/v3/types_and_fields
  */
-@interface SZNItemType : NSObject
+@interface SZNCreatorType : NSObject
 
 /**
  The identifier value of the type.
@@ -79,55 +69,22 @@ typedef NS_ENUM(NSUInteger, SZNAttachmentLinkMode) {
 
  @return The newly-created and configured object.
  */
-+ (nullable instancetype)itemTypeWithResponseDictionary:(nonnull NSDictionary *)responseDictionary;
++ (nullable instancetype)creatorTypeWithResponseDictionary:(nonnull NSDictionary *)responseDictionary;
 
 
 /// @name API requests
 
 /**
- Fetches the valid item types.
-
- @param client  The API client.
- @param success A block object to be executed when the request operation finishes successfully.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
- */
-+ (void)fetchTypesWithClient:(nonnull SZNZoteroAPIClient *)client
-                     success:(nonnull void (^)(NSArray <SZNItemType *> * __nonnull))success
-                     failure:(nullable void (^)(NSError * __nullable error))failure;
-
-/**
- Fetches the new items template for a given item type.
+ Fetches the valid creator types for a given item type.
 
  @param client   The API client.
- @param itemType The item type for which to fetch the template.
+ @param itemType The item type for which to fetch the valid creator types.
  @param success  A block object to be executed when the request operation finishes successfully.
  @param failure  A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
  */
-+ (void)fetchNewItemTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
-                               forType:(nonnull SZNItemType *)itemType
-                               success:(nonnull void (^)(NSDictionary * __nonnull responseObject))success
-                               failure:(nullable void (^)(NSError * __nullable error))failure;
-
-/**
- Fetches the new attachment template for a given link mode.
-
- @param client   The API client.
- @param linkMode The link mode for which to fetch the template.
- @param success  A block object to be executed when the request operation finishes successfully.
- @param failure  A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
- */
-+ (void)fetchNewAttachmentTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
-                                    linkMode:(SZNAttachmentLinkMode)linkMode
-                                     success:(nonnull void (^)(NSDictionary * __nonnull responseObject))success
-                                     failure:(nullable void (^)(NSError * __nullable error))failure;
-
-/**
- Returns the identifier value for a given link mode.
-
- @param linkMode The link mode of the item.
-
- @return The link mode value.
- */
-+ (nonnull NSString *)valueForLinkMode:(SZNAttachmentLinkMode)linkMode;
++ (void)fetchValidCreatorTypesWithClient:(nonnull SZNZoteroAPIClient *)client
+                             forItemType:(nonnull SZNItemType *)itemType
+                                 success:(nonnull void (^)(NSArray <SZNCreatorType *> * __nonnull validCreatorTypes))success
+                                 failure:(nullable void (^)(NSError * __nullable error))failure;
 
 @end

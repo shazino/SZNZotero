@@ -66,44 +66,6 @@
                     success:(nullable void (^)(SZNItem * __nonnull newItem))success
                     failure:(nullable void (^)(NSError * __nullable error))failure;
 
-/**
- Fetches all item types.
- 
- @param client The API client to be used to send the fetch request.
- @param success A block object to be executed when the request operation finishes successfully. 
-  This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
-  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
- */
-+ (void)fetchTypesWithClient:(nonnull SZNZoteroAPIClient *)client
-                     success:(nullable void (^)(NSArray <SZNItemType *> * __nonnull))success
-                     failure:(nullable void (^)(NSError * __nullable error))failure;
-
-/**
- Fetches all valid fields for an item type.
- 
- @param client The API client to be used to send the fetch request.
- @param itemType The item type.
- @param success A block object to be executed when the request operation finishes successfully. 
-  This block has no return value and takes one argument: an array of `NSDictionary` objects created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. 
-  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
- */
-+ (void)fetchValidFieldsWithClient:(nonnull SZNZoteroAPIClient *)client
-                       forItemType:(nonnull SZNItemType *)itemType
-                           success:(nullable void (^)(NSArray <SZNItemField *> * __nonnull validFields))success
-                           failure:(nullable void (^)(NSError * __nullable error))failure;
-
-+ (void)fetchAttachmentItemTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
-                                     linkMode:(nonnull NSString *)linkMode
-                                      success:(nullable void (^)(NSDictionary * __nonnull responseObject))success
-                                      failure:(nullable void (^)(NSError * __nullable error))failure;
-
-+ (void)fetchTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
-                        forType:(nonnull NSString *)itemType
-                        success:(nullable void (^)(NSDictionary * __nonnull responseObject))success
-                        failure:(nullable void (^)(NSError * __nullable error))failure;
-
 - (void)fetchUploadAuthorizationForFileAtURL:(nonnull NSURL *)fileURL
                                  contentType:(nonnull NSString *)contentType
                                      success:(nullable void (^)(NSDictionary *__nonnull responseObject, NSString * __nonnull responseMD5))success

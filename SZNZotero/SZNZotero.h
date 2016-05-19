@@ -31,6 +31,7 @@
 #import "SZNItem.h"
 #import "SZNItemType.h"
 #import "SZNItemField.h"
+#import "SZNCreatorType.h"
 #import "SZNLibrary.h"
 #import "SZNObject.h"
 #import "SZNTag.h"

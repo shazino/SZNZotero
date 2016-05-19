@@ -23,7 +23,24 @@
 
 #import "SZNItemType.h"
 
+#import "SZNZoteroAPIClient.h"
+
+
 @implementation SZNItemType
+
+#pragma mark - Initialization
+
+- (nonnull instancetype)initWithType:(nonnull NSString *)type
+                       localizedName:(nonnull NSString *)localizedName {
+    self = [super init];
+
+    if (self) {
+        self.type = type;
+        self.localizedName = localizedName;
+    }
+
+    return self;
+}
 
 + (nullable instancetype)itemTypeWithResponseDictionary:(nonnull NSDictionary *)responseDictionary {
     NSString *itemType = responseDictionary[@"itemType"];
@@ -36,16 +53,80 @@
     return [[self alloc] initWithType:itemType localizedName:localized];
 }
 
-- (nonnull instancetype)initWithType:(nonnull NSString *)type
-                       localizedName:(nonnull NSString *)localizedName {
-    self = [super init];
++ (nonnull NSArray <SZNItemType *> *)itemTypesWithResponseArray:(nonnull NSArray *)responseArray {
+    NSMutableArray *itemTypes = [[NSMutableArray alloc] initWithCapacity:[responseArray count]];
 
-    if (self) {
-        self.type = type;
-        self.localizedName = localizedName;
+    for (NSDictionary *rawItemType in responseArray) {
+        if ([rawItemType isKindOfClass:[NSDictionary class]] == NO) {
+            continue;
+        }
+
+        SZNItemType *itemType = [SZNItemType itemTypeWithResponseDictionary:rawItemType];
+        if (itemType) {
+            [itemTypes addObject:itemType];
+        }
     }
 
-    return self;
+    return itemTypes;
+}
+
+#pragma mark - Fetch
+
++ (void)fetchTypesWithClient:(nonnull SZNZoteroAPIClient *)client
+                     success:(nonnull void (^)(NSArray <SZNItemType *> * __nonnull))success
+                     failure:(nullable void (^)(NSError * __nullable error))failure {
+    [client
+     getPath:@"/itemTypes"
+     parameters:nil
+     success:^(id responseObject) {
+         if ([responseObject isKindOfClass:NSArray.class] == NO) {
+             if (failure) {
+                 failure(nil);
+             }
+
+             return;
+         }
+
+         NSArray *itemTypes = [self itemTypesWithResponseArray:responseObject];
+         success(itemTypes);
+     }
+     failure:failure];
+}
+
++ (void)fetchNewItemTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
+                               forType:(nonnull SZNItemType *)itemType
+                               success:(nonnull void (^)(NSDictionary * __nonnull responseObject))success
+                               failure:(nullable void (^)(NSError * __nullable error))failure {
+    NSString *path = @"/items/new";
+    NSDictionary *parameters = @{@"itemType": itemType.type};
+
+    [client getPath:path parameters:parameters success:success failure:failure];
+}
+
++ (nonnull NSString *)valueForLinkMode:(SZNAttachmentLinkMode)linkMode {
+    switch (linkMode) {
+        case SZNAttachmentLinkModeLinkedURL:
+            return @"linked_url";
+
+        case SZNAttachmentLinkModeLinkedFile:
+            return @"linked_file";
+
+        case SZNAttachmentLinkModeImportedURL:
+            return @"imported_url";
+
+        case SZNAttachmentLinkModeImportedFile:
+            return @"imported_file";
+    }
+}
+
++ (void)fetchNewAttachmentTemplateWithClient:(nonnull SZNZoteroAPIClient *)client
+                                    linkMode:(SZNAttachmentLinkMode)linkMode
+                                     success:(nonnull void (^)(NSDictionary * __nonnull responseObject))success
+                                     failure:(nullable void (^)(NSError * __nullable error))failure {
+    NSString *path = @"/items/new";
+    NSString *parameters = @{@"itemType": @"attachment", @"linkMode": [self valueForLinkMode:linkMode]};
+
+    [client getPath:path parameters:parameters success:success failure:failure];
 }
 
 @end

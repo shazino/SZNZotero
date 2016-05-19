@@ -28,7 +28,7 @@
     SZNItemType *itemType = self.itemType;
     SZNZoteroAPIClient *client = self.library.client;
 
-    [SZNItem fetchValidFieldsWithClient:client forItemType:itemType success:^(NSArray <SZNItemField *> *fields) {
+    [SZNItemField fetchValidFieldsWithClient:client forItemType:itemType success:^(NSArray <SZNItemField *> *fields) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         self.itemFields = fields;
         self.itemValues = [NSMutableArray arrayWithCapacity:self.itemFields.count];
